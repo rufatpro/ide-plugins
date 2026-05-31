@@ -1,0 +1,146 @@
+{
+  "category": "nestjs",
+  "categoryLabel": "NestJS",
+  "prompts": [
+    {
+      "id": "nestjs-01",
+      "label": "Bootstrap first NestJS app",
+      "description": "setup",
+      "detail": "main.ts",
+      "text": "Create minimal NestJS app.\n\n- nest new or manual main.ts + AppModule\n- GET / hello\n- npm run start:dev\n\nExplain module decorator role."
+    },
+    {
+      "id": "nestjs-02",
+      "label": "DTO validation with class-validator",
+      "description": "validation",
+      "detail": "pipes",
+      "text": "Add POST /users with CreateUserDto.\n\n- class-validator decorators\n- ValidationPipe global\n- 400 error shape\n\nKeep one controller file."
+    },
+    {
+      "id": "nestjs-03",
+      "label": "CRUD module pattern",
+      "description": "structure",
+      "detail": "feature module",
+      "text": "Generate UsersModule with controller, service, in-memory repo.\n\n- providers array\n- Export service for other modules\n- Route prefix /users\n\nNest CLI commands if helpful."
+    },
+    {
+      "id": "nestjs-04",
+      "label": "Custom provider token",
+      "description": "di",
+      "detail": "injection",
+      "text": "Demonstrate custom provider with useValue and injection token.\n\n- Why interfaces need tokens in TS\n- Testing override with useClass\n\nShort example."
+    },
+    {
+      "id": "nestjs-05",
+      "label": "Guard JWT stub",
+      "description": "auth",
+      "detail": "guard",
+      "text": "Sketch JwtAuthGuard (conceptual, no full auth server).\n\n- @UseGuards on route\n- Request user typing\n- 401 vs 403 explanation\n\nMention @nestjs/passport lightly."
+    },
+    {
+      "id": "nestjs-06",
+      "label": "Role-based guard",
+      "description": "auth",
+      "detail": "roles",
+      "text": "RolesGuard reading roles from JWT payload stub.\n\n- Reflector + @Roles decorator\n- Forbidden when missing role\n\nKeep fake user for demo."
+    },
+    {
+      "id": "nestjs-07",
+      "label": "Exception filter uniform JSON",
+      "description": "errors",
+      "detail": "filter",
+      "text": "Global exception filter returning { statusCode, message, path }.\n\n- Catch HttpException and unknown\n- Log stack internally only\n\nRegister in main.ts."
+    },
+    {
+      "id": "nestjs-08",
+      "label": "Interceptor logging timing",
+      "description": "cross-cutting",
+      "detail": "interceptor",
+      "text": "LoggingInterceptor measuring request duration.\n\n- tap on Observable\n- Exclude health route idea\n\nShow registration scope options."
+    },
+    {
+      "id": "nestjs-09",
+      "label": "Prisma module wiring",
+      "description": "database",
+      "detail": "prisma",
+      "text": "Wire PrismaService as global provider.\n\n- prisma generate step\n- Example findMany in service\n- Graceful shutdown onModuleDestroy note\n\nSQLite or Postgres — pick one."
+    },
+    {
+      "id": "nestjs-10",
+      "label": "ConfigModule env",
+      "description": "config",
+      "detail": "@nestjs/config",
+      "text": "Use ConfigModule.forRoot with validation schema (Joi or class).\n\n- DATABASE_URL required\n- forbidUnknownValues idea\n\n.env.example snippet."
+    },
+    {
+      "id": "nestjs-11",
+      "label": "Swagger OpenAPI",
+      "description": "docs",
+      "detail": "swagger",
+      "text": "Add Swagger at /api with DocumentBuilder.\n\n- Tags per module\n- Bearer auth scheme placeholder\n\nExplain dev-only exposure caution."
+    },
+    {
+      "id": "nestjs-12",
+      "label": "Testing service with jest",
+      "description": "testing",
+      "detail": "unit",
+      "text": "Unit test UsersService with mocked repository.\n\n- TestingModule.createTestingModule\n- expect create to call repo.save\n\nOne spec file."
+    },
+    {
+      "id": "nestjs-13",
+      "label": "E2E supertest",
+      "description": "testing",
+      "detail": "e2e",
+      "text": "e2e test bootstrapping AppModule in-memory.\n\n- supertest request GET /users\n- Close app afterAll\n\nMinimal example."
+    },
+    {
+      "id": "nestjs-14",
+      "label": "WebSocket gateway echo",
+      "description": "realtime",
+      "detail": "gateway",
+      "text": "WebSocketGateway echo server.\n\n- @SubscribeMessage\n- CORS/origin note brief\n\nContrast with Socket.io package optional."
+    },
+    {
+      "id": "nestjs-15",
+      "label": "Microservice TCP pattern",
+      "description": "microservices",
+      "detail": "transport",
+      "text": "High-level second app listening TCP with message pattern.\n\n- ClientProxy send\n- When to choose Kafka instead\n\nConceptual code blocks."
+    },
+    {
+      "id": "nestjs-16",
+      "label": "Cache interceptor",
+      "description": "perf",
+      "detail": "cache",
+      "text": "CacheModule + CacheInterceptor on GET route.\n\n- TTL config\n- Cache key pitfalls\n\nWarn stale data scenarios."
+    },
+    {
+      "id": "nestjs-17",
+      "label": "File upload multer",
+      "description": "files",
+      "detail": "multipart",
+      "text": "FileInterceptor uploading to disk with size limit.\n\n- Validation pipe for mime\n- Virus scan hook mention\n\nSingle endpoint."
+    },
+    {
+      "id": "nestjs-18",
+      "label": "Schedule cron job",
+      "description": "jobs",
+      "detail": "cron",
+      "text": "@nestjs/schedule cron example.\n\n- Injectable task\n- Idempotency warning for multi-instance\n\nMention external queue for prod."
+    },
+    {
+      "id": "nestjs-19",
+      "label": "Health check Terminus",
+      "description": "ops",
+      "detail": "health",
+      "text": "Terminus health checks: DB ping + disk.\n\n- /health route\n- Kubernetes probe mapping\n\nDependencies list."
+    },
+    {
+      "id": "nestjs-20",
+      "label": "Split monolith modules",
+      "description": "architecture",
+      "detail": "boundaries",
+      "text": "Refactor growing AppModule into domain modules.\n\n- Shared module for cross-cutting\n- Avoid circular imports checklist\n\nBefore/after tree diagram in text."
+    }
+  ]
+}

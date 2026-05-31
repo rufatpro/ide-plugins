@@ -1,0 +1,146 @@
+{
+  "category": "observability",
+  "categoryLabel": "Observability",
+  "prompts": [
+    {
+      "id": "observability-01",
+      "label": "Structured JSON logging",
+      "description": "logging",
+      "detail": "fields",
+      "text": "Add structured JSON logs to this service.\n\n- timestamp, level, message, trace_id, user_id (optional)\n- One log line per event\n- Redact secrets\n\nShow example middleware/interceptor pattern for our stack."
+    },
+    {
+      "id": "observability-02",
+      "label": "Correlation ID across requests",
+      "description": "tracing",
+      "detail": "propagation",
+      "text": "Implement correlation ID:\n\n- Generate on ingress if missing\n- Propagate to downstream HTTP calls\n- Include in all logs\n\nExplain header name choices (X-Request-ID vs traceparent overview)."
+    },
+    {
+      "id": "observability-03",
+      "label": "RED metrics for HTTP API",
+      "description": "metrics",
+      "detail": "RED method",
+      "text": "Define RED metrics for our HTTP API:\n\n- Rate, Errors, Duration histogram\n- Label cardinality warnings\n- Example PromQL queries\n\nDo not install Prometheus yet — design first."
+    },
+    {
+      "id": "observability-04",
+      "label": "Grafana dashboard sketch",
+      "description": "metrics",
+      "detail": "dashboard",
+      "text": "Outline a Grafana dashboard for latency and errors:\n\n- 4–6 panels with PromQL placeholders\n- SLO line for p95\n- On-call notes panel\n\nService: [PASTE]"
+    },
+    {
+      "id": "observability-05",
+      "label": "OpenTelemetry span basics",
+      "description": "tracing",
+      "detail": "OTel",
+      "text": "Explain how to add OpenTelemetry spans around DB and HTTP calls.\n\n- Parent/child spans\n- Attributes to set\n- Sampling mention\n\nConceptual + tiny pseudo-code for our language."
+    },
+    {
+      "id": "observability-06",
+      "label": "Alert noise reduction",
+      "description": "ops",
+      "detail": "alerting",
+      "text": "My alerts fire too often.\n\n- Classify alert types (symptom vs cause)\n- Suggest 5 fixes: thresholds, grouping, burn rate, runbooks\n- Example alert rule rewrite\n\nPaste one noisy alert definition if I provide it."
+    },
+    {
+      "id": "observability-07",
+      "label": "Log levels policy",
+      "description": "logging",
+      "detail": "levels",
+      "text": "Draft a team log level policy:\n\n- When DEBUG is allowed\n- What must be INFO vs WARN\n- PII rules\n\nApply to a sample noisy module I describe."
+    },
+    {
+      "id": "observability-08",
+      "label": "Health vs readiness probes",
+      "description": "k8s",
+      "detail": "probes",
+      "text": "Explain liveness vs readiness for our app:\n\n- What each should check\n- Failure scenarios\n- Example HTTP endpoints\n\nKubernetes context, keep app-agnostic where possible."
+    },
+    {
+      "id": "observability-09",
+      "label": "SLO error budget intro",
+      "description": "SLO",
+      "detail": "reliability",
+      "text": "Teach SLO/error budget for a web API:\n\n- Pick example SLI (availability, latency)\n- 30-day window math sketch\n- What to do when budget burns\n\nNo vendor pitch."
+    },
+    {
+      "id": "observability-10",
+      "label": "Distributed trace reading",
+      "description": "tracing",
+      "detail": "debug",
+      "text": "How to read a trace waterfall for slow requests:\n\n- Critical path\n- Common pitfalls (async gaps, missing spans)\n- 5 questions to ask\n\nUse a generic example trace description."
+    },
+    {
+      "id": "observability-11",
+      "label": "Log query cheat sheet",
+      "description": "logging",
+      "detail": "search",
+      "text": "Give search queries for our log stack (assume JSON logs):\n\n- Find 5xx spike by route\n- Find logs for one user_id\n- Find slow requests > 2s\n\nAdapt placeholders to Elasticsearch/Loki style."
+    },
+    {
+      "id": "observability-12",
+      "label": "Metrics cardinality trap",
+      "description": "metrics",
+      "detail": "labels",
+      "text": "Explain cardinality explosion with bad labels.\n\n- Bad vs good label examples\n- High-cardinality anti-patterns (user_id label)\n- Mitigations\n\nShort quiz: label 3 metrics I propose."
+    },
+    {
+      "id": "observability-13",
+      "label": "On-call runbook template",
+      "description": "ops",
+      "detail": "incident",
+      "text": "Create an on-call runbook template:\n\n- Symptoms\n- Immediate checks\n- Mitigations\n- Escalation\n- Post-incident\n\nIncident type: [PASTE]"
+    },
+    {
+      "id": "observability-14",
+      "label": "Profiling CPU hot path",
+      "description": "perf",
+      "detail": "profile",
+      "text": "Plan CPU profiling for intermittent slowness:\n\n- When to use flamegraphs vs tracing\n- Safe production profiling practices\n- What to capture in ticket\n\nStack: [PASTE]"
+    },
+    {
+      "id": "observability-15",
+      "label": "Database slow query observability",
+      "description": "db",
+      "detail": "queries",
+      "text": "Add observability for slow SQL:\n\n- Log queries > N ms with parameterized text\n- Metrics: query duration histogram\n- Avoid logging secrets\n\nORM-agnostic guidance."
+    },
+    {
+      "id": "observability-16",
+      "label": "Frontend RUM basics",
+      "description": "frontend",
+      "detail": "RUM",
+      "text": "Outline Real User Monitoring for a SPA:\n\n- Core Web Vitals\n- JS error tracking\n- API correlation to backend trace_id\n\nPrivacy/consent note in 2 sentences."
+    },
+    {
+      "id": "observability-17",
+      "label": "Synthetic checks",
+      "description": "testing",
+      "detail": "probes",
+      "text": "Design 3 synthetic monitors for production:\n\n- Login flow\n- Critical API smoke\n- Cron heartbeat\n\nInclude alert thresholds and locations (multi-region idea)."
+    },
+    {
+      "id": "observability-18",
+      "label": "Log sampling under load",
+      "description": "logging",
+      "detail": "cost",
+      "text": "When log volume is too high:\n\n- Sampling strategies\n- Always-log errors pattern\n- Cost vs debuggability trade-off\n\nRecommend approach for high-traffic API."
+    },
+    {
+      "id": "observability-19",
+      "label": "Security audit logging",
+      "description": "security",
+      "detail": "audit",
+      "text": "List audit events we should log for admin actions:\n\n- Fields per event\n- Tamper considerations (append-only store idea)\n- Retention guidance\n\nDomain: [PASTE]"
+    },
+    {
+      "id": "observability-20",
+      "label": "Observability migration plan",
+      "description": "roadmap",
+      "detail": "adoption",
+      "text": "We have only printf logs. Plan migration to metrics+tracing in 4 phases:\n\n- Quick wins week 1\n- Instrumentation standards\n- Dashboards/alerts\n- Team training\n\nConstraints: small team, no big bang."
+    }
+  ]
+}

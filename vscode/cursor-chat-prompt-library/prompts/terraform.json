@@ -1,0 +1,146 @@
+{
+  "category": "terraform",
+  "categoryLabel": "Terraform & IaC",
+  "prompts": [
+    {
+      "id": "terraform-01",
+      "label": "First Terraform AWS VPC",
+      "description": "aws",
+      "detail": "vpc module",
+      "text": "Create a beginner Terraform layout for AWS VPC.\n\n- versions.tf, providers.tf, vpc.tf\n- public/private subnets sketch\n- terraform init/plan/apply commands\n\nExplain state file cautions."
+    },
+    {
+      "id": "terraform-02",
+      "label": "Remote state S3 backend",
+      "description": "state",
+      "detail": "locking",
+      "text": "Configure S3 + DynamoDB remote backend.\n\n- backend block example\n- Why locking matters\n- Migration from local state steps\n\nSecurity: no secrets in repo."
+    },
+    {
+      "id": "terraform-03",
+      "label": "Variables and outputs",
+      "description": "hcl",
+      "detail": "interface",
+      "text": "Refactor hardcoded IDs into variables.tf and outputs.tf.\n\n- typed variables with validation\n- sensitive outputs pattern\n- Example tfvars for dev\n\nOne small resource group demo."
+    },
+    {
+      "id": "terraform-04",
+      "label": "Terraform modules split",
+      "description": "modules",
+      "detail": "reuse",
+      "text": "Split monolith main.tf into modules:\n\n- modules/network, modules/app\n- Root calls modules with clear inputs\n- When NOT to modularize yet\n\nKeep tree shallow for learning."
+    },
+    {
+      "id": "terraform-05",
+      "label": "Plan review checklist",
+      "description": "workflow",
+      "detail": "plan",
+      "text": "Before apply, review terraform plan output:\n\n- Destroy/replace risks\n- Unexpected resource count changes\n- IAM diffs to double-check\n\nI'll paste plan summary next."
+    },
+    {
+      "id": "terraform-06",
+      "label": "Import existing resource",
+      "description": "import",
+      "detail": "adoption",
+      "text": "Explain terraform import workflow for an existing S3 bucket.\n\n- import block vs CLI import\n- Refresh drift afterward\n- Common mistakes\n\nConceptual steps, not real account IDs."
+    },
+    {
+      "id": "terraform-07",
+      "label": "Workspace per environment",
+      "description": "env",
+      "detail": "workspaces",
+      "text": "Compare workspaces vs separate directories for dev/stage/prod.\n\n- Pros/cons table\n- Backend key naming\n- Recommendation for small team\n\nNo dogma."
+    },
+    {
+      "id": "terraform-08",
+      "label": "IAM least privilege task role",
+      "description": "security",
+      "detail": "iam",
+      "text": "Design IAM role for app reading one S3 prefix.\n\n- Policy JSON sketch\n- Avoid * actions\n- Attach via instance profile / IRSA mention\n\nExplain blast radius."
+    },
+    {
+      "id": "terraform-09",
+      "label": "Count vs for_each",
+      "description": "hcl",
+      "detail": "loops",
+      "text": "Teach when to use count vs for_each with examples.\n\n- Stable keys requirement\n- Removing one instance safely\n- Anti-pattern: count.index dependencies\n\nTiny map(string) example."
+    },
+    {
+      "id": "terraform-10",
+      "label": "Data sources vs resources",
+      "description": "hcl",
+      "detail": "data",
+      "text": "Explain data sources fetching existing VPC/subnet.\n\n- When data source beats resource\n- depends_on nuances\n- Debugging data source failures\n\nShort examples."
+    },
+    {
+      "id": "terraform-11",
+      "label": "Terraform test (conceptual)",
+      "description": "testing",
+      "detail": "policy",
+      "text": "Overview testing options:\n\n- terraform test blocks (high level)\n- tflint/checkov mention\n- What to assert in CI\n\nNo full enterprise suite."
+    },
+    {
+      "id": "terraform-12",
+      "label": "Drift detection routine",
+      "description": "ops",
+      "detail": "drift",
+      "text": "Ops routine for drift:\n\n- Scheduled plan in CI\n- When manual console edits are allowed\n- Import vs revert decision tree\n\nTeam policy bullets."
+    },
+    {
+      "id": "terraform-13",
+      "label": "Secrets with env/SSM",
+      "description": "secrets",
+      "detail": "ssm",
+      "text": "Never commit secrets:\n\n- SSM Parameter Store pattern\n- sensitive variables\n- Rotation note\n\nExample wiring DB password to ECS task."
+    },
+    {
+      "id": "terraform-14",
+      "label": "EKS cluster minimal",
+      "description": "kubernetes",
+      "detail": "eks",
+      "text": "High-level Terraform for minimal EKS:\n\n- VPC prerequisites pointer\n- Node group basics\n- What to outsource to official module\n\nRoadmap only if full code too long."
+    },
+    {
+      "id": "terraform-15",
+      "label": "CloudFront + S3 static site",
+      "description": "aws",
+      "detail": "cdn",
+      "text": "Terraform sketch: private S3 + CloudFront OAC.\n\n- Bucket policy idea\n- Cache behaviors basics\n- Common HTTPS cert pitfall mention\n\nLearning-oriented."
+    },
+    {
+      "id": "terraform-16",
+      "label": "State lock failure debug",
+      "description": "state",
+      "detail": "debug",
+      "text": "terraform apply fails: Error acquiring state lock.\n\n- Safe troubleshooting steps\n- When force-unlock is justified\n- Prevention\n\nEmphasize caution."
+    },
+    {
+      "id": "terraform-17",
+      "label": "Tagging strategy",
+      "description": "governance",
+      "detail": "tags",
+      "text": "Define mandatory tags (Environment, Owner, CostCenter).\n\n- default_tags in provider\n- locals for merge\n- Why finance cares\n\nExample aws provider block."
+    },
+    {
+      "id": "terraform-18",
+      "label": "Multi-region provider alias",
+      "description": "aws",
+      "detail": "alias",
+      "text": "Show provider alias for second region copy of resources.\n\n- provider meta\n- When duplication is OK vs global services\n\nSmall S3 replica example concept."
+    },
+    {
+      "id": "terraform-19",
+      "label": "Terraform + GitHub Actions",
+      "description": "cicd",
+      "detail": "pipeline",
+      "text": "GitHub Actions job: fmt, validate, plan on PR.\n\n- OIDC to AWS instead of long-lived keys\n- Plan artifact comment idea\n- Apply only on main with approval\n\nYAML sketch."
+    },
+    {
+      "id": "terraform-20",
+      "label": "Refactor without downtime",
+      "description": "migration",
+      "detail": "lifecycle",
+      "text": "Plan safe rename/move of resource addressing:\n\n- moved block / state mv\n- create_before_destroy lifecycle\n- Blue/green for LB mention\n\nChecklist before risky apply."
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "name": "cursor-chat-prompt-library",
   "displayName": "Cursor Chat Prompt Library",
-  "description": "750 prompt templates for Cursor AI chat. Primary: Ctrl+Alt+T (Cmd+Alt+T on macOS); also Ctrl+Alt+Shift+P. 36 categories (Python × 50, others × 20). QuickPick → insert into chat.",
-  "version": "0.8.1",
+  "description": "850 prompt templates for Cursor AI chat. Primary: Ctrl+Alt+T (Cmd+Alt+T on macOS); also Ctrl+Alt+Shift+P. 41 categories (Python × 50, others × 20). QuickPick → insert into chat.",
+  "version": "0.8.2",
   "publisher": "rufat",
   "license": "MIT",
   "readme": "readme.md",
@@ -66,7 +66,14 @@
     "machine learning",
     "ml",
     "sklearn",
-    "pytorch"
+    "pytorch",
+    "flask",
+    "nestjs",
+    "terraform",
+    "observability",
+    "prompt engineering",
+    "opentelemetry",
+    "prometheus"
   ],
   "activationEvents": [
     "onCommand:cursorChatPromptLibrary.pick",

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.2
+
+- New categories (20 prompts each): **Flask**, **NestJS**, **Terraform & IaC**, **Observability**, **Prompt Engineering & AI Workflow**.
+- Total bundled templates: **850** (41 categories; Python × 50, others × 20).
+
 ## 0.8.1
 
 - Marketplace categories: **Programming Languages**, **Machine Learning**, **Other**.

@@ -1,0 +1,146 @@
+{
+  "category": "flask",
+  "categoryLabel": "Flask",
+  "prompts": [
+    {
+      "id": "flask-01",
+      "label": "Hello Flask app",
+      "description": "setup",
+      "detail": "app.py",
+      "text": "Minimal Flask app for beginners.\n\n- app.py with GET /\n- flask run\n- requirements.txt\n\nExplain debug mode dangers."
+    },
+    {
+      "id": "flask-02",
+      "label": "Routes and methods",
+      "description": "routing",
+      "detail": "POST",
+      "text": "Add GET /items and POST /items.\n\n- request.json body\n- jsonify responses\n- 405 handling mention\n\nOne file tutorial."
+    },
+    {
+      "id": "flask-03",
+      "label": "Jinja template render",
+      "description": "templates",
+      "detail": "render_template",
+      "text": "Serve HTML with Jinja2.\n\n- templates/index.html\n- Pass variables from route\n- Static files folder note\n\nSimple blog list mock."
+    },
+    {
+      "id": "flask-04",
+      "label": "Blueprint modular apps",
+      "description": "structure",
+      "detail": "blueprint",
+      "text": "Split into blueprints auth and api.\n\n- register_blueprint with url_prefix\n- Shared app factory pattern sketch\n\nExplain scaling project layout."
+    },
+    {
+      "id": "flask-05",
+      "label": "Flask-SQLAlchemy model",
+      "description": "database",
+      "detail": "orm",
+      "text": "Add User model and db.session.\n\n- pip install flask-sqlalchemy\n- create_all in dev\n- One CRUD route\n\nSQLite for demo."
+    },
+    {
+      "id": "flask-06",
+      "label": "Migrations with Flask-Migrate",
+      "description": "database",
+      "detail": "alembic",
+      "text": "Introduce Flask-Migrate commands.\n\n- flask db init/migrate/upgrade\n- Never edit DB by hand in prod note\n\nAfter SQLAlchemy model exists."
+    },
+    {
+      "id": "flask-07",
+      "label": "Login session cookie",
+      "description": "auth",
+      "detail": "session",
+      "text": "Basic session login (educational, not production-complete).\n\n- secret_key from env\n- login/logout routes\n- flask-login mention as upgrade\n\nSecurity warnings bullets."
+    },
+    {
+      "id": "flask-08",
+      "label": "WTForms validation",
+      "description": "forms",
+      "detail": "wtforms",
+      "text": "Server-side form with WTForms.\n\n- Form class + validators\n- flash messages on error\n- CSRF with Flask-WTF mention\n\nContact form example."
+    },
+    {
+      "id": "flask-09",
+      "label": "Error handlers 404 500",
+      "description": "errors",
+      "detail": "handlers",
+      "text": "Register errorhandler for 404 and 500.\n\n- Custom JSON for API routes optional\n- Log exception in 500\n\nShow registration in app factory."
+    },
+    {
+      "id": "flask-10",
+      "label": "Config classes",
+      "description": "config",
+      "detail": "environments",
+      "text": "Config pattern: DevelopmentConfig, ProductionConfig.\n\n- load from env FLASK_CONFIG\n- Never commit secrets\n\nExample factory selecting config."
+    },
+    {
+      "id": "flask-11",
+      "label": "RESTful API with flask-smorest",
+      "description": "api",
+      "detail": "openapi",
+      "text": "High-level OpenAPI with flask-smorest or similar.\n\n- Schema class\n- Documented endpoint\n- Compare to manual jsonify\n\nPick one library and stay brief."
+    },
+    {
+      "id": "flask-12",
+      "label": "CORS for React dev",
+      "description": "api",
+      "detail": "cors",
+      "text": "Enable flask-cors for localhost:5173.\n\n- Which routes need CORS\n- Credentials caveat\n\nSnippet only."
+    },
+    {
+      "id": "flask-13",
+      "label": "pytest flask client",
+      "description": "testing",
+      "detail": "client",
+      "text": "Test app with pytest fixture client.\n\n- get_json on response\n- tmp database or in-memory SQLite\n\nOne test file."
+    },
+    {
+      "id": "flask-14",
+      "label": "Application factory",
+      "description": "structure",
+      "detail": "create_app",
+      "text": "Refactor to create_app() factory.\n\n- Extensions init pattern\n- Testing with different config\n\nBefore/after file list."
+    },
+    {
+      "id": "flask-15",
+      "label": "Background task thread",
+      "description": "async",
+      "detail": "thread",
+      "text": "Simple background job with thread (limitations explained).\n\n- Prefer Celery/RQ for real prod\n- Do not fork unsafely note\n\nEmail send mock."
+    },
+    {
+      "id": "flask-16",
+      "label": "File upload",
+      "description": "files",
+      "detail": "upload",
+      "text": "Upload endpoint saving with secure_filename.\n\n- MAX_CONTENT_LENGTH config\n- Validate mime lightly\n\nSecurity checklist."
+    },
+    {
+      "id": "flask-17",
+      "label": "Rate limiting extension",
+      "description": "security",
+      "detail": "limiter",
+      "text": "Add Flask-Limiter on login route.\n\n- Per-IP limit\n- Storage backend note for multi-instance\n\nConceptual config."
+    },
+    {
+      "id": "flask-18",
+      "label": "Gunicorn production serve",
+      "description": "deploy",
+      "detail": "wsgi",
+      "text": "Run with gunicorn behind nginx sketch.\n\n- workers formula intro\n- bind 0.0.0.0 caution\n- env vars for DATABASE_URL\n\nNo full k8s."
+    },
+    {
+      "id": "flask-19",
+      "label": "Dockerfile Flask",
+      "description": "deploy",
+      "detail": "docker",
+      "text": "Dockerfile for Flask + gunicorn.\n\n- Slim Python image\n- Non-root user mention\n- .dockerignore\n\nBuild/run commands."
+    },
+    {
+      "id": "flask-20",
+      "label": "Migrate from Flask to FastAPI",
+      "description": "roadmap",
+      "detail": "comparison",
+      "text": "Roadmap comparing Flask vs FastAPI for this project.\n\n- What maps 1:1 (routes, pydantic)\n- What needs rewrite (extensions)\n- Incremental strangler pattern\n\nNo big bang."
+    }
+  ]
+}

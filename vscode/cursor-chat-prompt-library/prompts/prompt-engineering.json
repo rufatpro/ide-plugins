@@ -1,0 +1,146 @@
+{
+  "category": "prompt-engineering",
+  "categoryLabel": "Prompt Engineering & AI Workflow",
+  "prompts": [
+    {
+      "id": "prompt-engineering-01",
+      "label": "Split a large task into steps",
+      "description": "planning",
+      "detail": "atomic requests",
+      "text": "I have a large feature to implement in this repo.\n\n- Ask clarifying questions first (max 5)\n- Propose 3–5 atomic steps I can run as separate chat messages\n- Each step must have: goal, files likely touched, done criteria\n\nDo not write code until I pick a step."
+    },
+    {
+      "id": "prompt-engineering-02",
+      "label": "Context + constraints + done criteria",
+      "description": "template",
+      "detail": "structured prompt",
+      "text": "Rewrite my vague request into a strong Cursor prompt using this skeleton:\n\n- Context (@files I should attach)\n- Constraints (style, libs, no new deps unless asked)\n- Done criteria (tests, lint, behavior)\n\nHere is my request:\n[PASTE HERE]\n\nOutput only the improved prompt."
+    },
+    {
+      "id": "prompt-engineering-03",
+      "label": "Verify AI answer against repo",
+      "description": "review",
+      "detail": "hallucination check",
+      "text": "You proposed changes. Before I apply them:\n\n- List assumptions you made about this codebase\n- Point to exact files/symbols you would need to confirm\n- Suggest 3 grep/search queries I should run\n\nDo not invent file paths."
+    },
+    {
+      "id": "prompt-engineering-04",
+      "label": "Plan then code (two-phase)",
+      "description": "workflow",
+      "detail": "Composer vs Agent",
+      "text": "Phase 1 — planning only:\n- Summarize current behavior from @codebase\n- Propose approach with trade-offs (2 options max)\n- List risks and test plan\n\nStop. I will reply GO to start Phase 2 implementation."
+    },
+    {
+      "id": "prompt-engineering-05",
+      "label": "Refactor my prompt after bad answer",
+      "description": "meta",
+      "detail": "iterate",
+      "text": "The previous answer missed the mark.\n\n- What was wrong (bullets)\n- Rewrite my original prompt to prevent that\n- Add 2 negative constraints (\"do not …\")\n\nOriginal prompt:\n[PASTE]"
+    },
+    {
+      "id": "prompt-engineering-06",
+      "label": "@-mentions checklist",
+      "description": "cursor",
+      "detail": "context",
+      "text": "Explain when to use @file, @folder, @codebase, @docs in Cursor for this task:\n\n[PASTE TASK]\n\nReturn a checklist of what to attach and what to paste inline.\nKeep it practical — 8 bullets max."
+    },
+    {
+      "id": "prompt-engineering-07",
+      "label": "Diff review prompt",
+      "description": "review",
+      "detail": "PR style",
+      "text": "Review this diff like a senior engineer:\n\n- Correctness bugs\n- Security issues\n- Missing tests\n- Naming/style consistency with repo\n\nAsk before suggesting large rewrites.\nI will paste the diff next message."
+    },
+    {
+      "id": "prompt-engineering-08",
+      "label": "Minimal repro request",
+      "description": "debugging",
+      "detail": "isolate",
+      "text": "Help me write a minimal repro prompt for a bug:\n\n- Steps to reproduce\n- Expected vs actual\n- Logs/stack trace placeholders\n- Which @files to include\n\nBug summary:\n[PASTE]"
+    },
+    {
+      "id": "prompt-engineering-09",
+      "label": "Test-first prompt for a fix",
+      "description": "TDD",
+      "detail": "regression",
+      "text": "For this bug, draft a test-first Cursor workflow:\n\n1) Write failing test describing bug\n2) Implement fix\n3) Refactor if needed\n\nBug:\n[PASTE]\n\nMatch existing test framework in repo."
+    },
+    {
+      "id": "prompt-engineering-10",
+      "label": "Scope guard: small PR",
+      "description": "constraints",
+      "detail": "incremental",
+      "text": "Implement only this slice in one PR-sized change:\n\n[PASTE SCOPE]\n\nRules:\n- No drive-by refactors\n- No new dependencies without asking\n- If blocked, stop and list blockers\n\nStart with a 5-line plan."
+    },
+    {
+      "id": "prompt-engineering-11",
+      "label": "Explain before edit",
+      "description": "learning",
+      "detail": "teach",
+      "text": "Before changing code, explain in plain language:\n\n- What the selected code does\n- Why the bug might happen (hypotheses ranked)\n- Smallest safe fix\n\nThen wait for my OK to patch.\n@file selection implied."
+    },
+    {
+      "id": "prompt-engineering-12",
+      "label": "Generate commit message",
+      "description": "git",
+      "detail": "conventional",
+      "text": "From the staged diff I will describe, suggest:\n\n- One-line conventional commit subject\n- 3-bullet body (why, not what)\n\nDiff summary:\n[PASTE]"
+    },
+    {
+      "id": "prompt-engineering-13",
+      "label": "Rules / .cursorrules hint",
+      "description": "cursor",
+      "detail": "project rules",
+      "text": "Suggest 5–8 project rules for .cursor/rules or AGENTS.md for this stack:\n\nStack: [PASTE]\n\nEach rule: one sentence, enforceable, not generic platitudes."
+    },
+    {
+      "id": "prompt-engineering-14",
+      "label": "Compare two approaches",
+      "description": "architecture",
+      "detail": "trade-offs",
+      "text": "Compare approach A vs B for:\n\n[PASTE PROBLEM]\n\nTable: complexity, testability, ops cost, migration risk.\nRecommend one with conditions when the other wins."
+    },
+    {
+      "id": "prompt-engineering-15",
+      "label": "Document the decision (ADR lite)",
+      "description": "docs",
+      "detail": "ADR",
+      "text": "Write a lightweight ADR:\n\n- Context\n- Decision\n- Consequences\n- Alternatives considered\n\nTopic:\n[PASTE]"
+    },
+    {
+      "id": "prompt-engineering-16",
+      "label": "Handoff prompt for new chat",
+      "description": "workflow",
+      "detail": "context transfer",
+      "text": "Summarize this thread into a handoff prompt for a fresh chat:\n\n- Goal\n- What was tried\n- Current state\n- Next 3 actions\n- Files touched\n\nBe concise — max 250 words."
+    },
+    {
+      "id": "prompt-engineering-17",
+      "label": "Security-sensitive change checklist",
+      "description": "security",
+      "detail": "review",
+      "text": "I'm about to change auth/payments/secrets handling.\n\n- Threat model bullets (STRIDE-lite)\n- Must-not-break invariants\n- Tests to add\n\nChange description:\n[PASTE]"
+    },
+    {
+      "id": "prompt-engineering-18",
+      "label": "Performance investigation prompt",
+      "description": "perf",
+      "detail": "profile",
+      "text": "Draft a performance investigation plan:\n\n- Metrics to measure first\n- Likely hotspots in this architecture\n- Safe experiments (no premature micro-opts)\n\nSymptom:\n[PASTE]"
+    },
+    {
+      "id": "prompt-engineering-19",
+      "label": "Localization-friendly copy task",
+      "description": "product",
+      "detail": "i18n aware",
+      "text": "Rewrite UI strings plan:\n\n- Avoid concatenating translated fragments\n- Note pluralization pitfalls\n- Keep keys stable\n\nStrings/context:\n[PASTE]"
+    },
+    {
+      "id": "prompt-engineering-20",
+      "label": "When to stop and ask human",
+      "description": "meta",
+      "detail": "escalation",
+      "text": "Given this task, list signals that the agent should stop and ask me instead of guessing:\n\n[PASTE TASK]\n\nInclude 5 concrete examples of ambiguous decisions in this repo domain."
+    }
+  ]
+}

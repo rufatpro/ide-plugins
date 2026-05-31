@@ -17,8 +17,8 @@ Each plugin lives in its own directory with a `readme.md`.
 | [Multiline Find](vscode/multiline-find/) | VS Code / Cursor | 0.1.6 | PyCharm-like **Ctrl+F** for multiline selections; **F3** searches the whole file | [EN](vscode/multiline-find/readme.md) · [RU](vscode/multiline-find/readme_ru.md) |
 | [Python Quick Intent](vscode/python-quick-intent/) | VS Code / Cursor | 0.4.4 | PyCharm-style **Alt+Enter** intentions for Python: import, Fix with AI, Quick Edit in Cursor | [EN](vscode/python-quick-intent/readme.md) · [RU](vscode/python-quick-intent/readme_ru.md) |
 | [TypeScript Doc Links](vscode/ts-doc-links/) | VS Code / Cursor | 0.1.7 | Ctrl+Click in TS/JS **comments** / **JSDoc** (`@see`, `{@link ./file.ts}`, `File:`, `// See`, `@/` aliases) | [EN](vscode/ts-doc-links/readme.md) · [RU](vscode/ts-doc-links/readme_ru.md) |
-| [Cursor Chat Prompt Library](vscode/cursor-chat-prompt-library/) | VS Code / Cursor | 0.8.1 | **Ctrl+Alt+T** (primary), **Ctrl+Alt+Shift+P** → **AI chat**; **750** templates, **36** categories | [EN](vscode/cursor-chat-prompt-library/readme.md) · [RU](vscode/cursor-chat-prompt-library/readme_ru.md) |
-| [Cursor Chat Prompt Library RU](vscode/cursor-chat-prompt-library-ru/) | VS Code / Cursor | 0.5.9 | **750** Russian prompts, **36** categories; **Ctrl+Alt+Shift+P**; parallel install with EN | [RU](vscode/cursor-chat-prompt-library-ru/readme.md) · [EN](vscode/cursor-chat-prompt-library-ru/readme_en.md) |
+| [Cursor Chat Prompt Library](vscode/cursor-chat-prompt-library/) | VS Code / Cursor | 0.8.2 | **Ctrl+Alt+T** (primary), **Ctrl+Alt+Shift+P** → **AI chat**; **850** templates, **41** categories | [EN](vscode/cursor-chat-prompt-library/readme.md) · [RU](vscode/cursor-chat-prompt-library/readme_ru.md) |
+| [Cursor Chat Prompt Library RU](vscode/cursor-chat-prompt-library-ru/) | VS Code / Cursor | 0.6.0 | **850** Russian prompts, **41** categories; **Ctrl+Alt+Shift+P**; parallel install with EN | [RU](vscode/cursor-chat-prompt-library-ru/readme.md) · [EN](vscode/cursor-chat-prompt-library-ru/readme_en.md) |
 
 > VS Code/Cursor extensions live under `vscode/<name>/`.
 

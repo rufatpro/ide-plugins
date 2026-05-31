@@ -17,8 +17,8 @@
 | [Multiline Find](vscode/multiline-find/) | VS Code / Cursor | 0.1.6 | **Ctrl+F** в стиле PyCharm для многострочного выделения; **F3** ищет по всему файлу | [EN](vscode/multiline-find/readme.md) · [RU](vscode/multiline-find/readme_ru.md) |
 | [Python Quick Intent](vscode/python-quick-intent/) | VS Code / Cursor | 0.4.4 | **Alt+Enter** в стиле PyCharm: импорт, Fix with AI, Quick Edit для Python в Cursor | [EN](vscode/python-quick-intent/readme.md) · [RU](vscode/python-quick-intent/readme_ru.md) |
 | [TypeScript Doc Links](vscode/ts-doc-links/) | VS Code / Cursor | 0.1.7 | Ctrl+Click в TS/JS **комментариях** / **JSDoc** (`@see`, `{@link ./file.ts}`, `File:`, `// See`, алиасы `@/`) | [EN](vscode/ts-doc-links/readme.md) · [RU](vscode/ts-doc-links/readme_ru.md) |
-| [Cursor Chat Prompt Library](vscode/cursor-chat-prompt-library/) | VS Code / Cursor | 0.8.1 | **Ctrl+Alt+T** (основной), **Ctrl+Alt+Shift+P** → **AI-чат**; **750** шаблонов, **36** категорий | [EN](vscode/cursor-chat-prompt-library/readme.md) · [RU](vscode/cursor-chat-prompt-library/readme_ru.md) |
-| [Cursor Chat Prompt Library RU](vscode/cursor-chat-prompt-library-ru/) | VS Code / Cursor | 0.5.9 | **750** русских шаблонов, **36** категорий; **Ctrl+Alt+Shift+P**; параллельно с EN | [RU](vscode/cursor-chat-prompt-library-ru/readme.md) · [EN](vscode/cursor-chat-prompt-library-ru/readme_en.md) |
+| [Cursor Chat Prompt Library](vscode/cursor-chat-prompt-library/) | VS Code / Cursor | 0.8.2 | **Ctrl+Alt+T** (основной), **Ctrl+Alt+Shift+P** → **AI-чат**; **850** шаблонов, **41** категория | [EN](vscode/cursor-chat-prompt-library/readme.md) · [RU](vscode/cursor-chat-prompt-library/readme_ru.md) |
+| [Cursor Chat Prompt Library RU](vscode/cursor-chat-prompt-library-ru/) | VS Code / Cursor | 0.6.0 | **850** русских шаблонов, **41** категория; **Ctrl+Alt+Shift+P**; параллельно с EN | [RU](vscode/cursor-chat-prompt-library-ru/readme.md) · [EN](vscode/cursor-chat-prompt-library-ru/readme_en.md) |
 
 > Расширения для VS Code/Cursor живут в `vscode/<имя>/`.
 
