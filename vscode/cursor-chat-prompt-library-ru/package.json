@@ -1,8 +1,8 @@
 {
   "name": "cursor-chat-prompt-library-ru",
   "displayName": "Cursor Chat Prompt Library RU",
-  "description": "750 русскоязычных шаблонов Prompt для AI-чата в Cursor. 36 категорий (Python × 50, остальные × 20). C, C++, PHP, Laravel, Go, Rust, ML и др. QuickPick → вставка в Chat.",
-  "version": "0.5.9",
+  "description": "850 русскоязычных шаблонов Prompt для AI-чата в Cursor. 41 категория (Python × 50, остальные × 20). Flask, NestJS, Terraform, Observability, Prompt Engineering и др. QuickPick → вставка в Chat.",
+  "version": "0.6.0",
   "publisher": "rufat",
   "license": "MIT",
   "readme": "readme.md",
@@ -66,7 +66,14 @@
     "машинное обучение",
     "ml",
     "sklearn",
-    "pytorch"
+    "pytorch",
+    "flask",
+    "nestjs",
+    "terraform",
+    "наблюдаемость",
+    "промпт-инжиниринг",
+    "opentelemetry",
+    "prometheus"
   ],
   "activationEvents": [
     "onCommand:cursorChatPromptLibraryRu.pick",

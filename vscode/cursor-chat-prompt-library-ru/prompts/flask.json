@@ -1,0 +1,146 @@
+{
+  "category": "flask",
+  "categoryLabel": "Flask",
+  "prompts": [
+    {
+      "id": "flask-01",
+      "label": "Hello Flask",
+      "description": "настройка",
+      "detail": "app.py",
+      "text": "Минимальное Flask-приложение.\n\n- app.py GET /\n- flask run\n- requirements.txt\n\nОпасности debug mode."
+    },
+    {
+      "id": "flask-02",
+      "label": "Маршруты и методы",
+      "description": "маршрутизация",
+      "detail": "POST",
+      "text": "GET /items и POST /items.\n\n- request.json\n- jsonify\n- 405 — упомянуть\n\nОдин файл."
+    },
+    {
+      "id": "flask-03",
+      "label": "Шаблон Jinja",
+      "description": "шаблоны",
+      "detail": "render_template",
+      "text": "HTML через Jinja2.\n\n- templates/index.html\n- переменные из route\n- static/\n\nМок списка постов."
+    },
+    {
+      "id": "flask-04",
+      "label": "Blueprint модульность",
+      "description": "структура",
+      "detail": "blueprint",
+      "text": "blueprints auth и api.\n\n- register_blueprint url_prefix\n- эскиз app factory\n\nРост структуры проекта."
+    },
+    {
+      "id": "flask-05",
+      "label": "Модель Flask-SQLAlchemy",
+      "description": "БД",
+      "detail": "orm",
+      "text": "User model и db.session.\n\n- flask-sqlalchemy\n- create_all в dev\n- один CRUD route\n\nSQLite для демо."
+    },
+    {
+      "id": "flask-06",
+      "label": "Миграции Flask-Migrate",
+      "description": "БД",
+      "detail": "alembic",
+      "text": "Flask-Migrate:\n\n- flask db init/migrate/upgrade\n- не править prod БД руками\n\nПосле модели SQLAlchemy."
+    },
+    {
+      "id": "flask-07",
+      "label": "Login через session cookie",
+      "description": "auth",
+      "detail": "session",
+      "text": "Базовый session login (учебный).\n\n- secret_key из env\n- login/logout\n- flask-login как апгрейд\n\nПредупреждения безопасности."
+    },
+    {
+      "id": "flask-08",
+      "label": "WTForms валидация",
+      "description": "формы",
+      "detail": "wtforms",
+      "text": "Форма с WTForms.\n\n- validators\n- flash при ошибке\n- CSRF Flask-WTF\n\nContact form."
+    },
+    {
+      "id": "flask-09",
+      "label": "Обработчики 404 и 500",
+      "description": "ошибки",
+      "detail": "handlers",
+      "text": "errorhandler 404 и 500.\n\n- JSON для API опционально\n- лог исключения в 500\n\nВ app factory."
+    },
+    {
+      "id": "flask-10",
+      "label": "Классы Config",
+      "description": "config",
+      "detail": "окружения",
+      "text": "DevelopmentConfig, ProductionConfig.\n\n- FLASK_CONFIG из env\n- секреты не в git\n\nfactory выбирает config."
+    },
+    {
+      "id": "flask-11",
+      "label": "REST API flask-smorest",
+      "description": "api",
+      "detail": "openapi",
+      "text": "OpenAPI через flask-smorest или аналог.\n\n- Schema\n- документированный endpoint\n- сравнение с jsonify\n\nОдна библиотека, кратко."
+    },
+    {
+      "id": "flask-12",
+      "label": "CORS для React dev",
+      "description": "api",
+      "detail": "cors",
+      "text": "flask-cors для localhost:5173.\n\n- какие routes\n- credentials caveat\n\nТолько snippet."
+    },
+    {
+      "id": "flask-13",
+      "label": "pytest flask client",
+      "description": "тестирование",
+      "detail": "client",
+      "text": "pytest fixture client.\n\n- get_json\n- in-memory SQLite\n\nОдин test file."
+    },
+    {
+      "id": "flask-14",
+      "label": "Application factory",
+      "description": "структура",
+      "detail": "create_app",
+      "text": "Рефакторинг в create_app().\n\n- init extensions\n- тесты с другим config\n\nСписок файлов до/после."
+    },
+    {
+      "id": "flask-15",
+      "label": "Фоновая задача thread",
+      "description": "async",
+      "detail": "thread",
+      "text": "Фоновая job в thread (ограничения).\n\n- для prod Celery/RQ\n- небезопасный fork — заметка\n\nМок отправки email."
+    },
+    {
+      "id": "flask-16",
+      "label": "Загрузка файла",
+      "description": "files",
+      "detail": "upload",
+      "text": "Upload с secure_filename.\n\n- MAX_CONTENT_LENGTH\n- лёгкая проверка mime\n\nЧеклист безопасности."
+    },
+    {
+      "id": "flask-17",
+      "label": "Rate limiting",
+      "description": "безопасность",
+      "detail": "limiter",
+      "text": "Flask-Limiter на login.\n\n- лимит per-IP\n- backend при нескольких инстансах\n\nКонцептуальный config."
+    },
+    {
+      "id": "flask-18",
+      "label": "Gunicorn в production",
+      "description": "деплой",
+      "detail": "wsgi",
+      "text": "gunicorn за nginx (эскиз).\n\n- workers\n- bind 0.0.0.0\n- DATABASE_URL\n\nБез полного k8s."
+    },
+    {
+      "id": "flask-19",
+      "label": "Dockerfile для Flask",
+      "description": "деплой",
+      "detail": "docker",
+      "text": "Dockerfile Flask + gunicorn.\n\n- slim Python\n- non-root user\n- .dockerignore\n\nbuild/run."
+    },
+    {
+      "id": "flask-20",
+      "label": "Миграция Flask → FastAPI",
+      "description": "roadmap",
+      "detail": "сравнение",
+      "text": "Roadmap Flask vs FastAPI для проекта.\n\n- что 1:1\n- что переписать (extensions)\n- strangler pattern\n\nБез big bang."
+    }
+  ]
+}

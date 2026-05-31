@@ -2,17 +2,17 @@
 
 [English](readme_en.md) · [Releases](https://github.com/rufatpro/plugins/releases) · [Репозиторий](https://github.com/rufatpro/plugins)
 
-Библиотека **750 русскоязычных** шаблонов Промптов (Prompts) для AI-Chat в **Cursor**: Быстрый выбор → вставка в ИИ Чат Курсора.
+Библиотека **850 русскоязычных** шаблонов Промптов (Prompts) для AI-Chat в **Cursor**: Быстрый выбор → вставка в ИИ Чат Курсора.
 
-**36 категорий** (**Python × 50**, остальные × 20) **= 750 шаблонов:**
+**41 категория** (**Python × 50**, остальные × 20) **= 850 шаблонов:**
 
 | Уровень | Категории |
 |---------|-----------|
-| Базовые | Сайт, Python, JavaScript, TypeScript, React, SQL, Git, Django |
+| Базовые | Сайт, Python, JavaScript, TypeScript, React, SQL, Git, Django, Flask |
 | Высокий спрос | Next.js, FastAPI, Docker, Testing, Tailwind CSS |
-| Сильный спрос | Node.js, Vue, PHP, Laravel, C#/.NET, Java/Spring, Linux/Bash, CI/CD, REST/OpenAPI, MongoDB, Mobile |
-| Нишевые / растущие | C, C++, Go, Rust, Kubernetes, AWS, WordPress, Data/Pandas, Security, GraphQL |
-| Сквозные | Языки программирования, Машинное обучение |
+| Сильный спрос | Node.js, NestJS, Vue, PHP, Laravel, C#/.NET, Java/Spring, Linux/Bash, CI/CD, REST/OpenAPI, MongoDB, Mobile |
+| Нишевые / растущие | C, C++, Go, Rust, Kubernetes, Terraform, Observability, AWS, WordPress, Data/Pandas, Security, GraphQL |
+| Сквозные | Промпт-инжиниринг, Языки программирования, Машинное обучение |
 
 > Часть monorepo [plugins](https://github.com/rufatpro/plugins).
 
@@ -20,7 +20,7 @@
 
 | Клавиша | Действие |
 |---------|----------|
-| **Ctrl+Alt+Shift+P** | **Шаг 1:** категория (36 типов) → **шаг 2:** промпт → вставка в чат |
+| **Ctrl+Alt+Shift+P** | **Шаг 1:** категория (41 тип) → **шаг 2:** промпт → вставка в чат |
 | **Cmd+Alt+Shift+P** (macOS) | То же |
 
 ## Команды
@@ -28,7 +28,7 @@
 | Команда | Действие |
 |---------|----------|
 | **Выбрать промпт (категория → шаблон)** | Как горячая клавиша |
-| **Вставить промпт в чат (все категории)** | Один список из 750 промптов |
+| **Вставить промпт в чат (все категории)** | Один список из 850 промптов |
 | **Вставить промпт Website / Python / JavaScript** | Быстрый вход в одну категорию |
 
 ### Через палитру команд

@@ -2,17 +2,17 @@
 
 [Русский](readme.md) · [Releases](https://github.com/rufatpro/plugins/releases) · [Repository](https://github.com/rufatpro/plugins)
 
-**750 Russian** prompt templates for **Cursor AI chat** — QuickPick → insert into chat.
+**850 Russian** prompt templates for **Cursor AI chat** — QuickPick → insert into chat.
 
-**36 categories** (**Python × 50**, others × 20) **= 750 templates:**
+**41 categories** (**Python × 50**, others × 20) **= 850 templates:**
 
 | Tier | Categories |
 |------|------------|
-| Core | Website, Python, JavaScript, TypeScript, React, SQL, Git, Django |
+| Core | Website, Python, JavaScript, TypeScript, React, SQL, Git, Django, Flask |
 | High demand | Next.js, FastAPI, Docker, Testing, Tailwind CSS |
-| Strong demand | Node.js, Vue, PHP, Laravel, C#/.NET, Java/Spring, Linux/Bash, CI/CD, REST/OpenAPI, MongoDB, Mobile |
-| Growing / niche | C, C++, Go, Rust, Kubernetes, AWS/Cloud, WordPress, Data/Pandas, Security, GraphQL |
-| Cross-cutting | Programming Languages, Machine Learning |
+| Strong demand | Node.js, NestJS, Vue, PHP, Laravel, C#/.NET, Java/Spring, Linux/Bash, CI/CD, REST/OpenAPI, MongoDB, Mobile |
+| Growing / niche | C, C++, Go, Rust, Kubernetes, Terraform, Observability, AWS/Cloud, WordPress, Data/Pandas, Security, GraphQL |
+| Cross-cutting | Prompt Engineering, Programming Languages, Machine Learning |
 
 > Part of the [plugins](https://github.com/rufatpro/plugins) monorepo.
 
@@ -20,7 +20,7 @@
 
 | Key | Action |
 |-----|--------|
-| **Ctrl+Alt+Shift+P** (Windows/Linux) | **Step 1:** category (36 types) → **Step 2:** prompt → insert into chat |
+| **Ctrl+Alt+Shift+P** (Windows/Linux) | **Step 1:** category (41 types) → **Step 2:** prompt → insert into chat |
 | **Cmd+Alt+Shift+P** (macOS) | Same |
 
 ## Commands
@@ -28,7 +28,7 @@
 | Command | Action |
 |---------|--------|
 | **Pick Prompt (Category, then Template)** | Same as hotkey (two steps) |
-| **Insert Prompt into Chat (All Categories)** | Single list, all 750 prompts |
+| **Insert Prompt into Chat (All Categories)** | Single list, all 850 prompts |
 | **Insert Website / Python / JavaScript Prompt** | One category only (legacy shortcuts) |
 
 ### Via Command Palette

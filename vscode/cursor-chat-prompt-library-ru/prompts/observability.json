@@ -1,0 +1,146 @@
+{
+  "category": "observability",
+  "categoryLabel": "Наблюдаемость",
+  "prompts": [
+    {
+      "id": "observability-01",
+      "label": "Структурированные JSON-логи",
+      "description": "логирование",
+      "detail": "поля",
+      "text": "Добавь structured JSON logs в сервис.\n\n- timestamp, level, message, trace_id, user_id (опционально)\n- Одна строка — одно событие\n- Редактировать секреты\n\nПример middleware/interceptor под наш стек."
+    },
+    {
+      "id": "observability-02",
+      "label": "Correlation ID между запросами",
+      "description": "трейсинг",
+      "detail": "пропагация",
+      "text": "Реализуй correlation ID:\n\n- Генерация на входе, если нет\n- Проброс в исходящий HTTP\n- Во всех логах\n\nКратко про X-Request-ID vs traceparent."
+    },
+    {
+      "id": "observability-03",
+      "label": "RED-метрики для HTTP API",
+      "description": "метрики",
+      "detail": "RED",
+      "text": "Спроектируй RED для HTTP API:\n\n- Rate, Errors, Duration histogram\n- Предупреждения про cardinality labels\n- Примеры PromQL\n\nБез установки Prometheus — сначала дизайн."
+    },
+    {
+      "id": "observability-04",
+      "label": "Эскиз дашборда Grafana",
+      "description": "метрики",
+      "detail": "dashboard",
+      "text": "Набросок Grafana: latency и errors:\n\n- 4–6 панелей с PromQL-заглушками\n- Линия SLO для p95\n- Панель заметок для on-call\n\nСервис: [ВСТАВЬТЕ]"
+    },
+    {
+      "id": "observability-05",
+      "label": "Основы span OpenTelemetry",
+      "description": "трейсинг",
+      "detail": "OTel",
+      "text": "Как обернуть DB и HTTP в OpenTelemetry spans:\n\n- Parent/child\n- Какие attributes\n- Sampling — кратко\n\nКонцепт + псевдокод под наш язык."
+    },
+    {
+      "id": "observability-06",
+      "label": "Снизить шум алертов",
+      "description": "ops",
+      "detail": "alerting",
+      "text": "Алерты срабатывают слишком часто.\n\n- Симптом vs причина\n- 5 правок: пороги, группировка, burn rate, runbook\n- Пример переписывания правила\n\nОпишу шумное правило отдельно."
+    },
+    {
+      "id": "observability-07",
+      "label": "Политика уровней логов",
+      "description": "логирование",
+      "detail": "levels",
+      "text": "Политика log levels для команды:\n\n- Когда DEBUG\n- INFO vs WARN\n- PII\n\nПримени к примеру шумного модуля, который опишу."
+    },
+    {
+      "id": "observability-08",
+      "label": "Health vs readiness",
+      "description": "k8s",
+      "detail": "probes",
+      "text": "Liveness vs readiness для нашего приложения:\n\n- Что проверять\n- Сценарии падения\n- Пример HTTP endpoints\n\nКонтекст Kubernetes."
+    },
+    {
+      "id": "observability-09",
+      "label": "SLO и error budget",
+      "description": "SLO",
+      "detail": "надёжность",
+      "text": "SLO/error budget для web API:\n\n- Пример SLI (availability, latency)\n- Черновик математики на 30 дней\n- Что делать при сгорании бюджета\n\nБез рекламы вендоров."
+    },
+    {
+      "id": "observability-10",
+      "label": "Читать distributed trace",
+      "description": "трейсинг",
+      "detail": "отладка",
+      "text": "Как читать waterfall медленного запроса:\n\n- Critical path\n- async gaps, missing spans\n- 5 вопросов к трейсу\n\nНа абстрактном примере."
+    },
+    {
+      "id": "observability-11",
+      "label": "Шпаргалка поиска по логам",
+      "description": "логирование",
+      "detail": "поиск",
+      "text": "Запросы к JSON-логам (Elasticsearch/Loki стиль):\n\n- Всплеск 5xx по route\n- Логи одного user_id\n- Запросы > 2s\n\nС плейсхолдерами под наш стек."
+    },
+    {
+      "id": "observability-12",
+      "label": "Ловушка cardinality метрик",
+      "description": "метрики",
+      "detail": "labels",
+      "text": "Взрыв cardinality из-за плохих labels.\n\n- Плохие vs хорошие примеры\n- Антипаттерн user_id в label\n- Mitigations\n\nМини-квиз по 3 метрикам, которые предложу."
+    },
+    {
+      "id": "observability-13",
+      "label": "Шаблон on-call runbook",
+      "description": "ops",
+      "detail": "инцидент",
+      "text": "Шаблон runbook:\n\n- Симптомы\n- Быстрые проверки\n- Mitigations\n- Эскалация\n- Post-incident\n\nТип инцидента: [ВСТАВЬТЕ]"
+    },
+    {
+      "id": "observability-14",
+      "label": "Профилирование CPU hot path",
+      "description": "perf",
+      "detail": "profile",
+      "text": "План CPU profiling при редких лагах:\n\n- Flamegraph vs tracing\n- Безопасный prod profiling\n- Что приложить к тикету\n\nСтек: [ВСТАВЬТЕ]"
+    },
+    {
+      "id": "observability-15",
+      "label": "Медленные SQL-запросы",
+      "description": "БД",
+      "detail": "queries",
+      "text": "Observability для slow SQL:\n\n- Лог > N ms с parameterized text\n- Histogram длительности\n- Без секретов в логах\n\nБез привязки к конкретному ORM."
+    },
+    {
+      "id": "observability-16",
+      "label": "RUM для SPA",
+      "description": "frontend",
+      "detail": "RUM",
+      "text": "Real User Monitoring для SPA:\n\n- Core Web Vitals\n- JS errors\n- Связь с backend trace_id\n\n2 предложения про privacy/consent."
+    },
+    {
+      "id": "observability-17",
+      "label": "Synthetic checks",
+      "description": "тестирование",
+      "detail": "probes",
+      "text": "3 synthetic monitor для prod:\n\n- Login flow\n- Smoke критичного API\n- Heartbeat cron\n\nПороги алертов и идея multi-region."
+    },
+    {
+      "id": "observability-18",
+      "label": "Сэмплирование логов под нагрузкой",
+      "description": "логирование",
+      "detail": "cost",
+      "text": "Слишком большой объём логов:\n\n- Стратегии sampling\n- Ошибки логировать всегда\n- Cost vs debuggability\n\nДля high-traffic API."
+    },
+    {
+      "id": "observability-19",
+      "label": "Audit logging безопасности",
+      "description": "безопасность",
+      "detail": "audit",
+      "text": "Какие audit events логировать для admin-действий:\n\n- Поля события\n- Append-only идея\n- Retention\n\nДомен: [ВСТАВЬТЕ]"
+    },
+    {
+      "id": "observability-20",
+      "label": "План миграции observability",
+      "description": "roadmap",
+      "detail": "внедрение",
+      "text": "Сейчас только printf. План перехода на metrics+tracing в 4 фазы:\n\n- Quick wins неделя 1\n- Стандарты instrumentation\n- Dashboards/alerts\n- Обучение команды\n\nМаленькая команда, без big bang."
+    }
+  ]
+}

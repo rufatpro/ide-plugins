@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.0
+
+- Новые категории (по 20 промптов): **Flask**, **NestJS**, **Terraform и IaC**, **Наблюдаемость**, **Промпт-инжиниринг и AI-воркфлоу**.
+- Всего шаблонов: **850** (41 категория; Python × 50, остальные × 20).
+
 ## 0.5.9
 
 - Marketplace categories: **Programming Languages**, **Machine Learning**, **Other**.

@@ -1,0 +1,146 @@
+{
+  "category": "terraform",
+  "categoryLabel": "Terraform и IaC",
+  "prompts": [
+    {
+      "id": "terraform-01",
+      "label": "Первый Terraform AWS VPC",
+      "description": "aws",
+      "detail": "vpc module",
+      "text": "Terraform для начинающих: AWS VPC.\n\n- versions.tf, providers.tf, vpc.tf\n- Эскиз public/private subnets\n- init/plan/apply\n\nПредупреждения про state file."
+    },
+    {
+      "id": "terraform-02",
+      "label": "Remote state S3 backend",
+      "description": "state",
+      "detail": "locking",
+      "text": "S3 + DynamoDB remote backend:\n\n- Пример backend block\n- Зачем locking\n- Миграция с local state\n\nСекреты не в репозитории."
+    },
+    {
+      "id": "terraform-03",
+      "label": "Variables и outputs",
+      "description": "hcl",
+      "detail": "интерфейс",
+      "text": "Вынеси хардкод в variables.tf и outputs.tf.\n\n- variables с validation\n- sensitive outputs\n- tfvars для dev\n\nМаленькая demo resource group."
+    },
+    {
+      "id": "terraform-04",
+      "label": "Разделение на modules",
+      "description": "modules",
+      "detail": "reuse",
+      "text": "Разбей main.tf на modules:\n\n- modules/network, modules/app\n- Root вызывает с ясными inputs\n- Когда рано модуляризировать\n\nПлоское дерево для обучения."
+    },
+    {
+      "id": "terraform-05",
+      "label": "Чеклист ревью plan",
+      "description": "workflow",
+      "detail": "plan",
+      "text": "Перед apply разбери terraform plan:\n\n- Риски destroy/replace\n- Неожиданное число ресурсов\n- IAM diff — внимательно\n\nСводку plan пришлю отдельно."
+    },
+    {
+      "id": "terraform-06",
+      "label": "Import существующего ресурса",
+      "description": "import",
+      "detail": "adoption",
+      "text": "Workflow terraform import для существующего S3 bucket.\n\n- import block vs CLI\n- Refresh после drift\n- Типичные ошибки\n\nБез реальных account ID."
+    },
+    {
+      "id": "terraform-07",
+      "label": "Workspace на окружение",
+      "description": "env",
+      "detail": "workspaces",
+      "text": "Workspaces vs отдельные каталоги dev/stage/prod.\n\n- Таблица плюсов/минусов\n- Имена ключей в backend\n- Рекомендация для малой команды"
+    },
+    {
+      "id": "terraform-08",
+      "label": "IAM least privilege task role",
+      "description": "безопасность",
+      "detail": "iam",
+      "text": "IAM role для чтения одного префикса S3.\n\n- Черновик policy JSON\n- Без * actions\n- instance profile / IRSA — кратко\n\nBlast radius."
+    },
+    {
+      "id": "terraform-09",
+      "label": "count vs for_each",
+      "description": "hcl",
+      "detail": "циклы",
+      "text": "Когда count vs for_each:\n\n- Стабильные ключи\n- Безопасное удаление одного instance\n- Антипаттерн count.index\n\nПример map(string)."
+    },
+    {
+      "id": "terraform-10",
+      "label": "Data sources vs resources",
+      "description": "hcl",
+      "detail": "data",
+      "text": "Data sources для существующего VPC/subnet.\n\n- Когда data лучше resource\n- depends_on\n- Отладка failures\n\nКороткие примеры."
+    },
+    {
+      "id": "terraform-11",
+      "label": "Тестирование Terraform",
+      "description": "testing",
+      "detail": "policy",
+      "text": "Обзор тестов:\n\n- terraform test (высокоуровнево)\n- tflint/checkov\n- Что проверять в CI\n\nБез enterprise-нагромождения."
+    },
+    {
+      "id": "terraform-12",
+      "label": "Рутина drift detection",
+      "description": "ops",
+      "detail": "drift",
+      "text": "Drift в ops:\n\n- План по расписанию в CI\n- Когда правки в консоли допустимы\n- import vs revert\n\nПункты политики команды."
+    },
+    {
+      "id": "terraform-13",
+      "label": "Секреты через SSM",
+      "description": "secrets",
+      "detail": "ssm",
+      "text": "Секреты не в git:\n\n- SSM Parameter Store\n- sensitive variables\n- Ротация — заметка\n\nПример DB password для ECS task."
+    },
+    {
+      "id": "terraform-14",
+      "label": "Минимальный EKS",
+      "description": "kubernetes",
+      "detail": "eks",
+      "text": "Высокоуровневый Terraform для EKS:\n\n- VPC prerequisites\n- Node group basics\n- Когда official module\n\nRoadmap, если полный код длинный."
+    },
+    {
+      "id": "terraform-15",
+      "label": "CloudFront + S3 static",
+      "description": "aws",
+      "detail": "cdn",
+      "text": "Эскиз: private S3 + CloudFront OAC.\n\n- Идея bucket policy\n- Cache behaviors\n- Подводный камень HTTPS cert\n\nДля обучения."
+    },
+    {
+      "id": "terraform-16",
+      "label": "Ошибка state lock",
+      "description": "state",
+      "detail": "debug",
+      "text": "Error acquiring state lock:\n\n- Безопасная диагностика\n- Когда force-unlock\n- Профилактика\n\nОсторожность с force-unlock."
+    },
+    {
+      "id": "terraform-17",
+      "label": "Стратегия тегов",
+      "description": "governance",
+      "detail": "tags",
+      "text": "Обязательные теги (Environment, Owner, CostCenter).\n\n- default_tags в provider\n- merge через locals\n- Зачем finance\n\nПример aws provider."
+    },
+    {
+      "id": "terraform-18",
+      "label": "Provider alias второго региона",
+      "description": "aws",
+      "detail": "alias",
+      "text": "Provider alias для копии ресурсов в другом регионе.\n\n- provider meta\n- Дублирование vs global services\n\nКонцепт S3 replica."
+    },
+    {
+      "id": "terraform-19",
+      "label": "Terraform в GitHub Actions",
+      "description": "cicd",
+      "detail": "pipeline",
+      "text": "Job: fmt, validate, plan на PR.\n\n- OIDC в AWS\n- Комментарий с plan artifact\n- apply на main с approval\n\nЭскиз YAML."
+    },
+    {
+      "id": "terraform-20",
+      "label": "Рефакторинг без downtime",
+      "description": "migration",
+      "detail": "lifecycle",
+      "text": "Безопасный rename/move адресации:\n\n- moved / state mv\n- create_before_destroy\n- Blue/green для LB — упомянуть\n\nЧеклист перед рискованным apply."
+    }
+  ]
+}

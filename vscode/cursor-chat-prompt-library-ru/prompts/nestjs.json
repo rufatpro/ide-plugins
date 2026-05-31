@@ -1,0 +1,146 @@
+{
+  "category": "nestjs",
+  "categoryLabel": "NestJS",
+  "prompts": [
+    {
+      "id": "nestjs-01",
+      "label": "Первое NestJS-приложение",
+      "description": "настройка",
+      "detail": "main.ts",
+      "text": "Минимальное NestJS-приложение.\n\n- nest new или main.ts + AppModule\n- GET / hello\n- npm run start:dev\n\nРоль декоратора @Module."
+    },
+    {
+      "id": "nestjs-02",
+      "label": "Валидация DTO class-validator",
+      "description": "валидация",
+      "detail": "pipes",
+      "text": "POST /users с CreateUserDto.\n\n- декораторы class-validator\n- глобальный ValidationPipe\n- форма ошибки 400\n\nОдин controller file."
+    },
+    {
+      "id": "nestjs-03",
+      "label": "Паттерн CRUD module",
+      "description": "структура",
+      "detail": "feature module",
+      "text": "UsersModule: controller, service, in-memory repo.\n\n- providers\n- export service\n- префикс /users\n\nКоманды Nest CLI по желанию."
+    },
+    {
+      "id": "nestjs-04",
+      "label": "Custom provider token",
+      "description": "di",
+      "detail": "injection",
+      "text": "Custom provider: useValue и injection token.\n\n- Интерфейсы и токены в TS\n- override useClass в тестах\n\nКороткий пример."
+    },
+    {
+      "id": "nestjs-05",
+      "label": "Заглушка JwtAuthGuard",
+      "description": "auth",
+      "detail": "guard",
+      "text": "Эскиз JwtAuthGuard (без полного auth server).\n\n- @UseGuards\n- типизация user в request\n- 401 vs 403\n\nКратко @nestjs/passport."
+    },
+    {
+      "id": "nestjs-06",
+      "label": "Guard по ролям",
+      "description": "auth",
+      "detail": "roles",
+      "text": "RolesGuard по roles из JWT stub.\n\n- Reflector + @Roles\n- 403 без роли\n\nFake user для демо."
+    },
+    {
+      "id": "nestjs-07",
+      "label": "Exception filter JSON",
+      "description": "ошибки",
+      "detail": "filter",
+      "text": "Глобальный filter: { statusCode, message, path }.\n\n- HttpException и unknown\n- stack только внутри логов\n\nРегистрация в main.ts."
+    },
+    {
+      "id": "nestjs-08",
+      "label": "Interceptor времени запроса",
+      "description": "cross-cutting",
+      "detail": "interceptor",
+      "text": "LoggingInterceptor длительности запроса.\n\n- tap на Observable\n- Исключить /health\n\nОбласти регистрации."
+    },
+    {
+      "id": "nestjs-09",
+      "label": "Подключение Prisma",
+      "description": "БД",
+      "detail": "prisma",
+      "text": "PrismaService как provider.\n\n- prisma generate\n- findMany в service\n- onModuleDestroy shutdown\n\nSQLite или Postgres — один."
+    },
+    {
+      "id": "nestjs-10",
+      "label": "ConfigModule и env",
+      "description": "config",
+      "detail": "@nestjs/config",
+      "text": "ConfigModule.forRoot + validation (Joi или class).\n\n- DATABASE_URL обязателен\n- forbidUnknownValues\n\nФрагмент .env.example."
+    },
+    {
+      "id": "nestjs-11",
+      "label": "Swagger OpenAPI",
+      "description": "docs",
+      "detail": "swagger",
+      "text": "Swagger на /api через DocumentBuilder.\n\n- Tags по модулям\n- Placeholder Bearer auth\n\nПредупреждение: только dev."
+    },
+    {
+      "id": "nestjs-12",
+      "label": "Unit-тест сервиса jest",
+      "description": "тестирование",
+      "detail": "unit",
+      "text": "Unit test UsersService с mock repository.\n\n- TestingModule.createTestingModule\n- create вызывает repo.save\n\nОдин spec."
+    },
+    {
+      "id": "nestjs-13",
+      "label": "E2E supertest",
+      "description": "тестирование",
+      "detail": "e2e",
+      "text": "e2e с AppModule in-memory.\n\n- supertest GET /users\n- close app afterAll\n\nМинимальный пример."
+    },
+    {
+      "id": "nestjs-14",
+      "label": "WebSocket gateway echo",
+      "description": "realtime",
+      "detail": "gateway",
+      "text": "WebSocketGateway echo.\n\n- @SubscribeMessage\n- CORS/origin — кратко\n\nSocket.io — опционально."
+    },
+    {
+      "id": "nestjs-15",
+      "label": "Microservice TCP",
+      "description": "microservices",
+      "detail": "transport",
+      "text": "Второе приложение TCP + message pattern.\n\n- ClientProxy send\n- Когда Kafka\n\nКонцептуальные блоки."
+    },
+    {
+      "id": "nestjs-16",
+      "label": "Cache interceptor",
+      "description": "perf",
+      "detail": "cache",
+      "text": "CacheModule + CacheInterceptor на GET.\n\n- TTL\n- Подводные камни cache key\n\nРиск устаревших данных."
+    },
+    {
+      "id": "nestjs-17",
+      "label": "Загрузка файлов multer",
+      "description": "files",
+      "detail": "multipart",
+      "text": "FileInterceptor на диск с лимитом размера.\n\n- mime validation\n- antivirus hook — идея\n\nОдин endpoint."
+    },
+    {
+      "id": "nestjs-18",
+      "label": "Cron @nestjs/schedule",
+      "description": "jobs",
+      "detail": "cron",
+      "text": "Пример cron task.\n\n- Injectable job\n- Идемпотентность при нескольких инстансах\n\nДля prod — внешняя очередь."
+    },
+    {
+      "id": "nestjs-19",
+      "label": "Health Terminus",
+      "description": "ops",
+      "detail": "health",
+      "text": "Terminus: DB ping + disk.\n\n- /health\n- mapping на k8s probes\n\nСписок зависимостей."
+    },
+    {
+      "id": "nestjs-20",
+      "label": "Разделить monolith на modules",
+      "description": "архитектура",
+      "detail": "границы",
+      "text": "Разбить AppModule на domain modules.\n\n- Shared module\n- Чеклист circular imports\n\nДиаграмма дерева до/после текстом."
+    }
+  ]
+}
