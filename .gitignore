@@ -8,6 +8,7 @@
 **/run/
 **/log.*.log
 **/local.properties
+old_bad
 
 # VS Code / Cursor extensions
 **/node_modules/

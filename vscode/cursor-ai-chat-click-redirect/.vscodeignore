@@ -1,0 +1,11 @@
+.vscode/**
+.vscode-test/**
+.gitignore
+**/*.map
+**/.DS_Store
+build/**
+dist/**
+log.1main.log
+log.1err.log
+*.bat
+scripts/**

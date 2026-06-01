@@ -1,0 +1,107 @@
+{
+  "name": "cursor-ai-chat-click-redirect",
+  "displayName": "Cursor AI Chat Click Redirect",
+  "description": "Log AI chat link clicks; optionally open files by extension in an external IDE. PROVIDED AS IS, WITHOUT WARRANTY. Authors and contributors are not liable for damages, data loss, misdirected opens, or issues from use with Cursor, external IDEs, or on-disk logs. Use at your own risk.",
+  "version": "0.6.4",
+  "publisher": "rufat",
+  "license": "MIT",
+  "readme": "readme.md",
+  "changelog": "CHANGELOG.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rufatpro/plugins.git"
+  },
+  "homepage": "https://github.com/rufatpro/plugins",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning"
+  ],
+  "icon": "images/icon.png",
+  "keywords": [
+    "cursor",
+    "chat",
+    "AI",
+    "composer",
+    "agent",
+    "link",
+    "redirect",
+    "pycharm",
+    "external"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onOpenExternalUri:http",
+    "onOpenExternalUri:https"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cursorAiChatClickRedirect.editRedirectExtensions",
+        "title": "Set OS Redirect File Extensions",
+        "category": "AI Chat Click Redirect"
+      },
+      {
+        "command": "cursorAiChatClickRedirect.openLogFile",
+        "title": "Open AI Chat Click Log",
+        "category": "AI Chat Click Redirect"
+      },
+      {
+        "command": "cursorAiChatClickRedirect.clearLog",
+        "title": "Clear AI Chat Click Log",
+        "category": "AI Chat Click Redirect"
+      },
+      {
+        "command": "cursorAiChatClickRedirect.testLog",
+        "title": "Write Test Log Entry",
+        "category": "AI Chat Click Redirect"
+      }
+    ],
+    "configuration": {
+      "title": "AI Chat Click Redirect",
+      "properties": {
+        "cursorAiChatClickRedirect.redirectFileExtensions": {
+          "type": "string",
+          "default": "",
+          "order": 1,
+          "description": "File extensions to redirect to an external IDE, comma-separated without a dot (e.g. py,js,md). Empty string disables redirect."
+        },
+        "cursorAiChatClickRedirect.keepTabInCursorAfterRedirect": {
+          "type": "boolean",
+          "default": false,
+          "order": 2,
+          "description": "Keep the tab in Cursor after opening in an external IDE. false closes the tab."
+        },
+        "cursorAiChatClickRedirect.logPath": {
+          "type": "string",
+          "default": "",
+          "order": 3,
+          "description": "Log file path. Empty disables all logging. Example: c:\\tmp\\ai_chat_click.log"
+        },
+        "cursorAiChatClickRedirect.externalIdePath": {
+          "type": "string",
+          "default": "",
+          "order": 4,
+          "description": "Path to the IDE (PyCharm, etc.), e.g. C:\\Program Files\\JetBrains\\PyCharm 2024.3\\bin\\pycharm64.exe. Empty uses JetBrains autodetect."
+        },
+        "cursorAiChatClickRedirect.externalIdeArgs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["--line", "{line}", "{file}"],
+          "order": 5,
+          "description": "IDE launch arguments: {file}, {line} (1-based)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "package": "vsce package",
+    "lint": "echo \"No lint configured\""
+  },
+  "vsce": {
+    "baseContentUrl": "https://github.com/rufatpro/plugins/tree/main/plugins/vscode/cursor-ai-chat-click-redirect"
+  }
+}
