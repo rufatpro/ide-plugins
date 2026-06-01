@@ -2,7 +2,7 @@
 
 [Русский](readme_ru.md) · [Repository](https://github.com/rufatpro/plugins) · [Changelog](CHANGELOG.md)
 
-**Version 0.6.4** — VS Code / Cursor extension: optional logging of AI chat file-link opens, and optional redirect of selected file types to an external IDE (PyCharm, IntelliJ, WebStorm, etc.).
+**Version 0.6.5** — VS Code / Cursor extension: optional logging of AI chat file-link opens, and optional redirect of selected file types to an external IDE (PyCharm, IntelliJ, WebStorm, etc.).
 
 > Built with AI assistance (Cursor). Part of the [plugins](https://github.com/rufatpro/plugins) monorepo.
 
@@ -31,7 +31,23 @@ The extension does **not** replace Cursor or **sync** edits between editors.
 3. Cursor briefly opens a new tab; the extension launches PyCharm at that line and (by default) closes the tab in Cursor.
 4. If `logPath` is set, events are written to the log file.
 
-**Tab bar:** clicking an **already open** tab does **not** redirect — only opening a **new** tab (e.g. from a chat link).
+## When redirect runs
+
+Redirect is tied to a **new editor tab** in Cursor (`onDidChangeTabs` → `opened`), not to simply making a file active.
+
+| Situation | Redirect to external IDE? |
+|-----------|----------------------------|
+| Chat link opens a file that has **no tab yet** in Cursor | **Yes** — new tab appears, then PyCharm (etc.) opens the file |
+| Chat link points to a file that is **already open** in a tab (Cursor only focuses that tab) | **No** — no new tab, extension does not treat it as a chat open |
+| You click an **existing tab** in the tab bar (same or another file) | **No** — only the active tab changes |
+| You open a file from Explorer / Command Palette (new tab) | **Yes** — technically a new tab; same mechanism as a chat link |
+
+Implications:
+
+- First click on a path from chat usually redirects; repeated clicks on the same link while the tab stays open may **not** redirect again.
+- To force redirect again, close the file tab in Cursor and click the chat link once more (or open the link when the file is not already tabbed).
+
+Logging (`logPath` set) for `file.openedInCursor` / `file.closedInCursor` follows the same extension list; events are still only written when logging is enabled.
 
 ## Installation
 
@@ -40,7 +56,7 @@ cd plugins\vscode\cursor-ai-chat-click-redirect
 build.bat
 ```
 
-In Cursor / VS Code: **F1** → `Extensions: Install from VSIX` → `build\cursor-ai-chat-click-redirect-0.6.4.vsix`.
+In Cursor / VS Code: **F1** → `Extensions: Install from VSIX` → `build\cursor-ai-chat-click-redirect-0.6.5.vsix`.
 
 Reload the window (**Developer: Reload Window**).
 

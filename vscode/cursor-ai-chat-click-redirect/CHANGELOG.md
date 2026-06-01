@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.5
+
+- Documentation: when redirect runs (new tab vs file already open vs tab-bar click); updated readme EN/RU and monorepo `plugins/README.md` / `README_RU.md`.
+
 ## 0.6.4
 
 - Settings UI: `redirectFileExtensions` listed first via `order` (VS Code sorts keys alphabetically by default).
