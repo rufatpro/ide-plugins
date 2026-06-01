@@ -19,6 +19,7 @@
 | [TypeScript Doc Links](vscode/ts-doc-links/) | VS Code / Cursor | 0.1.7 | Ctrl+Click в TS/JS **комментариях** / **JSDoc** (`@see`, `{@link ./file.ts}`, `File:`, `// See`, алиасы `@/`) | [EN](vscode/ts-doc-links/readme.md) · [RU](vscode/ts-doc-links/readme_ru.md) |
 | [Cursor Chat Prompt Library](vscode/cursor-chat-prompt-library/) | VS Code / Cursor | 0.8.2 | **Ctrl+Alt+T** (основной), **Ctrl+Alt+Shift+P** → **AI-чат**; **850** шаблонов, **41** категория | [EN](vscode/cursor-chat-prompt-library/readme.md) · [RU](vscode/cursor-chat-prompt-library/readme_ru.md) |
 | [Cursor Chat Prompt Library RU](vscode/cursor-chat-prompt-library-ru/) | VS Code / Cursor | 0.6.0 | **850** русских шаблонов, **41** категория; **Ctrl+Alt+Shift+P**; параллельно с EN | [RU](vscode/cursor-chat-prompt-library-ru/readme.md) · [EN](vscode/cursor-chat-prompt-library-ru/readme_en.md) |
+| [Cursor AI Chat Click Redirect](vscode/cursor-ai-chat-click-redirect/) | VS Code / Cursor | 0.6.4 | По ссылкам из **AI-чата**: опциональный редирект по расширению в **PyCharm** / внешнюю IDE (только новая вкладка); опциональный лог | [EN](vscode/cursor-ai-chat-click-redirect/readme.md) · [RU](vscode/cursor-ai-chat-click-redirect/readme_ru.md) |
 
 > Расширения для VS Code/Cursor живут в `vscode/<имя>/`.
 
