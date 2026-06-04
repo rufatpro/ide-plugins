@@ -141,6 +141,216 @@
       "description": "libraries",
       "detail": "conditional classNames",
       "text": "Introduce tailwind-merge to resolve p-4 vs p-2 conflicts in composed components.\nShow pairing with clsx.\nExplain boolean prop driven style merges pattern.\nMention SSR compatibility note lightly.\nGive tiny React snippet sketch."
+    },
+    {
+      "id": "tw-21",
+      "label": "Flexbox centering patterns",
+      "description": "layout",
+      "detail": "items justify center",
+      "text": "Show flex items-center justify-center min-h-screen for hero centering.\nExplain main vs cross axis with flex-col variant.\nAdd gap for button groups vs margin hacks.\nCommon mistake: forgetting min-h on parent.\nGive three layout snippets: center card, footer stick, navbar."
+    },
+    {
+      "id": "tw-22",
+      "label": "CSS grid template areas",
+      "description": "layout",
+      "detail": "grid-areas dashboard",
+      "text": "Build dashboard with grid-template-areas via arbitrary or custom theme extension.\nShow responsive collapse to single column on sm.\nContrast grid areas vs nested flex.\nExplain gap and grid-cols together.\nProvide HTML structure names matching areas."
+    },
+    {
+      "id": "tw-23",
+      "label": "aspect-ratio video cards",
+      "description": "layout",
+      "detail": "aspect-video",
+      "text": "Use aspect-video on embed containers maintaining 16:9.\nCombine with object-cover on thumbnails.\nExplain aspect-square for avatars.\nPrevent layout shift note.\nShow card grid with consistent heights."
+    },
+    {
+      "id": "tw-24",
+      "label": "scroll-mt anchor offset",
+      "description": "navigation",
+      "detail": "fixed header jump",
+      "text": "Fix hash links hidden under sticky header using scroll-mt-24 on sections.\nExplain scroll-padding-top on html alternative.\nTest #features navigation.\nRelate to accessibility skip links.\nList tailwind spacing scale pick tip."
+    },
+    {
+      "id": "tw-25",
+      "label": "backdrop-blur overlays",
+      "description": "effects",
+      "detail": "bg-white/30 blur",
+      "text": "Create modal overlay with bg-black/40 backdrop-blur-sm.\nWarn performance on low-end mobile.\nShow pairing with pointer-events.\nContrast solid vs glass aesthetic.\nProvide dark mode variant classes."
+    },
+    {
+      "id": "tw-26",
+      "label": "Gradient text headline",
+      "description": "typography",
+      "detail": "bg-clip-text transparent",
+      "text": "Style h1 with bg-gradient-to-r bg-clip-text text-transparent.\nExplain fallback color for unsupported browsers lightly.\nCaution contrast accessibility for body text.\nShow animated gradient optional homework.\nKeep example class string readable."
+    },
+    {
+      "id": "tw-27",
+      "label": "animate utilities pulse spin",
+      "description": "motion",
+      "detail": "animate-spin loader",
+      "text": "Use animate-spin on SVG loader and animate-pulse on skeleton placeholders.\nPair with motion-reduce:animate-none.\nExplain custom theme extend animation keyframes briefly.\nWarn infinite animations distraction.\nShow button loading state pattern words."
+    },
+    {
+      "id": "tw-28",
+      "label": "transition-colors duration",
+      "description": "motion",
+      "detail": "ease-out hover",
+      "text": "Add transition-colors duration-200 on buttons and links.\nExplain transition-property shorthand utilities.\nShow group-hover color change on card.\nAdvise consistent timing tokens in design system.\nDebug prefers-reduced-motion respect."
+    },
+    {
+      "id": "tw-29",
+      "label": "group-hover card lift",
+      "description": "interactive",
+      "detail": "group/name pattern",
+      "text": "Make entire card clickable/hoverable: group on wrapper, group-hover:shadow-lg on inner.\nExplain group/name for nested groups.\nShow image scale group-hover:scale-105 optional.\nCaution transform affecting layout.\nProvide accessible focus styles too."
+    },
+    {
+      "id": "tw-30",
+      "label": "peer invalid form styles",
+      "description": "forms",
+      "detail": "peer-checked peer-invalid",
+      "text": "Style label when input invalid using peer and peer-invalid: on sibling.\nShow checkbox peer-checked:bg-brand pattern.\nExplain peer only looks at following siblings.\nCombine with @tailwindcss/forms plugin note.\nGive accessible error text placement."
+    },
+    {
+      "id": "tw-31",
+      "label": "has selector parent styling",
+      "description": "selectors",
+      "detail": "has-[:checked]",
+      "text": "Use has-[:checked] to highlight row containing checked checkbox.\nExplain browser support and progressive enhancement.\nContrast with JS class toggling.\nShow has-[img] card layout example.\nMention Tailwind v3.4+ requirement."
+    },
+    {
+      "id": "tw-32",
+      "label": "data attributes variant UI",
+      "description": "state",
+      "detail": "data-state open",
+      "text": "Drive styles with data-[state=open]:rotate-180 for accordion chevron.\nExplain Radix/shadcn pattern mentally.\nShow data-active on tabs.\nRelate to aria-expanded sync.\nKeep markup semantic under the hood."
+    },
+    {
+      "id": "tw-33",
+      "label": "Dark mode toggle strategy",
+      "description": "theming",
+      "detail": "class dark:",
+      "text": "Implement class strategy on html with dark: variants and localStorage toggle script minimal.\nContrast media strategy prefers-color-scheme only.\nExplain flash of wrong theme avoidance.\nShow dark:bg-slate-900 tokens.\nProvide init script outline."
+    },
+    {
+      "id": "tw-34",
+      "label": "@apply component classes",
+      "description": "architecture",
+      "detail": "btn-primary layer",
+      "text": "Extract repeated button styles into @layer components { .btn-primary { @apply ... } }.\nWarn overusing @apply vs inline utilities debate.\nShow one card component class.\nRelate to @layer order.\nAdvise design tokens in theme.extend first."
+    },
+    {
+      "id": "tw-35",
+      "label": "Custom fonts in theme",
+      "description": "theme",
+      "detail": "fontFamily extend",
+      "text": "Extend theme.fontFamily.sans with CSS variable from next/font or @font-face.\nShow font-sans usage in body class.\nExplain font-display swap in @font-face comment.\nList fallbacks stack.\nVerify in devtools computed styles."
+    },
+    {
+      "id": "tw-36",
+      "label": "spacing scale extend",
+      "description": "theme",
+      "detail": "spacing 18 22",
+      "text": "Add spacing.18 and spacing.22 for marketing layouts in theme.extend.\nExplain rem base and consistency.\nShow p-18 usage.\nWhen arbitrary p-[4.5rem] is acceptable.\nRelate spacing to gap utilities."
+    },
+    {
+      "id": "tw-37",
+      "label": "max-w containers prose",
+      "description": "layout",
+      "detail": "max-w-3xl mx-auto",
+      "text": "Center article with max-w-3xl mx-auto px-4.\nCompare max-w-screen-xl for dashboards.\nPair with prose for markdown content.\nExplain container utility vs max-w.\nGive blog page wrapper example."
+    },
+    {
+      "id": "tw-38",
+      "label": "prose dark invert",
+      "description": "typography",
+      "detail": "prose-invert blog",
+      "text": "Style markdown blog with prose and dark:prose-invert on article.\nTweak prose-headings and prose-a colors in theme.\nInstall @tailwindcss/typography steps.\nAccessibility on link contrast.\nShow sample markdown HTML."
+    },
+    {
+      "id": "tw-39",
+      "label": "forms plugin focus ring",
+      "description": "forms",
+      "detail": "@tailwindcss/forms",
+      "text": "Install forms plugin and explain global form reset benefits.\nCustomize focus ring color to brand.\nShow input, select, checkbox consistent styling.\nContrast with unstyled raw inputs.\nMention strategy class vs base."
+    },
+    {
+      "id": "tw-40",
+      "label": "divide utilities tables",
+      "description": "tables",
+      "detail": "divide-y divide-gray-200",
+      "text": "Style table rows with divide-y on tbody stack or flex-col list.\nCompare border on each row vs divide.\nShow divide-x for column separators.\nDark mode divide-slate-700.\nAccessible table semantics reminder."
+    },
+    {
+      "id": "tw-41",
+      "label": "gap vs space utilities",
+      "description": "layout",
+      "detail": "prefer gap in flex/grid",
+      "text": "Explain why gap-4 beats space-x-4 in flex/grid for spacing children.\nShow space-y only when gap unavailable caveat.\nDemonstrate wrapped flex gap behavior.\nMigration tip from Bootstrap margins.\nQuick rule mnemonic."
+    },
+    {
+      "id": "tw-42",
+      "label": "object-fit cover contain",
+      "description": "images",
+      "detail": "object-cover rounded",
+      "text": "Fill avatar circle with object-cover w-full h-full.\nExplain object-contain for logos.\nPair with aspect-square fixed size.\nPosition with object-center.\nPrevent distorted images checklist."
+    },
+    {
+      "id": "tw-43",
+      "label": "sr-only accessible text",
+      "description": "a11y",
+      "detail": "screen reader only",
+      "text": "Use sr-only for icon buttons with visible SVG only.\nShow focus:not-sr-only skip link pattern cross-link.\nExplain difference vs hidden display none.\nAudit one navbar example.\nRelate to aria-label when to use which."
+    },
+    {
+      "id": "tw-44",
+      "label": "motion-reduce respect",
+      "description": "a11y",
+      "detail": "motion-reduce:transition-none",
+      "text": "Apply motion-reduce:transition-none motion-reduce:animate-none on animated components.\nTest emulation in devtools.\nExplain legal/ethical reasons briefly.\nPair with prefers-reduced-motion media query understanding.\nShow before/after hero animation."
+    },
+    {
+      "id": "tw-45",
+      "label": "@tailwindcss/forms recap",
+      "description": "plugins",
+      "detail": "input radio style",
+      "text": "Recap enabling forms plugin in tailwind.config and class strategy.\nStyle file input and checkbox consistently.\nFix ugly default browser styles story.\nCombine with peer invalid states.\nnpm install command line."
+    },
+    {
+      "id": "tw-46",
+      "label": "Tailwind v4 mention light",
+      "description": "tooling",
+      "detail": "CSS-first config",
+      "text": "Give beginners a headline tour of Tailwind v4 CSS-first @import \"tailwindcss\" direction vs v3 JS config.\nExplain migration docs path without full migration.\nNote @theme inline variables.\nWhen staying on v3 is fine.\nList one breaking change name only."
+    },
+    {
+      "id": "tw-47",
+      "label": "Logical ms me RTL",
+      "description": "i18n",
+      "detail": "margin-inline-start",
+      "text": "Use ms-4 me-2 instead of ml/mr for RTL-safe spacing.\nExplain logical properties mapping.\nShow flex row-reverse caution.\nTest dir=rtl in Storybook page.\nRelate to tailwind v3.3+ logical utilities."
+    },
+    {
+      "id": "tw-48",
+      "label": "Print utilities handout",
+      "description": "print",
+      "detail": "print:hidden nav",
+      "text": "Hide navigation with print:hidden and expand article print:block.\nSet print:text-black backgrounds white.\nShow page break avoid on headings optional.\nTest print preview checklist.\nCombine with @page margins comment."
+    },
+    {
+      "id": "tw-49",
+      "label": "Arbitrary variants group",
+      "description": "advanced",
+      "detail": "group-[.is-active]:",
+      "text": "Demonstrate arbitrary variants group-[.sidebar-open]:block for state classes on parent.\nExplain bracket syntax discipline.\nWhen to promote to component class.\nWarn about unreadable class strings.\nGive refactored @apply alternative."
+    },
+    {
+      "id": "tw-50",
+      "label": "Shadow elevation scale",
+      "description": "effects",
+      "detail": "shadow-sm to xl",
+      "text": "Apply shadow-sm on cards and shadow-lg on modals with hover:shadow-xl transitions.\nExplain colored shadows shadow-brand/20 optional.\nRelate to ring for focus vs shadow for depth.\nDark mode tweak shadow visibility.\nShow three-tier elevation system for design consistency."
     }
   ]
 }

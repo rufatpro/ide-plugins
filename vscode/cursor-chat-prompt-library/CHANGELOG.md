@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.8.5
+
+- New category **SQLAlchemy** (20 prompts): Engine, ORM 2.0, relationships, Alembic, async, FastAPI integration, testing.
+- Total bundled templates: **1080** (42 categories).
+
+## 0.8.4
+
+- **NestJS** category expanded to **50** prompts (batch 3, prompts 21–50).
+- Total bundled templates: **1060** (41 categories; Python × 50, JS stack + NestJS × 50, others × 20).
+
+## 0.8.3
+
+- Expanded to **50 prompts** each in **JavaScript**, **TypeScript**, **React**, **Next.js**, **Tailwind CSS**, and **Node.js Backend** (batch 3, prompts 21–50).
+- Total bundled templates: **1030** (41 categories; Python × 50, JS stack × 50, others × 20).
+
 ## 0.8.2
 
 - New categories (20 prompts each): **Flask**, **NestJS**, **Terraform & IaC**, **Observability**, **Prompt Engineering & AI Workflow**.

@@ -141,6 +141,216 @@
       "description": "scaling",
       "detail": "orchestrators superseding",
       "text": "Объясни исторический cluster.fork для использования CPU.\nСвяжи с современным horizontal scaling pods.\nОбсуди caveat sticky sessions.\nУпомяни, почему новички сначала изучают event loop, а не cluster.\nУкажи на adoption оркестраторов."
+    },
+    {
+      "id": "node-21",
+      "label": "Модульные маршруты Express Router",
+      "description": "Express",
+      "detail": "routes/users.js",
+      "text": "Разбей app на express.Router для /users и /posts в app.js.\nIndex route и handler :id.\nПорядок middleware per router.\nСтруктура lib/routes.\nПримеры curl."
+    },
+    {
+      "id": "node-22",
+      "label": "Zod validate middleware",
+      "description": "validation",
+      "detail": "parse body schema",
+      "text": "Middleware валидирует req.body через Zod safeParse, 400 с details.\nType inference из schema для handler.\nЕдиный формат error map.\nСравни с express-validator.\nПример POST /users."
+    },
+    {
+      "id": "node-23",
+      "label": "Настройка cors",
+      "description": "security",
+      "detail": "origin credentials",
+      "text": "cors: allowed origin из env, credentials true для cookies.\nPreflight кратко.\nОшибка * с credentials.\nСвязь с Vite proxy в dev.\nТест browser fetch и curl OPTIONS."
+    },
+    {
+      "id": "node-24",
+      "label": "express-rate-limit",
+      "description": "security",
+      "detail": "sliding window",
+      "text": "Rate limit на /login против brute force.\ntrust proxy за reverse proxy.\nMemory vs Redis для multi-instance.\nДружелюбный JSON 429.\nНастройка max и window для новичков."
+    },
+    {
+      "id": "node-25",
+      "label": "Набросок JWT auth",
+      "description": "auth",
+      "detail": "sign verify middleware",
+      "text": "Login выдаёт JWT в JSON; authMiddleware проверяет Authorization Bearer.\nAccess vs refresh token словами.\nlocalStorage XSS vs httpOnly cookie tradeoffs.\nНе изобретай crypto — jsonwebtoken.\nSecurity checklist bullets."
+    },
+    {
+      "id": "node-26",
+      "label": "Хеширование паролей bcrypt",
+      "description": "auth",
+      "detail": "hash compare rounds",
+      "text": "bcrypt на register, rounds 10-12.\nbcrypt.compare на login, никогда plain text.\nSalt per password.\nAsync error handling.\nНе логируй пароли при debug."
+    },
+    {
+      "id": "node-27",
+      "label": "Загрузка файлов multer",
+      "description": "files",
+      "detail": "memory vs disk",
+      "text": "Avatar upload через multer diskStorage, лимит 2MB, mime filter.\nJSON с path файла.\nmultipart form с клиента.\nБезопасность: randomize filename, antivirus note.\nexpress.static осторожно."
+    },
+    {
+      "id": "node-28",
+      "label": "Цепочки express-validator",
+      "description": "validation",
+      "detail": "body email",
+      "text": "email и длина password через express-validator и validationResult.\nЕдиный массив ошибок 400.\nСравни с Zod.\nSanitization escape name-drop.\nТонкие handlers."
+    },
+    {
+      "id": "node-29",
+      "label": "API-тесты supertest",
+      "description": "testing",
+      "detail": "request(app)",
+      "text": "supertest на GET /health без ручного listen.\nЭкспорт app отдельно от listen.\nPOST validation failure 400.\nnode:test или jest.\nnpm script test."
+    },
+    {
+      "id": "node-30",
+      "label": "HTTP-логирование morgan",
+      "description": "observability",
+      "detail": "combined dev format",
+      "text": "morgan: dev vs combined в production.\nВместе со structured logger позже.\nПропуск health check noise опционально.\nИдея request id header.\nРазбор строки лога."
+    },
+    {
+      "id": "node-31",
+      "label": "Плановая задача node-cron",
+      "description": "scheduling",
+      "detail": "daily cleanup",
+      "text": "Ночной cleanup 0 2 * * * через node-cron.\nTimezone сервера.\nSingle-instance; BullMQ для distributed.\nGraceful stop на SIGTERM.\nЛог start/end job."
+    },
+    {
+      "id": "node-32",
+      "label": "Набросок очереди BullMQ",
+      "description": "queues",
+      "detail": "Redis worker",
+      "text": "Producer email job и worker BullMQ + Redis.\nRetries и backoff словами.\nСравни с in-process cron.\nDocker compose redis.\nБез полного UI dashboard."
+    },
+    {
+      "id": "node-33",
+      "label": "Redis session store",
+      "description": "sessions",
+      "detail": "connect-redis",
+      "text": "express-session с connect-redis для multi-server.\ncookie maxAge и rolling sessions.\nsecret из env.\nMemory store только dev.\nsecure cookie в production."
+    },
+    {
+      "id": "node-34",
+      "label": "Запросы pg Pool",
+      "description": "database",
+      "detail": "parameterized SQL",
+      "text": "pg Pool с $1 parameters против SQL injection.\npool.end при shutdown.\nЛимиты соединений.\ngetUserById repository.\nФормат .env DATABASE_URL."
+    },
+    {
+      "id": "node-35",
+      "label": "CRUD маршруты Prisma",
+      "description": "ORM",
+      "detail": "create find update",
+      "text": "CRUD Express для Todo model через Prisma client.\nmigrate dev workflow.\nPrismaClientKnownRequestError not found.\nselect vs include кратко.\nScripts в package.json."
+    },
+    {
+      "id": "node-36",
+      "label": "Упоминание Drizzle ORM",
+      "description": "ORM",
+      "detail": "SQL-like schema",
+      "text": "Drizzle vs Prisma для SQL-forward команд — обзор.\nSnippet schema table и query builder.\nКогда новичкам сначала Prisma.\nПуть обучения, не полная миграция.\nНейтральные tradeoffs bullets."
+    },
+    {
+      "id": "node-37",
+      "label": "Обёртка async errors",
+      "description": "errors",
+      "detail": "wrapAsync(fn)",
+      "text": "wrapAsync ловит rejected promises в Express routes и вызывает next(err).\nЦентрализованный error middleware с JSON.\nСравни с ручным next().\n500 vs 400.\nПредотвращение unhandled rejection crash."
+    },
+    {
+      "id": "node-38",
+      "label": "pipeline streams",
+      "description": "IO",
+      "detail": "pipeline gzip",
+      "text": "Большой файл: createReadStream -> zlib gzip -> response.\nstream/promises pipeline с error handling.\nBackpressure простым языком.\nСравни с чтением всего файла в память.\nЗаголовок Content-Encoding."
+    },
+    {
+      "id": "node-39",
+      "label": "fs promises read write",
+      "description": "filesystem",
+      "detail": "mkdir recursive",
+      "text": "fs/promises writeFile/readFile с path.join cross-platform.\nmkdir recursive.\nДружелюбный ENOENT.\nPath traversal при user input.\nИдея atomic write temp + rename."
+    },
+    {
+      "id": "node-40",
+      "label": "path resolve join",
+      "description": "filesystem",
+      "detail": "__dirname ESM",
+      "text": "path.join vs path.resolve для config.json от корня проекта.\nimport.meta.url dirname в ESM.\nНе конкатенируй backslashes на Windows.\nПроверка пути в границах проекта.\nПо два примера каждого."
+    },
+    {
+      "id": "node-41",
+      "label": "child_process spawn",
+      "description": "process",
+      "detail": "пример git status",
+      "text": "spawn git status --porcelain, парсинг stdout.\nРиск shell: true.\nНенулевые exit codes.\nexec vs spawn buffering.\nКогда не shell out — предпочитай libraries."
+    },
+    {
+      "id": "node-42",
+      "label": "Раннер node:test",
+      "description": "testing",
+      "detail": "describe it assert",
+      "text": "node:test с describe/it и assert.strictEqual для pure functions.\nnode --test.\nWatch mode flag.\nСравни с jest ecosystem кратко.\nCoverage hook к c8."
+    },
+    {
+      "id": "node-43",
+      "label": "Отчёт coverage c8",
+      "description": "testing",
+      "detail": "coverage thresholds",
+      "text": "c8 на тестах: text и html coverage.\nLine vs branch coverage простым языком.\nСкромные thresholds в package.json.\nИсключить config files.\nПример одной непокрытой строки."
+    },
+    {
+      "id": "node-44",
+      "label": "Workflow релиза semver",
+      "description": "release",
+      "detail": "npm version patch",
+      "text": "Semver MAJOR.MINOR.PATCH с примерами.\nnpm version patch && git push --tags с осторожностью.\nConventional commits тизер.\nДисциплина changelog для новичков.\nBreaking API changes."
+    },
+    {
+      "id": "node-45",
+      "label": "Чеклист npm publish",
+      "description": "package",
+      "detail": "files field prepublish",
+      "text": "Шаги: имя, files whitelist, main/types exports, README, LICENSE, npm login, npm publish --dry-run.\nBeta dist-tag.\n2FA на npm account.\nСекреты не в tarball.\nПроверка install во temp dir."
+    },
+    {
+      "id": "node-46",
+      "label": "ESM type module package",
+      "description": "modules",
+      "detail": "import export",
+      "text": "\"type\": \"module\" в package.json с .js ESM imports.\n.cjs escape hatch.\nimport.meta.url.\nРасширения в Node ESM.\nСравни с target TypeScript compile."
+    },
+    {
+      "id": "node-47",
+      "label": "OpenAPI Swagger UI",
+      "description": "docs",
+      "detail": "swagger-jsdoc",
+      "text": "JSDoc openapi на маршрутах, spec на /docs.\nЗачем контракт для frontend.\ntry-it-out осторожно в prod.\nВалидация body против spec опционально.\nМинимум два endpoint."
+    },
+    {
+      "id": "node-48",
+      "label": "Рекап helmet headers",
+      "description": "security",
+      "detail": "обзор defaults",
+      "text": "helmet: какие headers меняются, проверка в devtools.\ncontentSecurityPolicy false в dev при блокировке inline.\nПорядок helmet относительно cors и routes.\nHTTPS на reverse proxy.\nsecurityheaders.com как homework."
+    },
+    {
+      "id": "node-49",
+      "label": "Валидация env через Zod",
+      "description": "config",
+      "detail": "parse process.env",
+      "text": "Parse process.env при старте Zod schema: PORT, DATABASE_URL.\nexit с понятным сообщением при failure.\ndotenv только dev.\nСравни с разбросанным process.env.\nШаблон .env.example."
+    },
+    {
+      "id": "node-50",
+      "label": "Заметка graceful cluster",
+      "description": "scaling",
+      "detail": "fork workers",
+      "text": "cluster module fork CPUs и передача connections исторически.\nPM2 и Kubernetes вместо ручного cluster сегодня.\nSticky sessions problem.\nСначала event loop single-process.\nКогда horizontal pod scaling лучше cluster module."
     }
   ]
 }

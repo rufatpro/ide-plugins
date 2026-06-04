@@ -141,6 +141,216 @@
       "description": "ESM",
       "detail": "обучение bare specifier",
       "text": "Слышал про import maps для npm-пакетов прямо в браузере без bundler.\nИдея, trade-offs и минимальный index.html со script type importmap.\nКогда новичкам всё ещё лучше Vite.\nCORS для module scripts.\nОдин security footgun с удалёнными URL модулей."
+    },
+    {
+      "id": "js-21",
+      "label": "Основы Proxy и Reflect",
+      "description": "метапрограммирование",
+      "detail": "trap для валидации",
+      "text": "Хочу валидировать записи в объект без тяжёлой библиотеки.\nОбъясни traps get/set у Proxy и когда Reflect помогает сохранить поведение по умолчанию.\nСобери крошечный createValidatedUser(), отклоняющий присвоение отрицательного age.\nСравни стоимость Proxy и сложность отладки для новичков.\nПеречисли два реальных кейса (observability, ORM) vs когда хватит plain objects."
+    },
+    {
+      "id": "js-22",
+      "label": "Set и Map: когда использовать",
+      "description": "коллекции",
+      "detail": "уникальные ключи и O(1) lookup",
+      "text": "Объясни Set vs уникальность массива и Map vs plain object keys.\nПокажи дедуп тегов через Set и подсчёт вхождений через Map.\nПочему ключи object всегда строки и когда выигрывает Map.\nУпражнение для новичка: уникальные посетители из массива click log.\nЗаверши чеклистом выбора Set/Map/Record в небольших приложениях."
+    },
+    {
+      "id": "js-23",
+      "label": "RegExp для разбора логов",
+      "description": "строки",
+      "detail": "группы захвата и флаги",
+      "text": "Пошагово собери RegExp для извлечения ISO-дат и кодов статуса из строк лога.\nОбъясни флаги i, m, g и capturing groups, named groups если поддерживается.\nКратко: test() vs exec() vs matchAll().\nПредупреди о catastrophic backtracking на уровне заголовка.\nТри тестовые строки и ожидаемые совпадения как мини-викторина."
+    },
+    {
+      "id": "js-24",
+      "label": "Утилиты debounce и throttle",
+      "description": "события",
+      "detail": "поиск vs scroll",
+      "text": "Объясни debounce vs throttle на примере search box и scroll listener.\nРеализуй оба на чистом JS без lodash, с заметкой про cancel при unmount в SPA.\nLeading vs trailing edge простым языком.\nКак тестировать тайминги с fake timers (Vitest опционально).\nКогда ни debounce, ни throttle не нужны (маленькие списки)."
+    },
+    {
+      "id": "js-25",
+      "label": "Паттерн сохранения в localStorage",
+      "description": "browser storage",
+      "detail": "подводные камни JSON",
+      "text": "Сохрани тему в localStorage с try/catch для private mode.\nКвоты, синхронный API, подводные камни JSON.stringify (Date, undefined).\nПрефикс ключей для проекта.\nВ одном абзаце: sessionStorage vs localStorage.\nБезопасность: никогда не хранить токены без шифрования."
+    },
+    {
+      "id": "js-26",
+      "label": "History API и pushState",
+      "description": "routing-lite",
+      "detail": "SPA URL без перезагрузки",
+      "text": "Научи history.pushState и popstate для переключателя вкладок без фреймворка.\nОпционально обнови document.title и подсветку nav.\nПочему в реальных приложениях всё равно нужны роутеры.\nКак кнопка Back должна восстанавливать вкладку.\nНабросок index.html + script.js и шаги ручной проверки."
+    },
+    {
+      "id": "js-27",
+      "label": "Web Components: custom element",
+      "description": "components",
+      "detail": "жизненный цикл connectedCallback",
+      "text": "Введи custom elements с <hello-badge> и атрибутом name.\nconnectedCallback и attributeChangedCallback на уровне новичка.\nГраница shadow DOM кратко (детали стилей — в другом промпте).\nWeb Components vs React — когда что выбрать.\nПоддержка браузеров и progressive enhancement."
+    },
+    {
+      "id": "js-28",
+      "label": "Service Worker: офлайн-набросок",
+      "description": "PWA",
+      "detail": "install activate fetch",
+      "text": "Набросок регистрации service worker, кэширующего shell HTML для офлайн-обновления.\nСобытия install/activate/fetch по порядку без полного курса PWA.\nПредупреждение про cache busting и уведомление пользователя об обновлении.\nHTTPS и исключение localhost.\nМинимальное дерево файлов и что смотреть во вкладке Application."
+    },
+    {
+      "id": "js-29",
+      "label": "BroadcastChannel: синхронизация вкладок",
+      "description": "messaging",
+      "detail": "события между вкладками",
+      "text": "Две вкладки синхронизируют счётчик или logout через BroadcastChannel.\nКоллизии имён каналов и закрытие при unload.\nСравни с хаком через storage event localStorage.\nКогда в продвинутом чтении встречается SharedWorker.\nЗапускаемые HTML-сниппеты для двух окон."
+    },
+    {
+      "id": "js-30",
+      "label": "crypto.randomUUID для id",
+      "description": "web crypto",
+      "detail": "ключи на клиенте",
+      "text": "Замени Math.random id на crypto.randomUUID() для сущностей на клиенте.\nВероятность коллизий дружелюбным языком.\nFallback, если API нет в старых браузерах.\nКогда сервер всё равно должен выдавать авторитетные id.\nЧеклист: префикс id в логах, не доверять client id для auth."
+    },
+    {
+      "id": "js-31",
+      "label": "PerformanceObserver: метрики",
+      "description": "performance",
+      "detail": "тайминг LCP paint",
+      "text": "PerformanceObserver для paint или LCP entries.\nЛогирование таймингов в консоль на крошечной статической странице.\nСвязь метрик с UX-улучшениями новичка (шрифт, размер изображений).\nКратко: privacy и sampling в production.\nПанель Performance в devtools как шаг проверки."
+    },
+    {
+      "id": "js-32",
+      "label": "Первый unit-тест Vitest",
+      "description": "testing",
+      "detail": "npm script test",
+      "text": "Каркас Vitest на модуле чистых функций.\nТесты edge cases (пустой массив, отрицательное число) с expect и describe.\nWatch mode vs один прогон в CI.\nМиграционная модель Jest в двух предложениях.\nСкрипты package.json и команды npx vitest run."
+    },
+    {
+      "id": "js-33",
+      "label": "Старт ESLint flat config",
+      "description": "linting",
+      "detail": "eslint.config.js ESM",
+      "text": "Ментально мигрируй с .eslintrc на flat config eslint.config.js.\nRecommended rules для папки browser + Node hybrid.\nКак игнорировать dist/ и fix vs warn для новичков.\nОдин npm script lint.\nУпомяни @eslint/js и typescript-eslint без полного monorepo."
+    },
+    {
+      "id": "js-34",
+      "label": "Iterator helpers и fromEntries",
+      "description": "ES2024",
+      "detail": "Map filter на итераторах",
+      "text": "Iterator.from, .map, .filter, .take на примере pipeline чисел.\nСравни с методами массива и ленивой оценкой.\nОбратно через Array.from или [...iter].\nПоддержка движков и осторожность с polyfill.\nСравнение читаемости before/after в 5 строках."
+    },
+    {
+      "id": "js-35",
+      "label": "Object.groupBy для отчётов",
+      "description": "data",
+      "detail": "группировка строк",
+      "text": "Массив { category, amount }: итоги через Object.groupBy.\nСравни с ручным reduce по читаемости.\nКорректная обработка отсутствующих ключей и пустых групп.\nПростая ASCII-таблица в консоль.\nАналогия с SQL GROUP BY для новичков."
+    },
+    {
+      "id": "js-36",
+      "label": "Promise.allSettled для пакетных задач",
+      "description": "async",
+      "detail": "частичные сбои",
+      "text": "Три endpoint через Promise.allSettled и сводка fulfilled vs rejected.\nПочему allSettled лучше all, когда один сбой не должен отменять остальные.\nМаппинг в UI-friendly список статусов.\nТипизация результатов в TypeScript — бонус одним предложением.\nСтратегия retry — только упоминание."
+    },
+    {
+      "id": "js-37",
+      "label": "Symbol для «приватных» ключей",
+      "description": "language",
+      "detail": "Symbol.for vs unique",
+      "text": "Symbol как уникальные ключи свойств и well-known symbols (iterator) кратко.\nСкрытие helper-методов от JSON.stringify.\nSymbol не даёт security-private.\nСравни с # private fields.\nКрошечный пример class или object module."
+    },
+    {
+      "id": "js-38",
+      "label": "dynamic import и code splitting",
+      "description": "modules",
+      "detail": "import() по клику",
+      "text": "Тяжёлый chart module только по Show chart через dynamic import().\nUI loading и error вокруг await import().\nCode splitting в Vite/Webpack на высоком уровне.\nModule federation для micro-frontends — advanced.\nПроверка отдельного chunk во вкладке Network."
+    },
+    {
+      "id": "js-39",
+      "label": "Clipboard API: кнопка Copy",
+      "description": "browser API",
+      "detail": "navigator.clipboard",
+      "text": "Кнопка Copy code через navigator.clipboard.writeText с feature detection.\nОшибки разрешений и fallback execCommand для старых браузеров.\nТребование secure context HTTPS.\nToast об успехе словами.\nДоступность: label кнопки и объявление успеха."
+    },
+    {
+      "id": "js-40",
+      "label": "ResizeObserver для responsive canvas",
+      "description": "DOM",
+      "detail": "изменение размера элемента",
+      "text": "ResizeObserver меняет размер canvas/chart при изменении контейнера.\nПочему window resize недостаточен во flex layouts.\ndisconnect при teardown SPA.\nПредупреждение про observation loops при изменении size в callback.\nМинимальная структура HTML/CSS/JS."
+    },
+    {
+      "id": "js-41",
+      "label": "IntersectionObserver: ленивые изображения",
+      "description": "performance",
+      "detail": "подмена data-src",
+      "text": "Lazy-loading: IntersectionObserver подменяет data-src на src.\nНастройка rootMargin для предзагрузки.\nunobserve после загрузки.\nЧестное сравнение с loading=lazy.\nЧеклист CLS: атрибуты width/height."
+    },
+    {
+      "id": "js-42",
+      "label": "passive listeners для scroll",
+      "description": "performance",
+      "detail": "touchstart passive true",
+      "text": "Объясни { passive: true } на touch/wheel и связь со scroll jank.\nListener, который не может вызвать preventDefault при passive.\nFeature detection поддержки passive.\nНарушения в консоли Chrome для новичков.\nСоветы до/после для scroll lock мобильного меню."
+    },
+    {
+      "id": "js-43",
+      "label": "CSP и CORS: вводный курс",
+      "description": "security",
+      "detail": "заголовки и блокировка fetch",
+      "text": "Content-Security-Policy default-src и script-src для новичка с одним примером policy.\nCORS: почему браузер блокирует fetch на другой origin и роль Access-Control-Allow-Origin.\nPreflight OPTIONS ментально без полной спецификации.\nCORS — не auth.\nСимптомы в Network devtools и кто чинит server vs client."
+    },
+    {
+      "id": "js-44",
+      "label": "Первый browser-тест Playwright",
+      "description": "e2e",
+      "detail": "open page click expect",
+      "text": "Первый тест Playwright: локальная статическая страница и assert текста заголовка.\nnpx playwright install, headed vs headless.\nПоощряй role-based locators getByRole.\ntrace-on-failure — упоминание.\nЗаглушка npm script test:e2e."
+    },
+    {
+      "id": "js-45",
+      "label": "Optional chaining: углубление",
+      "description": "syntax",
+      "detail": "операторы ?. и ??",
+      "text": "?. для вложенного API JSON и ?? для nullish defaults vs ловушки ||.\nОпциональный вызов obj?.method?.() и array?.[0].\nБаговые примеры с && chains и исправления.\nShort-circuiting словами.\nСтиль: не цепочка из 5 уровней — нормализуй данные."
+    },
+    {
+      "id": "js-46",
+      "label": "Generators и yield-последовательности",
+      "description": "iterators",
+      "detail": "осторожность с бесконечными",
+      "text": "function* и yield: простой ID generator или набросок paginated fetch iterator.\nКак for...of потребляет generators.\nasync generators — name-drop для streams.\nНе забыть завершение через .next().\nУчебный пример ~15 строк."
+    },
+    {
+      "id": "js-47",
+      "label": "Паттерны Array.from",
+      "description": "arrays",
+      "detail": "второй аргумент map",
+      "text": "Array.from на array-like (arguments, NodeList) и map индексов за один проход.\nHelper range(1, n) для новичков.\n[...nodeList], когда map не нужен.\nС Object.keys для перечисления records.\nПодводный камень: поведение sparse arrays."
+    },
+    {
+      "id": "js-48",
+      "label": "JSON.parse reviver для дат",
+      "description": "serialization",
+      "detail": "восстановление ISO-строк",
+      "text": "JSON.parse reviver превращает date strings обратно в Date.\nСимметрия toJSON на Date при stringify.\nПредупреждение про timezone.\nБезопасный parse с try/catch и указатель на Zod.\nПример round-trip объекта."
+    },
+    {
+      "id": "js-49",
+      "label": "queueMicrotask: головоломка порядка",
+      "description": "runtime",
+      "detail": "очередь microtask",
+      "text": "queueMicrotask vs Promise.then vs setTimeout — короткая головоломка в консоли.\nСвязь с mutation observer и render timing на высоком уровне.\nКогда microtasks для consistency fixes.\nНе голодать macrotasks.\nРазбор решения после головоломки."
+    },
+    {
+      "id": "js-50",
+      "label": "Shadow DOM: инкапсуляция",
+      "description": "Web Components",
+      "detail": "attachShadow open",
+      "text": "Расширь custom element с attachShadow({ mode: 'open' }) и внутренними стилями.\nПредотвращение утечки стилей и тизер ::part/::slotted.\nslot для light DOM projection.\nopen vs closed shadow roots для тестов.\nОдно ограничение для global design systems."
     }
   ]
 }

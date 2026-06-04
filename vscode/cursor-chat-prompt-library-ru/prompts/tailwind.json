@@ -141,6 +141,216 @@
       "description": "библиотеки",
       "detail": "conditional classNames",
       "text": "Представь tailwind-merge для разрешения конфликтов p-4 vs p-2 в составных компонентах.\nПокажи pairing с clsx.\nОбъясни паттерн boolean prop driven style merges.\nЛёгко упомяni SSR compatibility.\nДай крошечный набросок React snippet."
+    },
+    {
+      "id": "tw-21",
+      "label": "Паттерны центрирования Flexbox",
+      "description": "layout",
+      "detail": "items justify center",
+      "text": "flex items-center justify-center min-h-screen для hero.\nMain vs cross axis с flex-col.\ngap для групп кнопок vs margin hacks.\nОшибка: забыть min-h у parent.\nТри сниппета: center card, sticky footer, navbar."
+    },
+    {
+      "id": "tw-22",
+      "label": "CSS grid template areas",
+      "description": "layout",
+      "detail": "grid-areas dashboard",
+      "text": "Dashboard с grid-template-areas через arbitrary или theme extension.\nResponsive collapse в одну колонку на sm.\nGrid areas vs nested flex.\ngap и grid-cols вместе.\nHTML-имена, совпадающие с areas."
+    },
+    {
+      "id": "tw-23",
+      "label": "aspect-ratio для video cards",
+      "description": "layout",
+      "detail": "aspect-video",
+      "text": "aspect-video на embed 16:9.\nobject-cover на thumbnails.\naspect-square для avatars.\nПредотвращение layout shift.\nСетка карточек с одинаковой высотой."
+    },
+    {
+      "id": "tw-24",
+      "label": "scroll-mt для anchor offset",
+      "description": "navigation",
+      "detail": "fixed header jump",
+      "text": "Hash-ссылки не прячутся под sticky header: scroll-mt-24 на sections.\nАльтернатива scroll-padding-top на html.\nТест #features.\nSkip links accessibility.\nВыбор из spacing scale."
+    },
+    {
+      "id": "tw-25",
+      "label": "backdrop-blur overlays",
+      "description": "effects",
+      "detail": "bg-white/30 blur",
+      "text": "Modal overlay: bg-black/40 backdrop-blur-sm.\nPerformance на слабых mobile.\npointer-events.\nSolid vs glass aesthetic.\nDark mode variants."
+    },
+    {
+      "id": "tw-26",
+      "label": "Gradient text для headline",
+      "description": "typography",
+      "detail": "bg-clip-text transparent",
+      "text": "h1: bg-gradient-to-r bg-clip-text text-transparent.\nFallback color для старых браузеров.\nКонтраст accessibility для body text.\nAnimated gradient — homework.\nЧитаемая строка классов."
+    },
+    {
+      "id": "tw-27",
+      "label": "Утилиты animate pulse spin",
+      "description": "motion",
+      "detail": "animate-spin loader",
+      "text": "animate-spin на SVG loader, animate-pulse на skeleton.\nmotion-reduce:animate-none.\nКастом keyframes в theme.extend кратко.\nБесконечные анимации отвлекают.\nLoading state на кнопке словами."
+    },
+    {
+      "id": "tw-28",
+      "label": "transition-colors duration",
+      "description": "motion",
+      "detail": "ease-out hover",
+      "text": "transition-colors duration-200 на кнопках и ссылках.\ntransition-property utilities.\ngroup-hover на card.\nЕдиные timing tokens в design system.\nprefers-reduced-motion."
+    },
+    {
+      "id": "tw-29",
+      "label": "group-hover card lift",
+      "description": "interactive",
+      "detail": "паттерн group/name",
+      "text": "Кликабельная card: group на wrapper, group-hover:shadow-lg внутри.\ngroup/name для вложенных groups.\ngroup-hover:scale-105 на image опционально.\nTransform и layout.\nFocus styles для accessibility."
+    },
+    {
+      "id": "tw-30",
+      "label": "peer invalid form styles",
+      "description": "forms",
+      "detail": "peer-checked peer-invalid",
+      "text": "Стили label при invalid input через peer и peer-invalid:.\nCheckbox peer-checked:bg-brand.\npeer только у following siblings.\n@tailwindcss/forms plugin.\nРазмещение error text доступно."
+    },
+    {
+      "id": "tw-31",
+      "label": "Селектор has для parent styling",
+      "description": "selectors",
+      "detail": "has-[:checked]",
+      "text": "has-[:checked] подсвечивает row с checked checkbox.\nПоддержка браузеров и progressive enhancement.\nСравни с JS class toggling.\nhas-[img] для card layout.\nТребование Tailwind v3.4+."
+    },
+    {
+      "id": "tw-32",
+      "label": "data attributes для variant UI",
+      "description": "state",
+      "detail": "data-state open",
+      "text": "data-[state=open]:rotate-180 для chevron accordion.\nПаттерн Radix/shadcn ментально.\ndata-active на tabs.\nСинхрон с aria-expanded.\nСемантичная разметка под капотом."
+    },
+    {
+      "id": "tw-33",
+      "label": "Стратегия toggle dark mode",
+      "description": "theming",
+      "detail": "class dark:",
+      "text": "class strategy на html, dark: variants, минимальный toggle + localStorage.\nmedia strategy prefers-color-scheme only.\nИзбегание flash wrong theme.\ndark:bg-slate-900 tokens.\nOutline init script."
+    },
+    {
+      "id": "tw-34",
+      "label": "@apply component classes",
+      "description": "architecture",
+      "detail": "слой btn-primary",
+      "text": "@layer components { .btn-primary { @apply ... } }.\nДебаты @apply vs inline utilities.\nОдин card component class.\nПорядок @layer.\nСначала design tokens в theme.extend."
+    },
+    {
+      "id": "tw-35",
+      "label": "Кастомные шрифты в theme",
+      "description": "theme",
+      "detail": "fontFamily extend",
+      "text": "theme.fontFamily.sans с CSS variable от next/font или @font-face.\nfont-sans на body.\nfont-display swap в @font-face.\nFallback stack.\nПроверка computed styles в devtools."
+    },
+    {
+      "id": "tw-36",
+      "label": "Расширение spacing scale",
+      "description": "theme",
+      "detail": "spacing 18 22",
+      "text": "spacing.18 и spacing.22 в theme.extend для marketing layouts.\nrem base и consistency.\np-18.\nКогда arbitrary p-[4.5rem] уместен.\nСвязь spacing с gap."
+    },
+    {
+      "id": "tw-37",
+      "label": "max-w containers и prose",
+      "description": "layout",
+      "detail": "max-w-3xl mx-auto",
+      "text": "Статья: max-w-3xl mx-auto px-4.\nmax-w-screen-xl для dashboards.\nprose для markdown.\ncontainer vs max-w.\nОбёртка blog page."
+    },
+    {
+      "id": "tw-38",
+      "label": "prose dark invert",
+      "description": "typography",
+      "detail": "prose-invert blog",
+      "text": "Markdown blog: prose и dark:prose-invert.\nНастройка prose-headings и prose-a в theme.\n@tailwindcss/typography install.\nКонтраст ссылок.\nПример markdown HTML."
+    },
+    {
+      "id": "tw-39",
+      "label": "forms plugin focus ring",
+      "description": "forms",
+      "detail": "@tailwindcss/forms",
+      "text": "forms plugin: global form reset benefits.\nЦвет focus ring под brand.\ninput, select, checkbox единообразно.\nСравни с raw unstyled inputs.\nСтратегия class vs base."
+    },
+    {
+      "id": "tw-40",
+      "label": "Утилиты divide для tables",
+      "description": "tables",
+      "detail": "divide-y divide-gray-200",
+      "text": "Строки table: divide-y на tbody stack или flex-col list.\nBorder на каждой строке vs divide.\ndivide-x для колонок.\ndark:divide-slate-700.\nНапоминание о семантике table."
+    },
+    {
+      "id": "tw-41",
+      "label": "gap vs space utilities",
+      "description": "layout",
+      "detail": "gap в flex/grid",
+      "text": "Почему gap-4 лучше space-x-4 во flex/grid.\nspace-y только когда gap недоступен.\nWrapped flex и gap.\nМиграция с Bootstrap margins.\nКороткое правило-mnemonic."
+    },
+    {
+      "id": "tw-42",
+      "label": "object-fit cover contain",
+      "description": "images",
+      "detail": "object-cover rounded",
+      "text": "Avatar circle: object-cover w-full h-full.\nobject-contain для logos.\naspect-square фиксированный размер.\nobject-center.\nЧеклист против искажений."
+    },
+    {
+      "id": "tw-43",
+      "label": "sr-only accessible text",
+      "description": "a11y",
+      "detail": "только screen reader",
+      "text": "sr-only для icon buttons с видимым SVG.\nfocus:not-sr-only skip link.\nОтличие от hidden display none.\nАудит navbar.\naria-label vs sr-only."
+    },
+    {
+      "id": "tw-44",
+      "label": "Уважение motion-reduce",
+      "description": "a11y",
+      "detail": "motion-reduce:transition-none",
+      "text": "motion-reduce:transition-none и motion-reduce:animate-none.\nЭмуляция в devtools.\nПричины legal/ethical кратко.\nprefers-reduced-motion media query.\nHero animation до/после."
+    },
+    {
+      "id": "tw-45",
+      "label": "Рекап @tailwindcss/forms",
+      "description": "plugins",
+      "detail": "стили input radio",
+      "text": "Включение forms plugin в tailwind.config, class strategy.\nЕдиный стиль file input и checkbox.\nИстория ugly browser defaults.\nС peer invalid states.\nКоманда npm install."
+    },
+    {
+      "id": "tw-46",
+      "label": "Tailwind v4 — краткий обзор",
+      "description": "tooling",
+      "detail": "CSS-first config",
+      "text": "Обзор Tailwind v4 CSS-first @import \"tailwindcss\" vs v3 JS config.\nПуть migration docs без полной миграции.\n@theme inline variables.\nКогда оставаться на v3 нормально.\nОдно breaking change по имени."
+    },
+    {
+      "id": "tw-47",
+      "label": "Логические ms me для RTL",
+      "description": "i18n",
+      "detail": "margin-inline-start",
+      "text": "ms-4 me-2 вместо ml/mr для RTL-safe spacing.\nLogical properties mapping.\nОсторожность с flex row-reverse.\nТест dir=rtl в Storybook.\nLogical utilities с v3.3+."
+    },
+    {
+      "id": "tw-48",
+      "label": "Print utilities для раздаточных",
+      "description": "print",
+      "detail": "print:hidden nav",
+      "text": "print:hidden на nav, print:block на article.\nprint:text-black, белые фоны.\npage break avoid на headings опционально.\nPrint preview checklist.\n@margins в @page комментарий."
+    },
+    {
+      "id": "tw-49",
+      "label": "Arbitrary variants group",
+      "description": "advanced",
+      "detail": "group-[.is-active]:",
+      "text": "group-[.sidebar-open]:block для state classes на parent.\nДисциплина bracket syntax.\nКогда вынести в component class.\nНечитаемые class strings.\nАльтернатива @apply."
+    },
+    {
+      "id": "tw-50",
+      "label": "Шкала shadow elevation",
+      "description": "effects",
+      "detail": "shadow-sm to xl",
+      "text": "shadow-sm на cards, shadow-lg на modals, hover:shadow-xl.\nColored shadows shadow-brand/20 опционально.\nring для focus vs shadow для depth.\nDark mode tweak shadow.\nТрёхуровневая система elevation."
     }
   ]
 }

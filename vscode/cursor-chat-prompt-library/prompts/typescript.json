@@ -141,6 +141,216 @@
       "description": "tooling",
       "detail": "package exports",
       "text": "At a beginner level, explain why new projects pick \"moduleResolution\": \"bundler\" under Vite.\nContrast with node16 for libraries publishing to npm.\nLink to the package.json \"exports\" field confusion.\nList two symptoms when resolution is wrong (cannot find module).\nGive a minimal tsconfig diff checklist."
+    },
+    {
+      "id": "ts-21",
+      "label": "Pick Omit Partial utilities",
+      "description": "utility types",
+      "detail": "shape API types",
+      "text": "Given a User type, derive PublicUser with Omit<password> and UpdateUser with Partial.\nExplain when Pick is clearer than Omit.\nShow a form DTO example without any keyword.\nRelate to database columns vs API exposure.\nEnd with rule: derive types, don't duplicate fields manually."
+    },
+    {
+      "id": "ts-22",
+      "label": "Extract and Exclude unions",
+      "description": "unions",
+      "detail": "filter string unions",
+      "text": "Start with type Status = 'idle' | 'loading' | 'success' | 'error'.\nUse Extract for success states and Exclude for non-error states in examples.\nContrast with manual union editing.\nShow mistake when union order doesn't matter but typos do.\nGive a route permission union exercise."
+    },
+    {
+      "id": "ts-23",
+      "label": "infer keyword in helpers",
+      "description": "generics",
+      "detail": "unwrap return types",
+      "text": "Write a generic function identity<T>(x: T) and type helper Unwrap<T> using infer in conditional types.\nExplain reading infer from right to left slowly.\nShow infer with array element extraction example.\nWarn beginners not to overuse before understanding generics basics.\nKeep total example under 25 lines."
+    },
+    {
+      "id": "ts-24",
+      "label": "keyof dynamic safe access",
+      "description": "objects",
+      "detail": "typed property names",
+      "text": "Demonstrate keyof User producing union of keys for a getProperty(obj, key) helper.\nExplain indexed access User['email'].\nShow failure when key is plain string vs keyof.\nRelate to Object.keys typing caveat and Object.entries patterns.\nAdd checklist for refactoring renamed fields."
+    },
+    {
+      "id": "ts-25",
+      "label": "Parameters and Awaited utilities",
+      "description": "utilities",
+      "detail": "typeof fn params",
+      "text": "Type a wrapper logCall(fn, ...args) using Parameters<typeof fn>.\nUse Awaited on Promise-returning API types.\nShow extracting handler types from Express-style functions verbally.\nExplain typeof on values vs types namespace.\nProvide cheatsheet comment block for juniors."
+    },
+    {
+      "id": "ts-26",
+      "label": "enum vs string union tradeoffs",
+      "description": "modeling",
+      "detail": "erasable enums",
+      "text": "Compare const enum/string union vs TypeScript enum for status codes.\nExplain runtime enum footprint and reverse mapping surprise.\nRecommend union + as const for many modern codebases.\nShow switch exhaustiveness with union.\nNote const enum inlining caveat briefly."
+    },
+    {
+      "id": "ts-27",
+      "label": "strictNullChecks onboarding",
+      "description": "compiler",
+      "detail": "undefined null guards",
+      "text": "Explain errors when strictNullChecks is on: possibly undefined.\nFix with narrowing if (user), optional chaining, and nullish coalescing.\nShow definite assignment assertion only as discouraged escape hatch.\nRelate to React useState initial values.\nGive before/after snippet toggling the flag mentally."
+    },
+    {
+      "id": "ts-28",
+      "label": "path aliases in tsconfig",
+      "description": "tooling",
+      "detail": "@/* imports",
+      "text": "Configure paths and baseUrl so @/components/Button resolves.\nExplain bundler/Vite alias must mirror tsconfig.\nShow import errors when paths mismatch.\nMention monorepo paths teaser.\nList verification steps in VS Code go-to-definition."
+    },
+    {
+      "id": "ts-29",
+      "label": "import type only imports",
+      "description": "modules",
+      "detail": "verbatimModuleSyntax",
+      "text": "Teach import type { User } and why it erases cleanly.\nExplain type-only exports and isolatedModules friendliness.\nShow mistaken value import of type-only symbol error.\nRelate to bundler tree-shaking benefits.\nAdd eslint rule @typescript-eslint/consistent-type-imports mention."
+    },
+    {
+      "id": "ts-30",
+      "label": "Generic constraints extends",
+      "description": "generics",
+      "detail": "T extends HasId",
+      "text": "Write function mergeById<T extends { id: string }>(items: T[], patch: Partial<T>).\nExplain extends keyword as constraint not inheritance here.\nShow multiple constraints with intersection.\nContrast unconstrained T vs any.\nProvide failure example passing number id."
+    },
+    {
+      "id": "ts-31",
+      "label": "Function overloads for APIs",
+      "description": "functions",
+      "detail": "call signatures",
+      "text": "Create overloads for createElement(tag) returning different types for 'div' vs 'canvas'.\nExplain implementation signature must be compatible.\nShow when union + conditional types replace overloads.\nWarn about overload ordering.\nKeep example small for learners."
+    },
+    {
+      "id": "ts-32",
+      "label": "never exhaustiveness checking",
+      "description": "control flow",
+      "detail": "assertNever helper",
+      "text": "Model Shape = Circle | Square and switch with default assertNever(x: never).\nExplain how adding Triangle breaks compile until handled.\nRelate to Redux action unions.\nShow returning never in throw helpers.\nGive team policy sentence for switches on unions."
+    },
+    {
+      "id": "ts-33",
+      "label": "User-defined type guards",
+      "description": "narrowing",
+      "detail": "is ApiError",
+      "text": "Write function isApiError(e: unknown): e is ApiError using property checks.\nUse in catch blocks safely.\nContrast with Zod parse throwing.\nExplain predicates must be boolean returning.\nInclude Array.isArray as built-in guard example."
+    },
+    {
+      "id": "ts-34",
+      "label": "Zod schema infer types",
+      "description": "validation",
+      "detail": "z.infer<typeof Schema>",
+      "text": "Define Zod object schema for signup form and export type Signup = z.infer<typeof SignupSchema>.\nParse unknown JSON at boundary with safeParse.\nMap Zod issues to field errors pattern verbally.\nExplain single source of truth benefit.\nShow npm install zod command."
+    },
+    {
+      "id": "ts-35",
+      "label": "Monorepo project references",
+      "description": "workspace",
+      "detail": "composite true",
+      "text": "Sketch pnpm workspace with packages/ui and apps/web using TypeScript project references.\nExplain solution-style builds and --build flag mentally.\nShow path mapping vs references tradeoff.\nWarn about circular reference pain.\nList symptoms when dist types missing."
+    },
+    {
+      "id": "ts-36",
+      "label": "Typing environment variables",
+      "description": "config",
+      "detail": "ImportMetaEnv or Node",
+      "text": "Type Vite import.meta.env or Node process.env with a declared interface.\nValidate required vars at startup with Zod optional cross-link.\nExplain why env vars are strings and need coercion.\nShow .env.example without secrets.\nAdd checklist for CI vs local missing vars."
+    },
+    {
+      "id": "ts-37",
+      "label": "satisfies for API responses",
+      "description": "types",
+      "detail": "literal preservation",
+      "text": "Parse mock API config object with satisfies Config without widening string unions.\nContrast bad as Config assertion hiding typos.\nShow autocomplete wins in editor.\nPair with readonly where appropriate.\nGive mistaken extra key example caught by satisfies."
+    },
+    {
+      "id": "ts-38",
+      "label": "Dynamic import type-only modules",
+      "description": "modules",
+      "detail": "import() typing",
+      "text": "Type await import('./heavy') module shape using ReturnType patterns or satisfies on module namespace.\nExplain typeof import('pkg') type queries.\nHandle default vs named export typing.\nRelate to code splitting in Vite.\nNote SSR dynamic import constraints lightly."
+    },
+    {
+      "id": "ts-39",
+      "label": "typescript-eslint flat setup",
+      "description": "linting",
+      "detail": "recommended rules",
+      "text": "Wire @typescript-eslint in eslint flat config with recommended-type-checked or starter without type-aware if simpler.\nExplain parserOptions project for type-aware rules.\nShow one rule no-floating-promises motivation.\nIntegrate npm run lint script.\nMention gradual strictness adoption."
+    },
+    {
+      "id": "ts-40",
+      "label": "Readonly deep immutability",
+      "description": "immutability",
+      "detail": "Readonly<T> shallow",
+      "text": "Apply Readonly to function parameters and explain shallow freeze behavior.\nIntroduce ReadonlyArray and const assertion alternative.\nShow bug when mutating nested object still allowed.\nMention deepReadonly community patterns without implementing.\nGive React props immutability habit sentence."
+    },
+    {
+      "id": "ts-41",
+      "label": "Required and Pick combo DTO",
+      "description": "utilities",
+      "detail": "make fields mandatory",
+      "text": "From Partial<CreateUser>, build ConfirmUser requiring email and password using Required<Pick<...>>.\nExplain layering utilities stepwise.\nShow alternative interface extends pattern.\nWhen explicit interface is clearer for juniors.\nProvide final type alias readable name."
+    },
+    {
+      "id": "ts-42",
+      "label": "NonNullable filter types",
+      "description": "utilities",
+      "detail": "remove null undefined",
+      "text": "Given (User | null)[], type filtered array with NonNullable.\nImplement filterBoolean helper typing.\nRelate to Array.filter predicate narrowing limitations.\nShow GraphQL maybe types analogy briefly.\nEnd with runtime filter still required reminder."
+    },
+    {
+      "id": "ts-43",
+      "label": "Record vs Map types",
+      "description": "modeling",
+      "detail": "string keys dictionary",
+      "text": "Compare Record<Role, number> vs Map<Role, number> at type and runtime levels.\nExplain Record keys exhaustiveness for unions.\nShow index signature alternative pitfalls.\nWhen to use Map in TS + JS together.\nGive permissions matrix example."
+    },
+    {
+      "id": "ts-44",
+      "label": "Template literal routes advanced",
+      "description": "types",
+      "detail": "param segments",
+      "text": "Model routes like /users/:id/posts/:postId using template literals and infer segment params.\nCombine with union of methods GET | POST.\nShow helper parseRoute(path) typed result sketch.\nHonest note about regex limits.\nKeep playground under 30 lines."
+    },
+    {
+      "id": "ts-45",
+      "label": "const type parameters",
+      "description": "generics",
+      "detail": "literal preservation",
+      "text": "Explain const type parameter in generic function collecting tuple literals.\nContrast without const widening to string.\nShow use in defineRoutes or defineActions pattern.\nRelate to as const on arguments.\nMention TS 5.0+ requirement."
+    },
+    {
+      "id": "ts-46",
+      "label": "satisfies plus as const",
+      "description": "patterns",
+      "detail": "frozen config",
+      "text": "Combine as const on array and satisfies on object for routes table.\nExplain order and widening interactions simply.\nDerive union RoutePath from typeof routes.\nShow mistake mixing satisfies and as const wrong order.\nGive export pattern for library packages."
+    },
+    {
+      "id": "ts-47",
+      "label": "Declaration files d.ts",
+      "description": "modules",
+      "detail": "ambient declare",
+      "text": "Create shim.d.ts for a legacy global library and for .svg module imports.\nExplain declare module '*.css' pattern for Vite.\nShow triple-slash reference avoidance in modern setups.\nWhen to publish types in package.json types field.\nList one mistake: any everywhere in shims."
+    },
+    {
+      "id": "ts-48",
+      "label": "satisfies React props helpers",
+      "description": "React",
+      "detail": "variant maps",
+      "text": "Define const variants = { primary: '...', ghost: '...' } satisfies Record<Variant, string> for a Button.\nType props variant: keyof typeof variants.\nExplain connection to cva libraries lightly.\nShow prop autocomplete win.\nWarn satisfies does not validate runtime class strings in CSS modules."
+    },
+    {
+      "id": "ts-49",
+      "label": "ts-node vs tsx runner",
+      "description": "tooling",
+      "detail": "execute typescript",
+      "text": "Compare ts-node, tsx, and vitest for running scripts.\nRecommend tsx for modern ESM scripts mentally.\nExplain type stripping vs on-the-fly compile.\nShow package.json \"type\": \"module\" interaction.\nGive commands to run a hello.ts script."
+    },
+    {
+      "id": "ts-50",
+      "label": "API client generics",
+      "description": "patterns",
+      "detail": "get<T> wrapper",
+      "text": "Sketch typed api.get<User>('/users/1') returning Promise<User> with runtime validation optional Zod layer.\nShow mapping HTTP status to Result union.\nExplain generic defaults and constraints on T.\nHandle error body typing.\nEnd with folder structure src/api/client.ts suggestion."
     }
   ]
 }

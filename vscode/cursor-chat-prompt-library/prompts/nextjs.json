@@ -141,6 +141,216 @@
       "description": "config",
       "detail": "NEXT_PUBLIC prefix",
       "text": "Clarify which env vars are exposed to the browser via NEXT_PUBLIC_.\nShow rotation and preview deployment env matrix verbally.\nExplain why secrets never belong in client bundles.\nDescribe runtime env with edge constraints briefly.\nGive a checklist for debugging undefined env at build vs request time."
+    },
+    {
+      "id": "nextjs-21",
+      "label": "Route handlers REST CRUD",
+      "description": "App Router",
+      "detail": "GET POST route.ts",
+      "text": "Create app/api/items/route.ts supporting GET list and POST create with JSON body.\nValidate input and return proper status codes.\nExplain Request/Response Web APIs.\nShow testing with curl or Thunder Client.\nList folder colocation conventions."
+    },
+    {
+      "id": "nextjs-22",
+      "label": "Dynamic segment [id]",
+      "description": "routing",
+      "detail": "params Promise",
+      "text": "Build app/items/[id]/page.tsx reading id param in server component.\nExplain params typing in Next 15 async params pattern if applicable.\nShow notFound when missing record.\nLink to generateMetadata optional.\nProvide sample DB fetch pseudo."
+    },
+    {
+      "id": "nextjs-23",
+      "label": "Catch-all [...slug]",
+      "description": "routing",
+      "detail": "optional segments",
+      "text": "Teach [...slug] matching docs paths and optional [[...slug]] difference.\nPrint segments array for debugging.\nShow breadcrumb generation idea.\nWarn about overly broad matchers.\nGive two example URLs and matched params."
+    },
+    {
+      "id": "nextjs-24",
+      "label": "Route groups (marketing)",
+      "description": "routing",
+      "detail": "(group) folders",
+      "text": "Organize (marketing)/about and (shop)/cart without affecting URL.\nExplain layout sharing per group.\nShow multiple root layouts caveat.\nContrast with path prefixes.\nDraw ASCII folder tree in comment."
+    },
+    {
+      "id": "nextjs-25",
+      "label": "Nested layouts dashboard",
+      "description": "layouts",
+      "detail": "layout.tsx nesting",
+      "text": "Create app/dashboard/layout.tsx sidebar wrapping child pages.\nExplain layout state persistence vs template.\nShow loading.tsx sibling usage.\nMention shared providers scoped to segment.\nList files for dashboard/settings example."
+    },
+    {
+      "id": "nextjs-26",
+      "label": "template.tsx vs layout",
+      "description": "routing",
+      "detail": "remount on navigate",
+      "text": "Explain template remounting children animations on navigation while layout persists.\nGive use case: enter transition on page change.\nShow when layout is enough.\nCaution beginners about extra remount costs.\nMinimal example structure only."
+    },
+    {
+      "id": "nextjs-27",
+      "label": "Metadata Open Graph tags",
+      "description": "SEO",
+      "detail": "export const metadata",
+      "text": "Define metadata export with title, description, openGraph images on a blog page.\nExplain static vs generateMetadata dynamic.\nShow Twitter card fields briefly.\nValidate with social debuggers verbally.\nRelate to canonical URL field."
+    },
+    {
+      "id": "nextjs-28",
+      "label": "sitemap.ts generation",
+      "description": "SEO",
+      "detail": "MetadataRoute.Sitemap",
+      "text": "Implement app/sitemap.ts returning urls from mock posts array.\nExplain lastModified and priority fields lightly.\nShow submitting to Search Console step.\nHandle dynamic routes inclusion.\nNote app router colocation path."
+    },
+    {
+      "id": "nextjs-29",
+      "label": "robots.ts crawl rules",
+      "description": "SEO",
+      "detail": "allow disallow",
+      "text": "Create app/robots.ts allowing / and disallowing /admin for crawlers.\nExplain difference vs robots.txt static file.\nShow sitemap property linking.\nMention staging noindex strategies verbally.\nGive test fetch /robots.txt instruction."
+    },
+    {
+      "id": "nextjs-30",
+      "label": "next/font local and google",
+      "description": "fonts",
+      "detail": "layout.tsx apply",
+      "text": "Apply next/font/google Inter with CSS variable on body className.\nExplain self-hosting benefit vs link tag.\nShow variable font weight options.\nWarn about too many font weights bundle.\nProvide layout snippet only."
+    },
+    {
+      "id": "nextjs-31",
+      "label": "Link prefetch behavior",
+      "description": "navigation",
+      "detail": "prefetch prop",
+      "text": "Explain default Link prefetch in viewport for static routes.\nShow prefetch={false} for heavy rare pages.\nRelate to loading.tsx interaction.\nContrast with router.prefetch manual.\nList devtools Network observation tip."
+    },
+    {
+      "id": "nextjs-32",
+      "label": "useRouter client navigation",
+      "description": "client",
+      "detail": "push replace back",
+      "text": "Build a client component calling useRouter().push after form success.\nExplain replace vs push history stack.\nShow shallow routing mention as legacy note.\nPair with usePathname for active nav.\nMark file with use client directive."
+    },
+    {
+      "id": "nextjs-33",
+      "label": "useSearchParams filters",
+      "description": "client",
+      "detail": "URL query state",
+      "text": "Sync filter UI to ?q= and ?sort= using useSearchParams and router.replace.\nExplain suspense boundary requirement in App Router.\nDebounce updates optional verbal.\nShareable URL benefit for users.\nHandle missing param defaults."
+    },
+    {
+      "id": "nextjs-34",
+      "label": "cookies() on server",
+      "description": "server",
+      "detail": "set get delete",
+      "text": "Read theme cookie in Server Component and set cookie in Server Action or route handler.\nExplain httpOnly secure sameSite flags simply.\nShow cookies().get('session') pattern.\nWarn storing JWT in non-httpOnly cookie risk.\nMention size limits."
+    },
+    {
+      "id": "nextjs-35",
+      "label": "headers() on server",
+      "description": "server",
+      "detail": "request headers",
+      "text": "Read user-agent or authorization header in server component with headers() helper.\nExplain dynamic rendering implication when using headers().\nShow forwarding header in fetch to upstream cautiously.\nRelate to middleware overlap.\nKeep example minimal."
+    },
+    {
+      "id": "nextjs-36",
+      "label": "draftMode preview CMS",
+      "description": "CMS",
+      "detail": "preview secret",
+      "text": "Outline enabling draftMode after secret preview route for unpublished blog posts.\nExplain cookie flag and fetch cache bypass mentally.\nShow exit draft route idea.\nSecurity: protect preview URL.\nNo vendor CMS lock-in—flow only."
+    },
+    {
+      "id": "nextjs-37",
+      "label": "i18n routing sketch",
+      "description": "i18n",
+      "detail": "[lang] segment",
+      "text": "Sketch app/[lang]/page structure with middleware locale detection.\nExplain dictionaries loading per locale file.\nShow Link hreflang note briefly.\nRecommend library next-intl as optional.\nKeep to architecture diagram in words."
+    },
+    {
+      "id": "nextjs-38",
+      "label": "Auth session outline",
+      "description": "auth",
+      "detail": "cookie session",
+      "text": "Describe session cookie auth flow: login route sets httpOnly cookie, server reads session, middleware guard.\nCompare JWT in header vs session for beginners.\nList where to validate (server actions, route handlers).\nMention Auth.js name-drop without full setup unless asked.\nSecurity checklist bullets."
+    },
+    {
+      "id": "nextjs-39",
+      "label": "Prisma scaffold Next",
+      "description": "database",
+      "detail": "schema migrate dev",
+      "text": "Steps to add Prisma to Next: schema model User, migrate dev, singleton client in lib/prisma.ts.\nWarn about hot reload multiple instances in dev.\nShow basic findMany in server component.\nExplain .env DATABASE_URL.\nCommands npx prisma init etc."
+    },
+    {
+      "id": "nextjs-40",
+      "label": "Vercel deploy checklist",
+      "description": "deploy",
+      "detail": "env build settings",
+      "text": "List checklist: push repo, set env vars, set framework preset, run build, check ISR regions.\nExplain preview deployments per PR.\nShow vercel.json redirects optional.\nCommon failure: missing env at build time.\nPost-deploy smoke tests."
+    },
+    {
+      "id": "nextjs-41",
+      "label": "Edge runtime limits",
+      "description": "edge",
+      "detail": "nodejs API restrictions",
+      "text": "Explain Edge vs Node runtime for route handlers: no fs, limited npm packages.\nWhen to choose edge for latency globally.\nShow export const runtime = 'edge' snippet.\nCaution about Prisma on edge historically.\nLink mental model to middleware runtime."
+    },
+    {
+      "id": "nextjs-42",
+      "label": "instrumentation.ts startup",
+      "description": "observability",
+      "detail": "register once",
+      "text": "Sketch instrumentation.ts registering OpenTelemetry or simple console bootstrap on server start.\nExplain runs once per cold start on Node runtime.\nRelate to logging global errors.\nMention experimental status awareness.\nPoint to docs sections not full OTel course."
+    },
+    {
+      "id": "nextjs-43",
+      "label": "OG image generation",
+      "description": "SEO",
+      "detail": "ImageResponse opengraph",
+      "text": "Create opengraph-image.tsx using ImageResponse with title text dynamic from params.\nExplain size 1200x630 convention.\nShow caching behavior high level.\nTest URL /opengraph-image in browser.\nFallback static png alternative."
+    },
+    {
+      "id": "nextjs-44",
+      "label": "Intercepting routes modal",
+      "description": "routing",
+      "detail": "(.)photo parallel",
+      "text": "Explain @modal parallel route plus (.) intercepting showing photo overlay while preserving background page.\nDescribe soft navigation UX benefit.\nNote complexity for small apps.\nDraw folder structure with @modal slot.\nWhen to skip pattern as beginner."
+    },
+    {
+      "id": "nextjs-45",
+      "label": "fetch cache options",
+      "description": "data",
+      "detail": "cache no-store revalidate",
+      "text": "Demonstrate fetch(url, { cache: 'no-store' }) vs next: { revalidate: 60 } in server components.\nExplain static page automatic caching defaults changing over versions honestly.\nShow tag revalidation cross-link briefly.\nDebug cache with logging fetch URLs.\nDecision table in bullets."
+    },
+    {
+      "id": "nextjs-46",
+      "label": "Client boundary rules",
+      "description": "architecture",
+      "detail": "use client placement",
+      "text": "Teach pushing \"use client\" leaf components while keeping page server by default.\nExplain props serialization limits (functions, dates).\nShow passing children from server to client.\nWarn about importing server-only modules into client.\nGive refactored tree example names only."
+    },
+    {
+      "id": "nextjs-47",
+      "label": "next/script third parties",
+      "description": "performance",
+      "detail": "afterInteractive strategy",
+      "text": "Load analytics with next/script strategy afterInteractive.\nCompare beforeInteractive and lazyOnload.\nExplain CSP nonce pairing verbally.\nWarn about duplicate script injection.\nShow minimal _app or layout placement in app router."
+    },
+    {
+      "id": "nextjs-48",
+      "label": "Bundle analysis workflow",
+      "description": "perf",
+      "detail": "@next/bundle-analyzer",
+      "text": "Enable bundle analyzer in next.config for one build report.\nInterpret largest chunks for beginners.\nSuggest dynamic import fixes.\nRelate to server vs client component split.\nCommands to run ANALYZE=true build."
+    },
+    {
+      "id": "nextjs-49",
+      "label": "Pages to App migration map",
+      "description": "migration",
+      "detail": "getServerSideProps equivalents",
+      "text": "Map pages/index getServerSideProps to app/page server fetch.\nMap pages/api to route handlers.\nExplain _app providers move to root layout.\nList incremental migration strategy.\nPoint out getLayout pattern replacement with nested layouts."
+    },
+    {
+      "id": "nextjs-50",
+      "label": "revalidatePath after mutation",
+      "description": "cache",
+      "detail": "refresh segment",
+      "text": "Call revalidatePath('/dashboard') after Server Action updating data.\nContrast with revalidateTag granularity from batch 2 mentally.\nExplain what users see on next navigation.\nShow pairing with redirect after form submit.\nDebug when path pattern wrong for nested routes."
     }
   ]
 }

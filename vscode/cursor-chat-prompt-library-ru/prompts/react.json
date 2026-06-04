@@ -141,6 +141,216 @@
       "description": "concurrency",
       "detail": "введение useDeferredValue",
       "text": "Введи useDeferredValue: отзывчивый input при тяжёлом обновлении отфильтрованного списка.\nСравни с debounce в userland.\nTrade-offs воспринимаемой задержки простым языком.\nИгрушечный фильтр списка без внешних библиотек.\nПрофилирование в React DevTools для проверки."
+    },
+    {
+      "id": "react-21",
+      "label": "useCallback: стабильные handlers",
+      "description": "hooks",
+      "detail": "дисциплина dependency array",
+      "text": "Когда useCallback помогает memo дочерним vs когда шум.\nРефакторинг SearchPage с onSelect в memoized ListItem.\nStale closure при пропущенных deps.\nReact Compiler в будущем без углубления.\nЭвристика: сначала measure, потом memo callbacks."
+    },
+    {
+      "id": "react-22",
+      "label": "useMemo для дорогих derived data",
+      "description": "hooks",
+      "detail": "filter sort cache",
+      "text": "Memoize фильтрации списка 5k элементов с useMemo и верными deps.\nСтоимость пересчёта каждый render ментально.\nuseMemo не семантическая гарантия в concurrent mode кратко.\nИсправление eslint exhaustive-deps.\nКогда переменная вне компонента лучше для static data."
+    },
+    {
+      "id": "react-23",
+      "label": "Паттерн Context provider/consumer",
+      "description": "state",
+      "detail": "createContext useContext",
+      "text": "ThemeContext с provider в корне и useContext в кнопке.\nDefault value и проверки undefined.\nРазделение read/write contexts — тизер.\nRerender всех consumers при любом изменении.\nМинимальная структура из трёх файлов."
+    },
+    {
+      "id": "react-24",
+      "label": "Разделение context для performance",
+      "description": "state",
+      "detail": "state vs dispatch",
+      "text": "Один fat Context -> StateContext и DispatchContext для меньших rerenders.\nuseMemo на value objects.\nБиблиотеки selector (use-context-selector) опционально.\nПодсветка rerender в DevTools.\nДиаграмма до/после словами."
+    },
+    {
+      "id": "react-25",
+      "label": "Паттерн compound components",
+      "description": "composition",
+      "detail": "Tabs TabList Tab",
+      "text": "<Tabs> со статическими Tabs.List Tabs.Panel через React.Children или explicit exports.\nНеявный state sharing через context внутри compound set.\nСравни с prop drilling variant.\nДомашка по accessibility roles для tabs.\nЭргономичный API для новичков."
+    },
+    {
+      "id": "react-26",
+      "label": "Controlled inputs: единый источник",
+      "description": "forms",
+      "detail": "value onChange",
+      "text": "Controlled text input и checkbox с useState.\nControlled vs uncontrolled — когда что.\nАнти-паттерн sync props -> state кратко.\nКнопка reset формы.\nFile inputs часто uncontrolled."
+    },
+    {
+      "id": "react-27",
+      "label": "Старт React Hook Form",
+      "description": "forms",
+      "detail": "register errors",
+      "text": "react-hook-form на signup с validation rules.\nerrors.email.message и handleSubmit.\nРазмер бандла vs Formik словами.\nМодель uncontrolled registration простым языком.\nУстановка и TypeScript Resolver с Zod опционально."
+    },
+    {
+      "id": "react-28",
+      "label": "TanStack Query: fetch и cache",
+      "description": "data",
+      "detail": "useQuery staleTime",
+      "text": "Список users с useQuery: isPending, isError, data.\nstaleTime vs cacheTime/gcTime.\nRefetch on window focus по умолчанию.\nQueryClientProvider один раз.\nDevtools для отладки."
+    },
+    {
+      "id": "react-29",
+      "label": "Suspense для загрузки списка",
+      "description": "concurrency",
+      "detail": "fallback на секцию",
+      "text": "Медленный child list в Suspense со skeleton fallback.\nТребования data fetching для Suspense в фреймворках.\nСравни с isLoading boolean.\nВложенные Suspense boundaries.\nПаринг с error boundaries."
+    },
+    {
+      "id": "react-30",
+      "label": "lazy routes и code splitting",
+      "description": "routing",
+      "detail": "React.lazy Suspense",
+      "text": "Dashboard route через React.lazy и Suspense fallback.\nТребование default export.\nRoute-based splitting с React Router словами.\nОшибки lazy load через error boundary.\nBundle analyzer как follow-up."
+    },
+    {
+      "id": "react-31",
+      "label": "Уроки StrictMode double invoke",
+      "description": "dev",
+      "detail": "effect дважды в dev",
+      "text": "StrictMode намеренно дважды вызывает effects в dev.\nИдемпотентный effect и важность cleanup.\nНе отключай StrictMode, чтобы спрятать баги.\nБолее строгое поведение в будущем кратко.\nЧеклист dependencies effect."
+    },
+    {
+      "id": "react-32",
+      "label": "Паттерны cleanup в Effect",
+      "description": "effects",
+      "detail": "subscriptions timers",
+      "text": "useEffect на resize с removeEventListener в cleanup.\nCleanup перед re-run и при unmount.\nAbortController в fetch cleanup.\nПустые deps vs пропущенные deps.\nПравило ESLint одним предложением."
+    },
+    {
+      "id": "react-33",
+      "label": "Набросок useSyncExternalStore",
+      "description": "hooks",
+      "detail": "подписка на external store",
+      "text": "Крошечный external store с subscribe/getSnapshot через useSyncExternalStore.\nИзбежание tearing простым языком.\nБиблиотеки под капотом.\nКонцептуальный пример, если API кажется сложным.\nСекции official docs для чтения."
+    },
+    {
+      "id": "react-34",
+      "label": "Запросы Testing Library",
+      "description": "testing",
+      "detail": "приоритет getByRole",
+      "text": "Тесты login form: getByRole('button', { name: /sign in/i }).\nКраткая priority chart queries.\nПаттерн screen object.\nscreen.debug() для отладки.\nnpm test с Vitest или Jest."
+    },
+    {
+      "id": "react-35",
+      "label": "userEvent вместо fireEvent",
+      "description": "testing",
+      "detail": "реалистичный typing и clicks",
+      "text": "fireEvent.click -> userEvent.setup().click и type с await.\nawait user.type и pacing.\nИдея теста tab navigation.\nВерсия user-event под testing-library.\nСовет: findBy* против flaky tests."
+    },
+    {
+      "id": "react-36",
+      "label": "MSW mock API в тестах",
+      "description": "testing",
+      "detail": "handlers rest",
+      "text": "MSW handlers с fake JSON для /api/users в Vitest.\nserver.listen в setupFiles.\nСброс handlers между тестами.\nСравни с mock fetch напрямую.\nОдин handler с error response."
+    },
+    {
+      "id": "react-37",
+      "label": "Storybook story для Button",
+      "description": "docs",
+      "detail": "CSF meta story",
+      "text": "Button.stories.tsx: meta, args, controls для variant.\nТег autodocs кратко.\nВсе variants в одной story опционально.\nКоманды storybook dev.\nStories для visual review без полного design system."
+    },
+    {
+      "id": "react-38",
+      "label": "Вложенные маршруты React Router",
+      "description": "routing",
+      "detail": "Outlet layout routes",
+      "text": "Nested routes с layout Outlet для секций dashboard.\nIndex routes и relative links.\nNavLink и active style.\ncreateBrowserRouter, если modern.\nСтруктура pages/dashboard/*."
+    },
+    {
+      "id": "react-39",
+      "label": "Protected routes: auth guard",
+      "description": "routing",
+      "detail": "redirect на login",
+      "text": "ProtectedRoute читает auth context и редиректит на /login.\nToken vs session cookie на высоком уровне.\nLoader в data routers опционально.\nИзбегай flash без loading gate.\nБезопасность: всегда валидируй на сервере."
+    },
+    {
+      "id": "react-40",
+      "label": "Минимальный store Zustand",
+      "description": "state",
+      "detail": "create slice",
+      "text": "useCartStore с addItem/removeItem на Zustand.\nBoilerplate vs Context для medium apps.\nSelectors для меньших rerenders.\npersist middleware — name-drop.\nУстановка и devtools опционально."
+    },
+    {
+      "id": "react-41",
+      "label": "SEO meta: react-helmet-async",
+      "description": "seo",
+      "detail": "title description og",
+      "text": "Per-route title и meta description в SPA через react-helmet-async.\nОграничения vs SSR frameworks честно.\nOpen Graph для blog post.\nИнструменты social preview.\nNext.js metadata API как путь апгрейда."
+    },
+    {
+      "id": "react-42",
+      "label": "useImperativeHandle: focus из parent",
+      "description": "refs",
+      "detail": "combo forwardRef",
+      "text": "focus() на custom Input через useImperativeHandle с forwardRef.\nНе злоупотребляй imperative API.\nТипизация ref handle в TypeScript.\nКнопка parent фокусирует child field.\nAccessible focus management."
+    },
+    {
+      "id": "react-43",
+      "label": "Композиция children и slots",
+      "description": "patterns",
+      "detail": "props.children layout",
+      "text": "Card со slots header/footer через props.children и render props.\nchildren vs явный Header prop.\nКомпозиция вместо prop drilling variants.\nLayout component для dashboard.\nReact 19 children typing кратко."
+    },
+    {
+      "id": "react-44",
+      "label": "Keys на Fragment в списках",
+      "description": "lists",
+      "detail": "prop key у Fragment",
+      "text": "Когда элементы списка возвращают группы Fragment и нужен key на Fragment.\nWarning без key.\nСоседние JSX array patterns.\nКороткая история бага при reorder.\nСсылка на stable id без повтора batch 2."
+    },
+    {
+      "id": "react-45",
+      "label": "Инвалидация react-query",
+      "description": "data",
+      "detail": "queryClient.invalidateQueries",
+      "text": "После mutation todo — invalidate ['todos'].\nOptimistic updates — follow-up reading.\nКонвенции queryKey в стиле папок.\nprefetchQuery on hover опционально.\nНаблюдение invalidation в devtools."
+    },
+    {
+      "id": "react-46",
+      "label": "Error boundary и reset keys",
+      "description": "resilience",
+      "detail": "паттерн resetKeys",
+      "text": "Error boundary сбрасывается при смене route через resetKeys или manual reset.\nКакие ошибки всё равно проскальзывают.\nЛог в componentDidCatch.\nПаринг с React Query error boundaries опционально.\nТекст retry для пользователя."
+    },
+    {
+      "id": "react-47",
+      "label": "Доступность labels в формах",
+      "description": "a11y",
+      "detail": "htmlFor aria-describedby",
+      "text": "Аудит формы: htmlFor, aria-invalid, aria-describedby для ошибок.\nВидимые focus styles.\neslint-plugin-jsx-a11y.\nТест только клавиатурой.\nОшибка: placeholder вместо label."
+    },
+    {
+      "id": "react-48",
+      "label": "useTransition: pending UI",
+      "description": "concurrency",
+      "detail": "флаг isPending",
+      "text": "useTransition вокруг медленного tab switch с большим list state.\nИндикатор pending и disabled на кнопке.\nuseDeferredValue — контраст кратко.\nTransitions не блокируют typing.\nИмпорт startTransition."
+    },
+    {
+      "id": "react-49",
+      "label": "Набросок optimistic UI",
+      "description": "concurrency",
+      "detail": "React 19 optimistic",
+      "text": "Optimistic todo add через useOptimistic или ручной паттерн с rollback при error.\nВременный UI vs server truth.\nonError revert с mutation словами.\nОграничения версии API честно.\nПсевдокод, если API нестабилен."
+    },
+    {
+      "id": "react-50",
+      "label": "Vite proxy для dev API",
+      "description": "tooling",
+      "detail": "server.proxy config",
+      "text": "vite.config.ts server.proxy: /api -> localhost:3001 в dev.\nИзбегание CORS локально.\nEnv для API base по mode.\nСравни с Next.js rewrites ментально.\ncurl через proxy для проверки."
     }
   ]
 }

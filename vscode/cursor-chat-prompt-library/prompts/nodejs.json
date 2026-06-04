@@ -141,6 +141,216 @@
       "description": "scaling",
       "detail": "orchestrators superseding",
       "text": "Explain historical cluster.fork exploiting CPUs.\nRelate modern horizontal scaling pods.\nDiscuss sticky sessions caveat.\nMention why beginners learn event loop before cluster.\nPoint to orchestrator adoption."
+    },
+    {
+      "id": "node-21",
+      "label": "Express Router modular routes",
+      "description": "Express",
+      "detail": "routes/users.js",
+      "text": "Split app into express.Router for /users and /posts mounted in app.js.\nShow index route and param :id handler.\nExplain middleware order per router.\nProject folder structure lib/routes.\nTest with curl examples."
+    },
+    {
+      "id": "node-22",
+      "label": "Zod validate middleware",
+      "description": "validation",
+      "detail": "parse body schema",
+      "text": "Create middleware validating req.body with Zod schema safeParse returning 400 details.\nShow type inference from schema for handler.\nCentralize error map format.\nCompare express-validator choice.\nProvide POST /users example."
+    },
+    {
+      "id": "node-23",
+      "label": "cors configuration",
+      "description": "security",
+      "detail": "origin credentials",
+      "text": "Configure cors package with allowed origin from env and credentials true for cookies.\nExplain preflight briefly.\nShow mistake using * with credentials.\nRelate to Vite proxy dev.\nTest from browser fetch and curl OPTIONS."
+    },
+    {
+      "id": "node-24",
+      "label": "express-rate-limit",
+      "description": "security",
+      "detail": "sliding window",
+      "text": "Apply rate limit to /login route preventing brute force.\nExplain trust proxy setting behind reverse proxy.\nStore in memory vs Redis for multi-instance note.\nReturn 429 JSON message friendly.\nTune max and window for beginners."
+    },
+    {
+      "id": "node-25",
+      "label": "JWT auth outline",
+      "description": "auth",
+      "detail": "sign verify middleware",
+      "text": "Outline login issuing JWT in JSON and authMiddleware verifying Authorization Bearer header.\nExplain access vs refresh token split verbally.\nWarn about localStorage XSS vs httpOnly cookie tradeoffs.\nDo not roll crypto—use jsonwebtoken library.\nSecurity checklist bullets."
+    },
+    {
+      "id": "node-26",
+      "label": "bcrypt password hashing",
+      "description": "auth",
+      "detail": "hash compare rounds",
+      "text": "Hash passwords on register with bcrypt salt rounds 10-12.\nCompare on login with bcrypt.compare never plain text.\nExplain salt per password.\nShow async error handling.\nWarn logging passwords during debug."
+    },
+    {
+      "id": "node-27",
+      "label": "multer file upload",
+      "description": "files",
+      "detail": "memory vs disk",
+      "text": "Accept avatar upload field with multer diskStorage limits size 2MB and mime filter.\nReturn file path JSON response.\nExplain multipart form from client.\nSecurity: randomize filename, scan viruses note.\nPair with express.static cautiously."
+    },
+    {
+      "id": "node-28",
+      "label": "express-validator chains",
+      "description": "validation",
+      "detail": "body email",
+      "text": "Validate email and password length with express-validator validationResult middleware.\nReturn unified 400 errors array.\nCompare with Zod choice mentally.\nShow sanitization escape option name-drop.\nKeep handlers thin."
+    },
+    {
+      "id": "node-29",
+      "label": "supertest API tests",
+      "description": "testing",
+      "detail": "request(app)",
+      "text": "Write supertest hitting GET /health expecting 200 without starting server manually.\nExplain separating app export from listen.\nTest POST validation failure 400.\nIntegrate with node:test or jest.\nnpm script test command."
+    },
+    {
+      "id": "node-30",
+      "label": "morgan HTTP logging",
+      "description": "observability",
+      "detail": "combined dev format",
+      "text": "Add morgan middleware dev vs combined format in production.\nExplain logging alongside structured logger later.\nSkip logging health check noise optional.\nCorrelate request id header idea.\nShow sample log line interpretation."
+    },
+    {
+      "id": "node-31",
+      "label": "node-cron scheduled job",
+      "description": "scheduling",
+      "detail": "daily cleanup",
+      "text": "Schedule nightly cleanup job with node-cron expression 0 2 * * *.\nExplain server timezone pitfalls.\nWarn single-instance assumption; mention BullMQ for distributed.\nShow graceful stop on SIGTERM.\nLog start/end of job."
+    },
+    {
+      "id": "node-32",
+      "label": "BullMQ queue sketch",
+      "description": "queues",
+      "detail": "Redis worker",
+      "text": "Sketch producer adding email job and worker processing with BullMQ plus Redis connection.\nExplain retries and backoff verbally.\nContrast with in-process cron.\nDocker compose redis service mention.\nDo not fully implement UI dashboard."
+    },
+    {
+      "id": "node-33",
+      "label": "Redis session store",
+      "description": "sessions",
+      "detail": "connect-redis",
+      "text": "Outline express-session with connect-redis store for multi-server deployments.\nExplain cookie maxAge and rolling sessions.\nShow secret from env.\nCompare memory store dev only.\nSecurity: secure cookie in production."
+    },
+    {
+      "id": "node-34",
+      "label": "pg Pool queries",
+      "description": "database",
+      "detail": "parameterized SQL",
+      "text": "Use pg Pool querying users with $1 parameters preventing SQL injection.\nShow pool.end on shutdown.\nExplain connection limits.\nSimple repository function getUserById.\n.env DATABASE_URL format."
+    },
+    {
+      "id": "node-35",
+      "label": "Prisma CRUD routes",
+      "description": "ORM",
+      "detail": "create find update",
+      "text": "Implement CRUD with Prisma client on Express routes for Todo model.\nShow migrate dev workflow.\nHandle PrismaClientKnownRequestError not found.\nExplain select vs include briefly.\nScripts in package.json."
+    },
+    {
+      "id": "node-36",
+      "label": "Drizzle ORM mention",
+      "description": "ORM",
+      "detail": "SQL-like schema",
+      "text": "Compare Drizzle to Prisma for SQL-forward teams at overview level.\nShow schema table definition snippet and query builder style.\nWhen beginners should pick Prisma first.\nLink learning path not full migration.\nKeep neutral tradeoffs bullet list."
+    },
+    {
+      "id": "node-37",
+      "label": "Async error wrapper",
+      "description": "errors",
+      "detail": "wrapAsync(fn)",
+      "text": "Write wrapAsync catching rejected promises in Express route handlers forwarding next(err).\nWire centralized error middleware returning JSON.\nContrast with calling next() manually.\nShow 500 vs 400 distinction.\nPrevent unhandled rejection crash."
+    },
+    {
+      "id": "node-38",
+      "label": "streams pipeline",
+      "description": "IO",
+      "detail": "pipeline gzip",
+      "text": "Stream large file through fs.createReadStream piped to zlib gzip to response.\nUse stream/promises pipeline with error handling.\nExplain backpressure concept simply.\nContrast reading whole file into memory.\nShow Content-Encoding header."
+    },
+    {
+      "id": "node-39",
+      "label": "fs promises read write",
+      "description": "filesystem",
+      "detail": "mkdir recursive",
+      "text": "Use fs/promises writeFile and readFile with path.join for cross-platform paths.\nEnsure directory exists with mkdir recursive.\nHandle ENOENT errors friendly.\nWarn about path traversal when using user input.\nShow atomic write temp rename pattern idea."
+    },
+    {
+      "id": "node-40",
+      "label": "path resolve join",
+      "description": "filesystem",
+      "detail": "__dirname ESM",
+      "text": "Demonstrate path.join vs path.resolve for loading config.json relative to project root.\nExplain import.meta.url dirname pattern in ESM.\nAvoid string concatenation with backslashes on Windows.\nShow safe path within project boundary check.\nTwo-line example each."
+    },
+    {
+      "id": "node-41",
+      "label": "child_process spawn",
+      "description": "process",
+      "detail": "git status example",
+      "text": "Spawn git status --porcelain parsing stdout lines.\nExplain shell true security risk.\nHandle exit codes non-zero.\nContrast exec vs spawn buffering.\nSay when to avoid shelling out (prefer libraries)."
+    },
+    {
+      "id": "node-42",
+      "label": "node:test runner",
+      "description": "testing",
+      "detail": "describe it assert",
+      "text": "Write node:test with describe/it and assert.strictEqual for pure functions.\nRun node --test.\nExplain watch mode flag.\nCompare jest ecosystem briefly.\nShow coverage hook to c8."
+    },
+    {
+      "id": "node-43",
+      "label": "c8 coverage report",
+      "description": "testing",
+      "detail": "coverage thresholds",
+      "text": "Add c8 running tests producing text and html coverage reports.\nExplain line vs branch coverage simply.\nSet modest thresholds in package.json.\nExclude config files patterns.\nInterpret one uncovered line example."
+    },
+    {
+      "id": "node-44",
+      "label": "semver release workflow",
+      "description": "release",
+      "detail": "npm version patch",
+      "text": "Explain semver MAJOR.MINOR.PATCH with examples.\nShow npm version patch && git push --tags workflow caution.\nRelate to conventional commits teaser.\nChangelog discipline for beginners.\nWarn about breaking API changes."
+    },
+    {
+      "id": "node-45",
+      "label": "npm publish checklist",
+      "description": "package",
+      "detail": "files field prepublish",
+      "text": "List steps: name availability, files whitelist, main/types exports, README, LICENSE, npm login, npm publish --dry-run.\nExplain beta tag dist-tag.\nSecurity: 2FA on npm account.\nAvoid publishing secrets in tarball.\nPost-publish verify install in temp dir."
+    },
+    {
+      "id": "node-46",
+      "label": "ESM type module package",
+      "description": "modules",
+      "detail": "import export",
+      "text": "Configure package.json \"type\": \"module\" with .js ESM imports.\nExplain .cjs escape hatch file.\nShow import.meta.url.\nCommon mistake requiring extensions in Node ESM.\nContrast with TypeScript compile target."
+    },
+    {
+      "id": "node-47",
+      "label": "OpenAPI Swagger UI",
+      "description": "docs",
+      "detail": "swagger-jsdoc",
+      "text": "Annotate routes with JSDoc openapi comments generating spec served at /docs.\nExplain why contract helps frontend.\nShow try-it-out cautiously in prod.\nValidate request bodies against spec optional.\nMinimal two-endpoint example."
+    },
+    {
+      "id": "node-48",
+      "label": "helmet recap headers",
+      "description": "security",
+      "detail": "defaults review",
+      "text": "Recap helmet middleware: which headers change and how to test in browser devtools.\nCustomize contentSecurityPolicy false during dev if blocking inline scripts.\nOrder helmet before routes and after cors as needed.\nPair with HTTPS termination at reverse proxy.\nLink securityheaders.com scan as homework."
+    },
+    {
+      "id": "node-49",
+      "label": "env validation Zod",
+      "description": "config",
+      "detail": "parse process.env",
+      "text": "Parse process.env at startup with Zod schema requiring PORT and DATABASE_URL.\nExit process with clear message on failure.\nShow dotenv load for dev only.\nContrast scattered process.env access.\nProvide .env.example template."
+    },
+    {
+      "id": "node-50",
+      "label": "Graceful cluster note",
+      "description": "scaling",
+      "detail": "fork workers",
+      "text": "Explain cluster module forking CPUs and passing connections historically.\nRelate to PM2 and Kubernetes replacing manual cluster today.\nNote sticky sessions problem.\nAdvise learning single-process event loop first.\nWhen horizontal pod scaling beats cluster module."
     }
   ]
 }

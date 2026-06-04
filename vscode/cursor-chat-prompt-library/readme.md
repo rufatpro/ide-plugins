@@ -4,11 +4,11 @@
 
 **QuickPick** templates for **Cursor AI chat** — pick a prompt and insert into chat (Composer & Agent).
 
-**850 templates** — 41 categories (**Python × 50**, others × 20):
+**1080 templates** — 42 categories (**Python × 50**, **JavaScript / TypeScript / React / Next.js / Tailwind / Node.js / NestJS × 50**, others × 20):
 
 | Tier | Categories |
 |------|------------|
-| Core | Website, Python, JavaScript, TypeScript, React, SQL, Git, Django, Flask |
+| Core | Website, Python, JavaScript, TypeScript, React, SQL, Git, Django, Flask, SQLAlchemy |
 | High demand | Next.js, FastAPI, Docker, Testing, Tailwind CSS |
 | Strong demand | Node.js, NestJS, Vue, PHP, Laravel, C#/.NET, Java/Spring, Linux/Bash, CI/CD, REST/OpenAPI, MongoDB, Mobile |
 | Growing / niche | C, C++, Go, Rust, Kubernetes, Terraform, Observability, AWS/Cloud, WordPress, Data/Pandas, Security, GraphQL |
@@ -20,7 +20,7 @@
 
 | Key | Action |
 |-----|--------|
-| **Ctrl+Alt+T** (Windows/Linux) | **Step 1:** category (41 types) → **Step 2:** prompt → insert into chat |
+| **Ctrl+Alt+T** (Windows/Linux) | **Step 1:** category (42 types) → **Step 2:** prompt → insert into chat |
 | **Cmd+Alt+T** (macOS) | Same |
 
 Press **Ctrl**, **Alt**, and **T** together (**T** = **T**emplate).
@@ -37,7 +37,7 @@ Press **Ctrl**, **Alt**, and **T** together (**T** = **T**emplate).
 | Command | Action |
 |---------|--------|
 | **Pick Prompt (Category, then Template)** | Same as hotkey (two steps) |
-| **Insert Prompt into Chat (All Categories)** | Single list, all 850 prompts |
+| **Insert Prompt into Chat (All Categories)** | Single list, all 1080 prompts |
 | **Insert Website / Python / JavaScript Prompt** | One category only (legacy shortcuts) |
 
 ### Via Command Palette
@@ -55,7 +55,7 @@ Press **Ctrl**, **Alt**, and **T** together (**T** = **T**emplate).
 ```bat
 cd plugins\vscode\cursor-chat-prompt-library
 build.bat
-cursor --install-extension build\cursor-chat-prompt-library-0.8.1.vsix
+cursor --install-extension build\cursor-chat-prompt-library-0.8.5.vsix
 ```
 
 Reload the window. Primary: **Ctrl+Alt+T**; alternative: **Ctrl+Alt+Shift+P** (see **Via Command Palette** for **F1**).
@@ -65,6 +65,8 @@ Reload the window. Primary: **Ctrl+Alt+T**; alternative: **Ctrl+Alt+Shift+P** (s
 - Bundled data: `prompts/*.json` (one file per category).
 - Regenerate extended categories (batch 1): `node scripts/generate-extra-categories.mjs`
 - Append batch 2 (+10 per file): `node scripts/append-batch-2.mjs` (uses `scripts/batch-2-prompts.mjs`)
+- Append batch 3 (+30 for JS stack): `node scripts/append-batch-3-js-stack.mjs` (uses `scripts/batch-3-js-stack-prompts.mjs`)
+- Append batch 3 NestJS (+30): `node scripts/append-batch-3-nestjs.mjs` (uses `scripts/batch-3-nestjs-prompts.mjs`)
 - Display order: `CATEGORY_FILE_ORDER` in `src/promptStore.js`.
 
 ## License

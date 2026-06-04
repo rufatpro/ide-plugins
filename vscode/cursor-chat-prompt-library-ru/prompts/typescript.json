@@ -141,6 +141,216 @@
       "description": "инструменты",
       "detail": "поле exports в package.json",
       "text": "На уровне новичка: почему новые проекты выбирают \"moduleResolution\": \"bundler\" под Vite.\nСравни с node16 для библиотек в npm.\nСвязь с путаницей поля \"exports\" в package.json.\nДва симптома неверного resolution (cannot find module).\nМинимальный чеклист diff tsconfig."
+    },
+    {
+      "id": "ts-21",
+      "label": "Утилиты Pick Omit Partial",
+      "description": "utility types",
+      "detail": "типы API",
+      "text": "Из типа User: PublicUser через Omit<password> и UpdateUser через Partial.\nКогда Pick понятнее Omit.\nПример form DTO без any.\nСвязь с колонками БД vs exposure в API.\nПравило: выводи типы, не дублируй поля вручную."
+    },
+    {
+      "id": "ts-22",
+      "label": "Extract и Exclude для union",
+      "description": "unions",
+      "detail": "фильтр string unions",
+      "text": "type Status = 'idle' | 'loading' | 'success' | 'error'.\nExtract для success states и Exclude для non-error в примерах.\nСравни с ручным редактированием union.\nОшибка: порядок в union не важен, опечатки — важны.\nУпражнение на union прав доступа к маршрутам."
+    },
+    {
+      "id": "ts-23",
+      "label": "Ключевое слово infer в helpers",
+      "description": "generics",
+      "detail": "распаковка return types",
+      "text": "generic identity<T>(x: T) и helper Unwrap<T> с infer в conditional types.\nЧитай infer справа налево медленно.\ninfer для извлечения элемента массива.\nНе перегружай до понимания generics.\nПример до 25 строк."
+    },
+    {
+      "id": "ts-24",
+      "label": "keyof и безопасный доступ",
+      "description": "objects",
+      "detail": "типизированные имена свойств",
+      "text": "keyof User как union ключей для getProperty(obj, key).\nIndexed access User['email'].\nСбой: key — plain string vs keyof.\nObject.keys typing caveat и Object.entries.\nЧеклист при переименовании полей."
+    },
+    {
+      "id": "ts-25",
+      "label": "Утилиты Parameters и Awaited",
+      "description": "utilities",
+      "detail": "typeof fn params",
+      "text": "Обёртка logCall(fn, ...args) с Parameters<typeof fn>.\nAwaited на типах API, возвращающих Promise.\nИзвлечение типов handler из Express-style функций словами.\ntypeof на values vs types namespace.\nШпаргалка-комментарий для juniors."
+    },
+    {
+      "id": "ts-26",
+      "label": "enum vs string union",
+      "description": "modeling",
+      "detail": "erasable enums",
+      "text": "const enum/string union vs TypeScript enum для status codes.\nRuntime footprint enum и reverse mapping surprise.\nРекомендация union + as const во многих codebases.\nИсчерпывающий switch с union.\nКратко: const enum inlining caveat."
+    },
+    {
+      "id": "ts-27",
+      "label": "Онбординг strictNullChecks",
+      "description": "compiler",
+      "detail": "guards undefined null",
+      "text": "Ошибки при strictNullChecks: possibly undefined.\nФикс: narrowing if (user), optional chaining, nullish coalescing.\nDefinite assignment assertion — нежелательный escape hatch.\nСвязь с начальными значениями React useState.\nСниппет до/после с мысленным переключением флага."
+    },
+    {
+      "id": "ts-28",
+      "label": "path aliases в tsconfig",
+      "description": "tooling",
+      "detail": "импорты @/*",
+      "text": "paths и baseUrl, чтобы @/components/Button резолвился.\nAlias bundler/Vite должен зеркалить tsconfig.\nОшибки импорта при рассинхроне.\nТизер paths в monorepo.\nПроверка: go-to-definition в VS Code."
+    },
+    {
+      "id": "ts-29",
+      "label": "import type — только типы",
+      "description": "modules",
+      "detail": "verbatimModuleSyntax",
+      "text": "import type { User } и чистое стирание.\ntype-only exports и isolatedModules.\nОшибка value import type-only символа.\nTree-shaking в bundler.\nПравило @typescript-eslint/consistent-type-imports."
+    },
+    {
+      "id": "ts-30",
+      "label": "Ограничения generics extends",
+      "description": "generics",
+      "detail": "T extends HasId",
+      "text": "function mergeById<T extends { id: string }>(items: T[], patch: Partial<T>).\nextends как constraint, не наследование.\nНесколько constraints через intersection.\nT без constraint vs any.\nПример сбоя с number id."
+    },
+    {
+      "id": "ts-31",
+      "label": "Перегрузки функций для API",
+      "description": "functions",
+      "detail": "call signatures",
+      "text": "Перегрузки createElement(tag) с разными типами для 'div' vs 'canvas'.\nImplementation signature должна быть совместима.\nКогда union + conditional types заменяют overloads.\nПорядок overloads.\nМаленький пример для learners."
+    },
+    {
+      "id": "ts-32",
+      "label": "never и проверка исчерпываемости",
+      "description": "control flow",
+      "detail": "helper assertNever",
+      "text": "Shape = Circle | Square и default assertNever(x: never) в switch.\nДобавление Triangle ломает compile, пока не обработан.\nСвязь с union actions в Redux.\nnever в throw helpers.\nПолитика команды для switch по unions."
+    },
+    {
+      "id": "ts-33",
+      "label": "Пользовательские type guards",
+      "description": "narrowing",
+      "detail": "is ApiError",
+      "text": "function isApiError(e: unknown): e is ApiError с проверкой свойств.\nБезопасно в catch.\nСравни с Zod parse throwing.\nPredicate должен возвращать boolean.\nArray.isArray как встроенный guard."
+    },
+    {
+      "id": "ts-34",
+      "label": "Zod schema и infer типов",
+      "description": "validation",
+      "detail": "z.infer<typeof Schema>",
+      "text": "Zod object для signup и type Signup = z.infer<typeof SignupSchema>.\nsafeParse на границе unknown JSON.\nМаппинг Zod issues на field errors словами.\nSingle source of truth.\nКоманда npm install zod."
+    },
+    {
+      "id": "ts-35",
+      "label": "Monorepo project references",
+      "description": "workspace",
+      "detail": "composite true",
+      "text": "Набросок pnpm workspace packages/ui и apps/web с TypeScript project references.\nSolution-style builds и флаг --build ментально.\npath mapping vs references.\nБоль circular references.\nСимптомы отсутствующих dist types."
+    },
+    {
+      "id": "ts-36",
+      "label": "Типизация переменных окружения",
+      "description": "config",
+      "detail": "ImportMetaEnv или Node",
+      "text": "Типизация Vite import.meta.env или Node process.env через interface.\nВалидация обязательных vars при старте (Zod опционально).\nEnv vars — строки, нужна coercion.\n.env.example без секретов.\nЧеклист CI vs local missing vars."
+    },
+    {
+      "id": "ts-37",
+      "label": "satisfies для ответов API",
+      "description": "types",
+      "detail": "сохранение литералов",
+      "text": "Mock API config с satisfies Config без widening string unions.\nПлохой as Config скрывает опечатки.\nAutocomplete в редакторе.\nreadonly где уместно.\nПример лишнего ключа, пойманного satisfies."
+    },
+    {
+      "id": "ts-38",
+      "label": "Dynamic import и типизация модулей",
+      "description": "modules",
+      "detail": "типизация import()",
+      "text": "Тип await import('./heavy') через ReturnType или satisfies на namespace.\ntypeof import('pkg') type queries.\nDefault vs named export typing.\nCode splitting в Vite.\nОграничения SSR dynamic import кратко."
+    },
+    {
+      "id": "ts-39",
+      "label": "Настройка typescript-eslint flat",
+      "description": "linting",
+      "detail": "recommended rules",
+      "text": "@typescript-eslint в eslint flat config: recommended-type-checked или starter без type-aware.\nparserOptions.project для type-aware rules.\nМотивация no-floating-promises.\nnpm run lint.\nПостепенное ужесточение strictness."
+    },
+    {
+      "id": "ts-40",
+      "label": "Readonly и глубокая иммутабельность",
+      "description": "immutability",
+      "detail": "Readonly<T> shallow",
+      "text": "Readonly на параметрах функций и shallow freeze.\nReadonlyArray и const assertion.\nБаг: вложенный object всё ещё мутируется.\ndeepReadonly community patterns без реализации.\nПривычка immutability props в React."
+    },
+    {
+      "id": "ts-41",
+      "label": "Required и Pick для DTO",
+      "description": "utilities",
+      "detail": "обязательные поля",
+      "text": "Из Partial<CreateUser> — ConfirmUser с email и password через Required<Pick<...>>.\nНаслоение utilities по шагам.\nАльтернатива interface extends.\nКогда явный interface понятнее juniors.\nЧитаемое имя финального type alias."
+    },
+    {
+      "id": "ts-42",
+      "label": "NonNullable для filter types",
+      "description": "utilities",
+      "detail": "убрать null undefined",
+      "text": "(User | null)[] и тип отфильтрованного массива с NonNullable.\nHelper filterBoolean typing.\nОграничения narrowing в Array.filter.\nАналогия GraphQL maybe types кратко.\nНапоминание: runtime filter всё равно нужен."
+    },
+    {
+      "id": "ts-43",
+      "label": "Record vs Map types",
+      "description": "modeling",
+      "detail": "словарь string keys",
+      "text": "Record<Role, number> vs Map<Role, number> на уровне типов и runtime.\nИсчерпываемость ключей Record для unions.\nПодводные камни index signature.\nКогда Map в TS + JS вместе.\nПример матрицы permissions."
+    },
+    {
+      "id": "ts-44",
+      "label": "Template literal routes (advanced)",
+      "description": "types",
+      "detail": "сегменты param",
+      "text": "Маршруты /users/:id/posts/:postId через template literals и infer сегментов.\nUnion методов GET | POST.\nНабросок parseRoute(path) с typed result.\nЧестно: ограничения regex.\nPlayground до 30 строк."
+    },
+    {
+      "id": "ts-45",
+      "label": "const type parameters",
+      "description": "generics",
+      "detail": "сохранение литералов",
+      "text": "const type parameter в generic, собирающем tuple literals.\nБез const — widening в string.\ndefineRoutes / defineActions.\nСвязь с as const на аргументах.\nТребование TS 5.0+."
+    },
+    {
+      "id": "ts-46",
+      "label": "satisfies плюс as const",
+      "description": "patterns",
+      "detail": "замороженный config",
+      "text": "as const на массиве и satisfies на object для таблицы routes.\nПорядок и widening простым языком.\nUnion RoutePath из typeof routes.\nОшибка порядка satisfies и as const.\nПаттерн export для library packages."
+    },
+    {
+      "id": "ts-47",
+      "label": "Declaration files d.ts",
+      "description": "modules",
+      "detail": "ambient declare",
+      "text": "shim.d.ts для legacy global library и импортов .svg.\ndeclare module '*.css' для Vite.\nИзбегай triple-slash в modern setups.\nПубликация types в package.json types field.\nОшибка: any везде в shims."
+    },
+    {
+      "id": "ts-48",
+      "label": "satisfies для React props helpers",
+      "description": "React",
+      "detail": "карты variant",
+      "text": "const variants = { primary: '...', ghost: '...' } satisfies Record<Variant, string> для Button.\nprops variant: keyof typeof variants.\nСвязь с cva libraries кратко.\nВыигрыш autocomplete props.\nsatisfies не валидирует runtime class strings в CSS modules."
+    },
+    {
+      "id": "ts-49",
+      "label": "ts-node vs tsx runner",
+      "description": "tooling",
+      "detail": "запуск typescript",
+      "text": "Сравни ts-node, tsx и vitest для скриптов.\nРекомендация tsx для modern ESM.\nType stripping vs on-the-fly compile.\n\"type\": \"module\" в package.json.\nКоманды запуска hello.ts."
+    },
+    {
+      "id": "ts-50",
+      "label": "Generic API client",
+      "description": "patterns",
+      "detail": "обёртка get<T>",
+      "text": "Набросок typed api.get<User>('/users/1') -> Promise<User>, runtime validation опционально Zod.\nHTTP status -> Result union.\nGeneric defaults и constraints на T.\nТипизация error body.\nСтруктура src/api/client.ts."
     }
   ]
 }

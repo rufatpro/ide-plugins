@@ -141,6 +141,216 @@
       "description": "architecture",
       "detail": "boundaries",
       "text": "Refactor growing AppModule into domain modules.\n\n- Shared module for cross-cutting\n- Avoid circular imports checklist\n\nBefore/after tree diagram in text."
+    },
+    {
+      "id": "nestjs-21",
+      "label": "TypeORM feature module",
+      "description": "database",
+      "detail": "repository pattern",
+      "text": "Wire TypeORM in a NestJS feature module for a User entity.\nShow TypeOrmModule.forFeature, @InjectRepository, and a service method findAll with pagination params.\nExplain synchronize: false for production and migrations briefly.\nPick Postgres or SQLite and list install commands.\nEnd with one common circular import pitfall between modules."
+    },
+    {
+      "id": "nestjs-22",
+      "label": "Mongoose schema module",
+      "description": "database",
+      "detail": "MongoDB",
+      "text": "Integrate @nestjs/mongoose with a Cat schema and CatsService CRUD.\nDemonstrate schema factory, timestamps option, and lean() query in one find method.\nExplain when Mongoose fits vs Prisma in a short comparison.\nShow validation at DTO layer still required.\nProvide module wiring and example document shape."
+    },
+    {
+      "id": "nestjs-23",
+      "label": "Pagination query DTO",
+      "description": "API",
+      "detail": "page limit sort",
+      "text": "Add query DTO with @IsOptional page, limit, sort fields validated by ValidationPipe.\nTransform strings to numbers with @Type(() => Number).\nReturn { data, meta: { page, limit, total } } from service.\nCap limit max at 100 in DTO or pipe.\nShow example GET /items?page=2&limit=10 curl."
+    },
+    {
+      "id": "nestjs-24",
+      "label": "class-transformer response shaping",
+      "description": "serialization",
+      "detail": "exclude password",
+      "text": "Use @Exclude() on password field in User entity and ClassSerializerInterceptor globally.\nShow @Expose() for selective fields and @Transform for date ISO strings.\nExplain plainToInstance flow on outgoing responses.\nWarn about leaking relations without DTOs.\nMinimal controller returning a user object."
+    },
+    {
+      "id": "nestjs-25",
+      "label": "PartialType and PickType DTOs",
+      "description": "validation",
+      "detail": "mapped types",
+      "text": "Create CreateUserDto and UpdateUserDto using PartialType(CreateUserDto) from @nestjs/mapped-types.\nShow PickType for a PublicUserDto exposing only id and name.\nExplain Swagger plugin integration if @ApiProperty needed.\nContrast manual duplication anti-pattern.\nOne controller PATCH handler example."
+    },
+    {
+      "id": "nestjs-26",
+      "label": "Passport local strategy login",
+      "description": "auth",
+      "detail": "username password",
+      "text": "Sketch LocalStrategy validating user/password against a service.\nWire AuthModule with PassportModule and POST /auth/login returning access token stub.\nUse @UseGuards(AuthGuard('local')) on login route.\nExplain validate() return shape { userId }.\nKeep passwords hashed with bcrypt mention; no full frontend."
+    },
+    {
+      "id": "nestjs-27",
+      "label": "JWT access token flow",
+      "description": "auth",
+      "detail": "JwtStrategy",
+      "text": "Complete JwtStrategy reading payload sub and attaching user to request.\nRegister JwtModule.registerAsync with secret from ConfigService.\nProtect GET /profile with AuthGuard('jwt').\nDocument Authorization Bearer header for Swagger.\nList token expiry and refresh token as follow-up."
+    },
+    {
+      "id": "nestjs-28",
+      "label": "Refresh token rotation outline",
+      "description": "auth",
+      "detail": "httpOnly cookie",
+      "text": "Design refresh token storage (httpOnly cookie or DB table) separate from short access JWT.\nOutline POST /auth/refresh validating refresh hash and issuing new pair.\nExplain rotation detecting reuse attacks at headline level.\nMention @nestjs/jwt sign options.\nSecurity checklist: revoke list, HTTPS only."
+    },
+    {
+      "id": "nestjs-29",
+      "label": "Throttler rate limiting",
+      "description": "security",
+      "detail": "@nestjs/throttler",
+      "text": "Add ThrottlerModule global limits (e.g. 10 requests per 60s).\nShow @Throttle custom decorator on sensitive login route.\nExplain proxy trust X-Forwarded-For caveats behind load balancers.\nReturn 429 shape consistent with your exception filter.\nSkip Redis storage unless asked—mention as scale-up."
+    },
+    {
+      "id": "nestjs-30",
+      "label": "Helmet and security headers",
+      "description": "security",
+      "detail": "middleware",
+      "text": "Enable helmet middleware in main.ts for a JSON API.\nNote conflicts with Swagger UI CSP and how to relax in dev only.\nPair with cors configuration whitelist origins.\nList headers beginners should verify in browser devtools.\nRelate to reverse proxy terminating TLS."
+    },
+    {
+      "id": "nestjs-31",
+      "label": "Serve static SPA fallback",
+      "description": "hosting",
+      "detail": "ServeStaticModule",
+      "text": "Configure ServeStaticModule to serve Angular/React build from client/dist with exclude /api/*.\nExplain rootPath and renderPath options.\nMention separate CDN hosting alternative for production.\nShow main.ts global prefix /api coexistence.\nCaution: do not expose .env in static folder."
+    },
+    {
+      "id": "nestjs-32",
+      "label": "API versioning URI",
+      "description": "routing",
+      "detail": "VersioningType.URI",
+      "text": "Enable URI versioning with defaultVersion and @Version('2') on a controller.\nCompare with header versioning enum briefly.\nShow client call /v2/users example.\nExplain deprecation communication in OpenAPI description.\nKeep two versions of one endpoint for demo."
+    },
+    {
+      "id": "nestjs-33",
+      "label": "Global prefix and versioning",
+      "description": "routing",
+      "detail": "setGlobalPrefix",
+      "text": "Set global prefix api and exclude /health from prefix if needed.\nCombine with URI versioning mental diagram in text.\nUpdate Swagger setup path accordingly.\nShow how reverse proxy strip prefix differs from Nest prefix.\nProvide main.ts snippet only."
+    },
+    {
+      "id": "nestjs-34",
+      "label": "Middleware interceptor guard order",
+      "description": "architecture",
+      "detail": "execution order",
+      "text": "Explain Nest request lifecycle order: middleware → guards → interceptors (before) → pipes → handler → interceptors (after) → filters.\nGive a concrete example where logging middleware runs before auth guard.\nDiagram in ASCII or bullet list.\nClarify where exception filters sit.\nHelp me choose the right layer for correlation IDs."
+    },
+    {
+      "id": "nestjs-35",
+      "label": "Request-scoped provider",
+      "description": "di",
+      "detail": "scope REQUEST",
+      "text": "Create a RequestContext service with scope Scope.REQUEST holding tenantId from header.\nInject into a singleton service via REQUEST token pattern or avoid anti-pattern explanation.\nWarn about performance costs of request scope.\nShow testing override in unit tests.\nMinimal two-file example."
+    },
+    {
+      "id": "nestjs-36",
+      "label": "Dynamic module forRootAsync",
+      "description": "modules",
+      "detail": "ConfigService inject",
+      "text": "Build DatabaseModule with static forRootAsync importing ConfigModule and factory returning connection options.\nExport DatabaseModule from a shared library pattern.\nExplain register vs forRoot naming convention.\nShow how consumers import DatabaseModule without knowing env keys.\nCompare with synchronous forRoot pitfalls."
+    },
+    {
+      "id": "nestjs-37",
+      "label": "EventEmitter domain events",
+      "description": "events",
+      "detail": "@nestjs/event-emitter",
+      "text": "Emit OrderCreatedEvent after save; handle in listener updating read model or sending email stub.\nShow @OnEvent decorator and async: true option.\nDiscuss eventual consistency vs transactional outbox teaser.\nWarn about error handling in listeners.\nKeep in-process only; mention queue for multi-instance."
+    },
+    {
+      "id": "nestjs-38",
+      "label": "CQRS command handler sketch",
+      "description": "patterns",
+      "detail": "@nestjs/cqrs",
+      "text": "Introduce CreateOrderCommand and CreateOrderHandler updating repository.\nWire CqrsModule and CommandBus in controller POST handler.\nContrast with fat service class when CQRS helps.\nNote added complexity for small apps.\nOne happy-path flow without sagas."
+    },
+    {
+      "id": "nestjs-39",
+      "label": "Bull queue processor",
+      "description": "jobs",
+      "detail": "@nestjs/bull",
+      "text": "Register BullModule with Redis connection from env.\nProducer adds job send-email; processor @Process handles with retry attempts.\nExplain why cron alone fails across scaled pods.\nShow Bull Board mention as dev UI optional.\nIdempotency note for email jobs."
+    },
+    {
+      "id": "nestjs-40",
+      "label": "Pino logger integration",
+      "description": "observability",
+      "detail": "nestjs-pino",
+      "text": "Replace default logger with nestjs-pino structured JSON logs.\nInclude requestId in each log via genReqId.\nConfigure pretty transport dev-only.\nShow logging in service with this.logger.info({ orderId }, 'created').\nRelate to log aggregation in production."
+    },
+    {
+      "id": "nestjs-41",
+      "label": "Correlation ID middleware",
+      "description": "observability",
+      "detail": "x-request-id",
+      "text": "Middleware reads X-Request-Id header or generates uuid, attaches to request and response.\nPropagate to Pino/Logger context if possible conceptually.\nExplain alignment with upstream gateways.\nShow curl -H example.\nPair with outgoing HttpService calls forwarding header."
+    },
+    {
+      "id": "nestjs-42",
+      "label": "ParseUUIDPipe route params",
+      "description": "validation",
+      "detail": "built-in pipes",
+      "text": "Use @Param('id', ParseUUIDPipe) on GET :id and return 400 for invalid uuid.\nCombine with ParseIntPipe for numeric ids on another route.\nShow custom pipe implementing PipeTransform briefly.\nContrast ValidationPipe on body vs param pipes.\nList default exception messages customization."
+    },
+    {
+      "id": "nestjs-43",
+      "label": "Custom @CurrentUser decorator",
+      "description": "auth",
+      "detail": "createParamDecorator",
+      "text": "Create @CurrentUser() parameter decorator reading request.user set by JwtStrategy.\nShow optional data parameter @CurrentUser('email').\nType the user interface shared between strategy and decorator.\nUnit test controller with mocked execution context idea.\nAvoid fetching user from DB twice pattern."
+    },
+    {
+      "id": "nestjs-44",
+      "label": "ModuleRef dynamic resolve",
+      "description": "di",
+      "detail": "get transient",
+      "text": "Demonstrate ModuleRef.get(Service, { strict: false }) for rare dynamic plugin resolution.\nExplain when constructor injection is always preferred.\nUse case: multi-tenant strategy factory picking implementation.\nWarn about memory leaks if resolving per request without scope.\nKeep example under 25 lines."
+    },
+    {
+      "id": "nestjs-45",
+      "label": "GraphQL code-first resolver",
+      "description": "graphql",
+      "detail": "@nestjs/graphql",
+      "text": "Add Query books and Mutation addBook with Book object type and input type.\nShow @Resolver and @Args decorators.\nExplain schema generation vs schema-first choice.\nMention N+1 dataloader as advanced reading.\nApollo sandbox dev setup steps."
+    },
+    {
+      "id": "nestjs-46",
+      "label": "gRPC microservice transport",
+      "description": "microservices",
+      "detail": "proto package",
+      "text": "Second process or hybrid app connecting microservice transport GRPC.\nDefine hero.proto and @GrpcMethod handler.\nClientProxy from main app calling findOne.\nList proto path and package options in main.ts.\nWhen REST gateway still fronts mobile clients."
+    },
+    {
+      "id": "nestjs-47",
+      "label": "OpenTelemetry tracing hook",
+      "description": "observability",
+      "detail": "spans",
+      "text": "Outline adding OpenTelemetry SDK with HTTP auto-instrumentation for Nest.\nShow custom span around expensive service method.\nExplain exporting to Jaeger/OTLP collector env vars.\nKeep depth conceptual; link official Nest observability docs pattern.\nNote performance sampling in prod."
+    },
+    {
+      "id": "nestjs-48",
+      "label": "Docker multi-stage production image",
+      "description": "deploy",
+      "detail": "node alpine",
+      "text": "Write Dockerfile: build stage npm ci && nest build, production stage copy dist and prod deps only.\nRun node dist/main.js as non-root user.\n.env not copied; env injected at runtime.\nHealthcheck curl /health.\nCompare dev docker-compose with hot reload volume."
+    },
+    {
+      "id": "nestjs-49",
+      "label": "Config validation with Joi",
+      "description": "config",
+      "detail": "schema object",
+      "text": "ConfigModule.forRoot with validationSchema Joi.object requiring PORT, DATABASE_URL, JWT_SECRET.\nFail fast on boot with readable error.\nShow typed ConfigService get method wrapper class.\nContrast with class-validator config class pattern.\nProvide .env.example without secrets."
+    },
+    {
+      "id": "nestjs-50",
+      "label": "Migrate from Express checklist",
+      "description": "architecture",
+      "detail": "incremental",
+      "text": "I'm porting an Express app to Nest module by module.\nGive a phased checklist: global middleware → modules → DI services → guards for auth → OpenAPI.\nMap express.Router to @Controller prefix.\nNote where to keep raw Express instance hooks in main.ts rarely.\nList common frustrations (req/res typing, middleware order)."
     }
   ]
 }

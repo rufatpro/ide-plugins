@@ -1,0 +1,146 @@
+{
+  "category": "sqlalchemy",
+  "categoryLabel": "SQLAlchemy",
+  "prompts": [
+    {
+      "id": "sa-01",
+      "label": "Engine и первое подключение",
+      "description": "настройка",
+      "detail": "create_engine SQLite",
+      "text": "Я новичок в SQLAlchemy 2.x. Настрой минимальный скрипт с create_engine для SQLite файла app.db.\n\n- Проверь подключение через engine.connect() и SELECT 1\n- Объясни роль Engine vs Session\n- requirements.txt с sqlalchemy>=2\n\nПока без ORM-моделей — только Core на этом шаге."
+    },
+    {
+      "id": "sa-02",
+      "label": "Declarative Base и модель",
+      "description": "ORM",
+      "detail": "Mapped class User",
+      "text": "Создай DeclarativeBase и модель User с id, email (unique), created_at.\n\n- Используй Mapped[] и mapped_column (стиль SQLAlchemy 2.0)\n- metadata.create_all(engine) только для dev\n- Опиши форму таблицы словами\n\nОдин модуль models.py с короткими комментариями."
+    },
+    {
+      "id": "sa-03",
+      "label": "Sessionmaker и scope сессии",
+      "description": "session",
+      "detail": "context manager",
+      "text": "Настрой SessionLocal = sessionmaker(bind=engine) и используй with SessionLocal() as session.\n\n- Объясни жизненный цикл commit, rollback, close\n- Почему важен autocommit=False по умолчанию\n- Вставь одного User и сделай commit\n\nСравни session на запрос vs глобальная сессия как антипаттерн."
+    },
+    {
+      "id": "sa-04",
+      "label": "INSERT и SELECT через select()",
+      "description": "CRUD",
+      "detail": "стиль 2.0",
+      "text": "Научи CRUD в стиле SQLAlchemy 2.0 select() (не legacy Query).\n\n- session.add(), session.get(User, id)\n- select(User).where(User.email == ...)\n- scalars().all() vs scalar_one_or_none()\n\nДай запускаемый скрипт с выводом в print."
+    },
+    {
+      "id": "sa-05",
+      "label": "UPDATE и DELETE строк",
+      "description": "CRUD",
+      "detail": "execute update delete",
+      "text": "Покажи обновление поля и удаление по id через session.get и session.delete.\n\n- Пример bulk update через update(User).where(...) и session.execute\n- Когда unit of work ORM, а когда Core execute\n- commit и проверка, что число строк изменилось\n\nПример на SQLite."
+    },
+    {
+      "id": "sa-06",
+      "label": "Связь один-ко-многим",
+      "description": "relations",
+      "detail": "Author Post",
+      "text": "Смоделируй Author и Post с relationship() и ForeignKey.\n\n- back_populates с обеих сторон\n- Создай автора с двумя постами в одной сессии\n- Запрос author.posts у загруженного объекта\n\nКратко про lazy='select' и тизер N+1."
+    },
+    {
+      "id": "sa-07",
+      "label": "Многие-ко-многим через association",
+      "description": "relations",
+      "detail": "secondary table",
+      "text": "Добавь Student, Course и association table student_course.\n\n- Паттерн relationship(secondary=...)\n- Запиши студента на два курса\n- Запрос студентов курса\n\nЯвно покажи определение Table() для связи."
+    },
+    {
+      "id": "sa-08",
+      "label": "joinedload против N+1",
+      "description": "performance",
+      "detail": "eager load",
+      "text": "Покажи N+1 при загрузке постов без joinedload, затем исправь selectinload или joinedload.\n\n- sqlalchemy.orm attributes\n- Интуиция числа запросов без тяжёлых логгеров\n- Эскиз кода до/после\n\nОбъясни eager loading для новичков."
+    },
+    {
+      "id": "sa-09",
+      "label": "Alembic init и первая ревизия",
+      "description": "migrations",
+      "detail": "alembic upgrade head",
+      "text": "Инициализируй Alembic для существующего проекта SQLAlchemy.\n\n- alembic init, настрой sqlalchemy.url и target_metadata\n- Первая revision с upgrade, создающим таблицы\n- Команды: upgrade head, downgrade -1\n\nПредположи, что metadata импортируется в env.py."
+    },
+    {
+      "id": "sa-10",
+      "label": "Autogenerate после изменения модели",
+      "description": "migrations",
+      "detail": "add column",
+      "text": "Добавь nullable-колонку в User, затем alembic revision --autogenerate.\n\n- Проверь сгенерированные ops перед применением\n- Почему autogenerate не заменяет data migrations\n- workflow upgrade head\n\nОдин случай, когда autogenerate не видит rename колонки."
+    },
+    {
+      "id": "sa-11",
+      "label": "Async engine и asyncpg",
+      "description": "async",
+      "detail": "create_async_engine",
+      "text": "Настрой create_async_engine с postgresql+asyncpg:// (или aiosqlite для простого локального демо).\n\n- AsyncSession и async_sessionmaker\n- Паттерн async with session.begin()\n- Один async select и print\n\nКогда async SA полезен (FastAPI) vs простота sync в скриптах."
+    },
+    {
+      "id": "sa-12",
+      "label": "FastAPI Depends get_db",
+      "description": "integration",
+      "detail": "yield session",
+      "text": "Подключи сессию SQLAlchemy в FastAPI через Depends с yield и закрытием после запроса.\n\n- Generator dependency try/finally\n- GET route со списком users из БД\n- Транзакция на запрос\n\nМинимальная структура main.py + models.py."
+    },
+    {
+      "id": "sa-13",
+      "label": "Индексы и unique constraints",
+      "description": "schema",
+      "detail": "mapped_column index",
+      "text": "Добавь index=True и UniqueConstraint на поля модели.\n\n- Разница index vs unique\n- __table_args__ для составного unique (email + tenant_id)\n- Как Alembic подхватывает это в autogenerate\n\nДостаточно примера на SQLite."
+    },
+    {
+      "id": "sa-14",
+      "label": "Hybrid property на модели",
+      "description": "ORM",
+      "detail": "вычисляемое поле",
+      "text": "Добавь hybrid_property full_name из first и last на модели Person.\n\n- Доступ с Python-стороны\n- Кратко hybrid_expression для SQL-запросов\n- Когда хватит обычного @property\n\nДемо с двумя Person."
+    },
+    {
+      "id": "sa-15",
+      "label": "Настройки connection pool",
+      "description": "production",
+      "detail": "pool_size max_overflow",
+      "text": "Объясни pool_size, max_overflow, pool_pre_ping для Postgres в проде.\n\n- Что при исчерпании пула\n- Зачем pre_ping после idle disconnect\n- Для SQLite в dev хватит дефолтов\n\nЧеклист настроек без Kubernetes."
+    },
+    {
+      "id": "sa-16",
+      "label": "Сырой SQL через text()",
+      "description": "Core",
+      "detail": "bound parameters",
+      "text": "Выполни сырой SQL через sqlalchemy.text с bound parameters (никогда f-string SQL).\n\n- SELECT с параметром :id\n- Когда raw SQL vs ORM\n- Строки в dict через .mappings()\n\nОдин reporting-запрос."
+    },
+    {
+      "id": "sa-17",
+      "label": "pytest fixture для БД",
+      "description": "testing",
+      "detail": "rollback транзакции",
+      "text": "Настрой pytest fixture с SQLite in-memory engine и session на тест.\n\n- rollback после каждого теста\n- Хелпер create_user(session)\n- Один тест с проверкой запроса\n\nПредпочти pytest; unittest одной фразой."
+    },
+    {
+      "id": "sa-18",
+      "label": "Flask-SQLAlchemy vs чистый SA",
+      "description": "comparison",
+      "detail": "что выбрать",
+      "text": "Сравни расширение Flask-SQLAlchemy и ручной Session в app factory Flask.\n\n- Удобство db.Model vs явный Base\n- Когда новичку учить чистый SQLAlchemy\n- Ментальная модель: extension оборачивает scope сессии\n\nБез полного приложения — гайд выбора + мини-контраст кода."
+    },
+    {
+      "id": "sa-19",
+      "label": "Soft delete и фильтр запросов",
+      "description": "patterns",
+      "detail": "deleted_at",
+      "text": "Добавь nullable deleted_at и запросы по умолчанию без soft-deleted строк.\n\n- Вариант A: хелпер запроса\n- Вариант B: with_loader_criteria / listener — кратко\n- unique constraints при soft delete\n\nПрактичный паттерн для новичков."
+    },
+    {
+      "id": "sa-20",
+      "label": "Seed-скрипт и bulk insert",
+      "description": "DX",
+      "detail": "session.add_all",
+      "text": "Напиши scripts/seed.py с демо-данными через session.add_all и commit.\n\n- Идемпотентность: проверка count или эскиз upsert\n- Faker для имён по желанию\n- Запуск python -m scripts.seed\n\nКогда нужен bulk_insert_mappings для производительности."
+    }
+  ]
+}

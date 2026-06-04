@@ -1,0 +1,146 @@
+{
+  "category": "sqlalchemy",
+  "categoryLabel": "SQLAlchemy",
+  "prompts": [
+    {
+      "id": "sa-01",
+      "label": "Engine and first connection",
+      "description": "setup",
+      "detail": "create_engine SQLite",
+      "text": "I'm new to SQLAlchemy 2.x. Set up a minimal script with create_engine for SQLite file app.db.\n\n- Test connection with engine.connect() and SELECT 1\n- Explain the role of the Engine vs Session\n- requirements.txt with sqlalchemy>=2\n\nNo ORM models yet — Core only in this step."
+    },
+    {
+      "id": "sa-02",
+      "label": "Declarative Base model",
+      "description": "ORM",
+      "detail": "Mapped class User",
+      "text": "Create a DeclarativeBase and a User model with id, email (unique), created_at.\n\n- Use Mapped[] and mapped_column (SQLAlchemy 2.0 style)\n- metadata.create_all(engine) for dev only\n- Show the generated table shape in words\n\nSingle module models.py and short comments."
+    },
+    {
+      "id": "sa-03",
+      "label": "Sessionmaker and session scope",
+      "description": "session",
+      "detail": "context manager",
+      "text": "Wire SessionLocal = sessionmaker(bind=engine) and use with SessionLocal() as session.\n\n- Explain commit, rollback, close lifecycle\n- Why autocommit=False default matters\n- Insert one User and commit\n\nContrast session per request vs global session anti-pattern."
+    },
+    {
+      "id": "sa-04",
+      "label": "INSERT and SELECT with select()",
+      "description": "CRUD",
+      "detail": "2.0 style queries",
+      "text": "Teach CRUD with SQLAlchemy 2.0 select() style (not legacy Query).\n\n- session.add(), session.get(User, id)\n- select(User).where(User.email == ...)\n- scalars().all() vs scalar_one_or_none()\n\nProvide runnable script with print outputs."
+    },
+    {
+      "id": "sa-05",
+      "label": "UPDATE and DELETE rows",
+      "description": "CRUD",
+      "detail": "execute update delete",
+      "text": "Show updating a field and deleting by id using session.get and session.delete.\n\n- Use update(User).where(...) with session.execute for bulk update (one example)\n- Explain when ORM unit of work vs Core execute fits\n- Commit and verify row count changed\n\nKeep SQLite example."
+    },
+    {
+      "id": "sa-06",
+      "label": "One-to-many relationship",
+      "description": "relations",
+      "detail": "Author Post",
+      "text": "Model Author and Post with relationship() and ForeignKey.\n\n- back_populates on both sides\n- Create author with two posts in one session\n- Query author.posts from loaded instance\n\nExplain lazy='select' default briefly and N+1 teaser."
+    },
+    {
+      "id": "sa-07",
+      "label": "Many-to-many association table",
+      "description": "relations",
+      "detail": "secondary table",
+      "text": "Add Student, Course, and association table student_course.\n\n- relationship(secondary=...) pattern\n- Enroll student in two courses\n- Query students for a course\n\nShow Table() association definition explicitly."
+    },
+    {
+      "id": "sa-08",
+      "label": "joinedload avoid N+1",
+      "description": "performance",
+      "detail": "eager load",
+      "text": "Demonstrate N+1 when loading many posts without joinedload, then fix with selectinload or joinedload.\n\n- Use sqlalchemy.orm attributes\n- Print query count intuition (explain without heavy logging libs)\n- One before/after code sketch\n\nBeginner-friendly explanation of eager loading."
+    },
+    {
+      "id": "sa-09",
+      "label": "Alembic init and first revision",
+      "description": "migrations",
+      "detail": "alembic upgrade head",
+      "text": "Initialize Alembic for an existing SQLAlchemy project.\n\n- alembic init, configure sqlalchemy.url and target_metadata\n- Create first revision with upgrade creating tables\n- Commands: upgrade head, downgrade -1\n\nAssume models metadata is importable in env.py."
+    },
+    {
+      "id": "sa-10",
+      "label": "Autogenerate migration after model change",
+      "description": "migrations",
+      "detail": "add column",
+      "text": "Add a nullable column to User, then alembic revision --autogenerate.\n\n- Review generated ops before applying\n- Explain why autogenerate is not magic on data migrations\n- upgrade head workflow\n\nList one case autogenerate misses (rename column)."
+    },
+    {
+      "id": "sa-11",
+      "label": "Async engine and asyncpg",
+      "description": "async",
+      "detail": "create_async_engine",
+      "text": "Set up create_async_engine with postgresql+asyncpg:// (or aiosqlite for simpler local demo).\n\n- AsyncSession with async_sessionmaker\n- async with session.begin() pattern\n- One async select and print\n\nNote when async SA helps (FastAPI) vs sync simplicity for scripts."
+    },
+    {
+      "id": "sa-12",
+      "label": "FastAPI Depends get_db session",
+      "description": "integration",
+      "detail": "yield session",
+      "text": "Wire SQLAlchemy session into FastAPI with Depends yielding session and closing after request.\n\n- Generator dependency try/finally or contextlib\n- One GET route listing users from DB\n- Explain transaction per request\n\nMinimal main.py + models.py structure."
+    },
+    {
+      "id": "sa-13",
+      "label": "Indexes and unique constraints",
+      "description": "schema",
+      "detail": "mapped_column index",
+      "text": "Add index=True and UniqueConstraint on model fields.\n\n- Explain difference index vs unique\n- Show __table_args__ for composite unique (email + tenant_id)\n- How Alembic picks this up on autogenerate\n\nSQLite example is fine."
+    },
+    {
+      "id": "sa-14",
+      "label": "Hybrid property on model",
+      "description": "ORM",
+      "detail": "computed field",
+      "text": "Add a hybrid_property full_name combining first and last on a Person model.\n\n- Show Python-side access\n- Mention hybrid_expression for SQL queries at high level\n- When @property is enough instead\n\nSmall demo with two Person rows."
+    },
+    {
+      "id": "sa-15",
+      "label": "Connection pool settings",
+      "description": "production",
+      "detail": "pool_size max_overflow",
+      "text": "Explain create_engine pool_size, max_overflow, pool_pre_ping for Postgres deployments.\n\n- What happens when pool is exhausted\n- Why pre_ping helps after idle DB disconnects\n- Defaults are fine for SQLite dev\n\nNo Kubernetes — just DBA-minded defaults checklist."
+    },
+    {
+      "id": "sa-16",
+      "label": "Raw SQL with text() safely",
+      "description": "Core",
+      "detail": "bound parameters",
+      "text": "Show executing raw SQL with sqlalchemy.text and bound parameters (never f-string SQL).\n\n- SELECT with :id parameter\n- When to drop to raw SQL vs ORM\n- Map rows to dicts with .mappings()\n\nOne reporting query example."
+    },
+    {
+      "id": "sa-17",
+      "label": "pytest fixture test database",
+      "description": "testing",
+      "detail": "transaction rollback",
+      "text": "Set up pytest fixture with SQLite in-memory engine and session per test.\n\n- Rollback after each test for isolation\n- Factory helper create_user(session)\n- One test asserting query count\n\nPrefer pytest; mention unittest briefly."
+    },
+    {
+      "id": "sa-18",
+      "label": "Flask-SQLAlchemy vs pure SA",
+      "description": "comparison",
+      "detail": "when to pick",
+      "text": "Compare Flask-SQLAlchemy extension vs manual Session in Flask app factory.\n\n- db.Model convenience vs explicit Base\n- When beginners should start pure SQLAlchemy for learning\n- Link mental model: extension wraps session scope\n\nNo full app — decision guide + tiny code contrast."
+    },
+    {
+      "id": "sa-19",
+      "label": "Soft delete with query filter",
+      "description": "patterns",
+      "detail": "deleted_at column",
+      "text": "Add deleted_at nullable datetime to a model and default queries excluding soft-deleted rows.\n\n- Option A: custom query helper\n- Option B: with_loader_criteria or event listener mention at high level\n- Unique constraints with soft delete caveat\n\nPractical pattern for beginners."
+    },
+    {
+      "id": "sa-20",
+      "label": "Seed script and bulk insert",
+      "description": "DX",
+      "detail": "session.add_all",
+      "text": "Write scripts/seed.py populating demo data with session.add_all and commit.\n\n- Idempotent seed: check count before insert or upsert pattern sketch\n- Use Faker optional for names\n- Run with python -m scripts.seed\n\nExplain bulk_insert_mappings when performance matters."
+    }
+  ]
+}

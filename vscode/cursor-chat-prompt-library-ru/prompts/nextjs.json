@@ -141,6 +141,216 @@
       "description": "конфиг",
       "detail": "префикс NEXT_PUBLIC",
       "text": "Поясни, какие env vars попадают в браузер через NEXT_PUBLIC_.\nПокажи rotation и env matrix для preview deployments словами.\nОбъясни, почему secrets никогда не должны быть в client bundles.\nКратко опиши runtime env с edge constraints.\nДай checklist для отладки undefined env на этапе build vs request time."
+    },
+    {
+      "id": "nextjs-21",
+      "label": "Route handlers REST CRUD",
+      "description": "App Router",
+      "detail": "GET POST route.ts",
+      "text": "app/api/items/route.ts: GET list и POST create с JSON body.\nВалидация input и корректные status codes.\nWeb APIs Request/Response.\nТест curl или Thunder Client.\nКонвенции colocation папок."
+    },
+    {
+      "id": "nextjs-22",
+      "label": "Динамический сегмент [id]",
+      "description": "routing",
+      "detail": "params Promise",
+      "text": "app/items/[id]/page.tsx читает id в server component.\nТипизация params в Next 15 async params, если применимо.\nnotFound при отсутствии записи.\ngenerateMetadata опционально.\nПсевдо-fetch из БД."
+    },
+    {
+      "id": "nextjs-23",
+      "label": "Catch-all [...slug]",
+      "description": "routing",
+      "detail": "optional segments",
+      "text": "[...slug] для docs paths и разница с optional [[...slug]].\nОтладочный вывод segments array.\nИдея breadcrumbs.\nСлишком широкие matchers.\nДва примера URL и matched params."
+    },
+    {
+      "id": "nextjs-24",
+      "label": "Route groups (marketing)",
+      "description": "routing",
+      "detail": "папки (group)",
+      "text": "(marketing)/about и (shop)/cart без влияния на URL.\nОбщий layout на группу.\nНесколько root layouts — caveat.\nСравни с path prefixes.\nASCII-дерево папок в комментарии."
+    },
+    {
+      "id": "nextjs-25",
+      "label": "Вложенные layouts dashboard",
+      "description": "layouts",
+      "detail": "вложение layout.tsx",
+      "text": "app/dashboard/layout.tsx с sidebar вокруг child pages.\nPersistence layout vs template.\nСосед loading.tsx.\nProviders, scoped к сегменту.\nФайлы для dashboard/settings."
+    },
+    {
+      "id": "nextjs-26",
+      "label": "template.tsx vs layout",
+      "description": "routing",
+      "detail": "remount при navigate",
+      "text": "template remounts children при навигации, layout сохраняется.\nКейс: enter transition при смене страницы.\nКогда хватает layout.\nЛишние remount costs для новичков.\nМинимальная структура примера."
+    },
+    {
+      "id": "nextjs-27",
+      "label": "Metadata и Open Graph",
+      "description": "SEO",
+      "detail": "export const metadata",
+      "text": "metadata export: title, description, openGraph images на blog page.\nstatic vs generateMetadata dynamic.\nTwitter card кратко.\nSocial debuggers словами.\ncanonical URL."
+    },
+    {
+      "id": "nextjs-28",
+      "label": "Генерация sitemap.ts",
+      "description": "SEO",
+      "detail": "MetadataRoute.Sitemap",
+      "text": "app/sitemap.ts с urls из mock posts array.\nlastModified и priority кратко.\nОтправка в Search Console.\nВключение dynamic routes.\nColocation в app router."
+    },
+    {
+      "id": "nextjs-29",
+      "label": "robots.ts: правила обхода",
+      "description": "SEO",
+      "detail": "allow disallow",
+      "text": "app/robots.ts: allow /, disallow /admin.\nРазница со static robots.txt.\nСвойство sitemap.\nnoindex на staging словами.\nПроверка fetch /robots.txt."
+    },
+    {
+      "id": "nextjs-30",
+      "label": "next/font local и google",
+      "description": "fonts",
+      "detail": "применение в layout.tsx",
+      "text": "next/font/google Inter с CSS variable на body className.\nSelf-hosting vs link tag.\nVariable font weights.\nСлишком много weights в бандле.\nТолько snippet layout."
+    },
+    {
+      "id": "nextjs-31",
+      "label": "Поведение prefetch у Link",
+      "description": "navigation",
+      "detail": "prop prefetch",
+      "text": "Default Link prefetch в viewport для static routes.\nprefetch={false} для тяжёлых редких страниц.\nСвязь с loading.tsx.\nrouter.prefetch вручную.\nNetwork tab в devtools."
+    },
+    {
+      "id": "nextjs-32",
+      "label": "useRouter: клиентская навигация",
+      "description": "client",
+      "detail": "push replace back",
+      "text": "Client component: useRouter().push после успеха формы.\nreplace vs push в history stack.\nShallow routing как legacy note.\nusePathname для active nav.\nДиректива use client."
+    },
+    {
+      "id": "nextjs-33",
+      "label": "useSearchParams для фильтров",
+      "description": "client",
+      "detail": "состояние в URL query",
+      "text": "Фильтры ?q= и ?sort= через useSearchParams и router.replace.\nSuspense boundary в App Router.\nDebounce опционально словами.\nShareable URL для пользователей.\nDefaults при отсутствии param."
+    },
+    {
+      "id": "nextjs-34",
+      "label": "cookies() на сервере",
+      "description": "server",
+      "detail": "set get delete",
+      "text": "Чтение theme cookie в Server Component; установка в Server Action или route handler.\nhttpOnly secure sameSite простым языком.\ncookies().get('session').\nРиск JWT в non-httpOnly cookie.\nЛимиты размера."
+    },
+    {
+      "id": "nextjs-35",
+      "label": "headers() на сервере",
+      "description": "server",
+      "detail": "заголовки запроса",
+      "text": "user-agent или authorization в server component через headers().\nDynamic rendering при headers().\nОсторожный forward header в upstream fetch.\nПересечение с middleware.\nМинимальный пример."
+    },
+    {
+      "id": "nextjs-36",
+      "label": "draftMode preview CMS",
+      "description": "CMS",
+      "detail": "preview secret",
+      "text": "draftMode после secret preview route для неопубликованных постов.\nCookie flag и обход fetch cache ментально.\nМаршрут exit draft.\nЗащита preview URL.\nБез привязки к вендору CMS — только flow."
+    },
+    {
+      "id": "nextjs-37",
+      "label": "Набросок i18n routing",
+      "description": "i18n",
+      "detail": "сегмент [lang]",
+      "text": "app/[lang]/page и middleware locale detection.\nСловари per locale file.\nLink hreflang кратко.\nnext-intl как опция.\nАрхитектурная диаграмма словами."
+    },
+    {
+      "id": "nextjs-38",
+      "label": "Набросок auth session",
+      "description": "auth",
+      "detail": "cookie session",
+      "text": "Session cookie: login route ставит httpOnly cookie, server читает session, middleware guard.\nJWT в header vs session для новичков.\nГде валидировать (server actions, route handlers).\nAuth.js name-drop без полного setup.\nSecurity checklist bullets."
+    },
+    {
+      "id": "nextjs-39",
+      "label": "Каркас Prisma в Next",
+      "description": "database",
+      "detail": "schema migrate dev",
+      "text": "Prisma в Next: model User, migrate dev, singleton lib/prisma.ts.\nHot reload и несколько instances в dev.\nfindMany в server component.\n.env DATABASE_URL.\nКоманды npx prisma init и т.д."
+    },
+    {
+      "id": "nextjs-40",
+      "label": "Чеклист деплоя Vercel",
+      "description": "deploy",
+      "detail": "env build settings",
+      "text": "Чеклист: repo, env vars, framework preset, build, ISR regions.\nPreview deployments на PR.\nvercel.json redirects опционально.\nЧастый сбой: env отсутствует при build.\nSmoke tests после деплоя."
+    },
+    {
+      "id": "nextjs-41",
+      "label": "Ограничения Edge runtime",
+      "description": "edge",
+      "detail": "ограничения nodejs API",
+      "text": "Edge vs Node для route handlers: нет fs, ограниченные npm packages.\nКогда edge для глобальной latency.\nexport const runtime = 'edge'.\nPrisma on edge historically.\nСвязь с middleware runtime."
+    },
+    {
+      "id": "nextjs-42",
+      "label": "instrumentation.ts при старте",
+      "description": "observability",
+      "detail": "register once",
+      "text": "instrumentation.ts регистрирует OpenTelemetry или console bootstrap при старте сервера.\nОдин раз на cold start Node runtime.\nГлобальные ошибки логирования.\nExperimental status.\nСекции docs, не полный OTel курс."
+    },
+    {
+      "id": "nextjs-43",
+      "label": "Генерация OG image",
+      "description": "SEO",
+      "detail": "ImageResponse opengraph",
+      "text": "opengraph-image.tsx с ImageResponse и динамическим title из params.\nРазмер 1200x630.\nКэширование на высоком уровне.\nТест URL /opengraph-image.\nFallback static png."
+    },
+    {
+      "id": "nextjs-44",
+      "label": "Intercepting routes: modal",
+      "description": "routing",
+      "detail": "(.)photo parallel",
+      "text": "@modal parallel route + (.) intercepting: overlay фото с сохранением background page.\nUX soft navigation.\nСложность для маленьких apps.\nСтруктура папок с @modal slot.\nКогда пропустить паттерн новичку."
+    },
+    {
+      "id": "nextjs-45",
+      "label": "Опции cache fetch",
+      "description": "data",
+      "detail": "cache no-store revalidate",
+      "text": "fetch(url, { cache: 'no-store' }) vs next: { revalidate: 60 } в server components.\nDefaults static caching честно по версиям.\nTag revalidation — краткая ссылка на batch 2.\nОтладка логом URL fetch.\nDecision table bullets."
+    },
+    {
+      "id": "nextjs-46",
+      "label": "Правила client boundary",
+      "description": "architecture",
+      "detail": "размещение use client",
+      "text": "\"use client\" на листьях, page server по умолчанию.\nЛимиты сериализации props (functions, dates).\nchildren с server в client.\nНе импортируй server-only modules в client.\nПример дерева имён only."
+    },
+    {
+      "id": "nextjs-47",
+      "label": "next/script для third parties",
+      "description": "performance",
+      "detail": "strategy afterInteractive",
+      "text": "Analytics через next/script strategy afterInteractive.\nbeforeInteractive и lazyOnload.\nCSP nonce pairing словами.\nДублирование script.\nРазмещение в app router layout."
+    },
+    {
+      "id": "nextjs-48",
+      "label": "Workflow анализа бандла",
+      "description": "perf",
+      "detail": "@next/bundle-analyzer",
+      "text": "Bundle analyzer в next.config на один build report.\nКрупнейшие chunks для новичков.\nDynamic import fixes.\nServer vs client component split.\nANALYZE=true build."
+    },
+    {
+      "id": "nextjs-49",
+      "label": "Миграция Pages -> App",
+      "description": "migration",
+      "detail": "эквиваленты getServerSideProps",
+      "text": "pages/index getServerSideProps -> app/page server fetch.\npages/api -> route handlers.\n_app providers -> root layout.\nИнкрементальная миграция.\ngetLayout -> nested layouts."
+    },
+    {
+      "id": "nextjs-50",
+      "label": "revalidatePath после mutation",
+      "description": "cache",
+      "detail": "обновление сегмента",
+      "text": "revalidatePath('/dashboard') после Server Action.\nСравни с revalidateTag из batch 2.\nЧто видит пользователь при следующей навигации.\nПара с redirect после submit.\nОтладка неверного path pattern для nested routes."
     }
   ]
 }

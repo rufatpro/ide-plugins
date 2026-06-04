@@ -18,6 +18,7 @@ const CATEGORY_FILE_ORDER = [
   "git.json",
   "django.json",
   "flask.json",
+  "sqlalchemy.json",
   "nextjs.json",
   "fastapi.json",
   "docker.json",

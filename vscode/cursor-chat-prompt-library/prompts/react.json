@@ -141,6 +141,216 @@
       "description": "concurrency",
       "detail": "useDeferredValue intro",
       "text": "Introduce useDeferredValue for keeping input snappy while a heavy filtered list updates.\nContrast with debouncing in userland.\nExplain perceived lag trade-offs simply.\nShow a toy list filter example without external libraries.\nMention profiling in React DevTools as validation."
+    },
+    {
+      "id": "react-21",
+      "label": "useCallback stable handlers",
+      "description": "hooks",
+      "detail": "dependency array discipline",
+      "text": "Explain when useCallback helps child memoization vs when it adds noise.\nRefactor a SearchPage passing onSelect to memoized ListItem.\nShow stale closure bug when deps omitted.\nRelate to React Compiler future without deep dive.\nGive heuristic: measure first, memo callbacks second."
+    },
+    {
+      "id": "react-22",
+      "label": "useMemo expensive derived data",
+      "description": "hooks",
+      "detail": "filter sort cache",
+      "text": "Memoize filtering a 5k item list with useMemo and correct deps.\nContrast recomputing every render cost mentally.\nWarn useMemo is not semantic guarantee in concurrent mode lightly.\nShow eslint exhaustive-deps warning fix.\nWhen plain variable outside component is better for static data."
+    },
+    {
+      "id": "react-23",
+      "label": "Context pattern provider consumer",
+      "description": "state",
+      "detail": "createContext useContext",
+      "text": "Build ThemeContext with provider at app root and useContext in a button.\nExplain default value and undefined checks.\nShow splitting read/write contexts teaser.\nWarn about rerendering all consumers on any change.\nProvide minimal three-file structure."
+    },
+    {
+      "id": "react-24",
+      "label": "Splitting context performance",
+      "description": "state",
+      "detail": "state vs dispatch",
+      "text": "Refactor one fat Context into StateContext and DispatchContext to reduce rerenders.\nUse useMemo on value objects.\nExplain selector libraries (use-context-selector) as optional.\nShow DevTools rerender highlight tip.\nGive before/after diagram in words."
+    },
+    {
+      "id": "react-25",
+      "label": "Compound components pattern",
+      "description": "composition",
+      "detail": "Tabs TabList Tab",
+      "text": "Design <Tabs> with static subcomponents Tabs.List Tabs.Panel using React.Children or explicit exports.\nExplain implicit state sharing via context inside compound set.\nCompare to prop drilling variant prop.\nList accessibility roles homework for tabs.\nKeep API ergonomic for beginners."
+    },
+    {
+      "id": "react-26",
+      "label": "Controlled inputs single source",
+      "description": "forms",
+      "detail": "value onChange",
+      "text": "Build controlled text input and checkbox with useState.\nExplain controlled vs uncontrolled when to pick each.\nShow syncing props to state anti-pattern briefly.\nAdd reset form button pattern.\nMention file inputs stay uncontrolled often."
+    },
+    {
+      "id": "react-27",
+      "label": "React Hook Form starter",
+      "description": "forms",
+      "detail": "register errors",
+      "text": "Wire react-hook-form on a signup form with validation rules.\nShow errors.email.message display and handleSubmit.\nContrast bundle size vs Formik verbally.\nExplain uncontrolled registration model simply.\nList install commands and TypeScript Resolver with Zod optional."
+    },
+    {
+      "id": "react-28",
+      "label": "TanStack Query fetch cache",
+      "description": "data",
+      "detail": "useQuery staleTime",
+      "text": "Fetch users list with useQuery, showing isPending, isError, data states.\nExplain staleTime vs cacheTime/gcTime vocabulary update.\nShow refetch on window focus default behavior.\nSetup QueryClientProvider once.\nProvide devtools mention for debugging."
+    },
+    {
+      "id": "react-29",
+      "label": "Suspense for list loading",
+      "description": "concurrency",
+      "detail": "fallback per section",
+      "text": "Wrap a slow child list component with Suspense and fallback skeleton.\nExplain data fetching requirements with frameworks supporting Suspense.\nContrast with isLoading boolean pattern.\nShow nested Suspense boundaries benefit.\nNote error boundaries pairing."
+    },
+    {
+      "id": "react-30",
+      "label": "lazy routes code splitting",
+      "description": "routing",
+      "detail": "React.lazy Suspense",
+      "text": "Split Dashboard route with React.lazy and Suspense fallback.\nShow default export requirement.\nExplain route-based splitting with React Router example verbally.\nHandle lazy load errors with error boundary.\nList bundle analyzer follow-up."
+    },
+    {
+      "id": "react-31",
+      "label": "StrictMode double invoke lessons",
+      "description": "dev",
+      "detail": "effect run twice dev",
+      "text": "Explain React StrictMode intentionally double-invoking effects in dev.\nShow idempotent effect pattern and cleanup importance.\nWarn beginners not to disable StrictMode to hide bugs.\nRelate to upcoming stricter behaviors lightly.\nGive checklist for effect dependencies."
+    },
+    {
+      "id": "react-32",
+      "label": "Effect cleanup patterns",
+      "description": "effects",
+      "detail": "subscriptions timers",
+      "text": "Demonstrate useEffect subscribing to resize with removeEventListener cleanup.\nExplain cleanup runs before re-run and on unmount.\nShow AbortController abort in fetch cleanup.\nContrast empty deps vs missing deps bugs.\nProvide ESLint rule-of-thumb sentence."
+    },
+    {
+      "id": "react-33",
+      "label": "useSyncExternalStore sketch",
+      "description": "hooks",
+      "detail": "subscribe external store",
+      "text": "Outline tiny external store with subscribe/getSnapshot wired via useSyncExternalStore.\nExplain tearing avoidance purpose simply.\nMention libraries using it under the hood.\nKeep example conceptual if API feels advanced.\nLink to official docs sections to read."
+    },
+    {
+      "id": "react-34",
+      "label": "Testing Library queries",
+      "description": "testing",
+      "detail": "getByRole priority",
+      "text": "Write tests for a login form preferring getByRole('button', { name: /sign in/i }).\nExplain query priority chart briefly.\nUse screen object pattern.\nShow debug with screen.debug().\nAdd npm test script with Vitest or Jest runner."
+    },
+    {
+      "id": "react-35",
+      "label": "userEvent over fireEvent",
+      "description": "testing",
+      "detail": "realistic typing clicks",
+      "text": "Replace fireEvent.click with userEvent.setup().click and type for async realism.\nExplain await user.type pacing.\nShow tab navigation test idea.\nConfigure user-event version matching testing-library.\nGive flaky test tip: findBy* async queries."
+    },
+    {
+      "id": "react-36",
+      "label": "MSW mock API in tests",
+      "description": "testing",
+      "detail": "handlers rest",
+      "text": "Setup MSW handlers returning fake JSON for /api/users in Vitest.\nExplain server.listen in setupFiles.\nReset handlers between tests.\nContrast with mocking fetch directly.\nShow one error response handler example."
+    },
+    {
+      "id": "react-37",
+      "label": "Storybook story for Button",
+      "description": "docs",
+      "detail": "CSF meta story",
+      "text": "Create Button.stories.tsx with meta, args, and controls for variant.\nExplain autodocs tag lightly.\nShow rendering all variants in one story optional.\nCommands to run storybook dev.\nRelate stories to visual review without full design system course."
+    },
+    {
+      "id": "react-38",
+      "label": "React Router nested routes",
+      "description": "routing",
+      "detail": "Outlet layout routes",
+      "text": "Configure nested routes with layout Outlet for dashboard sections.\nExplain index routes and relative links.\nShow nav Link active style with NavLink.\nUse createBrowserRouter pattern if modern.\nProvide folder pages/dashboard/* structure."
+    },
+    {
+      "id": "react-39",
+      "label": "Protected routes auth guard",
+      "description": "routing",
+      "detail": "redirect login",
+      "text": "Implement ProtectedRoute reading auth context redirecting to /login.\nExplain storing token vs session cookie high level.\nShow loader pattern in data routers optional.\nAvoid flashing content with loading gate.\nList security note: always validate server-side too."
+    },
+    {
+      "id": "react-40",
+      "label": "Zustand minimal store",
+      "description": "state",
+      "detail": "create slice",
+      "text": "Create useCartStore with addItem/removeItem using Zustand.\nCompare boilerplate to Context for medium apps.\nShow selectors to limit rerenders.\nExplain persist middleware name-drop.\nInstall command and devtools optional."
+    },
+    {
+      "id": "react-41",
+      "label": "SEO meta react-helmet-async",
+      "description": "seo",
+      "detail": "title description og",
+      "text": "Set per-route title and meta description with react-helmet-async in SPA.\nExplain limitations vs SSR frameworks honestly.\nShow Open Graph tags for a blog post page.\nList social preview debugging tools.\nNote Next.js metadata API as upgrade path."
+    },
+    {
+      "id": "react-42",
+      "label": "useImperativeHandle parent focus",
+      "description": "refs",
+      "detail": "forwardRef combo",
+      "text": "Expose focus() on a custom Input via useImperativeHandle with forwardRef.\nExplain why not to overuse imperative APIs.\nType ref handle interface in TypeScript.\nShow parent button focusing child field.\nRelate to accessible focus management."
+    },
+    {
+      "id": "react-43",
+      "label": "Children composition slots",
+      "description": "patterns",
+      "detail": "props.children layout",
+      "text": "Build Card with header/footer slots using props.children and optional render props.\nContrast children vs explicit Header prop API.\nShow composition replacing prop drilling variants.\nGive layout component example for dashboard.\nMention React 19 children typing ease lightly."
+    },
+    {
+      "id": "react-44",
+      "label": "Keys on fragments lists",
+      "description": "lists",
+      "detail": "Fragment key prop",
+      "text": "Explain when list items return Fragment groups needing keys on Fragment.\nShow incorrect missing key warning case.\nRelate to adjacent JSX array patterns.\nProvide short bug story with reorder.\nLink back to stable id guidance without repeating batch 2 memo lesson."
+    },
+    {
+      "id": "react-45",
+      "label": "react-query invalidation",
+      "description": "data",
+      "detail": "queryClient.invalidateQueries",
+      "text": "After mutation creating a todo, invalidate ['todos'] queries.\nExplain optimistic updates as follow-up reading.\nShow queryKey conventions folder style.\nDemonstrate prefetchQuery on hover optional.\nPrint devtools invalidation observation tip."
+    },
+    {
+      "id": "react-46",
+      "label": "Error boundary reset keys",
+      "description": "resilience",
+      "detail": "resetKeys pattern",
+      "text": "Extend error boundary to reset when route changes using resetKeys or manual reset callback.\nExplain what errors still slip through.\nLog to console in componentDidCatch.\nPair with React Query error boundaries optionally.\nGive user-facing retry copy advice."
+    },
+    {
+      "id": "react-47",
+      "label": "Accessibility labels forms",
+      "description": "a11y",
+      "detail": "htmlFor aria-describedby",
+      "text": "Audit a form wiring label htmlFor, aria-invalid, aria-describedby for errors.\nExplain visible focus styles.\nShow eslint-plugin-jsx-a11y helpful rules.\nTest with keyboard only steps.\nList common mistake: placeholder as label replacement."
+    },
+    {
+      "id": "react-48",
+      "label": "useTransition pending UI",
+      "description": "concurrency",
+      "detail": "isPending flag",
+      "text": "Use useTransition around a slow tab switch updating large list state.\nShow pending indicator on button disabled styling.\nContrast with useDeferredValue use case simply.\nExplain transitions don't block typing.\nMention startTransition import path."
+    },
+    {
+      "id": "react-49",
+      "label": "useOptimistic UI sketch",
+      "description": "concurrency",
+      "detail": "React 19 optimistic",
+      "text": "Sketch optimistic todo add UI using useOptimistic or manual pattern with rollback on error.\nExplain temporary UI vs server truth reconciliation.\nPair with mutation onError revert verbally.\nNote feature availability version caveats honestly.\nKeep code pseudo if API unstable."
+    },
+    {
+      "id": "react-50",
+      "label": "Vite proxy dev API",
+      "description": "tooling",
+      "detail": "server.proxy config",
+      "text": "Configure vite.config.ts server.proxy forwarding /api to localhost:3001 during dev.\nExplain avoiding CORS pain in local development.\nShow environment variable for API base per mode.\nContrast with Next.js rewrites mentally.\nGive curl test steps through proxy."
     }
   ]
 }

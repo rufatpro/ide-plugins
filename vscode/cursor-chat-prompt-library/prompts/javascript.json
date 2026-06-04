@@ -141,6 +141,216 @@
       "description": "ESM",
       "detail": "bare specifier education",
       "text": "I see import maps mentioned for using npm packages directly in browsers without bundlers.\nOutline the idea, trade-offs, and a minimal index.html snippet with script type importmap.\nExplain when beginners should still prefer Vite instead.\nNote CORS considerations for module scripts.\nList one security footgun about remote module URLs."
+    },
+    {
+      "id": "js-21",
+      "label": "Proxy and Reflect basics",
+      "description": "metaprogramming",
+      "detail": "trap for validation",
+      "text": "I want to validate object writes without a heavy library.\nExplain Proxy traps get/set and when Reflect helps keep default behavior.\nBuild a tiny createValidatedUser() that rejects negative age assignments.\nContrast Proxy cost and debugging difficulty for beginners.\nList two real-world cases (observability, ORM) vs when plain objects suffice."
+    },
+    {
+      "id": "js-22",
+      "label": "Set and Map when to use them",
+      "description": "collections",
+      "detail": "unique keys and O(1) lookup",
+      "text": "Teach Set vs array uniqueness and Map vs plain object keys.\nShow deduping tags with Set, counting occurrences with Map.\nExplain why object keys are always strings and when Map wins.\nProvide a beginner exercise: unique visitors from a click log array.\nEnd with a checklist for picking Set/Map/Record in small apps."
+    },
+    {
+      "id": "js-23",
+      "label": "RegExp patterns for logs",
+      "description": "strings",
+      "detail": "match groups and flags",
+      "text": "Walk through constructing a RegExp to extract ISO dates and status codes from log lines.\nExplain flags i, m, g and capturing groups with named groups if supported.\nShow test() vs exec() vs matchAll() briefly.\nWarn about catastrophic backtracking at a headline level.\nGive three test strings and expected matches as a mini quiz."
+    },
+    {
+      "id": "js-24",
+      "label": "debounce and throttle utilities",
+      "description": "events",
+      "detail": "search input vs scroll",
+      "text": "Explain debounce vs throttle with a search box and a scroll listener example.\nImplement both in plain JS without lodash, with cancel on unmount notes for SPAs.\nDescribe leading vs trailing edge behavior in plain language.\nShow how to test timing with fake timers conceptually (Vitest optional).\nFinish with when neither is needed (small lists)."
+    },
+    {
+      "id": "js-25",
+      "label": "localStorage persistence pattern",
+      "description": "browser storage",
+      "detail": "JSON serialize caveats",
+      "text": "Build a theme preference saved to localStorage with try/catch for private mode.\nExplain quota limits, synchronous API pitfalls, and JSON.stringify gotchas (Date, undefined).\nShow namespacing keys with a project prefix.\nContrast sessionStorage vs localStorage in one paragraph.\nAdd a security note: never store tokens unencrypted."
+    },
+    {
+      "id": "js-26",
+      "label": "History API pushState",
+      "description": "routing-lite",
+      "detail": "SPA URL without reload",
+      "text": "Teach history.pushState and popstate for a fake tab switcher without a framework.\nUpdate document title optionally and sync a nav highlight.\nExplain why real apps still use routers.\nShow how back button should restore prior tab state.\nProvide index.html + script.js sketch and manual test steps."
+    },
+    {
+      "id": "js-27",
+      "label": "Web Components custom element",
+      "description": "components",
+      "detail": "connectedCallback lifecycle",
+      "text": "Introduce custom elements with a <hello-badge> showing a name attribute.\nUse connectedCallback and attributeChangedCallback at beginner depth.\nExplain shadow DOM boundary lightly (defer styling details to another prompt).\nCompare Web Components vs React when to choose each.\nList browser support and progressive enhancement idea."
+    },
+    {
+      "id": "js-28",
+      "label": "Service Worker sketch offline",
+      "description": "PWA",
+      "detail": "install activate fetch",
+      "text": "Outline registering a service worker that caches a shell HTML for offline refresh.\nExplain install/activate/fetch events in order without building a full PWA course.\nWarn about cache busting and update prompts for users.\nNote HTTPS requirement and localhost exception.\nGive a minimal file tree and what to check in Application tab."
+    },
+    {
+      "id": "js-29",
+      "label": "BroadcastChannel tab sync",
+      "description": "messaging",
+      "detail": "cross-tab events",
+      "text": "Show two tabs syncing a simple counter or logout event via BroadcastChannel.\nExplain channel name collisions and closing channels on unload.\nContrast with localStorage storage event hack.\nMention when SharedWorker might appear in advanced reading.\nProvide runnable HTML snippets for two windows."
+    },
+    {
+      "id": "js-30",
+      "label": "crypto.randomUUID ids",
+      "description": "web crypto",
+      "detail": "client-generated keys",
+      "text": "Replace Math.random ids with crypto.randomUUID() for client-side entities.\nExplain collision probability at a friendly level.\nShow fallback pattern if API missing in old browsers.\nDiscuss when server should still assign authoritative ids.\nAdd checklist: prefix ids in logs, don't trust client ids for auth."
+    },
+    {
+      "id": "js-31",
+      "label": "PerformanceObserver metrics",
+      "description": "performance",
+      "detail": "LCP paint timing",
+      "text": "Introduce PerformanceObserver watching paint or LCP entries.\nLog timings to console in a tiny static page.\nRelate metrics to real UX improvements beginners can make (font, image size).\nMention privacy and sampling in production briefly.\nList devtools Performance panel as validation step."
+    },
+    {
+      "id": "js-32",
+      "label": "Vitest first unit test",
+      "description": "testing",
+      "detail": "npm script test",
+      "text": "Scaffold Vitest on a small pure functions module.\nWrite tests for edge cases (empty array, negative number) with expect and describe.\nExplain watch mode vs CI single run.\nCompare to Jest migration mental model in two sentences.\nEnd with package.json scripts and first npx vitest run commands."
+    },
+    {
+      "id": "js-33",
+      "label": "ESLint flat config starter",
+      "description": "linting",
+      "detail": "eslint.config.js ESM",
+      "text": "Migrate mentally from .eslintrc to flat config eslint.config.js.\nEnable recommended rules for a browser + Node hybrid folder.\nShow how to ignore dist/ and explain fix vs warn for learners.\nIntegrate one npm script lint.\nNote @eslint/js and typescript-eslint pointer without full monorepo setup."
+    },
+    {
+      "id": "js-34",
+      "label": "Iterator helpers fromEntries",
+      "description": "ES2024",
+      "detail": "Map filter on iterators",
+      "text": "Explain Iterator.from, .map, .filter, .take helpers with a numbers pipeline example.\nContrast with array methods and lazy evaluation intuition.\nShow converting back with Array.from or [...iter].\nMention engine support and polyfill caution.\nGive a 5-line before/after readability comparison."
+    },
+    {
+      "id": "js-35",
+      "label": "Object.groupBy reporting",
+      "description": "data",
+      "detail": "group array of rows",
+      "text": "Given an array of { category, amount } rows, group totals with Object.groupBy.\nCompare to manual reduce for readability.\nHandle missing keys and empty groups gracefully.\nShow printing a simple ASCII table to console.\nRelate to SQL GROUP BY analogy for beginners."
+    },
+    {
+      "id": "js-36",
+      "label": "Promise.allSettled batch jobs",
+      "description": "async",
+      "detail": "partial failure handling",
+      "text": "Fetch three endpoints with Promise.allSettled and summarize fulfilled vs rejected.\nExplain why allSettled beats all when one failure should not cancel others.\nMap results to a UI-friendly status list pattern.\nShow typing results in TypeScript as optional bonus sentence.\nEnd with retry strategy name-drop only."
+    },
+    {
+      "id": "js-37",
+      "label": "Symbols for private-ish keys",
+      "description": "language",
+      "detail": "Symbol.for vs unique",
+      "text": "Teach Symbol as unique property keys and well-known symbols briefly (iterator).\nDemonstrate hiding helper methods from JSON.stringify.\nExplain symbols are not private in security sense.\nContrast with # private fields mention.\nProvide a tiny class or object module example."
+    },
+    {
+      "id": "js-38",
+      "label": "dynamic import code splitting",
+      "description": "modules",
+      "detail": "import() on click",
+      "text": "Load a heavy chart module only when user clicks Show chart using dynamic import().\nShow loading and error UI states around await import().\nExplain Vite/Webpack splitting at high level.\nMention module federation as advanced scaling option for micro-frontends.\nList devtools Network tab check for separate chunk."
+    },
+    {
+      "id": "js-39",
+      "label": "Clipboard API copy button",
+      "description": "browser API",
+      "detail": "navigator.clipboard",
+      "text": "Build a Copy code button using navigator.clipboard.writeText with feature detection.\nHandle permission errors and fallback execCommand note for older browsers.\nExplain secure context HTTPS requirement.\nAdd user feedback toast pattern in words.\nInclude accessibility: button label and success announcement idea."
+    },
+    {
+      "id": "js-40",
+      "label": "ResizeObserver responsive canvas",
+      "description": "DOM",
+      "detail": "element size changes",
+      "text": "Use ResizeObserver to resize a canvas or chart when its container changes.\nExplain why window resize alone is insufficient in flex layouts.\nShow cleanup disconnect in SPA teardown.\nWarn about observation loops if modifying size in callback.\nGive minimal HTML/CSS/JS demo structure."
+    },
+    {
+      "id": "js-41",
+      "label": "IntersectionObserver lazy images",
+      "description": "performance",
+      "detail": "data-src swap",
+      "text": "Implement lazy-loading images with IntersectionObserver swapping data-src to src.\nExplain rootMargin preloading threshold tuning.\nShow unobserve after load to save work.\nContrast native loading=lazy attribute honestly.\nProvide checklist for CLS: width/height attributes."
+    },
+    {
+      "id": "js-42",
+      "label": "passive event listeners scroll",
+      "description": "performance",
+      "detail": "touchstart passive true",
+      "text": "Explain { passive: true } on touch/wheel listeners and scroll jank relationship.\nShow adding a listener that cannot call preventDefault when passive.\nDemonstrate feature detection for passive support.\nRelate to Chrome console violations beginners see.\nGive before/after advice for mobile menu scroll locking."
+    },
+    {
+      "id": "js-43",
+      "label": "CSP and CORS primer",
+      "description": "security",
+      "detail": "headers and fetch blocks",
+      "text": "Explain Content-Security-Policy default-src and script-src at beginner level with one policy example.\nContrast CORS: why browser blocks fetch to another origin and what Access-Control-Allow-Origin does.\nDescribe preflight OPTIONS mentally without full spec.\nWarn that CORS is not auth.\nList devtools Network error symptoms and who fixes server vs client."
+    },
+    {
+      "id": "js-44",
+      "label": "Playwright first browser test",
+      "description": "e2e",
+      "detail": "open page click expect",
+      "text": "Write the first Playwright test opening a local static page and asserting heading text.\nExplain npx playwright install and headed vs headless.\nUse role-based locators getByRole encouragement.\nShow trace-on-failure config name-drop.\nEnd with npm script test:e2e placeholder."
+    },
+    {
+      "id": "js-45",
+      "label": "Optional chaining deep dive",
+      "description": "syntax",
+      "detail": "?. and ?? operators",
+      "text": "Teach ?. for nested API JSON and ?? for nullish defaults vs || pitfalls.\nShow optional call obj?.method?.() and array?.[0].\nProvide buggy examples using && chains and fix them.\nExplain short-circuiting behavior in words.\nFinish with style guide: don't chain 5 levels—normalize data instead."
+    },
+    {
+      "id": "js-46",
+      "label": "Generators and yield sequences",
+      "description": "iterators",
+      "detail": "lazy infinite caution",
+      "text": "Introduce function* and yield with a simple ID generator or paginated fetch iterator sketch.\nExplain how for...of consumes generators.\nContrast with async generators name-drop for streams.\nWarn about forgetting to call .next() termination.\nGive a 15-line teaching example only."
+    },
+    {
+      "id": "js-47",
+      "label": "Array.from patterns",
+      "description": "arrays",
+      "detail": "map function second arg",
+      "text": "Show Array.from on array-like (arguments, NodeList) and mapping indices in one pass.\nBuild range(1, n) helper for beginners.\nContrast spread [...nodeList] when map not needed.\nCombine with Object.keys for enumerating records.\nAdd one pitfall: sparse arrays behavior."
+    },
+    {
+      "id": "js-48",
+      "label": "JSON.parse reviver dates",
+      "description": "serialization",
+      "detail": "revive ISO strings",
+      "text": "Demonstrate JSON.parse reviver turning date strings back into Date objects.\nExplain toJSON on Date during stringify symmetry.\nWarn about timezone assumptions.\nShow safe parsing with try/catch and schema validation pointer (Zod).\nProvide round-trip example object."
+    },
+    {
+      "id": "js-49",
+      "label": "queueMicrotask ordering puzzle",
+      "description": "runtime",
+      "detail": "microtask queue",
+      "text": "Explain queueMicrotask vs Promise.then vs setTimeout ordering with a short console puzzle.\nRelate to mutation observer and render timing at high level.\nAdvise when to prefer microtasks for consistency fixes.\nWarn against starving macrotasks.\nGive solution walkthrough after puzzle."
+    },
+    {
+      "id": "js-50",
+      "label": "Shadow DOM encapsulation",
+      "description": "Web Components",
+      "detail": "attachShadow open",
+      "text": "Extend a custom element with attachShadow({ mode: 'open' }) and internal styles.\nExplain style leakage prevention and ::part/::slotted teaser.\nShow slot for light DOM projection.\nContrast open vs closed shadow roots for testing.\nList one limitation for global design systems."
     }
   ]
 }
