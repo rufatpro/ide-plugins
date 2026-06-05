@@ -10,7 +10,7 @@ if "%VER%"=="" (
 
 if not exist build mkdir build
 
-call npx vsce package -o "build\cursor-ai-chat-click-redirect-%VER%.vsix" --baseContentUrl "https://github.com/rufatpro/plugins/tree/main/plugins/vscode/cursor-ai-chat-click-redirect" > log.1main.log 2> log.1err.log
+call npx vsce package -o "build\cursor-ai-chat-click-redirect-%VER%.vsix" --baseContentUrl "https://github.com/rufatpro/plugins/tree/main/vscode/cursor-ai-chat-click-redirect" > log.1main.log 2> log.1err.log
 if %ERRORLEVEL% equ 0 (
   echo BUILD SUCCESSFUL - see log.1main.log
   dir /b "build\*.vsix" 2>nul

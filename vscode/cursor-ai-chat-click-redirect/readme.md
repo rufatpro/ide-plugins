@@ -1,8 +1,8 @@
 # Cursor AI Chat Click Redirect
 
-[Русский](readme_ru.md) · [Repository](https://github.com/rufatpro/plugins) · [Changelog](CHANGELOG.md)
+[Русский](https://github.com/rufatpro/plugins/blob/main/vscode/cursor-ai-chat-click-redirect/readme_ru.md) · [Repository](https://github.com/rufatpro/plugins) · [Changelog](https://github.com/rufatpro/plugins/blob/main/vscode/cursor-ai-chat-click-redirect/CHANGELOG.md)
 
-**Version 0.6.5** — VS Code / Cursor extension: optional logging of AI chat file-link opens, and optional redirect of selected file types to an external IDE (PyCharm, IntelliJ, WebStorm, etc.).
+**Version 0.6.6** — VS Code / Cursor extension: optional logging of AI chat file-link opens, and optional redirect of selected file types to an external IDE (PyCharm, IntelliJ, WebStorm, etc.).
 
 > Built with AI assistance (Cursor). Part of the [plugins](https://github.com/rufatpro/plugins) monorepo.
 
@@ -56,7 +56,7 @@ cd plugins\vscode\cursor-ai-chat-click-redirect
 build.bat
 ```
 
-In Cursor / VS Code: **F1** → `Extensions: Install from VSIX` → `build\cursor-ai-chat-click-redirect-0.6.5.vsix`.
+In Cursor / VS Code: **F1** → `Extensions: Install from VSIX` → `build\cursor-ai-chat-click-redirect-0.6.6.vsix`.
 
 Reload the window (**Developer: Reload Window**).
 
@@ -107,4 +107,11 @@ Written only when `logPath` is non-empty:
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+[MIT](https://github.com/rufatpro/plugins/blob/main/license) — free to use, modify, and distribute, at your own risk.  
+[plugins monorepo](https://github.com/rufatpro/plugins) · [Releases](https://github.com/rufatpro/plugins/releases)
+
+## Author
+
+[Rufat](https://rufat.top/)
+
+**Cursor IDE:** [Sign up with referral link](https://cursor.com/referral?code=GCE2SLLVIM87) — supports the author when you subscribe.

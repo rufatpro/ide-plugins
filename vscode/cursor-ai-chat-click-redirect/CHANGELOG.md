@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.6
+
+- Fixed Marketplace readme links: corrected `vsce.baseContentUrl` (`vscode/…` instead of `plugins/vscode/…`); LICENSE, changelog, and EN/RU readme use absolute GitHub URLs.
+
 ## 0.6.5
 
 - Documentation: when redirect runs (new tab vs file already open vs tab-bar click); updated readme EN/RU and monorepo `plugins/README.md` / `README_RU.md`.
