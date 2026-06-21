@@ -2,9 +2,9 @@
 
 [Русский](readme.md) · [Releases](https://github.com/rufatpro/plugins/releases) · [Repository](https://github.com/rufatpro/plugins)
 
-**1080 Russian** prompt templates for **Cursor AI chat** — QuickPick → insert into chat.
+**1300 Russian** prompt templates for **Cursor AI chat** — QuickPick → insert into chat.
 
-**42 categories** (**Python × 50**, **JavaScript / TypeScript / React / Next.js / Tailwind / Node.js / NestJS × 50**, others × 20) **= 1080 templates:**
+**53 categories** (**Python × 50**, **JavaScript / TypeScript / React / Next.js / Tailwind / Node.js / NestJS × 50**, others × 20) **= 1300 templates:**
 
 | Tier | Categories |
 |------|------------|
@@ -20,7 +20,7 @@
 
 | Key | Action |
 |-----|--------|
-| **Ctrl+Alt+Shift+P** (Windows/Linux) | **Step 1:** category (42 types) → **Step 2:** prompt → insert into chat |
+| **Ctrl+Alt+Shift+P** (Windows/Linux) | **Step 1:** category (53 types) → **Step 2:** prompt → insert into chat |
 | **Cmd+Alt+Shift+P** (macOS) | Same |
 
 ## Commands
@@ -28,7 +28,7 @@
 | Command | Action |
 |---------|--------|
 | **Pick Prompt (Category, then Template)** | Same as hotkey (two steps) |
-| **Insert Prompt into Chat (All Categories)** | Single list, all 1080 prompts |
+| **Insert Prompt into Chat (All Categories)** | Single list, all 1300 prompts |
 | **Insert Website / Python / JavaScript Prompt** | One category only (legacy shortcuts) |
 
 ### Via Command Palette
@@ -46,7 +46,7 @@
 ```bat
 cd plugins\vscode\cursor-chat-prompt-library-ru
 build.bat
-cursor --install-extension build\cursor-chat-prompt-library-ru-0.6.2.vsix
+cursor --install-extension build\cursor-chat-prompt-library-ru-0.6.6.vsix
 ```
 
 Reload the window. Primary: **Ctrl+Alt+Shift+P** (see **Via Command Palette** for **F1**).

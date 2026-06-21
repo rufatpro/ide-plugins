@@ -1,0 +1,146 @@
+{
+  "category": "swift",
+  "categoryLabel": "Swift",
+  "prompts": [
+    {
+      "id": "swift-01",
+      "label": "Hello SwiftUI в Xcode",
+      "description": "setup",
+      "detail": "SwiftUI",
+      "text": "Создай SwiftUI app Hello World.\n\n- New App project, SwiftUI lifecycle\n- Text Hello Swift в ContentView\n- Preview canvas\n- Run simulator\n\nСтруктура @main App."
+    },
+    {
+      "id": "swift-02",
+      "label": "Struct vs class",
+      "description": "types",
+      "detail": "value vs reference",
+      "text": "Объясни struct vs class в Swift.\n\n- Value copy semantics\n- class reference, inheritance\n- Когда struct предпочтительнее\n\nПример Point struct vs Observable class note."
+    },
+    {
+      "id": "swift-03",
+      "label": "Optionals и guard",
+      "description": "types",
+      "detail": "guard let",
+      "text": "Optionals для новичка.\n\n- if let, guard let, nil coalescing ??\n- guard early exit style\n- Избегать force unwrap !\n\nparseInt пример из String?."
+    },
+    {
+      "id": "swift-04",
+      "label": "async/await URLSession",
+      "description": "network",
+      "detail": "URLSession",
+      "text": "Загрузи JSON async/await.\n\n- URLSession.shared.data(from:)\n- struct Codable decode\n- do/catch ошибки сети\n\nПокажи @MainActor update UI note."
+    },
+    {
+      "id": "swift-05",
+      "label": "@State и @Binding",
+      "description": "swiftui",
+      "detail": "state",
+      "text": "Counter с @State и child Toggle с @Binding.\n\n- Parent owns state\n- Child Binding<Bool>\n- Single source of truth\n\nДва View фрагмента."
+    },
+    {
+      "id": "swift-06",
+      "label": "List и NavigationStack",
+      "description": "swiftui",
+      "detail": "navigation",
+      "text": "Список items с navigation.\n\n- List(items) { NavigationLink }\n- NavigationStack path iOS 16+\n- Detail view по selection\n\nMock array of Item struct."
+    },
+    {
+      "id": "swift-07",
+      "label": "Codable JSON",
+      "description": "serialization",
+      "detail": "Codable",
+      "text": "Decode JSON API response.\n\n- Codable struct matching keys\n- JSONDecoder keyStrategy\n- Optional fields\n\nSample JSON and Swift struct."
+    },
+    {
+      "id": "swift-08",
+      "label": "MVVM ViewModel",
+      "description": "architecture",
+      "detail": "ObservableObject",
+      "text": "MVVM с ObservableObject ViewModel.\n\n- @Published items\n- View @StateObject vm\n- fetch in .task or onAppear\n\nSeparation UI vs logic bullets."
+    },
+    {
+      "id": "swift-09",
+      "label": "Core Data sketch",
+      "description": "persistence",
+      "detail": "Core Data",
+      "text": "Core Data минимальный sketch.\n\n- NSManagedObject entity Item\n- PersistenceController singleton\n- @FetchRequest in SwiftUI list\n\nБез миграций — dev only."
+    },
+    {
+      "id": "swift-10",
+      "label": "URLSession POST",
+      "description": "network",
+      "detail": "POST JSON",
+      "text": "POST JSON create resource.\n\n- URLRequest httpMethod POST\n- httpBody JSONEncoder\n- Check statusCode 201\n\nError types URLError vs HTTP."
+    },
+    {
+      "id": "swift-11",
+      "label": "Unit test XCTest",
+      "description": "testing",
+      "detail": "XCTest",
+      "text": "XCTest для pure Swift function.\n\n- XCTAssertEqual\n- test invalid input throws\n- Cmd+U run tests\n\nExample String extension test."
+    },
+    {
+      "id": "swift-12",
+      "label": "Enum associated values",
+      "description": "types",
+      "detail": "enum",
+      "text": "Enum с associated values для API state.\n\n- case loading, loaded([Item]), failed(Error)\n- switch pattern match\n- vs struct hierarchy\n\nUI rendering from enum."
+    },
+    {
+      "id": "swift-13",
+      "label": "Protocol-oriented design",
+      "description": "patterns",
+      "detail": "protocol",
+      "text": "Protocol + extension default impl.\n\n- protocol Drawable { func draw() }\n- extension default draw\n- Protocol witness table не углубляться\n\nSmall example."
+    },
+    {
+      "id": "swift-14",
+      "label": "Combine mention",
+      "description": "reactive",
+      "detail": "Combine",
+      "text": "Кратко Combine vs async/await.\n\n- Publisher, sink, assign\n- @Published already Combine\n- When still need Combine operators\n\nDebounce search box concept."
+    },
+    {
+      "id": "swift-15",
+      "label": "App lifecycle",
+      "description": "swiftui",
+      "detail": "scenePhase",
+      "text": "App lifecycle SwiftUI.\n\n- @Environment(\\.scenePhase)\n- background/inactive/active\n- Save state on background\n\nOne use case pause timer."
+    },
+    {
+      "id": "swift-16",
+      "label": "SF Symbols UI",
+      "description": "ui",
+      "detail": "SF Symbols",
+      "text": "Иконки SF Symbols в SwiftUI.\n\n- Image(systemName:)\n- multicolor rendering\n- Accessibility label\n\nToolbar with 3 icons example."
+    },
+    {
+      "id": "swift-17",
+      "label": "UserDefaults persistence",
+      "description": "persistence",
+      "detail": "UserDefaults",
+      "text": "Сохрани настройки в UserDefaults.\n\n- @AppStorage property wrapper\n- Codable encode complex pref caution\n- Not for secrets\n\nTheme toggle example."
+    },
+    {
+      "id": "swift-18",
+      "label": "Error handling Result",
+      "description": "errors",
+      "detail": "Result",
+      "text": "Result<Success, Failure> vs throws.\n\n- map flatMap\n- switch result in ViewModel\n- LocalizedError user message\n\nNetwork call returning Result."
+    },
+    {
+      "id": "swift-19",
+      "label": "SPM dependency",
+      "description": "packages",
+      "detail": "Swift Package Manager",
+      "text": "Добавь зависимость через SPM.\n\n- File → Add Package Dependencies\n- Import package in source\n- Pin version rule\n\nExample lightweight library."
+    },
+    {
+      "id": "swift-20",
+      "label": "iOS vs macOS target",
+      "description": "platform",
+      "detail": "multiplatform",
+      "text": "Один SwiftUI код iOS и macOS.\n\n- #if os(iOS) conditionals\n- macOS menu bar differences\n- Catalyst mention optional\n\nWhen separate targets better."
+    }
+  ]
+}

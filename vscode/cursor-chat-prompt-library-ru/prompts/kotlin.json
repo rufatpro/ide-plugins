@@ -1,0 +1,146 @@
+{
+  "category": "kotlin",
+  "categoryLabel": "Kotlin",
+  "prompts": [
+    {
+      "id": "kotlin-01",
+      "label": "Hello Kotlin Gradle",
+      "description": "setup",
+      "detail": "main.kt",
+      "text": "Минимальный Kotlin JVM проект.\n\n- build.gradle.kts с kotlin jvm\n- fun main() печатает Hello Kotlin\n- ./gradlew run или IDEA Run\n\nОбъясни src/main/kotlin структуру."
+    },
+    {
+      "id": "kotlin-02",
+      "label": "Data class",
+      "description": "types",
+      "detail": "data class",
+      "text": "Создай data class User с copy и destructuring.\n\n- id, name, email\n- equals/hashCode автоматически\n- Пример copy с изменённым полем\n\nСравни с Java POJO в 2 предложениях."
+    },
+    {
+      "id": "kotlin-03",
+      "label": "Null safety",
+      "description": "types",
+      "detail": "? и !!",
+      "text": "Объясни nullable типы Kotlin новичку.\n\n- String vs String?\n- safe call ?., Elvis ?:, let\n- Почему избегать !!\n\n5 мини-примеров и антипаттерн force unwrap."
+    },
+    {
+      "id": "kotlin-04",
+      "label": "Coroutines launch и async",
+      "description": "async",
+      "detail": "runBlocking",
+      "text": "Введи coroutines на простом примере.\n\n- runBlocking, launch, async/await\n- Dispatchers.IO vs Default\n- scope и cancel\n\nСкачай URL или delay без блокировки UI (концепт)."
+    },
+    {
+      "id": "kotlin-05",
+      "label": "Flow basics",
+      "description": "async",
+      "detail": "flow collect",
+      "text": "Объясни cold Flow vs List.\n\n- flow { emit } и collect\n- map/filter на Flow\n- flowOn для dispatcher\n\nОдин producer и consumer в main."
+    },
+    {
+      "id": "kotlin-06",
+      "label": "Sealed class",
+      "description": "types",
+      "detail": "sealed",
+      "text": "Моделируй Result через sealed class.\n\n- sealed class Result { Success, Error }\n- when exhaustive\n- vs enum когда sealed лучше\n\nПример парсинга API ответа."
+    },
+    {
+      "id": "kotlin-07",
+      "label": "Extension functions",
+      "description": "syntax",
+      "detail": "fun String.",
+      "text": "Extension function для форматирования.\n\n- fun String.isValidEmail(): Boolean\n- fun List<T>.secondOrNull()\n- Где extensions живут в пакете\n\nНе злоупотреблять — 1 предупреждение."
+    },
+    {
+      "id": "kotlin-08",
+      "label": "Ktor hello server",
+      "description": "backend",
+      "detail": "embeddedServer",
+      "text": "Минимальный Ktor HTTP сервер.\n\n- GET / возвращает text/plain Hello\n- Application.module() и routing\n- Запуск и curl тест\n\nGradle зависимости ktor-server-netty."
+    },
+    {
+      "id": "kotlin-09",
+      "label": "Room entity и DAO",
+      "description": "android",
+      "detail": "Room",
+      "text": "Room sketch для Android.\n\n- @Entity User, @Dao insert/findAll\n- @Database abstract class\n- suspend функции в DAO\n\nБез полного UI — wiring в 5 шагах."
+    },
+    {
+      "id": "kotlin-10",
+      "label": "ViewModel sketch",
+      "description": "android",
+      "detail": "ViewModel",
+      "text": "Android ViewModel с StateFlow.\n\n- ViewModel хранит uiState\n- Expose StateFlow<List<Item>>\n- Fragment/Compose collect lifecycle-safe\n\nОбъясни rotation survival."
+    },
+    {
+      "id": "kotlin-11",
+      "label": "Retrofit API client",
+      "description": "network",
+      "detail": "Retrofit",
+      "text": "Retrofit interface для REST.\n\n- suspend fun getUsers(): List<UserDto>\n- Gson/Moshi converter\n- Base URL и error handling HttpException\n\nМини-interface и DTO."
+    },
+    {
+      "id": "kotlin-12",
+      "label": "JUnit тест Kotlin",
+      "description": "testing",
+      "detail": "JUnit5",
+      "text": "Unit-тест Kotlin функции.\n\n- @Test assertEquals\n- @ParameterizedTest опционально\n- Gradle test task\n\nТестируй pure function без Android."
+    },
+    {
+      "id": "kotlin-13",
+      "label": "Collections map filter",
+      "description": "stdlib",
+      "detail": "map filter",
+      "text": "Обработай список заказов функционально.\n\n- filter, map, groupBy, sumOf\n- sequences для больших списков кратко\n- immutable vs mutable list\n\nОдин data class Order и 4 операции."
+    },
+    {
+      "id": "kotlin-14",
+      "label": "Companion object",
+      "description": "oop",
+      "detail": "companion",
+      "text": "Объясни companion object vs static Java.\n\n- factory create() в companion\n- const val в companion\n- @JvmStatic когда нужен\n\nПример Logger companion."
+    },
+    {
+      "id": "kotlin-15",
+      "label": "When expression",
+      "description": "syntax",
+      "detail": "when",
+      "text": "when вместо switch для sealed/API code.\n\n- when с subject и branches\n- is Type smart cast\n- when без аргумента как if-else chain\n\n3 стиля when с примерами."
+    },
+    {
+      "id": "kotlin-16",
+      "label": "Delegation by lazy",
+      "description": "patterns",
+      "detail": "by lazy",
+      "text": "Class delegation и lazy.\n\n- interface Repository, class DefaultRepository : Repository by delegate\n- by lazy для тяжёлой инициализации\n- lateinit vs lazy\n\nМини-пример каждого."
+    },
+    {
+      "id": "kotlin-17",
+      "label": "Kotlin Multiplatform mention",
+      "description": "kmp",
+      "detail": "expect actual",
+      "text": "Краткий обзор KMP для новичка.\n\n- shared business logic, expect/actual\n- Когда KMP оправдан vs два нативных приложения\n- Compose Multiplatform одной строкой\n\nБез полной настройки — roadmap."
+    },
+    {
+      "id": "kotlin-18",
+      "label": "Spring Boot Kotlin stub",
+      "description": "backend",
+      "detail": "spring-boot",
+      "text": "Spring Boot REST на Kotlin.\n\n- start.spring.io Kotlin + Web\n- @RestController GET /hello\n- data class для DTO\n\nСравни с Ktor когда что выбрать."
+    },
+    {
+      "id": "kotlin-19",
+      "label": "Структура пакетов",
+      "description": "structure",
+      "detail": "packages",
+      "text": "Организация Kotlin проекта.\n\n- domain, data, ui (или feature-based)\n- Именование файлов One class per file\n- internal visibility\n\nПример дерева для маленького app."
+    },
+    {
+      "id": "kotlin-20",
+      "label": "kotlinx.serialization JSON",
+      "description": "serialization",
+      "detail": "@Serializable",
+      "text": "Сериализация JSON через kotlinx.serialization.\n\n- @Serializable data class\n- Json.encodeToString / decodeFromString\n- optional fields и defaults\n\nGradle plugin и зависимости."
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "category": "android-kotlin",
+  "categoryLabel": "Android (Kotlin)",
+  "prompts": [
+    {
+      "id": "ak-01",
+      "label": "Первый проект Android Studio (Kotlin)",
+      "description": "setup",
+      "detail": "Empty Activity Kotlin",
+      "text": "Я новичок в Android на Kotlin. Проведи через создание первого приложения в Android Studio.\n\n- New project: Empty Activity, Kotlin, Gradle Kotlin DSL\n- app/src/main, MainActivity.kt, AndroidManifest.xml, build.gradle.kts\n- Запуск на эмуляторе; смена текста приветствия\n- Отличие от Java-проекта — 2 пункта\n\nАктуальная версия Studio. Только ключевые файлы."
+    },
+    {
+      "id": "ak-02",
+      "label": "Jetpack Compose Hello World",
+      "description": "Compose",
+      "detail": "@Composable Column",
+      "text": "Введение в Jetpack Compose для новичка на Kotlin.\n\n- Compose в проекте или шаблон Empty Compose Activity\n- @Composable GreetingScreen: Column, Text, Button\n- setContent { MaterialTheme { ... } } в MainActivity\n- Declarative UI vs XML — 3 пункта\n\nТолько MainActivity.kt."
+    },
+    {
+      "id": "ak-03",
+      "label": "remember и mutableStateOf счётчик",
+      "description": "Compose",
+      "detail": "state hoisting",
+      "text": "Счётчик на Compose: remember { mutableStateOf(0) }.\n\n- Button увеличивает count, Text показывает значение\n- Recomposition при смене state\n- State hoisting: count и onIncrement в дочерний composable\n\nПока без ViewModel."
+    },
+    {
+      "id": "ak-04",
+      "label": "LazyColumn список в Compose",
+      "description": "Compose",
+      "detail": "items",
+      "text": "Прокручиваемый список через LazyColumn.\n\n- data class Item(id, title)\n- items(list) { ListItem(headlineContent = { Text(...) }) }\n- Опциональный click\n- LazyColumn vs RecyclerView для новичка\n\n20 fake-элементов в памяти."
+    },
+    {
+      "id": "ak-05",
+      "label": "Navigation Compose NavHost",
+      "description": "navigation",
+      "detail": "composable routes",
+      "text": "Navigation Compose: Home и Details.\n\n- NavHost, rememberNavController\n- composable(\"home\") и composable(\"details/{id}\")\n- navigate с аргументом\n\nnavigation-compose, только Kotlin."
+    },
+    {
+      "id": "ak-06",
+      "label": "ViewModel и StateFlow в Compose",
+      "description": "architecture",
+      "detail": "collectAsStateWithLifecycle",
+      "text": "ViewModel со StateFlow и Compose UI.\n\n- data class UiState(items, loading)\n- viewModelScope.launch обновляет _uiState\n- collectAsStateWithLifecycle() в Screen\n- StateFlow vs LiveData для Compose сегодня\n\nFake delay загрузки списка."
+    },
+    {
+      "id": "ak-07",
+      "label": "viewModelScope и coroutines",
+      "description": "coroutines",
+      "detail": "Dispatchers.IO",
+      "text": "viewModelScope.launch для сети/БД в ViewModel.\n\n- Dispatchers.IO, не блокировать main\n- try/catch и error state\n- Отмена при clear ViewModel\n\nAnti-pattern GlobalScope."
+    },
+    {
+      "id": "ak-08",
+      "label": "Retrofit suspend API",
+      "description": "networking",
+      "detail": "coroutines",
+      "text": "Retrofit с suspend @GET в Kotlin Android.\n\n- interface Api { suspend fun getPosts(): List<Post> }\n- Вызов из viewModelScope.launch\n- Gson или kotlinx.serialization\n- HttpException в UiState\n\njsonplaceholder или аналог."
+    },
+    {
+      "id": "ak-09",
+      "label": "Room entity на Kotlin",
+      "description": "database",
+      "detail": "KSP",
+      "text": "Room в Kotlin Android для Note.\n\n- @Entity data class, @Dao suspend + Flow\n- @Database\n- KSP room-compiler в build.gradle.kts\n- Collect Flow во ViewModel\n\nFlow из DAO vs разовый suspend."
+    },
+    {
+      "id": "ak-10",
+      "label": "Hilt DI введение",
+      "description": "di",
+      "detail": "@HiltAndroidApp",
+      "text": "Hilt для инъекции ApiService.\n\n- @HiltAndroidApp Application\n- @AndroidEntryPoint Activity\n- @Module @InstallIn SingletonComponent\n- @HiltViewModel @Inject ViewModel\n\nGradle plugins и deps; одна feature."
+    },
+    {
+      "id": "ak-11",
+      "label": "Material3 theme",
+      "description": "Compose",
+      "detail": "MaterialTheme",
+      "text": "Material3 theming в Compose.\n\n- colorScheme, dynamic color optional\n- Typography, Shapes\n- isSystemInDarkTheme()\n- @Preview\n\nDesign tokens для новичка."
+    },
+    {
+      "id": "ak-12",
+      "label": "Coil AsyncImage",
+      "description": "Compose",
+      "detail": "network image",
+      "text": "Картинки из сети через Coil в Compose.\n\n- AsyncImage(model, contentDescription)\n- placeholder, error\n- contentDescription для a11y\n\ncoil-compose; avatar в строке списка."
+    },
+    {
+      "id": "ak-13",
+      "label": "DataStore preferences",
+      "description": "storage",
+      "detail": "Preferences DataStore",
+      "text": "DataStore вместо SharedPreferences.\n\n- preferencesDataStore\n- suspend edit { }\n- Flow в ViewModel\n- Async-safe vs apply()\n\nПереключатель темы."
+    },
+    {
+      "id": "ak-14",
+      "label": "Runtime permission в Compose",
+      "description": "permissions",
+      "detail": "rememberLauncherForActivityResult",
+      "text": "POST_NOTIFICATIONS или CAMERA через Activity Result в Compose.\n\n- rememberLauncherForActivityResult(RequestPermission())\n- checkSelfPermission\n- Rationale Text в composable\n\nСтрока в manifest."
+    },
+    {
+      "id": "ak-15",
+      "label": "WorkManager one-time",
+      "description": "background",
+      "detail": "CoroutineWorker",
+      "text": "WorkManager для отложенной задачи.\n\n- CoroutineWorker doWork()\n- OneTimeWorkRequest + NetworkType.CONNECTED\n- enqueue по кнопке в Compose\n- WorkManager vs Foreground Service\n\nМинимальный Worker."
+    },
+    {
+      "id": "ak-16",
+      "label": "XML Views + Kotlin Activity",
+      "description": "interop",
+      "detail": "ViewBinding",
+      "text": "Экран на XML + ViewBinding в Kotlin (без Compose).\n\n- ActivityMainBinding inflate\n- click listener lambda\n- Когда Views vs Compose\n\nБез findViewById."
+    },
+    {
+      "id": "ak-17",
+      "label": "Fragment Kotlin ViewBinding",
+      "description": "fragments",
+      "detail": "viewLifecycleOwner",
+      "text": "Fragment с ViewBinding в Kotlin.\n\n- _binding nullable, onDestroyView = null\n- viewLifecycleOwner для observe\n- Статус Fragment в новых проектах\n\nHost в Activity."
+    },
+    {
+      "id": "ak-18",
+      "label": "Unit test ViewModel",
+      "description": "testing",
+      "detail": "runTest",
+      "text": "JUnit-тест ViewModel на Kotlin.\n\n- kotlinx-coroutines-test runTest / MainDispatcherRule\n- Fake repository\n- UiState loading → success\n\nTurbine для Flow — optional."
+    },
+    {
+      "id": "ak-19",
+      "label": "Модули feature sketch",
+      "description": "architecture",
+      "detail": ":feature:login",
+      "text": "Multi-module Android Gradle для роста приложения.\n\n- :app, :core:network, :feature:home\n- settings.gradle.kts include\n- feature → core, не наоборот\n- Когда monolith ещё нормален\n\nДиаграмма текстом."
+    },
+    {
+      "id": "ak-20",
+      "label": "Чеклист публикации Play Store",
+      "description": "release",
+      "detail": "AAB signing",
+      "text": "Чеклист перед публикацией Kotlin Android app.\n\n- Signed AAB, versionCode/versionName\n- R8 minify basics\n- Privacy policy, data safety\n- Тест на устройстве\n- Internal testing track\n\nБез секретов аккаунта."
+    }
+  ]
+}

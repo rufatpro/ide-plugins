@@ -1,0 +1,146 @@
+{
+  "category": "android-kotlin",
+  "categoryLabel": "Android (Kotlin)",
+  "prompts": [
+    {
+      "id": "ak-01",
+      "label": "First Android Studio project (Kotlin)",
+      "description": "setup",
+      "detail": "Empty Activity Kotlin",
+      "text": "I'm new to Android with Kotlin. Guide me to create the first app in Android Studio.\n\n- New project: Empty Activity, Kotlin language, Gradle Kotlin DSL\n- Explain app/src/main, MainActivity.kt, AndroidManifest.xml, build.gradle.kts\n- Run on emulator; change greeting text\n- Contrast with Java project layout in 2 bullets\n\nAndroid Studio current version wording. List key files only."
+    },
+    {
+      "id": "ak-02",
+      "label": "Jetpack Compose Hello World",
+      "description": "Compose",
+      "detail": "@Composable Column",
+      "text": "Introduce Jetpack Compose for a Kotlin Android beginner.\n\n- Enable Compose in new project or Empty Compose Activity template\n- @Composable fun GreetingScreen with Column, Text, Button\n- setContent { MaterialTheme { ... } } in MainActivity\n- Explain declarative UI vs XML in 3 bullets\n\nMinimal MainActivity.kt only."
+    },
+    {
+      "id": "ak-03",
+      "label": "remember and mutableStateOf counter",
+      "description": "Compose",
+      "detail": "state hoisting intro",
+      "text": "Build a Compose counter button using remember { mutableStateOf(0) }.\n\n- Button increments count, Text displays value\n- Explain recomposition when state changes\n- Brief state hoisting: pass count and onIncrement to child composable\n\nNo ViewModel yet — local state lesson."
+    },
+    {
+      "id": "ak-04",
+      "label": "LazyColumn list in Compose",
+      "description": "Compose",
+      "detail": "items indexed",
+      "text": "Show a scrollable list with LazyColumn in Compose.\n\n- data class Item(val id: Int, val title: String)\n- items(list) { item -> ListItem headline = item.title }\n- Optional click lambda parameter\n- Compare LazyColumn vs RecyclerView mentally for beginners\n\nFake in-memory list of 20 items."
+    },
+    {
+      "id": "ak-05",
+      "label": "Navigation Compose NavHost",
+      "description": "navigation",
+      "detail": "composable routes",
+      "text": "Wire Navigation Compose with two screens Home and Details.\n\n- NavHost, NavController, rememberNavController\n- composable(\"home\") and composable(\"details/{id}\") with navArgument\n- Button navigates with navController.navigate\n\nDependencies: navigation-compose. Kotlin only."
+    },
+    {
+      "id": "ak-06",
+      "label": "ViewModel and StateFlow in Compose",
+      "description": "architecture",
+      "detail": "collectAsStateWithLifecycle",
+      "text": "Connect ViewModel exposing StateFlow UI state to Compose.\n\n- data class UiState(val items: List<String>, val loading: Boolean)\n- viewModelScope.launch updates _uiState\n- Screen uses viewModel() and collectAsStateWithLifecycle()\n- Explain why StateFlow vs LiveData for Compose projects today\n\nSimple list-loading fake delay example."
+    },
+    {
+      "id": "ak-07",
+      "label": "viewModelScope and coroutines",
+      "description": "coroutines",
+      "detail": "Dispatchers.IO",
+      "text": "Teach viewModelScope.launch for network/database work in Android ViewModel.\n\n- Never block main thread; use Dispatchers.IO inside launch\n- try/catch updating error state\n- Cancelled when ViewModel cleared — explain briefly\n\nContrast with GlobalScope anti-pattern."
+    },
+    {
+      "id": "ak-08",
+      "label": "Retrofit suspend function API",
+      "description": "networking",
+      "detail": "coroutines adapter",
+      "text": "Fetch posts with Retrofit suspend @GET in Kotlin Android app.\n\n- interface Api { suspend fun getPosts(): List<Post> }\n- Call from ViewModel viewModelScope.launch\n- Gson or kotlinx.serialization mention\n- Handle HttpException in UiState error field\n\nBase URL jsonplaceholder or similar public API."
+    },
+    {
+      "id": "ak-09",
+      "label": "Room database Kotlin entity",
+      "description": "database",
+      "detail": "KSP compiler",
+      "text": "Set up Room in Kotlin Android with Note entity.\n\n- @Entity data class, @Dao suspend insert/getAll Flow\n- @Database abstract class\n- Use KSP room-compiler (not kapt) in build.gradle.kts\n- Collect Flow in ViewModel to UI\n\nExplain Flow from DAO vs one-shot suspend query."
+    },
+    {
+      "id": "ak-10",
+      "label": "Hilt dependency injection intro",
+      "description": "di",
+      "detail": "@HiltAndroidApp",
+      "text": "Add Hilt to a small Kotlin Android app for ApiService injection.\n\n- @HiltAndroidApp Application class\n- @AndroidEntryPoint Activity\n- @Module @InstallIn(SingletonComponent) providing Retrofit\n- @Inject constructor in ViewModel with @HiltViewModel\n\nList Gradle plugins and dependencies; keep one feature only."
+    },
+    {
+      "id": "ak-11",
+      "label": "Material3 theme and Typography",
+      "description": "Compose",
+      "detail": "MaterialTheme",
+      "text": "Apply Material3 theming in Compose.\n\n- MaterialTheme colorScheme from dynamic color optional\n- Typography and Shapes customization sketch\n- Dark theme follows system via isSystemInDarkTheme()\n- Wrap previews with @Preview(showBackground = true)\n\nExplain design tokens at beginner level."
+    },
+    {
+      "id": "ak-12",
+      "label": "Coil load image AsyncImage",
+      "description": "Compose",
+      "detail": "network image",
+      "text": "Display remote images in Compose with Coil.\n\n- AsyncImage(model = url, contentDescription = ...)\n- Placeholder and error painter parameters\n- Remember contentDescription for accessibility\n\nAdd coil-compose dependency. One list row with avatar URL."
+    },
+    {
+      "id": "ak-13",
+      "label": "DataStore preferences Kotlin",
+      "description": "storage",
+      "detail": "Proto or Preferences",
+      "text": "Replace SharedPreferences with DataStore in Kotlin Android.\n\n- preferencesDataStore delegate\n- edit { it[KEY] = value } suspend\n- expose Flow<UserPreferences> to ViewModel\n- Explain why DataStore is async-safe vs apply()\n\nSmall theme toggle setting example."
+    },
+    {
+      "id": "ak-14",
+      "label": "Runtime permission in Compose Activity",
+      "description": "permissions",
+      "detail": "rememberLauncherForActivityResult",
+      "text": "Request POST_NOTIFICATIONS or CAMERA using Compose-friendly Activity Result API.\n\n- rememberLauncherForActivityResult(RequestPermission())\n- Check ContextCompat.checkSelfPermission before launch\n- Show rationale Text in composable if denied once\n\nManifest permission line included."
+    },
+    {
+      "id": "ak-15",
+      "label": "WorkManager one-time task",
+      "description": "background",
+      "detail": "CoroutineWorker",
+      "text": "Schedule deferrable work with WorkManager in Kotlin.\n\n- CoroutineWorker doing fake sync in doWork()\n- OneTimeWorkRequestBuilder with constraints (NetworkType.CONNECTED)\n- Enqueue from button click in Compose\n- Explain WorkManager vs Foreground Service choice\n\nMinimal Worker class and enqueue snippet."
+    },
+    {
+      "id": "ak-16",
+      "label": "XML Views with Kotlin Activity",
+      "description": "interop",
+      "detail": "ViewBinding Kotlin",
+      "text": "Build one screen using XML + ViewBinding in Kotlin (non-Compose path).\n\n- activity_main.xml and ActivityMainBinding inflate\n- Kotlin click listener lambda syntax\n- When teams still use Views vs Compose decision guide\n\nSingle Activity; no findViewById."
+    },
+    {
+      "id": "ak-17",
+      "label": "Fragment Kotlin with ViewBinding",
+      "description": "fragments",
+      "detail": "viewLifecycleOwner",
+      "text": "Create Fragment in Kotlin using ViewBinding safely.\n\n- _binding nullable pattern, clear in onDestroyView\n- viewLifecycleOwner for observers\n- Host in Activity container or Navigation Compose mention for greenfield\n\nExplain Fragment status in 2024+ projects honestly."
+    },
+    {
+      "id": "ak-18",
+      "label": "Unit test ViewModel with coroutines",
+      "description": "testing",
+      "detail": "StandardTestDispatcher",
+      "text": "Write JUnit test for Kotlin ViewModel loading logic.\n\n- kotlinx-coroutines-test MainDispatcherRule or runTest\n- Fake repository implementing interface\n- Assert UiState transitions loading → success\n\nUse turbine library mention optional for Flow testing."
+    },
+    {
+      "id": "ak-19",
+      "label": "Modularization feature module sketch",
+      "description": "architecture",
+      "detail": ":feature:login",
+      "text": "Explain Gradle multi-module Android structure for growing apps.\n\n- :app, :core:network, :feature:home modules\n- settings.gradle.kts include\n- Dependency direction rules (feature → core, not reverse)\n- When monolith is still fine for beginners\n\nDiagram in text; no full migration."
+    },
+    {
+      "id": "ak-20",
+      "label": "Play Store release checklist Kotlin app",
+      "description": "release",
+      "detail": "AAB signing",
+      "text": "Give a beginner checklist before publishing Kotlin Android app.\n\n- Build signed AAB, versionCode/versionName\n- ProGuard/R8 minify basics for release\n- Privacy policy and data safety form mentions\n- Test on real device matrix lightly\n- Internal testing track first\n\nNo account-specific secrets."
+    }
+  ]
+}

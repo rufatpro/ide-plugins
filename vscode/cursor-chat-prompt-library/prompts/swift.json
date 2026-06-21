@@ -1,0 +1,146 @@
+{
+  "category": "swift",
+  "categoryLabel": "Swift",
+  "prompts": [
+    {
+      "id": "swift-01",
+      "label": "Xcode Hello SwiftUI app",
+      "description": "setup",
+      "detail": "App struct WindowGroup",
+      "text": "I'm new to Swift and iOS. Create Hello SwiftUI from Xcode template mentally.\n\n- File → New App, SwiftUI lifecycle, Swift language\n- Replace ContentView body with Text Hello Swift\n- Explain @main App and WindowGroup\n- Run simulator steps\n\nList default files and their roles."
+    },
+    {
+      "id": "swift-02",
+      "label": "Struct vs class choice",
+      "description": "language",
+      "detail": "value vs reference",
+      "text": "Explain when to use struct vs class in Swift.\n\n- Struct value semantics, class reference\n- Default to struct for models\n- Class for NSObject, shared mutable state cautions\n- Mutating func on struct example\n\nSmall code comparing copy behavior."
+    },
+    {
+      "id": "swift-03",
+      "label": "Optionals and guard let",
+      "description": "language",
+      "detail": "if let guard",
+      "text": "Teach optionals with guard let and if let.\n\n- String? from fake API parse\n- guard let early exit in function\n- Nil coalescing ?? for defaults\n- Avoid force unwrap ! in production\n\nFunction processing optional username."
+    },
+    {
+      "id": "swift-04",
+      "label": "async await URLSession fetch",
+      "description": "concurrency",
+      "detail": "URLSession.shared.data",
+      "text": "Fetch JSON with async/await and URLSession.\n\n- async throws function getPosts() from https jsonplaceholder\n- decode with JSONDecoder\n- Call from Task { } in SwiftUI .task modifier\n- Basic error handling do/catch\n\nModel struct Codable Post id title."
+    },
+    {
+      "id": "swift-05",
+      "label": "@State and @Binding",
+      "description": "swiftui",
+      "detail": "two-way child control",
+      "text": "Build counter parent and Toggle child with @Binding.\n\n- Parent @State var isOn\n- Child struct with @Binding var isOn\n- Explain one source of truth\n- Preview with constant binding\n\nShow both view structs."
+    },
+    {
+      "id": "swift-06",
+      "label": "List and NavigationStack",
+      "description": "swiftui",
+      "detail": "NavigationLink value",
+      "text": "Create list navigating to detail with NavigationStack.\n\n- Array of items Identifiable\n- List { NavigationLink(value:) { Text } }\n- navigationDestination(for:) detail view\n- iOS 16+ stack API\n\nMinimal two-screen flow."
+    },
+    {
+      "id": "swift-07",
+      "label": "Codable JSON encode decode",
+      "description": "serialization",
+      "detail": "JSONEncoder",
+      "text": "Serialize Swift struct to JSON and back.\n\n- struct User: Codable with CodingKeys if needed\n- JSONEncoder outputData prettyPrinted optional\n- JSONDecoder decode from Data\n- Print json string in main or preview test\n\nHandle snake_case convertFromSnakeCase mention."
+    },
+    {
+      "id": "swift-08",
+      "label": "MVVM ViewModel ObservableObject",
+      "description": "architecture",
+      "detail": "@Published @StateObject",
+      "text": "Sketch MVVM with ViewModel for SwiftUI.\n\n- class ItemsViewModel: ObservableObject { @Published var items }\n- View uses @StateObject var vm\n- load() async populates items\n- Keep View dumb, logic in ViewModel\n\nOne screen list loading pattern."
+    },
+    {
+      "id": "swift-09",
+      "label": "Core Data sketch",
+      "description": "persistence",
+      "detail": "NSPersistentContainer",
+      "text": "Outline Core Data setup for beginners.\n\n- NSPersistentContainer name matching xcdatamodel\n- Fetch request in ViewModel\n- @FetchRequest in SwiftUI alternative mention\n- When SwiftData replaces for new projects iOS 17+\n\nConceptual — entity Item with timestamp."
+    },
+    {
+      "id": "swift-10",
+      "label": "URLSession POST request",
+      "description": "network",
+      "detail": "URLRequest httpBody",
+      "text": "Send POST JSON with URLSession.\n\n- var request = URLRequest url method POST\n- setValue application/json header\n- httpBody from JSONEncoder\n- data(for: request) async throws\n\nFake api endpoint or httpbin.org/post."
+    },
+    {
+      "id": "swift-11",
+      "label": "Unit test with XCTest",
+      "description": "testing",
+      "detail": "XCTestCase assertEqual",
+      "text": "Write XCTest for pure Swift function.\n\n- func testDiscount() XCTAssertEqual\n- Test edge cases zero and negative\n- Run Cmd+U in Xcode\n- @testable import MyApp for internal\n\nKeep logic in struct Calculator testable."
+    },
+    {
+      "id": "swift-12",
+      "label": "Enum associated values",
+      "description": "language",
+      "detail": "enum Result success failure",
+      "text": "Model network result with enum associated values.\n\n- enum LoadState { case idle; case loading; case loaded([Item]); case failed(Error) }\n- switch state in View\n- Compare to sealed class Kotlin briefly\n\nSwiftUI view switching on state."
+    },
+    {
+      "id": "swift-13",
+      "label": "Protocol oriented programming",
+      "description": "language",
+      "detail": "protocol extension",
+      "text": "Introduce POP with protocol and extension.\n\n- protocol Describable { var description: String }\n- extension Describable default implementation\n- Struct conforming gets default\n- Explain protocol witness table intuition lightly\n\nSmall example without over-abstraction."
+    },
+    {
+      "id": "swift-14",
+      "label": "Combine framework mention",
+      "description": "reactive",
+      "detail": "Publisher sink",
+      "text": "Give beginner overview of Combine vs async/await.\n\n- Just publisher map sink on URLSession.dataTaskPublisher legacy\n- When Combine still appears in older code\n- Prefer async/await for new Swift concurrency\n- @Published under the hood note\n\nOne tiny pipeline example optional."
+    },
+    {
+      "id": "swift-15",
+      "label": "App lifecycle scenes",
+      "description": "swiftui",
+      "detail": "scenePhase onChange",
+      "text": "Explain SwiftUI app lifecycle hooks.\n\n- @Environment(\\.scenePhase) active inactive background\n- onChange of scenePhase save draft\n- Contrast UIApplicationDelegate for UIKit apps\n- macOS multiwindow Scene mention\n\nShort ContentView snippet logging phase."
+    },
+    {
+      "id": "swift-16",
+      "label": "SF Symbols in UI",
+      "description": "ui",
+      "detail": "Image systemName",
+      "text": "Use SF Symbols in SwiftUI buttons and lists.\n\n- Image(systemName: \"star.fill\")\n- Label with title and icon\n- Symbol rendering modes hierarchical palette brief\n- Accessibility label on icon-only buttons\n\nSmall toolbar example."
+    },
+    {
+      "id": "swift-17",
+      "label": "UserDefaults persistence",
+      "description": "persistence",
+      "detail": "@AppStorage",
+      "text": "Persist simple settings with UserDefaults.\n\n- @AppStorage(\"username\") var username\n- Contrast raw UserDefaults.standard.set\n- Not for large data — UserDefaults limits\n- When to move to Keychain for secrets\n\nSettings screen Toggle and TextField."
+    },
+    {
+      "id": "swift-18",
+      "label": "Error handling with Result",
+      "description": "language",
+      "detail": "Result success failure",
+      "text": "Use Result type before throws or alongside.\n\n- func fetch() -> Result<Data, NetworkError>\n- switch result in caller\n- map and flatMap on Result mention\n- Bridge to async throws with get() cautions\n\nEnum NetworkError: Error cases."
+    },
+    {
+      "id": "swift-19",
+      "label": "Swift Package Manager dependency",
+      "description": "spm",
+      "detail": "Package.swift",
+      "text": "Add SPM dependency to Xcode project.\n\n- File Add Package Dependencies URL semver rule\n- import Package in swift file\n- Contrast SPM vs CocoaPods headline\n- Pin version for reproducible builds\n\nExample: add lightweight logging or args parser package."
+    },
+    {
+      "id": "swift-20",
+      "label": "iOS vs macOS target notes",
+      "description": "platforms",
+      "detail": "multiplatform #if os",
+      "text": "Explain targeting iOS vs macOS with shared SwiftUI code.\n\n- #if os(iOS) vs os(macOS) platform checks\n- NavigationSplitView on iPad/mac vs stack phone\n- macOS menu bar and window sizing differences\n- Catalyst one line mention\n\nChecklist before shipping Mac port."
+    }
+  ]
+}

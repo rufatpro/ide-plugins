@@ -1,0 +1,146 @@
+{
+  "category": "angular",
+  "categoryLabel": "Angular",
+  "prompts": [
+    {
+      "id": "angular-01",
+      "label": "Новый проект ng new",
+      "description": "setup",
+      "detail": "ng new",
+      "text": "С нуля создай Angular-проект для новичка.\n\n- ng new с routing и CSS/SCSS\n- Объясни src/app, main.ts, app.config.ts\n- Замени home на «Hello Angular»\n- ng serve и URL localhost\n\nAngular 17+ standalone по умолчанию. Перечисли созданные папки."
+    },
+    {
+      "id": "angular-02",
+      "label": "Standalone component",
+      "description": "components",
+      "detail": "standalone: true",
+      "text": "Объясни standalone component без NgModule.\n\n- Компонент с standalone: true и imports: [CommonModule]\n- Подключи в routes или bootstrapApplication\n- Сравни с legacy module в 3 пунктах\n\nПолный код одного компонента."
+    },
+    {
+      "id": "angular-03",
+      "label": "Signals в компоненте",
+      "description": "reactivity",
+      "detail": "signal computed",
+      "text": "Введи signals для новичка в Angular.\n\n- signal(), computed(), effect() в простом счётчике\n- Когда signals вместо BehaviorSubject\n- Шаблон: {{ count() }}\n\nМинимальный компонент и 4 bullet сравнения."
+    },
+    {
+      "id": "angular-04",
+      "label": "@Input и @Output",
+      "description": "components",
+      "detail": "EventEmitter",
+      "text": "Родитель и дочерний компонент через @Input/@Output.\n\n- Child: title input и save output EventEmitter\n- Parent слушает (save) и обновляет список\n- Типизация через input()/output() если уместно\n\nДва файла компонентов."
+    },
+    {
+      "id": "angular-05",
+      "label": "Сервис и DI",
+      "description": "services",
+      "detail": "providedIn root",
+      "text": "Создай injectable сервис и внедри в компонент.\n\n- @Injectable({ providedIn: 'root' })\n- inject() в компоненте vs constructor DI\n- Сервис хранит список items с add/remove\n\nОбъясни singleton scope одним абзацем."
+    },
+    {
+      "id": "angular-06",
+      "label": "HttpClient GET запрос",
+      "description": "http",
+      "detail": "HttpClient",
+      "text": "Загрузи JSON через HttpClient.\n\n- provideHttpClient() в app.config\n- Сервис getPosts() к jsonplaceholder\n- async pipe в шаблоне или subscribe с OnDestroy\n- Интерфейс Post в TypeScript\n\nОбработка ошибки в 2 предложениях."
+    },
+    {
+      "id": "angular-07",
+      "label": "Route guards CanActivate",
+      "description": "routing",
+      "detail": "functional guard",
+      "text": "Защити маршрут /admin guard'ом.\n\n- CanActivateFn проверяет isLoggedIn\n- Redirect на /login если false\n- Подключи в routes\n\nПокажи guard и фрагмент routes."
+    },
+    {
+      "id": "angular-08",
+      "label": "Reactive Forms",
+      "description": "forms",
+      "detail": "FormBuilder",
+      "text": "Форма логина на Reactive Forms.\n\n- FormBuilder: email, password, validators\n- Отображение ошибок в шаблоне\n- (ngSubmit) и markAllAsTouched\n\nReactive vs template-driven — 3 bullet."
+    },
+    {
+      "id": "angular-09",
+      "label": "RxJS map и switchMap",
+      "description": "rxjs",
+      "detail": "pipe operators",
+      "text": "Объясни map vs switchMap на примере поиска.\n\n- search$ → debounceTime → switchMap → HttpClient\n- Почему switchMap отменяет старый запрос\n- Обработка empty query\n\nПсевдокод pipe в сервисе."
+    },
+    {
+      "id": "angular-10",
+      "label": "HTTP interceptor",
+      "description": "http",
+      "detail": "interceptor",
+      "text": "Добавь interceptor для Bearer token.\n\n- HttpInterceptorFn добавляет Authorization header\n- provideHttpClient(withInterceptors([...]))\n- Когда не логировать token в console\n\nОдин файл interceptor и wiring."
+    },
+    {
+      "id": "angular-11",
+      "label": "Lazy loading routes",
+      "description": "routing",
+      "detail": "loadComponent",
+      "text": "Lazy load feature route /reports.\n\n- loadComponent или loadChildren для standalone\n- PreloadingStrategy упомяни кратко\n- Структура папки features/reports\n\nПокажи routes до и после."
+    },
+    {
+      "id": "angular-12",
+      "label": "ChangeDetection OnPush",
+      "description": "performance",
+      "detail": "OnPush",
+      "text": "Объясни OnPush change detection.\n\n- Компонент с changeDetection: OnPush\n- Когда нужен immutable input или signal\n- Типичная ошибка «UI не обновился»\n\nМини-пример и чеклист отладки."
+    },
+    {
+      "id": "angular-13",
+      "label": "Angular Material intro",
+      "description": "ui",
+      "detail": "MatButtonModule",
+      "text": "Подключи Angular Material к проекту.\n\n- ng add @angular/material\n- Кнопка, toolbar, простая таблица MatTable\n- Theming в одном абзаце\n\nМинимальный модуль/imports для standalone."
+    },
+    {
+      "id": "angular-14",
+      "label": "SSR и Angular Universal",
+      "description": "ssr",
+      "detail": "Universal",
+      "text": "Кратко объясни SSR для Angular новичку.\n\n- Зачем SEO и first paint\n- ng add @angular/ssr или аналог\n- Что нельзя делать в browser-only API на сервере\n\nБез полного деплоя — checklist шагов."
+    },
+    {
+      "id": "angular-15",
+      "label": "Тестирование TestBed",
+      "description": "testing",
+      "detail": "TestBed",
+      "text": "Unit-тест компонента через TestBed.\n\n- configureTestingModule с imports компонента\n- fixture.detectChanges и query By.css\n- Один тест на рендер заголовка\n\nJasmine/Karma или Jest — укажи команды run test."
+    },
+    {
+      "id": "angular-16",
+      "label": "i18n локализация",
+      "description": "i18n",
+      "detail": "translate pipe",
+      "text": "Базовая i18n в Angular.\n\n- Маркеры i18n в шаблоне или @ngx-translate упомяни\n- Переключение locale / JSON файлы\n- extract-i18n workflow в 3 шага\n\nМини-пример двух языков."
+    },
+    {
+      "id": "angular-17",
+      "label": "Production build",
+      "description": "deploy",
+      "detail": "ng build",
+      "text": "Собери production bundle.\n\n- ng build --configuration production\n- output hashing, budgets упомяни\n- Что проверить перед деплоем (env, API URL)\n\nТипичные ошибки build в bullets."
+    },
+    {
+      "id": "angular-18",
+      "label": "Миграция module → standalone",
+      "description": "migration",
+      "detail": "checklist",
+      "text": "Checklist перевода legacy NgModule приложения на standalone.\n\n- Порядок: bootstrapApplication, routes, компоненты\n- Удаление SharedModule постепенно\n- Тесты и lazy routes\n\n10 пунктов checklist без автоматического codemod."
+    },
+    {
+      "id": "angular-19",
+      "label": "ActivatedRoute параметры",
+      "description": "routing",
+      "detail": "route params",
+      "text": "Читай :id из URL через ActivatedRoute.\n\n- paramMap или input signal from route (если актуально)\n- Компонент detail загружает item по id\n- Обработка invalid id\n\nПокажи route и компонент."
+    },
+    {
+      "id": "angular-20",
+      "label": "Жизненный цикл ngOnInit",
+      "description": "components",
+      "detail": "lifecycle hooks",
+      "text": "Объясни lifecycle hooks для новичка.\n\n- constructor vs ngOnInit vs ngOnDestroy\n- Подписка RxJS и takeUntilDestroyed\n- Когда ngOnChanges\n\nМини-компонент с логированием hooks."
+    }
+  ]
+}

@@ -4,15 +4,15 @@
 
 **QuickPick** templates for **Cursor AI chat** — pick a prompt and insert into chat (Composer & Agent).
 
-**1080 templates** — 42 categories (**Python × 50**, **JavaScript / TypeScript / React / Next.js / Tailwind / Node.js / NestJS × 50**, others × 20):
+**1300 templates** — 53 categories (**Python × 50**, **JavaScript / TypeScript / React / Next.js / Tailwind / Node.js / NestJS × 50**, others × 20):
 
 | Tier | Categories |
 |------|------------|
-| Core | Website, Python, JavaScript, TypeScript, React, SQL, Git, Django, Flask, SQLAlchemy |
-| High demand | Next.js, FastAPI, Docker, Testing, Tailwind CSS |
-| Strong demand | Node.js, NestJS, Vue, PHP, Laravel, C#/.NET, Java/Spring, Linux/Bash, CI/CD, REST/OpenAPI, MongoDB, Mobile |
-| Growing / niche | C, C++, Go, Rust, Kubernetes, Terraform, Observability, AWS/Cloud, WordPress, Data/Pandas, Security, GraphQL |
-| Cross-cutting | Prompt Engineering, Programming Languages, Machine Learning |
+| Core | Website, Python, JavaScript, TypeScript, React, **Angular**, SQL, **PostgreSQL**, Git, Django, Flask, SQLAlchemy |
+| High demand | Next.js, FastAPI, **Celery**, Docker, Testing, Tailwind CSS |
+| Strong demand | Node.js, NestJS, Vue, PHP, Laravel, C#/.NET, Java/Spring, Linux/Bash, CI/CD, REST/OpenAPI, MongoDB, **Kafka**, **RabbitMQ**, Mobile, **Kotlin**, **Android (Java)**, **Android (Kotlin)**, **Swift** |
+| Growing / niche | C, C++, Go, **Zig**, Rust, Kubernetes, Terraform, Observability, AWS/Cloud, WordPress, Data/Pandas, Security, GraphQL |
+| Cross-cutting | **Regex**, Prompt Engineering, Programming Languages, Machine Learning |
 
 > Part of the [plugins](https://github.com/rufatpro/plugins) monorepo.
 
@@ -20,7 +20,7 @@
 
 | Key | Action |
 |-----|--------|
-| **Ctrl+Alt+T** (Windows/Linux) | **Step 1:** category (42 types) → **Step 2:** prompt → insert into chat |
+| **Ctrl+Alt+T** (Windows/Linux) | **Step 1:** category (53 types) → **Step 2:** prompt → insert into chat |
 | **Cmd+Alt+T** (macOS) | Same |
 
 Press **Ctrl**, **Alt**, and **T** together (**T** = **T**emplate).
@@ -37,7 +37,7 @@ Press **Ctrl**, **Alt**, and **T** together (**T** = **T**emplate).
 | Command | Action |
 |---------|--------|
 | **Pick Prompt (Category, then Template)** | Same as hotkey (two steps) |
-| **Insert Prompt into Chat (All Categories)** | Single list, all 1080 prompts |
+| **Insert Prompt into Chat (All Categories)** | Single list, all 1300 prompts |
 | **Insert Website / Python / JavaScript Prompt** | One category only (legacy shortcuts) |
 
 ### Via Command Palette
@@ -55,7 +55,7 @@ Press **Ctrl**, **Alt**, and **T** together (**T** = **T**emplate).
 ```bat
 cd plugins\vscode\cursor-chat-prompt-library
 build.bat
-cursor --install-extension build\cursor-chat-prompt-library-0.8.5.vsix
+cursor --install-extension build\cursor-chat-prompt-library-0.8.9.vsix
 ```
 
 Reload the window. Primary: **Ctrl+Alt+T**; alternative: **Ctrl+Alt+Shift+P** (see **Via Command Palette** for **F1**).
@@ -67,6 +67,7 @@ Reload the window. Primary: **Ctrl+Alt+T**; alternative: **Ctrl+Alt+Shift+P** (s
 - Append batch 2 (+10 per file): `node scripts/append-batch-2.mjs` (uses `scripts/batch-2-prompts.mjs`)
 - Append batch 3 (+30 for JS stack): `node scripts/append-batch-3-js-stack.mjs` (uses `scripts/batch-3-js-stack-prompts.mjs`)
 - Append batch 3 NestJS (+30): `node scripts/append-batch-3-nestjs.mjs` (uses `scripts/batch-3-nestjs-prompts.mjs`)
+- Batch 8 (8 new categories): `node scripts/generate-batch-8-categories.mjs` (uses `scripts/batch-8-categories-en.mjs`)
 - Display order: `CATEGORY_FILE_ORDER` in `src/promptStore.js`.
 
 ## License

@@ -1,0 +1,146 @@
+{
+  "category": "regex",
+  "categoryLabel": "Regex / регулярные выражения",
+  "prompts": [
+    {
+      "id": "regex-01",
+      "label": "Literal match основы",
+      "description": "basics",
+      "detail": "literal",
+      "text": "Объясни literal match regex новичку.\n\n- cat matches cat\n- Case sensitivity flag i\n- Escape special chars . * +\n\n5 примеров match / no match."
+    },
+    {
+      "id": "regex-02",
+      "label": "Character classes",
+      "description": "basics",
+      "detail": "[a-z]",
+      "text": "Character classes [0-9] \\d \\w.\n\n- Negated [^0-9]\n- Ranges a-z A-Z\n- Match hex color #RRGGBB pattern\n\nTest strings quiz."
+    },
+    {
+      "id": "regex-03",
+      "label": "Anchors и word boundary",
+      "description": "basics",
+      "detail": "^ $ \\b",
+      "text": "Anchors start/end и \\b word boundary.\n\n- ^hello vs hello$\n- \\bcat\\b vs category\n- Multiline ^ per line with m\n\nCommon beginner mistakes."
+    },
+    {
+      "id": "regex-04",
+      "label": "Quantifiers greedy lazy",
+      "description": "basics",
+      "detail": "* + ?",
+      "text": "Greedy vs lazy quantifiers.\n\n- .* vs .*?\n- {2,5} exact counts\n- Demo greedy trap on HTML tag\n\nReplace with non-greedy when."
+    },
+    {
+      "id": "regex-05",
+      "label": "Capturing groups",
+      "description": "groups",
+      "detail": "( )",
+      "text": "Capturing groups и backreference.\n\n- (\\d{4})-(\\d{2}) extract date parts\n- $1 $2 in replace\n- Non-capturing (?:)\n\nJavaScript or Python example."
+    },
+    {
+      "id": "regex-06",
+      "label": "Named groups",
+      "description": "groups",
+      "detail": "(?P<name>)",
+      "text": "Named capture groups readability.\n\n- (?<year>\\d{4}) syntax variants JS vs Python\n- Access by name after match\n- Refactor numbered groups pain\n\nOne log parse example."
+    },
+    {
+      "id": "regex-07",
+      "label": "Alternation OR",
+      "description": "basics",
+      "detail": "a|b",
+      "text": "Alternation cat|dog and grouping.\n\n- (cat|dog)s vs cat|dogs precedence\n- Match http|https URL prefix\n\nPrecedence pitfall example."
+    },
+    {
+      "id": "regex-08",
+      "label": "Lookahead lookbehind intro",
+      "description": "advanced",
+      "detail": "lookahead",
+      "text": "Positive/negative lookahead intro.\n\n- Password must have digit (?=.*\\d)\n- Lookbehind fixed width note\n- Don't overuse\n\nOne password rule regex cautiously."
+    },
+    {
+      "id": "regex-09",
+      "label": "Replace с группами",
+      "description": "replace",
+      "detail": "substitution",
+      "text": "Replace reformat with groups.\n\n- Swap name last, first\n- Mask credit card middle digits\n- Function replacer in JS\n\nBefore/after strings."
+    },
+    {
+      "id": "regex-10",
+      "label": "Validate email осторожно",
+      "description": "validation",
+      "detail": "email",
+      "text": "Email regex validation caveats.\n\n- Simple pattern vs RFC reality\n- Prefer library validator in prod\n- Trim and lowercase domain tip\n\nPragmatic pattern + disclaimer."
+    },
+    {
+      "id": "regex-11",
+      "label": "Parse log line exercise",
+      "description": "exercise",
+      "detail": "log",
+      "text": "Exercise: parse Apache/nginx log line.\n\n- IP, timestamp, method, path, status\n- Named groups\n- What regex can't parse easily\n\nOne sample line solution."
+    },
+    {
+      "id": "regex-12",
+      "label": "Multiline dotall flags",
+      "description": "flags",
+      "detail": "m s",
+      "text": "Flags m multiline, s dotall.\n\n- ^ matches line start with m\n- . matches newline with s\n- Combined gm common\n\nCross-line match example."
+    },
+    {
+      "id": "regex-13",
+      "label": "Catastrophic backtracking",
+      "description": "pitfalls",
+      "detail": "ReDoS",
+      "text": "(a+)+ evil pattern explain.\n\n- Exponential backtracking\n- Fix with atomic or possessive or simplify\n- Timeout in production matcher\n\nSafe alternative for nested tags note."
+    },
+    {
+      "id": "regex-14",
+      "label": "Когда не regex",
+      "description": "architecture",
+      "detail": "parser",
+      "text": "When NOT to use regex.\n\n- HTML/XML JSON parsing\n- Nested structures → parser\n- Regex for extract field ok\n\nDecision bullets for beginners."
+    },
+    {
+      "id": "regex-15",
+      "label": "JavaScript RegExp methods",
+      "description": "javascript",
+      "detail": "test exec",
+      "text": "JS RegExp: test, exec, match, matchAll, replace.\n\n- Global flag g behavior\n- lastIndex sticky note\n- Unicode u flag\n\nSame pattern four methods demo."
+    },
+    {
+      "id": "regex-16",
+      "label": "Python re module",
+      "description": "python",
+      "detail": "re.compile",
+      "text": "Python re search findall sub.\n\n- raw string r\"...\"\n- re.compile reuse\n- groupdict named\n\nParse one line script."
+    },
+    {
+      "id": "regex-17",
+      "label": "grep -E patterns",
+      "description": "cli",
+      "detail": "grep",
+      "text": "grep -E practical patterns.\n\n- Filter ERROR lines\n- Extract IPs\n- Recursive ripgrep mention\n\n5 one-liners for logs."
+    },
+    {
+      "id": "regex-18",
+      "label": "Extract JSON field",
+      "description": "exercise",
+      "detail": "json",
+      "text": "Extract field from JSON line with regex cautiously.\n\n- \"userId\":(\\d+) on log JSON\n- When jq/python json loads better\n\nHybrid approach recommendation."
+    },
+    {
+      "id": "regex-19",
+      "label": "Parse URL path",
+      "description": "exercise",
+      "detail": "url",
+      "text": "Regex URL path segments /api/v1/users/42.\n\n- Capture v1 and id\n- URL() API better in JS\n\nCompare regex vs URL parser."
+    },
+    {
+      "id": "regex-20",
+      "label": "Cheat sheet summary",
+      "description": "reference",
+      "detail": "cheatsheet",
+      "text": "One-page regex cheat sheet for beginners.\n\n- Classes, anchors, quantifiers table\n- Escape chart\n- Flags per language note\n\nPrintable markdown bullets."
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "category": "kotlin",
+  "categoryLabel": "Kotlin",
+  "prompts": [
+    {
+      "id": "kotlin-01",
+      "label": "Hello Kotlin with Gradle",
+      "description": "setup",
+      "detail": "kotlin jvm main",
+      "text": "I'm new to Kotlin. Set up a minimal JVM project with Gradle Kotlin DSL.\n\n- build.gradle.kts with kotlin jvm plugin and kotlin version\n- src/main/kotlin/Main.kt printing Hello Kotlin\n- ./gradlew run or application plugin setup\n- Explain src layout vs Maven\n\nList files and one run command."
+    },
+    {
+      "id": "kotlin-02",
+      "label": "Data class equals copy",
+      "description": "language",
+      "detail": "data class User",
+      "text": "Teach data classes for a beginner.\n\n- data class User(val id: Int, val name: String)\n- Auto equals/hashCode/toString demo\n- copy() with one field changed\n- Contrast with regular class in 3 bullets\n\nShort runnable main function examples."
+    },
+    {
+      "id": "kotlin-03",
+      "label": "Null safety operators",
+      "description": "language",
+      "detail": "? !! ?: Elvis",
+      "text": "Explain Kotlin null safety with practical examples.\n\n- Nullable String? vs non-null String\n- Safe call ?. and Elvis ?: default\n- Avoid !! except when justified\n- fun parseLength(s: String?): Int example\n\nBeginner-friendly; warn about NPE from Java interop."
+    },
+    {
+      "id": "kotlin-04",
+      "label": "Coroutines launch and async",
+      "description": "coroutines",
+      "detail": "runBlocking scope",
+      "text": "Introduce coroutines with launch and async.\n\n- runBlocking { } for main demo only\n- coroutineScope { launch { delay; println } }\n- async/await for parallel fake fetch\n- Mention Dispatchers.IO vs Default briefly\n\nAdd kotlinx-coroutines dependency snippet."
+    },
+    {
+      "id": "kotlin-05",
+      "label": "Flow cold stream basics",
+      "description": "coroutines",
+      "detail": "flow collect",
+      "text": "Teach Kotlin Flow for a beginner.\n\n- flow { emit(1); emit(2) } builder\n- collect in coroutineScope\n- map operator on flow\n- Contrast Flow vs List vs Channel in short bullets\n\nMinimal main or suspend function example."
+    },
+    {
+      "id": "kotlin-06",
+      "label": "Sealed class when exhaustiveness",
+      "description": "language",
+      "detail": "sealed class Result",
+      "text": "Model API results with sealed class hierarchy.\n\n- sealed class Result with Success and Error subclasses\n- when (result) exhaustive branches\n- Use data object or data class for cases\n- Explain vs enum for typed payloads\n\nShow parsing stub returning Result."
+    },
+    {
+      "id": "kotlin-07",
+      "label": "Extension functions",
+      "description": "language",
+      "detail": "fun String.capitalizeWords",
+      "text": "Demonstrate extension functions clearly.\n\n- fun String.capitalizeWords(): String implementation\n- Use on literal in main\n- Explain they are static dispatch syntactic sugar\n- One extension on nullable type safely\n\nKeep stdlib overlap minimal — custom example."
+    },
+    {
+      "id": "kotlin-08",
+      "label": "Ktor hello server",
+      "description": "ktor",
+      "detail": "embedded Netty",
+      "text": "Create minimal Ktor server returning Hello on GET /.\n\n- build.gradle.kts dependencies ktor-server-netty\n- embeddedServer with routing { get(\"/\") { call.respondText } }\n- Run and curl test\n- Mention Ktor for API vs Spring choice briefly\n\nSingle Main.kt sketch."
+    },
+    {
+      "id": "kotlin-09",
+      "label": "Room entity and DAO",
+      "description": "android",
+      "detail": "@Entity @Dao",
+      "text": "Sketch Android Room persistence for beginners.\n\n- @Entity data class Note with id, title\n- @Dao insert and query Flow<List<Note>>\n- @Database abstract class with version\n- Explain Room sits on SQLite\n\nNo full app — entity/dao/database interfaces only."
+    },
+    {
+      "id": "kotlin-10",
+      "label": "ViewModel sketch Android",
+      "description": "android",
+      "detail": "ViewModel LiveData or StateFlow",
+      "text": "Outline MVVM ViewModel in Kotlin Android style.\n\n- ViewModel exposing StateFlow<List<Item>>\n- viewModelScope.launch for loading\n- Fragment/Compose collects state conceptually\n- Contrast holding state in Activity anti-pattern\n\nPseudocode acceptable with AndroidX imports named."
+    },
+    {
+      "id": "kotlin-11",
+      "label": "Retrofit API interface",
+      "description": "network",
+      "detail": "suspend GET",
+      "text": "Define Retrofit service for REST in Kotlin.\n\n- interface Api { @GET suspend fun getUsers(): List<User> }\n- Retrofit.Builder baseUrl and Gson converter\n- Call from coroutine in repository sketch\n- Error handling with try/catch mention\n\nAssume Android or JVM client context."
+    },
+    {
+      "id": "kotlin-12",
+      "label": "JUnit test in Kotlin",
+      "description": "testing",
+      "detail": "@Test assertEquals",
+      "text": "Write first Kotlin unit tests with JUnit 5.\n\n- Test a pure function calculateDiscount\n- @Test, assertEquals, assertThrows example\n- Run with Gradle test task\n- kotlin-test or JUnit assertions\n\nShow build.gradle.kts test dependency line."
+    },
+    {
+      "id": "kotlin-13",
+      "label": "Collections map filter fold",
+      "description": "stdlib",
+      "detail": "functional transforms",
+      "text": "Teach list operations map, filter, fold on sample data.\n\n- List of products with price\n- filter expensive, map to names, fold total price\n- Chain vs intermediate variables for readability\n- Mention sequences for large lists one line\n\nRunnable main with println outputs."
+    },
+    {
+      "id": "kotlin-14",
+      "label": "Companion object factory",
+      "description": "language",
+      "detail": "companion object",
+      "text": "Explain companion object with factory pattern.\n\n- class User private constructor with companion create(name)\n- Compare to Java static method briefly\n- @JvmStatic mention for Java callers\n- Simple usage from main\n\nKeep example small and idiomatic."
+    },
+    {
+      "id": "kotlin-15",
+      "label": "when expression vs statement",
+      "description": "language",
+      "detail": "when branches",
+      "text": "Demonstrate when with types, ranges, and else.\n\n- when (x) is Int, in 1..10, else branches\n- when as expression assigning to val\n- Replace long if-else chain example\n- sealed class integration teaser one line\n\nSeveral micro examples in one file."
+    },
+    {
+      "id": "kotlin-16",
+      "label": "Class delegation by interface",
+      "description": "language",
+      "detail": "by keyword",
+      "text": "Show Kotlin delegation implementing interface by delegate.\n\n- interface Repository, class DefaultRepository\n- class LoggingRepository(repo: Repository) : Repository by repo\n- Override one method to add logging\n- Explain composition over inheritance\n\nShort illustrative code."
+    },
+    {
+      "id": "kotlin-17",
+      "label": "Kotlin Multiplatform overview",
+      "description": "kmp",
+      "detail": "shared commonMain",
+      "text": "Explain Kotlin Multiplatform for beginners.\n\n- commonMain shared logic, platform targets ios/android/jvm\n- expect/actual functions concept\n- When KMP fits vs duplicate code\n- Link to official template mentally — no full setup\n\nConceptual architecture bullets only."
+    },
+    {
+      "id": "kotlin-18",
+      "label": "Spring Boot Kotlin stub",
+      "description": "spring",
+      "detail": "spring-boot-starter-web",
+      "text": "Bootstrap Spring Boot 3 app in Kotlin.\n\n- start.spring.io choices: Kotlin, Gradle, Web\n- @RestController GET /hello returning JSON\n- Explain @SpringBootApplication and main\n- Run jar and curl\n\nMinimal controller + application class."
+    },
+    {
+      "id": "kotlin-19",
+      "label": "Package structure conventions",
+      "description": "architecture",
+      "detail": "domain data ui",
+      "text": "Recommend Kotlin package layout for a small app.\n\n- com.example.app with domain, data, ui or feature folders\n- One class per file convention\n- Visibility internal/public choices\n- Contrast flat vs feature modules for growth\n\nDiagram in bullets; no full refactor."
+    },
+    {
+      "id": "kotlin-20",
+      "label": "kotlinx.serialization JSON",
+      "description": "serialization",
+      "detail": "@Serializable",
+      "text": "Serialize data class to JSON with kotlinx.serialization.\n\n- @Serializable data class User\n- Json.encodeToString and decodeFromString\n- Gradle plugin and dependency lines\n- Contrast with Gson/Moshi one sentence\n\nRunnable main printing JSON."
+    }
+  ]
+}

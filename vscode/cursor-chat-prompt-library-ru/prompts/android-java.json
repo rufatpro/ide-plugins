@@ -1,0 +1,146 @@
+{
+  "category": "android-java",
+  "categoryLabel": "Android (Java)",
+  "prompts": [
+    {
+      "id": "aj-01",
+      "label": "Первый проект Android Studio (Java)",
+      "description": "настройка",
+      "detail": "Empty Activity",
+      "text": "Я новичок в Android на Java. Проведи через создание первого приложения в Android Studio.\n\n- New project: Empty Views Activity, язык Java, min SDK разумный для обучения\n- Объясни app/, res/layout, AndroidManifest.xml, MainActivity.java\n- Запуск на эмуляторе или устройстве\n- Замени TextView на Hello Android\n\nФормулировки Android Studio Hedgehog+. Только ключевые файлы."
+    },
+    {
+      "id": "aj-02",
+      "label": "Жизненный цикл Activity",
+      "description": "lifecycle",
+      "detail": "log callbacks",
+      "text": "Объясни lifecycle Activity на учебном Java-приложении.\n\n- Переопредели onCreate, onStart, onResume, onPause, onStop, onDestroy с Log.d\n- Что вызывается при открытии, повороте, уходе в фон\n- configChanges — только как optional reading\n\nОдна MainActivity.java с логированием lifecycle."
+    },
+    {
+      "id": "aj-03",
+      "label": "LinearLayout и ConstraintLayout",
+      "description": "UI",
+      "detail": "activity_main.xml",
+      "text": "Сверстай экран входа в XML: LinearLayout или ConstraintLayout.\n\n- EditText login/password, Button, TextView для ошибки\n- match_parent/wrap_content, отступы dp\n- findViewById в MainActivity\n\nФрагмент activity_main.xml и минимальный обработчик клика на Java."
+    },
+    {
+      "id": "aj-04",
+      "label": "ViewBinding вместо findViewById",
+      "description": "UI",
+      "detail": "build.gradle enable",
+      "text": "Переведи простой экран с findViewById на ViewBinding.\n\n- viewBinding true в build.gradle модуля\n- ActivityMainBinding в onCreate\n- Доступ к view через binding\n- Когда binding предпочтительнее\n\nСравнение до/после в 4 пунктах."
+    },
+    {
+      "id": "aj-05",
+      "label": "Explicit Intent — второй Activity",
+      "description": "navigation",
+      "detail": "putExtra",
+      "text": "MainActivity и DetailActivity с explicit Intent.\n\n- putExtra с id элемента\n- DetailActivity читает extras в onCreate\n- Запись в AndroidManifest\n- Back stack при finish\n\nПолный Java для обеих Activity."
+    },
+    {
+      "id": "aj-06",
+      "label": "Implicit Intent — поделиться текстом",
+      "description": "intents",
+      "detail": "ACTION_SEND",
+      "text": "Implicit Intent для шаринга текста из приложения.\n\n- Intent.createChooser, ACTION_SEND, text/plain\n- Зачем chooser\n- Explicit vs implicit — 3 пункта\n- ActivityNotFoundException\n\nМинимальный обработчик кнопки Share на Java."
+    },
+    {
+      "id": "aj-07",
+      "label": "RecyclerView и Adapter",
+      "description": "lists",
+      "detail": "ViewHolder",
+      "text": "RecyclerView со списком (title + subtitle) на Java.\n\n- item_row.xml\n- Adapter + ViewHolder\n- LinearLayoutManager\n- In-memory List<Item>\n\nОбъясни переиспользование ViewHolder для новичка."
+    },
+    {
+      "id": "aj-08",
+      "label": "Fragment во FrameLayout",
+      "description": "fragments",
+      "detail": "FragmentManager",
+      "text": "Введение Fragment: ListFragment и DetailFragment.\n\n- FrameLayout container в Activity\n- replace через FragmentManager\n- Аргументы через Bundle setArguments\n- Зачем fragments для планшетов/navigation\n\nТолько Java, без Navigation Component."
+    },
+    {
+      "id": "aj-09",
+      "label": "SharedPreferences для настроек",
+      "description": "storage",
+      "detail": "MODE_PRIVATE",
+      "text": "Сохрани username и флаг тёмной темы в SharedPreferences.\n\n- getSharedPreferences, MODE_PRIVATE\n- edit().putBoolean().apply()\n- Восстановление UI при старте\n- Для чего SharedPreferences не подходит\n\nМаленький экран настроек."
+    },
+    {
+      "id": "aj-10",
+      "label": "Room: Entity и DAO на Java",
+      "description": "database",
+      "detail": "AppDatabase",
+      "text": "Room в Java-приложении для сущности Note.\n\n- @Entity, @Dao insert/getAll\n- @Database abstract class\n- allowMainThreadQueries false; фоновый поток\n- room-runtime, annotationProcessor\n\nПошаговый минимальный CRUD."
+    },
+    {
+      "id": "aj-11",
+      "label": "Retrofit GET JSON список",
+      "description": "networking",
+      "detail": "OkHttp Gson",
+      "text": "Загрузка JSON-списка через Retrofit на Java.\n\n- ApiService @GET\n- GsonConverterFactory, Retrofit.Builder\n- enqueue Callback\n- Обновление RecyclerView через runOnUiThread\n\nAPI вроде jsonplaceholder typicode posts."
+    },
+    {
+      "id": "aj-12",
+      "label": "ViewModel и LiveData",
+      "description": "architecture",
+      "detail": "AndroidX",
+      "text": "ViewModel + LiveData для счётчика или списка на Java.\n\n- MutableLiveData во ViewModel\n- observe с lifecycle owner\n- Переживание поворота экрана\n- Только Java, без coroutines\n\nandroidx.lifecycle."
+    },
+    {
+      "id": "aj-13",
+      "label": "Navigation Component",
+      "description": "navigation",
+      "detail": "nav_graph.xml",
+      "text": "Jetpack Navigation: nav_graph.xml и NavHostFragment.\n\n- Home и Settings fragments\n- NavController.navigate\n- Safe Args — optional\n- Сравнение с ручными FragmentTransaction\n\nJava fragments и NavHost в MainActivity."
+    },
+    {
+      "id": "aj-14",
+      "label": "Material Toolbar и menu",
+      "description": "UI",
+      "detail": "onOptionsItemSelected",
+      "text": "MaterialToolbar и options menu.\n\n- menu/main_menu.xml\n- onCreateOptionsMenu, onOptionsItemSelected\n- setSupportActionBar\n- Theme MaterialComponents.DayNight\n\nOverflow menu на маленьких экранах."
+    },
+    {
+      "id": "aj-15",
+      "label": "Runtime permissions",
+      "description": "permissions",
+      "detail": "ActivityResultContracts",
+      "text": "Запрос опасного permission через Activity Result API.\n\n- checkSelfPermission\n- registerForActivityResult RequestPermission\n- shouldShowRequestPermissionRationale\n- CAMERA или ACCESS_FINE_LOCATION\n\nPermission всё равно в manifest."
+    },
+    {
+      "id": "aj-16",
+      "label": "Foreground Service",
+      "description": "services",
+      "detail": "notification",
+      "text": "Эскиз Foreground Service с постоянным notification.\n\n- startForeground и notification channel (API 26+)\n- Service, START_STICKY кратко\n- Действие stop в notification\n- Ограничения фона на новых Android\n\nWorkManager как альтернатива для отложенных задач."
+    },
+    {
+      "id": "aj-17",
+      "label": "Notification channel",
+      "description": "notifications",
+      "detail": "NotificationCompat",
+      "text": "Канал уведомлений и простое notification по кнопке.\n\n- createNotificationChannel\n- NotificationCompat.Builder, PendingIntent\n- POST_NOTIFICATIONS на Android 13+\n- Tap открывает MainActivity\n\nJava в Activity."
+    },
+    {
+      "id": "aj-18",
+      "label": "Gradle debug и release",
+      "description": "build",
+      "detail": "build.gradle",
+      "text": "buildTypes debug vs release в app build.gradle.\n\n- minifyEnabled false для новичков; ProGuard когда true\n- signingConfigs без реальных секретов\n- Build Variants в Studio\n- applicationId vs namespace\n\nЧеклист перед Play Console."
+    },
+    {
+      "id": "aj-19",
+      "label": "Espresso UI test",
+      "description": "testing",
+      "detail": "androidTest",
+      "text": "Один Espresso-тест: клик по кнопке и проверка TextView.\n\n- androidx.test.espresso\n- ActivityScenarioRule или ActivityScenario\n- perform(click), check(matches(withText()))\n- Запуск из Android Studio\n\nunit test vs instrumented test."
+    },
+    {
+      "id": "aj-20",
+      "label": "MVP на Java",
+      "description": "architecture",
+      "detail": "contract",
+      "text": "Рефакторинг экрана входа к MVP для обучения.\n\n- LoginContract: View и Presenter\n- Presenter валидирует, View показывает ошибки\n- Activity implements View\n- MVP vs MVVM с LiveData — 4 пункта\n\nБез Dagger — ручное создание."
+    }
+  ]
+}

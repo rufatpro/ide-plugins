@@ -1,0 +1,146 @@
+{
+  "category": "postgresql",
+  "categoryLabel": "PostgreSQL",
+  "prompts": [
+    {
+      "id": "pg-01",
+      "label": "psql connect basics",
+      "description": "setup",
+      "detail": "psql",
+      "text": "Подключись к PostgreSQL через psql.\n\n- psql -h -U -d\n- \\dt \\d table \\q\n- SELECT version();\n\nLocal docker postgres one-liner."
+    },
+    {
+      "id": "pg-02",
+      "label": "CREATE TABLE constraints",
+      "description": "ddl",
+      "detail": "constraints",
+      "text": "Create users table with constraints.\n\n- PRIMARY KEY, NOT NULL, UNIQUE email\n- CHECK age >= 0\n- created_at timestamptz default now()\n\nShow \\d users output describe."
+    },
+    {
+      "id": "pg-03",
+      "label": "SELECT JOIN recap",
+      "description": "sql",
+      "detail": "JOIN",
+      "text": "Recap INNER LEFT JOIN orders customers.\n\n- 3 table example order_items\n- NULL behavior LEFT JOIN\n- Avoid SELECT * prod note\n\nSample data 2 rows result."
+    },
+    {
+      "id": "pg-04",
+      "label": "EXPLAIN ANALYZE",
+      "description": "performance",
+      "detail": "EXPLAIN",
+      "text": "Read EXPLAIN ANALYZE plan.\n\n- Seq Scan vs Index Scan\n- actual time rows\n- Run on slow query example\n\nWhen to stop guessing add index."
+    },
+    {
+      "id": "pg-05",
+      "label": "B-tree index when",
+      "description": "indexes",
+      "detail": "btree",
+      "text": "Create btree index on foreign key column.\n\n- CREATE INDEX CONCURRENTLY note\n- Selectivity discussion\n- Write overhead tradeoff\n\nBefore/after explain snippet."
+    },
+    {
+      "id": "pg-06",
+      "label": "Partial index",
+      "description": "indexes",
+      "detail": "partial",
+      "text": "Partial index WHERE status = 'active'.\n\n- Smaller index benefit\n- Query must match predicate\n- Unique partial for soft delete\n\nDDL example."
+    },
+    {
+      "id": "pg-07",
+      "label": "JSONB query",
+      "description": "json",
+      "detail": "JSONB",
+      "text": "Query JSONB column metadata.\n\n- -> vs ->> operators\n- @> containment\n- GIN index on jsonb_path_ops mention\n\nFilter users where role admin in json."
+    },
+    {
+      "id": "pg-08",
+      "label": "Arrays unnest",
+      "description": "arrays",
+      "detail": "unnest",
+      "text": "Array column tags and unnest.\n\n- ANY(tags) filter\n- unnest join normalize\n- vs junction table when normalize\n\nExample posts with tag arrays."
+    },
+    {
+      "id": "pg-09",
+      "label": "Window ROW_NUMBER",
+      "description": "analytics",
+      "detail": "window",
+      "text": "ROW_NUMBER PARTITION BY dept ORDER BY salary.\n\n- Rank top N per group\n- Frame clause skip deep\n\nQuery top 3 earners per department."
+    },
+    {
+      "id": "pg-10",
+      "label": "Recursive CTE teaser",
+      "description": "sql",
+      "detail": "WITH RECURSIVE",
+      "text": "Org chart recursive CTE.\n\n- anchor member manager_id\n- recursive union\n- Cycle detection brief\n\nSmall tree example."
+    },
+    {
+      "id": "pg-11",
+      "label": "Transactions isolation",
+      "description": "transactions",
+      "detail": "isolation",
+      "text": "BEGIN COMMIT ROLLBACK and isolation levels.\n\n- Read committed default\n- Phantom vs non-repeatable read\n- SELECT FOR UPDATE lock row\n\nBank transfer example."
+    },
+    {
+      "id": "pg-12",
+      "label": "COPY import export",
+      "description": "ops",
+      "detail": "COPY",
+      "text": "Bulk load CSV COPY FROM.\n\n- HEADER CSV format\n- COPY TO export\n- \\copy psql client variant\n\nPermissions superuser vs pg_read_server_files."
+    },
+    {
+      "id": "pg-13",
+      "label": "pg_dump restore",
+      "description": "ops",
+      "detail": "pg_dump",
+      "text": "Backup pg_dump and restore pg_restore.\n\n- Custom vs plain format\n- -Fc compressed\n- Restore to new DB steps\n\nDev refresh from prod sanitized warning."
+    },
+    {
+      "id": "pg-14",
+      "label": "PgBouncer pooling",
+      "description": "ops",
+      "detail": "PgBouncer",
+      "text": "Connection pooling PgBouncer mention.\n\n- Transaction vs session pooling\n- Why app opens too many connections\n- port 6432 vs 5432\n\nWhen ORM pool enough."
+    },
+    {
+      "id": "pg-15",
+      "label": "Full text search tsvector",
+      "description": "search",
+      "detail": "tsvector",
+      "text": "Basic FTS to_tsvector to_tsquery.\n\n- GIN index on tsvector\n- ranking ts_rank\n- vs Elasticsearch when\n\nSearch articles body."
+    },
+    {
+      "id": "pg-16",
+      "label": "UUID gen_random_uuid",
+      "description": "types",
+      "detail": "uuid",
+      "text": "UUID primary keys gen_random_uuid().\n\n- extension pgcrypto or uuid-ossp\n- uuid vs bigint serial tradeoffs\n- Index bloat note\n\nCREATE TABLE example."
+    },
+    {
+      "id": "pg-17",
+      "label": "Migrations Flyway Alembic",
+      "description": "migrations",
+      "detail": "alembic",
+      "text": "Schema migrations workflow PG.\n\n- Alembic revision autogenerate caution\n- Flyway SQL versioned\n- Never edit applied migration\n\nOne add column migration sample."
+    },
+    {
+      "id": "pg-18",
+      "label": "RLS row level security",
+      "description": "security",
+      "detail": "RLS",
+      "text": "Row level security intro multi-tenant.\n\n- ENABLE ROW LEVEL SECURITY\n- POLICY tenant_id = current_setting\n- Bypass superuser\n\nPolicy example tenants."
+    },
+    {
+      "id": "pg-19",
+      "label": "VACUUM ANALYZE maintenance",
+      "description": "ops",
+      "detail": "vacuum",
+      "text": "Autovacuum and manual VACUUM ANALYZE.\n\n- Dead tuples bloat\n- ANALYZE stats planner\n- VACUUM FULL lock warning\n\nMonitor pg_stat_user_tables."
+    },
+    {
+      "id": "pg-20",
+      "label": "PostgreSQL vs SQLite",
+      "description": "architecture",
+      "detail": "when pick",
+      "text": "When Postgres vs SQLite.\n\n- Concurrent writers concurrency\n- Extensions JSON GIS\n- Embedded vs server\n\n5 app profile recommendations."
+    }
+  ]
+}

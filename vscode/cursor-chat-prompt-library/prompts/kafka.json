@@ -1,0 +1,146 @@
+{
+  "category": "kafka",
+  "categoryLabel": "Kafka",
+  "prompts": [
+    {
+      "id": "kafka-01",
+      "label": "Broker topic partition concepts",
+      "description": "concepts",
+      "detail": "log ordered partitions",
+      "text": "Explain Kafka core concepts for a beginner.\n\n- Broker, cluster, topic, partition, offset, producer, consumer\n- Why partitions enable parallelism\n- Replication factor headline\n- ASCII diagram of topic split into partitions\n\nNo install yet — mental model only."
+    },
+    {
+      "id": "kafka-02",
+      "label": "Docker Compose local Kafka",
+      "description": "setup",
+      "detail": "bitnami or confluent",
+      "text": "Run Kafka locally with Docker Compose for learning.\n\n- docker-compose.yml with zookeeper-less KRaft or bitnami kafka\n- Expose 9092, create topic with kafka-topics command\n- Verify broker logs healthy\n- List env vars beginners must set (advertised listeners)\n\nProvide compose snippet and create-topic command."
+    },
+    {
+      "id": "kafka-03",
+      "label": "Producer in Java or Python",
+      "description": "producer",
+      "detail": "send key value",
+      "text": "Write a minimal Kafka producer sending JSON messages.\n\n- Pick Java kafka-clients or Python confluent-kafka\n- Configure bootstrap.servers, topic name\n- Send 5 messages with optional key\n- Flush and close properly\n\nShow run steps and expected consumer-side view."
+    },
+    {
+      "id": "kafka-04",
+      "label": "Consumer group basics",
+      "description": "consumer",
+      "detail": "group.id subscribe",
+      "text": "Create a consumer in a group reading from a topic.\n\n- group.id, auto.offset.reset earliest\n- Poll loop printing key/value\n- Explain one partition per consumer in group max\n- Scale to two consumers conceptually\n\nJava or Python — pick one consistently."
+    },
+    {
+      "id": "kafka-05",
+      "label": "Offset commit strategies",
+      "description": "consumer",
+      "detail": "enable.auto.commit",
+      "text": "Teach offset commits for beginners.\n\n- Auto commit vs manual commitSync/commitAsync\n- At-least-once if commit after process\n- Risk of duplicate processing\n- When disable auto commit\n\nSmall code change example and tradeoff bullets."
+    },
+    {
+      "id": "kafka-06",
+      "label": "Message keys and ordering",
+      "description": "producing",
+      "detail": "key same partition",
+      "text": "Explain how record keys affect partition assignment and ordering.\n\n- Messages with same key go to same partition\n- Ordering guaranteed per partition not topic\n- Null key round-robin mention\n- Example: userId as key for event order\n\nProducer snippet setting key explicitly."
+    },
+    {
+      "id": "kafka-07",
+      "label": "Schema Registry mention",
+      "description": "schema",
+      "detail": "Avro JSON Schema",
+      "text": "Introduce Confluent Schema Registry role in Kafka ecosystems.\n\n- Why schemaless JSON breaks consumers\n- Subject naming topic-value concept\n- Compatibility modes headline (backward)\n- When to skip for tiny projects\n\nConceptual — optional local registry setup outline."
+    },
+    {
+      "id": "kafka-08",
+      "label": "Dead letter topic pattern",
+      "description": "reliability",
+      "detail": "DLT failed records",
+      "text": "Design dead letter topic handling for poison messages.\n\n- Main topic consumer try/catch on parse errors\n- Publish failed record + metadata to orders.DLT\n- Avoid infinite retry loop\n- Monitoring DLT volume\n\nArchitecture bullets and pseudo consumer flow."
+    },
+    {
+      "id": "kafka-09",
+      "label": "Idempotent producer settings",
+      "description": "producer",
+      "detail": "enable.idempotence",
+      "text": "Configure idempotent producer to avoid duplicates on retry.\n\n- enable.idempotence=true and required acks\n- PID and sequence numbers intuition\n- Limits: idempotence within session headline\n- Spring Kafka or raw producer config example\n\nExplain problem idempotence solves."
+    },
+    {
+      "id": "kafka-10",
+      "label": "Exactly-once semantics teaser",
+      "description": "advanced",
+      "detail": "transactions EOS",
+      "text": "Give a beginner-safe overview of Kafka exactly-once.\n\n- Transactions consume-transform-produce sketch\n- EOS vs at-least-once practical choice\n- Complexity and broker version requirements\n- When exactly-once is overkill\n\nNo full transactional code — learning outline."
+    },
+    {
+      "id": "kafka-11",
+      "label": "NestJS Kafka microservice transport",
+      "description": "nestjs",
+      "detail": "Transport.KAFKA",
+      "text": "Wire @nestjs/microservices with Kafka transport.\n\n- Main.ts connectMicroservice Kafka options brokers groupId\n- MessagePattern handler returning observable\n- ClientProxy emit from another service sketch\n- Local docker kafka assumed\n\nMinimal controller + bootstrap snippet."
+    },
+    {
+      "id": "kafka-12",
+      "label": "Monitor consumer lag",
+      "description": "ops",
+      "detail": "lag per partition",
+      "text": "Explain consumer lag and how to monitor it.\n\n- Lag = high watermark minus consumer offset\n- kafka-consumer-groups --describe\n- Alert thresholds intuition\n- Causes: slow processing, rebalance, too few consumers\n\nTroubleshooting checklist for rising lag."
+    },
+    {
+      "id": "kafka-13",
+      "label": "Retention and cleanup policy",
+      "description": "config",
+      "detail": "retention.ms delete",
+      "text": "Teach topic retention settings.\n\n- retention.ms and retention.bytes\n- delete vs compact cleanup.policy\n- When logs grow unexpectedly\n- Per-topic override example\n\nRelate to disk planning for dev vs prod."
+    },
+    {
+      "id": "kafka-14",
+      "label": "Compacted topic overview",
+      "description": "config",
+      "detail": "log compaction",
+      "text": "Explain log compaction for changelog topics.\n\n- Keeps latest record per key\n- Use case: KTable / config store\n- compact + delete mixed cautions\n- Not for unbounded event history\n\nContrast with infinite retention event stream."
+    },
+    {
+      "id": "kafka-15",
+      "label": "Testcontainers Kafka in tests",
+      "description": "testing",
+      "detail": "JUnit integration",
+      "text": "Spin up Kafka in integration tests with Testcontainers.\n\n- GenericContainer or kafka module dependency\n- Start broker, set bootstrap servers in test\n- Produce one message, assert consumer receives\n- Gradle/Maven dependency lines\n\nJava example preferred; mention Python testcontainers-kafka briefly."
+    },
+    {
+      "id": "kafka-16",
+      "label": "Kafka vs RabbitMQ when to pick",
+      "description": "architecture",
+      "detail": "log vs queue",
+      "text": "Compare Kafka and RabbitMQ for a beginner architect.\n\n- Kafka: high throughput log, replay, stream processing\n- RabbitMQ: task queues, routing flexibility, lower latency RPC patterns\n- Team ops complexity comparison\n- Decision matrix table in bullets\n\nNo vendor bias — use-case driven."
+    },
+    {
+      "id": "kafka-17",
+      "label": "Security SASL SSL mention",
+      "description": "security",
+      "detail": "SASL_SSL SCRAM",
+      "text": "Outline securing Kafka clients in production.\n\n- TLS encryption in transit\n- SASL/SCRAM or mTLS authentication headline\n- ACLs on topics prefix\n- Never plaintext in prod checklist\n\nConfig property names only — no secrets."
+    },
+    {
+      "id": "kafka-18",
+      "label": "Error handling and retry policy",
+      "description": "reliability",
+      "detail": "retry backoff",
+      "text": "Design consumer error handling with retries.\n\n- Transient vs permanent failure classification\n- Retry with exponential backoff and max attempts\n- Then route to DLT\n- Idempotent handler requirement\n\nPseudo-code poll loop structure."
+    },
+    {
+      "id": "kafka-19",
+      "label": "Stream processing ksqlDB mention",
+      "description": "streams",
+      "detail": "ksqlDB SQL",
+      "text": "Introduce stream processing beyond single consumers.\n\n- Kafka Streams vs ksqlDB for SQL-minded teams\n- Example: count orders per minute stream\n- Stateful stores and windowed aggregates headline\n- When plain consumers enough\n\nConceptual with one ksql snippet if helpful."
+    },
+    {
+      "id": "kafka-20",
+      "label": "Kafka troubleshooting checklist",
+      "description": "ops",
+      "detail": "common failures",
+      "text": "Give a beginner troubleshooting checklist for Kafka issues.\n\n- Broker not reachable: listeners, firewall, advertised.listeners\n- Consumer not receiving: offset, group id, topic name typo\n- Rebalance storm causes\n- Log dirs disk full\n\nOrdered steps before escalating to team."
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "category": "zig",
+  "categoryLabel": "Zig",
+  "prompts": [
+    {
+      "id": "zig-01",
+      "label": "Hello Zig project",
+      "description": "setup",
+      "detail": "zig init",
+      "text": "I'm new to Zig. Create a minimal project from scratch.\n\n- zig init-exe or zig init-lib and explain difference\n- src/main.zig with std.debug.print(\"Hello, Zig!\\n\", .{})\n- zig build run and zig build test commands\n- Mention stable Zig 0.13+ / 0.14+ style if relevant\n\nList files created and what build.zig does in one paragraph."
+    },
+    {
+      "id": "zig-02",
+      "label": "const var and integers",
+      "description": "basics",
+      "detail": "mutability",
+      "text": "Teach const vs var and integer types for a beginner.\n\n- const fixed binding, var mutable\n- i32, u64, usize for sizes\n- @intCast example with overflow caution\n- No implicit widening — explain briefly\n\nSmall main.zig with a counter loop using var."
+    },
+    {
+      "id": "zig-03",
+      "label": "Arrays and slices",
+      "description": "memory",
+      "detail": "[]const u8",
+      "text": "Explain arrays vs slices in Zig with string-like examples.\n\n- const arr = [_]u8{ 1, 2, 3 } and slice arr[0..2]\n- []const u8 as string slice, .len field\n- Sentinel-terminated strings mention for C interop only\n\nShow iterating with for (arr) |item|."
+    },
+    {
+      "id": "zig-04",
+      "label": "for and while loops",
+      "description": "control flow",
+      "detail": "break continue",
+      "text": "Demonstrate for loops over slices and while with optional error capture.\n\n- for (0..10) |i| and for (items) |x|\n- while (condition) : (label) with break/continue\n- Compare to C loops in 2 bullets\n\nInclude sum-of-slice exercise."
+    },
+    {
+      "id": "zig-05",
+      "label": "Error union try catch",
+      "description": "errors",
+      "detail": "!T",
+      "text": "Introduce Zig error sets and error unions for beginners.\n\n- const FileError = error{ NotFound, PermissionDenied }\n- fn readConfig() FileError!Config with try in caller\n- catch |err| switch handling\n- Contrast with exceptions and Result<T,E> mentally\n\nRunnable example reading a missing file path."
+    },
+    {
+      "id": "zig-06",
+      "label": "Optionals ?T and orelse",
+      "description": "types",
+      "detail": "if optional",
+      "text": "Teach optional types ?T in Zig.\n\n- if (maybe) |value| { } else { }\n- orelse default value or return error\n- @as for type coercion when needed\n- Common mistake: double optional mention lightly\n\nExample: findUser(id) ?User."
+    },
+    {
+      "id": "zig-07",
+      "label": "Structs and methods",
+      "description": "types",
+      "detail": "pub fn init",
+      "text": "Define struct Point { x: f32, y: f32 } with methods distance and translate.\n\n- pub fn on struct, self: *Self or self: Self\n- Struct literal .{ .x = 1, .y = 2 }\n- No inheritance — composition note in one sentence\n\nUnit-style test in same file optional."
+    },
+    {
+      "id": "zig-08",
+      "label": "GeneralPurposeAllocator basics",
+      "description": "memory",
+      "detail": "defer deinit",
+      "text": "Explain manual memory management with std.heap.GeneralPurposeAllocator.\n\n- var gpa = GPA{}; defer _ = gpa.deinit();\n- const allocator = gpa.allocator();\n- try allocator.alloc(u8, n) and free\n- Why Zig has allocators vs GC languages\n\nLeak detection on deinit in debug — mention."
+    },
+    {
+      "id": "zig-09",
+      "label": "Read file std.fs cwd",
+      "description": "stdlib",
+      "detail": "readFileAlloc",
+      "text": "Read a text file into memory using std.fs and an allocator.\n\n- std.fs.cwd().openFile, readToEndAlloc or readFileAlloc\n- defer allocator.free\n- Handle error.FileNotFound in catch\n\nPrint first 200 chars safely."
+    },
+    {
+      "id": "zig-10",
+      "label": "Parse JSON std.json",
+      "description": "stdlib",
+      "detail": "parseFromSlice",
+      "text": "Parse JSON with std.json.parseFromSlice for a small struct.\n\n- const User = struct { id: u32, name: []const u8 };\n- Parse static string literal first, then file bytes\n- defer parsed.deinit() pattern\n- Mention strict typing vs dynamic Value when needed\n\nExample JSON with two users."
+    },
+    {
+      "id": "zig-11",
+      "label": "HTTP server std.http",
+      "description": "network",
+      "detail": "Address listen",
+      "text": "Create a tiny HTTP server responding Hello on GET /.\n\n- std.http.Server or current std API for your Zig version\n- Listen on 127.0.0.1:8080, handle one request loop simply\n- Test with curl\n\nNote API drift between Zig versions honestly; prefer documented stable pattern."
+    },
+    {
+      "id": "zig-12",
+      "label": "Comptime if and types",
+      "description": "comptime",
+      "detail": "generic list idea",
+      "text": "Introduce comptime for beginners with a max(T) style function.\n\n- fn max(comptime T: type, a: T, b: T) T\n- comptime if (@typeInfo(T) == .int) optional branch\n- Explain compile-time vs runtime in plain language\n\nAvoid full generic containers — keep one function."
+    },
+    {
+      "id": "zig-13",
+      "label": "Enums and tagged union",
+      "description": "types",
+      "detail": "switch exhaustive",
+      "text": "Model Shape as enum or tagged union (circle | rectangle).\n\n- fn area(shape: Shape) f64 with switch exhaustive\n- Compiler error if case missing — highlight as feature\n- Compare to Rust enum and Go without sum types\n\nSmall main printing areas."
+    },
+    {
+      "id": "zig-14",
+      "label": "Tests in same file",
+      "description": "testing",
+      "detail": "test block",
+      "text": "Write test \"addition works\" and test \"error on divide by zero\" in Zig.\n\n- test { try expectEqual(...); }\n- zig build test command\n- std.testing.expect, expectError\n\nPlace tests below main functions in one file."
+    },
+    {
+      "id": "zig-15",
+      "label": "build.zig targets and steps",
+      "description": "build",
+      "detail": "addExecutable",
+      "text": "Explain build.zig for a beginner Zig executable project.\n\n- b.addExecutable, install artifact, run step\n- addLibraryImport for std only default\n- zig build -Doptimize=ReleaseFast mention\n- Where to add unit tests in build graph briefly\n\nAnnotate default build.zig sections."
+    },
+    {
+      "id": "zig-16",
+      "label": "C interop @cImport",
+      "description": "ffi",
+      "detail": "link libc",
+      "text": "Call C printf or strlen from Zig using @cImport.\n\n- @cInclude and linkSystemLibrary(\"c\") in build.zig\n- @cImport(@cInclude(\"string.h\"))\n- Explain @ptrCast and sentinel strings carefully\n\nMinimal hello from C library."
+    },
+    {
+      "id": "zig-17",
+      "label": "HashMap std.HashMap",
+      "description": "collections",
+      "detail": "StringContext",
+      "text": "Use std.HashMap for word frequency counting from a string.\n\n- Key type []const u8 with appropriate context\n- getOrPut, increment count\n- Iterator over map entries\n- Allocator required for map\n\nPrint top 5 words from sample paragraph."
+    },
+    {
+      "id": "zig-18",
+      "label": "Formatting std.fmt print writer",
+      "description": "stdlib",
+      "detail": "format buffer",
+      "text": "Teach std.fmt.bufPrint and printing to stdout with placeholders.\n\n- \"User {s} has {d} points\\n\" format string\n- Fixed buffer vs allocPrint for dynamic size\n- fmt format specifiers {x}, {any} debug\n\nAvoid alloc in hot path example using stack buffer."
+    },
+    {
+      "id": "zig-19",
+      "label": "Random numbers std.rand",
+      "description": "stdlib",
+      "detail": "Random prng",
+      "text": "Generate random integers with std.Random and a PRNG (e.g. Xoshiro256).\n\n- Seed from std.time.timestamp() for demo only — not crypto\n- random.intRangeAtMost for dice roll 1..6\n- Warn about crypto.random for secrets\n\nShort dice simulation loop."
+    },
+    {
+      "id": "zig-20",
+      "label": "When to choose Zig checklist",
+      "description": "architecture",
+      "detail": "vs C Rust Go",
+      "text": "Give an honest beginner checklist: when Zig is a good fit vs C, Rust, or Go.\n\n- Systems programming, C interop, explicit allocators strengths\n- Smaller ecosystem and API churn caveats\n- Learning path: C memory basics + build.zig + error unions\n\nNo flame war — bullet tradeoffs and one sample project idea (CLI tool)."
+    }
+  ]
+}

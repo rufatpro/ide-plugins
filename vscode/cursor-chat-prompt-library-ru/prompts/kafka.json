@@ -1,0 +1,146 @@
+{
+  "category": "kafka",
+  "categoryLabel": "Kafka",
+  "prompts": [
+    {
+      "id": "kafka-01",
+      "label": "Broker, topic, partition",
+      "description": "concepts",
+      "detail": "основы",
+      "text": "Объясни Kafka новичку: broker, topic, partition, offset.\n\n- Зачем partitions для масштаба\n- Consumer читает ordered в partition\n- Replication factor одной фразой\n\nСхема producer → topic → consumer группа."
+    },
+    {
+      "id": "kafka-02",
+      "label": "Docker Compose Kafka",
+      "description": "setup",
+      "detail": "docker-compose",
+      "text": "Подними Kafka локально через docker-compose.\n\n- bitnami или confluent образ\n- PLAINTEXT listener для dev\n- kafka-topics --create тестовый topic\n\nПолный compose фрагмент и команды проверки."
+    },
+    {
+      "id": "kafka-03",
+      "label": "Producer Java или Python",
+      "description": "producer",
+      "detail": "kafka-python",
+      "text": "Напиши producer отправляющий JSON события.\n\n- key optional, value JSON\n- flush и callback ошибок\n- Java kafka-clients или confluent-kafka Python\n\n10 сообщений в topic orders."
+    },
+    {
+      "id": "kafka-04",
+      "label": "Consumer group",
+      "description": "consumer",
+      "detail": "group.id",
+      "text": "Consumer в group читает partitions.\n\n- group.id и rebalance\n- Один consumer на partition max\n- Что если consumers больше partitions\n\nПример двух consumers в одной group."
+    },
+    {
+      "id": "kafka-05",
+      "label": "Commit offset",
+      "description": "consumer",
+      "detail": "enable.auto.commit",
+      "text": "Объясни commit offset manual vs auto.\n\n- at-least-once vs lost messages tradeoff\n- commitSync после обработки\n- Идempotency handler\n\nКогда отключить auto commit."
+    },
+    {
+      "id": "kafka-06",
+      "label": "Keys и ordering",
+      "description": "producer",
+      "detail": "message key",
+      "text": "Ordering через key partitioner.\n\n- Все события user-123 в одну partition\n- null key round-robin\n- Hot partition problem кратко\n\nProducer с key и проверка порядка."
+    },
+    {
+      "id": "kafka-07",
+      "label": "Schema Registry mention",
+      "description": "schema",
+      "detail": "Avro",
+      "text": "Зачем Schema Registry с Avro/Protobuf.\n\n- subject, version compatibility\n- producer регистрирует schema\n- consumer читает с schema id\n\nDev без SR vs prod с SR."
+    },
+    {
+      "id": "kafka-08",
+      "label": "Dead letter topic",
+      "description": "reliability",
+      "detail": "DLT",
+      "text": "Паттерн dead letter topic для poison messages.\n\n- Retry N раз → produce в orders.DLT\n- Headers с error reason\n- Отдельный consumer для DLT review\n\nПсевдокод обработки."
+    },
+    {
+      "id": "kafka-09",
+      "label": "Idempotent producer",
+      "description": "reliability",
+      "detail": "enable.idempotence",
+      "text": "Включи idempotent producer.\n\n- enable.idempotence=true\n- Что даёт при retries\n- Ограничения (5 in-flight etc)\n\nConfig snippet и когда нужен."
+    },
+    {
+      "id": "kafka-10",
+      "label": "Exactly-once teaser",
+      "description": "advanced",
+      "detail": "transactions",
+      "text": "Кратко: exactly-once semantics в Kafka.\n\n- Transactions read-process-write\n- Сложность и overhead\n- Часто достаточно at-least-once + idempotent consumer\n\nБез полной реализации — decision tree."
+    },
+    {
+      "id": "kafka-11",
+      "label": "NestJS Kafka transport",
+      "description": "nestjs",
+      "detail": "microservices",
+      "text": "NestJS microservice с Kafka transport.\n\n- ClientsModule.register Kafka\n- @MessagePattern handler\n- @EventPattern для events\n\nМини main.ts и controller handler."
+    },
+    {
+      "id": "kafka-12",
+      "label": "Monitoring consumer lag",
+      "description": "ops",
+      "detail": "lag",
+      "text": "Как мониторить consumer lag.\n\n- kafka-consumer-groups --describe\n- Метрики для Prometheus/Grafana\n- Алерт если lag растёт\n\nChecklist что смотреть в incident."
+    },
+    {
+      "id": "kafka-13",
+      "label": "Retention policy",
+      "description": "ops",
+      "detail": "retention.ms",
+      "text": "Настрой retention по времени и размеру.\n\n- retention.ms vs retention.bytes\n- compact vs delete policy intro\n- Влияние на disk\n\nПример topic config."
+    },
+    {
+      "id": "kafka-14",
+      "label": "Compacted topic",
+      "description": "advanced",
+      "detail": "log compaction",
+      "text": "Log compaction для changelog topic.\n\n- last value per key сохраняется\n- use case: KTable / config store\n- cleanup.policy=compact\n\nКогда не использовать compaction."
+    },
+    {
+      "id": "kafka-15",
+      "label": "Testcontainers Kafka",
+      "description": "testing",
+      "detail": "testcontainers",
+      "text": "Integration test с Testcontainers Kafka.\n\n- @Container KafkaContainer\n- Producer/consumer в JUnit test\n- Почему не embedded Kafka для CI\n\nМини-тест отправки и чтения."
+    },
+    {
+      "id": "kafka-16",
+      "label": "Kafka vs RabbitMQ выбор",
+      "description": "architecture",
+      "detail": "when to pick",
+      "text": "Когда Kafka, когда RabbitMQ.\n\n- throughput, replay, routing patterns\n- Rabbit для task queues RPC\n- Kafka для event stream log\n\nТаблица 5 критериев decision."
+    },
+    {
+      "id": "kafka-17",
+      "label": "Security SASL mention",
+      "description": "security",
+      "detail": "SASL_SSL",
+      "text": "Безопасность Kafka в prod кратко.\n\n- SASL/SCRAM или mTLS\n- ACL на topics\n- PLAINTEXT только dev\n\nConfig keys без реальных паролей."
+    },
+    {
+      "id": "kafka-18",
+      "label": "Error handling retry",
+      "description": "reliability",
+      "detail": "retry backoff",
+      "text": "Retry policy в consumer.\n\n- Exponential backoff\n- Max attempts → DLT\n- Не блокировать partition бесконечно\n\nПсевдокод loop с sleep."
+    },
+    {
+      "id": "kafka-19",
+      "label": "ksqlDB stream processing",
+      "description": "streams",
+      "detail": "ksqlDB",
+      "text": "Teaser stream processing: ksqlDB или Kafka Streams.\n\n- SELECT from stream WHERE\n- Join stream-table\n- Когда SQL поверх Kafka уместен\n\nОдин пример CREATE STREAM."
+    },
+    {
+      "id": "kafka-20",
+      "label": "Troubleshooting checklist",
+      "description": "ops",
+      "detail": "checklist",
+      "text": "Checklist диагностики Kafka проблем.\n\n- Broker down, under-replicated partitions\n- Consumer not joining group\n- Message too large\n- ACL denied\n\n10 пунктов с командами."
+    }
+  ]
+}

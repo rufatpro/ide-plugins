@@ -1,0 +1,146 @@
+{
+  "category": "angular",
+  "categoryLabel": "Angular",
+  "prompts": [
+    {
+      "id": "angular-01",
+      "label": "Create Angular project with ng new",
+      "description": "setup",
+      "detail": "ng new my-app",
+      "text": "I'm a beginner with Angular. Guide me to create a new project from scratch.\n\n- Install Node LTS, npm install -g @angular/cli\n- ng new my-app (routing yes, stylesheet CSS or SCSS)\n- Explain src/app structure: app.component, main.ts, angular.json\n- ng serve and open localhost:4200\n\nUse Angular 17+ CLI commands. List key files created."
+    },
+    {
+      "id": "angular-02",
+      "label": "Standalone component basics",
+      "description": "components",
+      "detail": "standalone: true",
+      "text": "Teach standalone components in modern Angular (no NgModule required).\n\n- Generate a HelloComponent with standalone: true\n- Import CommonModule or specific directives in imports array\n- Bootstrap with bootstrapApplication in main.ts\n- Show selector usage in app template\n\nExplain why standalone is the default style now."
+    },
+    {
+      "id": "angular-03",
+      "label": "Signals for reactive state",
+      "description": "reactivity",
+      "detail": "signal computed effect",
+      "text": "Introduce Angular signals for a beginner counter example.\n\n- signal(0), increment in method, display with {{ count() }}\n- Show computed() for doubled value\n- Brief effect() mention for side effects\n- Contrast with plain class fields in 3 bullets\n\nProvide a minimal standalone component."
+    },
+    {
+      "id": "angular-04",
+      "label": "@Input and @Output parent-child",
+      "description": "components",
+      "detail": "EventEmitter",
+      "text": "Build parent-child communication with @Input and @Output.\n\n- Child ItemCardComponent receives title via @Input\n- Child emits selected via @Output EventEmitter\n- Parent handles (selected) and updates list\n- Use required inputs if Angular 17+\n\nShow both component files and parent template."
+    },
+    {
+      "id": "angular-05",
+      "label": "Injectable service and DI",
+      "description": "services",
+      "detail": "providedIn root",
+      "text": "Create a DataService with dependency injection.\n\n- @Injectable({ providedIn: 'root' }) with getItems() returning mock array\n- Inject into AppComponent or a feature component via constructor\n- Explain singleton scope and why services beat duplicating logic\n- Optional: inject in standalone component\n\nProvide service + consumer example."
+    },
+    {
+      "id": "angular-06",
+      "label": "HttpClient GET request",
+      "description": "http",
+      "detail": "HttpClientModule or provideHttpClient",
+      "text": "Fetch JSON with HttpClient in a standalone Angular app.\n\n- provideHttpClient() in app.config or imports\n- Inject HttpClient, call get<T>() on jsonplaceholder or mock API\n- Display results in template with @for\n- Mention error handling with catchError briefly\n\nShow component + config wiring."
+    },
+    {
+      "id": "angular-07",
+      "label": "Route guards CanActivate",
+      "description": "routing",
+      "detail": "functional guard",
+      "text": "Protect a route with a guard for beginners.\n\n- Define routes with /login and /dashboard\n- CanActivateFn (functional guard) checking auth stub service\n- Redirect to /login if not authenticated\n- Wire routes in app.routes.ts\n\nExplain when guards run in navigation lifecycle."
+    },
+    {
+      "id": "angular-08",
+      "label": "Reactive forms FormGroup",
+      "description": "forms",
+      "detail": "FormBuilder validators",
+      "text": "Build a login form with ReactiveFormsModule.\n\n- FormBuilder group: email, password with Validators.required and email\n- Template binds formGroup and formControlName\n- Submit logs value when valid; show field errors\n- Import ReactiveFormsModule in standalone component\n\nPrefer reactive over template-driven for this lesson."
+    },
+    {
+      "id": "angular-09",
+      "label": "RxJS map and switchMap",
+      "description": "rxjs",
+      "detail": "pipe operators",
+      "text": "Teach RxJS pipe with map and switchMap on HttpClient.\n\n- map to transform response shape\n- switchMap for search: Subject or valueChanges debounced to HTTP\n- Explain switchMap cancels prior inner subscription\n- Contrast mergeMap in one sentence for beginners\n\nMinimal TypeScript example with comments."
+    },
+    {
+      "id": "angular-10",
+      "label": "HTTP interceptor logging",
+      "description": "http",
+      "detail": "HttpInterceptorFn",
+      "text": "Add a functional HTTP interceptor for request/response logging.\n\n- HttpInterceptorFn adding header or logging URL\n- Register with provideHttpClient(withInterceptors([...]))\n- Show clone request pattern\n- Warn not to log sensitive tokens\n\nDev-only logging mindset; one interceptor file."
+    },
+    {
+      "id": "angular-11",
+      "label": "Lazy loaded feature routes",
+      "description": "routing",
+      "detail": "loadChildren loadComponent",
+      "text": "Split app into lazy-loaded feature routes.\n\n- Admin feature route with loadComponent or loadChildren\n- Separate admin.routes.ts\n- Verify separate chunk in build output conceptually\n- Default route and wildcard 404\n\nExplain bundle size benefit for beginners."
+    },
+    {
+      "id": "angular-12",
+      "label": "OnPush change detection",
+      "description": "performance",
+      "detail": "ChangeDetectionStrategy.OnPush",
+      "text": "Demonstrate OnPush change detection on a presentational component.\n\n- Set changeDetection: ChangeDetectionStrategy.OnPush\n- Pass immutable @Input data from parent\n- Explain when change detection runs vs Default\n- Mention signals as friendly companion to OnPush\n\nSmall list component example."
+    },
+    {
+      "id": "angular-13",
+      "label": "Angular Material intro",
+      "description": "ui",
+      "detail": "MatButton MatTable",
+      "text": "Add Angular Material to a standalone project.\n\n- ng add @angular/material steps\n- Import MatButtonModule and MatToolbar in component\n- Simple toolbar + button UI\n- Mention theming and accessibility basics\n\nDo not build full app — intro only."
+    },
+    {
+      "id": "angular-14",
+      "label": "SSR and Angular Universal overview",
+      "description": "ssr",
+      "detail": "ng add @angular/ssr",
+      "text": "Explain Server-Side Rendering for Angular beginners.\n\n- What SSR solves: SEO, first paint\n- ng add @angular/ssr high-level steps\n- Contrast prerender vs dynamic server\n- When CSR-only is fine for internal apps\n\nConceptual checklist — no full deploy."
+    },
+    {
+      "id": "angular-15",
+      "label": "Unit test with TestBed",
+      "description": "testing",
+      "detail": "ComponentFixture",
+      "text": "Write a first component unit test with Jasmine/Karma or Jest.\n\n- TestBed.configureTestingModule with standalone component\n- createComponent, detectChanges, query DOM text\n- Test @Input binding or button click\n- npm test command\n\nOne spec file matching a simple component."
+    },
+    {
+      "id": "angular-16",
+      "label": "i18n localize templates",
+      "description": "i18n",
+      "detail": "i18n attribute",
+      "text": "Introduce internationalization in Angular templates.\n\n- i18n attribute on h1 and button\n- Extract messages workflow mention (ng extract-i18n)\n- One second locale example conceptually (fr)\n- When ngx-translate differs briefly\n\nBeginner scope — no full build pipeline."
+    },
+    {
+      "id": "angular-17",
+      "label": "Production build checklist",
+      "description": "build",
+      "detail": "ng build configuration",
+      "text": "Give a beginner checklist before ng build --configuration production.\n\n- environment.ts production flags\n- Budgets in angular.json mention\n- outputHashing and source maps off for prod\n- API URL from environment\n\nList commands; no cloud deploy steps."
+    },
+    {
+      "id": "angular-18",
+      "label": "Migrate NgModule to standalone checklist",
+      "description": "migration",
+      "detail": "standalone migration",
+      "text": "I have an older NgModule-based Angular app. Outline migration to standalone.\n\n- Run ng update and official standalone migration schematic mention\n- Convert one feature module: move declarations to standalone imports\n- Replace NgModule bootstrap with bootstrapApplication\n- Checklist: RouterModule, providers, third-party libs\n\nStep-by-step learning checklist, not automated rewrite."
+    },
+    {
+      "id": "angular-19",
+      "label": "ng generate and project layout",
+      "description": "cli",
+      "detail": "ng g c s",
+      "text": "Teach Angular CLI generators for project structure.\n\n- ng generate component user-list --standalone\n- ng generate service user --flat\n- Explain where files land in src/app\n- Naming conventions for selectors and files\n\nList commands and resulting tree for a tiny feature."
+    },
+    {
+      "id": "angular-20",
+      "label": "Custom pipe PurePipe",
+      "description": "pipes",
+      "detail": "transform in template",
+      "text": "Create a custom pipe for template formatting.\n\n- @Pipe standalone pipe truncating text with max length\n- Use in template {{ longText | truncate:50 }}\n- Explain pure: true default and performance note\n- Contrast pipe vs method in template briefly\n\nOne pipe file + usage example."
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "category": "regex",
+  "categoryLabel": "Regex",
+  "prompts": [
+    {
+      "id": "regex-01",
+      "label": "Literal match basics",
+      "description": "basics",
+      "detail": "exact substring",
+      "text": "Teach simplest regex literal matching for beginners.\n\n- Match word cat in text with /cat/ or re.search\n- Case sensitivity flag i\n- Escape dots and special chars \\.\n- When substring indexOf enough instead\n\nJavaScript and Python side-by-side one example each."
+    },
+    {
+      "id": "regex-02",
+      "label": "Character classes",
+      "description": "basics",
+      "detail": "[0-9] \\d \\w",
+      "text": "Explain character classes and shorthands.\n\n- [aeiou], [0-9], negated [^0-9]\n- \\d \\w \\s and negated \\D \\W \\S\n- Match hex color # followed by six hex digits exercise\n\nProvide test strings pass/fail table."
+    },
+    {
+      "id": "regex-03",
+      "label": "Anchors and word boundaries",
+      "description": "basics",
+      "detail": "^ $ \\b",
+      "text": "Demonstrate anchors and word boundaries.\n\n- ^ start $ end of line/string (engine flags matter)\n- \\b word boundary vs \\B\n- Match whole word cat not catalog\n- Multiline ^ per line mention\n\nExamples with unexpected matches called out."
+    },
+    {
+      "id": "regex-04",
+      "label": "Quantifiers greedy and lazy",
+      "description": "basics",
+      "detail": "* + ? {n,m}",
+      "text": "Teach quantifiers with greedy vs lazy behavior.\n\n- *, +, ?, {3}, {2,5}\n- Greedy .* vs lazy .*? on HTML-like string caution\n- When possessive quantifiers exist headline\n\nShow one catastrophic overlap example visually in text."
+    },
+    {
+      "id": "regex-05",
+      "label": "Capturing groups",
+      "description": "groups",
+      "detail": "( ) backreference",
+      "text": "Use capturing groups to extract parts.\n\n- Pattern (\\d{4})-(\\d{2})-(\\d{2}) for date\n- Group 1 2 3 in replace or match object\n- Non-capturing (?:...) when grouping only\n\nJS match groups and Python .group(1)."
+    },
+    {
+      "id": "regex-06",
+      "label": "Named capture groups",
+      "description": "groups",
+      "detail": "(?<year>\\d{4})",
+      "text": "Introduce named groups for readable extraction.\n\n- JS (?<name>...) and Python (?P<name>...)\n- Access via groups dict or match.groups\n- Refactor numbered groups example to named\n\nSame date parse using names year month day."
+    },
+    {
+      "id": "regex-07",
+      "label": "Alternation OR pattern",
+      "description": "basics",
+      "detail": "cat|dog",
+      "text": "Build alternation patterns carefully.\n\n- (cat|dog|bird) matching one of\n- Precedence trap: foo|food vs fo(o|od)\n- Combine with character classes when simpler\n\nList strings matching and non-matching."
+    },
+    {
+      "id": "regex-08",
+      "label": "Lookahead and lookbehind intro",
+      "description": "advanced",
+      "detail": "(?=...) (?<=...)",
+      "text": "Explain lookaround assertions without consuming.\n\n- Positive lookahead (?=\\d{2}) for price ending\n- Negative lookahead (?!...) password complexity teaser\n- Lookbehind length limits in JS engine\n\nOne password must include digit example optional."
+    },
+    {
+      "id": "regex-09",
+      "label": "Replace with capture groups",
+      "description": "replace",
+      "detail": "substitution $1",
+      "text": "Transform text using regex replace and groups.\n\n- Rename john.doe@email.com to Doe, John format\n- JS replace with $1 $2 or callback\n- Python re.sub with \\1\n\nBefore/after string examples."
+    },
+    {
+      "id": "regex-10",
+      "label": "Validate email cautiously",
+      "description": "validation",
+      "detail": "practical not perfect",
+      "text": "Show pragmatic email validation regex and its limits.\n\n- Simple pattern [^@]+@[^@]+\\.[^@]+\n- Why full RFC email regex is impractical\n- Prefer library validator in production\n- HTML5 type=email and server-side double check\n\nDiscuss false positives/negatives honestly."
+    },
+    {
+      "id": "regex-11",
+      "label": "Parse log line exercise",
+      "description": "practice",
+      "detail": "timestamp level message",
+      "text": "Write regex to parse log line into fields.\n\n- Format: 2024-01-15T10:00:00 INFO User logged in id=42\n- Extract timestamp, level, message, optional id\n- Named groups recommended\n- Test against three sample lines\n\nProvide pattern and code reading groups."
+    },
+    {
+      "id": "regex-12",
+      "label": "Multiline and dotall flags",
+      "description": "flags",
+      "detail": "m s re.DOTALL",
+      "text": "Explain flags affecting ^ $ and dot.\n\n- Multiline m: ^ matches line start\n- Dotall s: dot matches newline\n- JS /pattern/ms syntax\n- Python re.MULTILINE | re.DOTALL\n\nParse multiline config file key=value example."
+    },
+    {
+      "id": "regex-13",
+      "label": "Catastrophic backtracking pitfalls",
+      "description": "performance",
+      "detail": "ReDoS awareness",
+      "text": "Warn about catastrophic backtracking patterns.\n\n- (a+)+b on aaaaaaaaaaaaaaaaaaac\n- Nested quantifiers danger\n- Use atomic groups or possessive where supported\n- Timeout or regex-safe libraries in servers\n\nShow evil pattern and safer alternative."
+    },
+    {
+      "id": "regex-14",
+      "label": "When not to use regex",
+      "description": "architecture",
+      "detail": "parser html json",
+      "text": "List cases where regex is the wrong tool.\n\n- Parsing HTML, XML, JSON, nested structures\n- Reach for DOM parser, JSON.parse, dedicated libs\n- Regex fine for logs and simple tokens\n- Decision flowchart in bullets\n\nBeginner guidance to avoid HTML regex meme."
+    },
+    {
+      "id": "regex-15",
+      "label": "JavaScript RegExp methods",
+      "description": "javascript",
+      "detail": "test exec match replace",
+      "text": "Survey JavaScript RegExp API for learners.\n\n- .test(), .exec(), String.match, matchAll, replaceAll\n- Literal /g flag global behavior\n- lastIndex sticky global gotcha\n\nSame pattern demonstrated three ways with outputs."
+    },
+    {
+      "id": "regex-16",
+      "label": "Python re module",
+      "description": "python",
+      "detail": "search findall compile",
+      "text": "Teach Python re module essentials.\n\n- re.search vs re.match vs re.fullmatch\n- findall and finditer\n- compile for reuse in loop\n- raw strings r\"pattern\" habit\n\nScript processing stdin lines matching pattern."
+    },
+    {
+      "id": "regex-17",
+      "label": "grep -E extended patterns",
+      "description": "cli",
+      "detail": "egrep ripgrep",
+      "text": "Use grep -E for log filtering on command line.\n\n- grep -E 'ERROR|WARN' app.log\n- -i case insensitive, -n line numbers, -c count\n- ripgrep rg as faster alternative mention\n- Escape parens in basic vs extended\n\nFive copy-paste recipes for devops beginners."
+    },
+    {
+      "id": "regex-18",
+      "label": "Extract JSON field loosely",
+      "description": "practice",
+      "detail": "\"key\":\\s*\"([^\"]+)\"",
+      "text": "Extract field from JSON-like text without full parse (learning only).\n\n- Pattern for \"status\":\\s*\"([^\"]+)\"\n- Warn brittle vs JSON.parse\n- When log line embeds json fragment\n\nShow extract then recommend proper parser for prod."
+    },
+    {
+      "id": "regex-19",
+      "label": "Parse URL path segments",
+      "description": "practice",
+      "detail": "path regex",
+      "text": "Parse /api/users/123/posts/5 path segments with regex.\n\n- Optional ^/api/users/(?<id>\\d+)/posts/(?<postId>\\d+)$\n- Contrast URL class URL.pathname in JS\n- When regex ok for routing framework internals vs hand-rolled\n\nProvide match and named groups output."
+    },
+    {
+      "id": "regex-20",
+      "label": "Regex cheat sheet summary",
+      "description": "reference",
+      "detail": "quick recap",
+      "text": "Produce a one-screen regex cheat sheet for beginners.\n\n- Classes, anchors, quantifiers, groups, flags\n- JS vs Python flag syntax differences table\n- Top 5 mistakes list\n- Links to regex101.com for testing habit\n\nNo novel pattern — recap only."
+    }
+  ]
+}

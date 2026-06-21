@@ -1,0 +1,146 @@
+{
+  "category": "celery",
+  "categoryLabel": "Celery",
+  "prompts": [
+    {
+      "id": "celery-01",
+      "label": "First Celery app with Redis broker",
+      "description": "setup",
+      "detail": "C app redis://",
+      "text": "Create minimal Celery app with Redis broker.\n\n- pip install celery redis\n- app = Celery('tasks', broker='redis://localhost:6379/0')\n- @app.task def add(x, y)\n- celery -A tasks worker --loglevel=info and call add.delay(2,3)\n\nShow tasks.py and terminal commands."
+    },
+    {
+      "id": "celery-02",
+      "label": "delay and apply_async",
+      "description": "tasks",
+      "detail": "async invocation",
+      "text": "Explain delay vs apply_async options.\n\n- task.delay(args) sugar for apply_async\n- apply_async countdown, eta, expires\n- Return AsyncResult id\n- Check result.state briefly\n\nExamples scheduling task 10 seconds later."
+    },
+    {
+      "id": "celery-03",
+      "label": "Result backend configuration",
+      "description": "config",
+      "detail": "backend redis",
+      "text": "Configure result backend and fetch task outcome.\n\n- result_backend redis same or separate db index\n- task_ignore_result when fire-and-forget\n- AsyncResult.get(timeout=) blocking caution\n- Store only serializable return values\n\nWorker + client script checking result."
+    },
+    {
+      "id": "celery-04",
+      "label": "Celery Beat periodic task",
+      "description": "beat",
+      "detail": "crontab schedule",
+      "text": "Add periodic task with Celery Beat.\n\n- beat_schedule dict with crontab every minute\n- Separate beat process command\n- timezone setting importance\n- Idempotent periodic tasks warning\n\nExample cleanup_old_sessions task sketch."
+    },
+    {
+      "id": "celery-05",
+      "label": "Retry with exponential backoff",
+      "description": "reliability",
+      "detail": "autoretry_for",
+      "text": "Implement task retry on transient failures.\n\n- @app.task bind=True autoretry_for=(RequestException,) retry_kwargs max_retries=5\n- Manual self.retry(countdown=2 ** self.request.retries)\n- Jitter mention\n- Log retry attempt number\n\nSimulate flaky HTTP call mock."
+    },
+    {
+      "id": "celery-06",
+      "label": "Chain group chord sketch",
+      "description": "workflow",
+      "detail": "canvas primitives",
+      "text": "Introduce Celery canvas: chain, group, chord.\n\n- chain(add.s(2), mul.s(3)) sequential\n- group parallel fan-out\n- chord header + callback sum results\n- When simple queue enough vs canvas\n\nConceptual signatures .s() examples."
+    },
+    {
+      "id": "celery-07",
+      "label": "Flask or FastAPI integration",
+      "description": "web",
+      "detail": "trigger from route",
+      "text": "Wire Celery tasks from Flask or FastAPI endpoint.\n\n- Shared celery app import in route handler\n- POST /reports triggers generate_report.delay\n- Return 202 with task_id JSON\n- Do not block request on .get()\n\nPick FastAPI or Flask — show one minimal app.py."
+    },
+    {
+      "id": "celery-08",
+      "label": "Task routing and queues",
+      "description": "routing",
+      "detail": "task_routes",
+      "text": "Route tasks to dedicated queues.\n\n- task_routes map task name pattern to queue heavy/light\n- Start worker -Q heavy,light\n- Separate concurrency per queue workers\n- Default queue celery\n\nExample image_processing vs email tasks."
+    },
+    {
+      "id": "celery-09",
+      "label": "Idempotent task design",
+      "description": "reliability",
+      "detail": "at-least-once",
+      "text": "Design idempotent Celery tasks for safe retries.\n\n- Use idempotency key in DB unique constraint\n- check-then-act race caution\n- Side effects external API dedupe\n- Compare with exactly-once impossibility headline\n\nPayment charge task anti-double-charge pattern."
+    },
+    {
+      "id": "celery-10",
+      "label": "Flower monitoring UI",
+      "description": "ops",
+      "detail": "celery flower",
+      "text": "Monitor Celery with Flower.\n\n- pip install flower, celery -A proj flower\n- Open dashboard tasks workers\n- Revoke task mention\n- Secure flower in prod auth reverse proxy\n\nDev workflow bullets."
+    },
+    {
+      "id": "celery-11",
+      "label": "Worker concurrency prefork",
+      "description": "workers",
+      "detail": "--concurrency",
+      "text": "Tune worker concurrency and pool type.\n\n- prefork default CPU bound\n- gevent/eventlet for IO bound headline\n- --concurrency vs autoscale\n- One worker per machine vs many processes\n\nSymptoms of too high concurrency."
+    },
+    {
+      "id": "celery-12",
+      "label": "Task time limits",
+      "description": "config",
+      "detail": "soft hard limit",
+      "text": "Set soft and hard time limits on tasks.\n\n- task_soft_time_limit and task_time_limit in decorator\n- Soft raises exception catch cleanup; hard kills worker process\n- Long running report task example\n- Align with broker visibility timeout note\n\nConfig on app and per-task override."
+    },
+    {
+      "id": "celery-13",
+      "label": "Dead letter failed tasks",
+      "description": "reliability",
+      "detail": "reject on failure",
+      "text": "Handle permanently failed tasks after max retries.\n\n- on_failure signal log to Sentry\n- Store failed payload in dead_letter table\n- Admin replay tool concept\n- Avoid silent loss\n\nSignal handler sketch connecting to Django ORM optional."
+    },
+    {
+      "id": "celery-14",
+      "label": "Testing with eager mode",
+      "description": "testing",
+      "detail": "task_always_eager",
+      "text": "Unit test Celery tasks synchronously.\n\n- app.conf.task_always_eager = True in pytest fixture\n- task runs inline, exceptions propagate\n- task_eager_propagates True\n- Limitations vs integration test with real broker\n\nPytest example asserting side effect."
+    },
+    {
+      "id": "celery-15",
+      "label": "django-celery-beat mention",
+      "description": "django",
+      "detail": "database scheduler",
+      "text": "Explain django-celery-beat for dynamic schedules.\n\n- Store crontab in DB admin editable\n- Install django_celery_beat in INSTALLED_APPS\n- Migrate tables\n- Contrast static beat_schedule file\n\nWhen startups need admin UI for schedules."
+    },
+    {
+      "id": "celery-16",
+      "label": "Serialization JSON only",
+      "description": "config",
+      "detail": "accept_content json",
+      "text": "Configure safe serialization for Celery messages.\n\n- task_serializer json, accept_content json, result_serializer json\n- Avoid pickle security risk\n- Custom types need explicit encode decode\n- datetime serialization pattern\n\nsettings block and example task returning dict."
+    },
+    {
+      "id": "celery-17",
+      "label": "Prometheus monitoring metrics",
+      "description": "observability",
+      "detail": "celery-exporter",
+      "text": "Expose Celery metrics for Prometheus.\n\n- celery-exporter or flower metrics mention\n- Track task success failure rate duration\n- Grafana dashboard ideas\n- Alert on queue depth proxy\n\nHigh-level setup — no full helm chart."
+    },
+    {
+      "id": "celery-18",
+      "label": "Scaling workers horizontally",
+      "description": "scaling",
+      "detail": "multiple nodes",
+      "text": "Scale Celery workers across machines.\n\n- Same broker URL all workers\n- Queue affinity heavy workers on GPU nodes sketch\n- Autoscaling based on queue length\n- RedBeat or shared beat single instance warning\n\nArchitecture diagram in bullets."
+    },
+    {
+      "id": "celery-19",
+      "label": "Celery vs RQ when to pick",
+      "description": "architecture",
+      "detail": "simple queue",
+      "text": "Compare Celery and RQ for Python background jobs.\n\n- RQ simpler Redis-only smaller ops\n- Celery features: routing, beat, canvas, multi-broker\n- When RQ enough for MVP\n- Migration path if outgrow RQ\n\nDecision guide for FastAPI side tasks."
+    },
+    {
+      "id": "celery-20",
+      "label": "Production deployment checklist",
+      "description": "production",
+      "detail": "broker HA",
+      "text": "Celery production checklist for beginners.\n\n- Managed Redis/Rabbit HA, separate result backend\n- Supervisor/systemd/k8s for workers and beat\n- Monitoring, logging correlation id, graceful shutdown\n- Security: broker auth, no pickle, flower not public\n\nOrdered checklist before go-live."
+    }
+  ]
+}

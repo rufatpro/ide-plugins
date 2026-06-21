@@ -1,0 +1,146 @@
+{
+  "category": "celery",
+  "categoryLabel": "Celery",
+  "prompts": [
+    {
+      "id": "celery-01",
+      "label": "First app broker Redis",
+      "description": "setup",
+      "detail": "redis",
+      "text": "Минимальное Celery app с Redis broker.\n\n- pip install celery redis\n- app = Celery('tasks', broker='redis://...')\n- @app.task add(x,y)\n- celery -A tasks worker\n\nInvoke add.delay(2,3)."
+    },
+    {
+      "id": "celery-02",
+      "label": "delay и apply_async",
+      "description": "tasks",
+      "detail": "apply_async",
+      "text": "delay vs apply_async options.\n\n- countdown, eta\n- queue routing arg\n- expires\n\nWhen to use apply_async explicitly."
+    },
+    {
+      "id": "celery-03",
+      "label": "Result backend",
+      "description": "results",
+      "detail": "backend",
+      "text": "Configure result backend Redis.\n\n- result_backend same Redis\n- AsyncResult.get timeout\n- task_ignore_result when fire-forget\n\nPoll task id status states."
+    },
+    {
+      "id": "celery-04",
+      "label": "Beat periodic task",
+      "description": "schedule",
+      "detail": "celery beat",
+      "text": "Periodic task каждые 5 минут.\n\n- beat_schedule crontab or interval\n- Separate beat process\n- Idempotent task design\n\nSchedule dict example."
+    },
+    {
+      "id": "celery-05",
+      "label": "Retry backoff",
+      "description": "reliability",
+      "detail": "autoretry",
+      "text": "Task autoretry_for with backoff.\n\n- @app.task(bind=True, max_retries=3)\n- self.retry(countdown=2**retries)\n- Jitter mention\n\nFlaky HTTP call example."
+    },
+    {
+      "id": "celery-06",
+      "label": "Chain group chord sketch",
+      "description": "workflow",
+      "detail": "canvas",
+      "text": "Canvas chain group chord intro.\n\n- chain(add.s(2,2), mul.s(4))\n- group parallel map\n- chord callback sum\n\nDiagram words only."
+    },
+    {
+      "id": "celery-07",
+      "label": "Flask/FastAPI integration",
+      "description": "integration",
+      "detail": "web",
+      "text": "Trigger Celery task from Flask or FastAPI route.\n\n- POST /reports → generate.delay\n- Return 202 task_id\n- GET /status/{id}\n\nDon't block request thread."
+    },
+    {
+      "id": "celery-08",
+      "label": "Task routing queues",
+      "description": "routing",
+      "detail": "queues",
+      "text": "Separate queues email vs heavy.\n\n- task_routes dict\n- Dedicated workers -Q email\n- Priority optional note\n\nConfig and worker command."
+    },
+    {
+      "id": "celery-09",
+      "label": "Idempotency tasks",
+      "description": "reliability",
+      "detail": "idempotent",
+      "text": "Design idempotent Celery tasks.\n\n- Natural keys dedupe\n- Redis lock or DB unique constraint\n- At-least-once delivery reality\n\nCharge payment anti-double example."
+    },
+    {
+      "id": "celery-10",
+      "label": "Flower monitoring",
+      "description": "ops",
+      "detail": "flower",
+      "text": "Monitor workers with Flower.\n\n- pip install flower\n- celery -A proj flower\n- What dashboards show\n\nSecure flower in prod warning."
+    },
+    {
+      "id": "celery-11",
+      "label": "Worker concurrency prefork",
+      "description": "ops",
+      "detail": "concurrency",
+      "text": "Prefork pool concurrency tuning.\n\n- -c 4 processes\n- CPU bound vs IO bound\n- gevent/eventlet mention IO\n\nWhen concurrency 1 debug."
+    },
+    {
+      "id": "celery-12",
+      "label": "Task time limits",
+      "description": "ops",
+      "detail": "time_limit",
+      "text": "soft and hard time_limit.\n\n- SoftTimeLimitExceeded handling\n- Kill runaway task\n- Per-task override decorator\n\nLong report generation bounds."
+    },
+    {
+      "id": "celery-13",
+      "label": "Dead letter failed tasks",
+      "description": "reliability",
+      "detail": "on_failure",
+      "text": "Hook on_failure send alert or DLQ store.\n\n- link_error errback\n- Store failed payload DB\n- Manual replay tool\n\nSketch signal handler."
+    },
+    {
+      "id": "celery-14",
+      "label": "Testing eager mode",
+      "description": "testing",
+      "detail": "task_always_eager",
+      "text": "Unit test with CELERY_TASK_ALWAYS_EAGER.\n\n- Runs synchronously in test\n- Assert side effects\n- Don't use eager in prod\n\npytest fixture config."
+    },
+    {
+      "id": "celery-15",
+      "label": "django-celery-beat mention",
+      "description": "django",
+      "detail": "DatabaseScheduler",
+      "text": "django-celery-beat dynamic schedules.\n\n- PeriodicTask in admin\n- vs static beat_schedule\n- Migration to DB schedules\n\nWhen Django project use it."
+    },
+    {
+      "id": "celery-16",
+      "label": "Serialization JSON",
+      "description": "config",
+      "detail": "serializer",
+      "text": "Accept content json only.\n\n- task_serializer result_serializer\n- Avoid pickle security\n- Custom types json.dumps hook\n\nReject unknown content warning."
+    },
+    {
+      "id": "celery-17",
+      "label": "Prometheus monitoring",
+      "description": "observability",
+      "detail": "prometheus",
+      "text": "Export Celery metrics Prometheus.\n\n- celery-exporter or flower metrics\n- Queue length alert\n- Task runtime histogram\n\nGrafana dashboard bullets."
+    },
+    {
+      "id": "celery-18",
+      "label": "Scaling workers",
+      "description": "ops",
+      "detail": "scale",
+      "text": "Horizontal scale workers k8s.\n\n- Deployment replicas\n- Autoscale on queue depth\n- Separate pools per queue\n\nAnti-pattern one giant queue."
+    },
+    {
+      "id": "celery-19",
+      "label": "Celery vs RQ",
+      "description": "architecture",
+      "detail": "when pick",
+      "text": "When Celery vs RQ vs Dramatiq.\n\n- Feature richness Celery\n- RQ simplicity Redis only\n- Beat/chord needs\n\n5 scenario picks."
+    },
+    {
+      "id": "celery-20",
+      "label": "Production checklist",
+      "description": "ops",
+      "detail": "checklist",
+      "text": "Celery production checklist.\n\n- Broker HA, result expiry\n- Monitoring, sentry integration\n- Worker max tasks per child\n- Secrets not in task args log\n\n12 пунктов."
+    }
+  ]
+}

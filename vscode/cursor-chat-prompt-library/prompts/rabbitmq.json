@@ -1,0 +1,146 @@
+{
+  "category": "rabbitmq",
+  "categoryLabel": "RabbitMQ",
+  "prompts": [
+    {
+      "id": "rabbitmq-01",
+      "label": "Exchange queue binding concepts",
+      "description": "concepts",
+      "detail": "AMQP model",
+      "text": "Explain RabbitMQ building blocks for beginners.\n\n- Producer, exchange, routing key, binding, queue, consumer\n- Exchange types overview: direct, fanout, topic, headers\n- Virtual host isolation\n- Diagram message flow in text\n\nNo code — conceptual first."
+    },
+    {
+      "id": "rabbitmq-02",
+      "label": "Docker Compose RabbitMQ",
+      "description": "setup",
+      "detail": "management plugin",
+      "text": "Run RabbitMQ locally with Docker Compose.\n\n- Image with management plugin port 15672\n- Default guest user dev only warning\n- Open management UI and list empty queues\n- Environment variables for default user/pass in dev\n\nProvide compose file and URLs."
+    },
+    {
+      "id": "rabbitmq-03",
+      "label": "Publish subscribe fanout exchange",
+      "description": "patterns",
+      "detail": "fanout broadcast",
+      "text": "Implement fanout pub/sub with two queues bound.\n\n- Fanout exchange, anonymous queues or named logs\n- Publisher sends one message, both consumers receive\n- Use case: broadcast notifications\n\nPython pika or Node amqplib — pick one and show full minimal example."
+    },
+    {
+      "id": "rabbitmq-04",
+      "label": "Work queues fair dispatch",
+      "description": "patterns",
+      "detail": "competing consumers",
+      "text": "Build work queue with multiple workers.\n\n- durable queue, persistent messages mention\n- Two worker consumers prefetch 1 for fair dispatch\n- Producer sends tasks\n- Ack on completion\n\nExplain horizontal scale of workers."
+    },
+    {
+      "id": "rabbitmq-05",
+      "label": "Direct and topic routing",
+      "description": "patterns",
+      "detail": "routing keys",
+      "text": "Demonstrate direct and topic exchanges side by side.\n\n- Direct: exact routing key match to queue binding\n- Topic: patterns like logs.* and logs.error\n- Publisher chooses severity in routing key\n- Table of keys and which queue receives\n\nCode samples for both exchanges."
+    },
+    {
+      "id": "rabbitmq-06",
+      "label": "Dead letter exchange DLX",
+      "description": "reliability",
+      "detail": "x-dead-letter-exchange",
+      "text": "Configure dead letter exchange for rejected messages.\n\n- Main queue args x-dead-letter-exchange and routing key\n- DLQ consumer inspects failures\n- nack without requeue triggers DLX\n- TTL to DLX combination mention\n\nSetup queue declarations with arguments."
+    },
+    {
+      "id": "rabbitmq-07",
+      "label": "Message TTL per queue or message",
+      "description": "reliability",
+      "detail": "expiration",
+      "text": "Apply TTL to messages or queues.\n\n- x-message-ttl on queue vs expiration property per message\n- Expired messages to DLX pattern\n- Use case: stale task cleanup\n- Caution: dead lettering expired msgs\n\nDeclaration examples and behavior summary."
+    },
+    {
+      "id": "rabbitmq-08",
+      "label": "NestJS RabbitMQ microservice",
+      "description": "nestjs",
+      "detail": "Transport.RMQ",
+      "text": "Connect NestJS microservice to RabbitMQ.\n\n- Transport.RMQ urls queue options\n- @MessagePattern and @EventPattern handlers\n- Durable queue and noAck false recommendation\n- Emit from ClientProxy\n\nAssume local docker rabbit."
+    },
+    {
+      "id": "rabbitmq-09",
+      "label": "Celery broker comparison",
+      "description": "integration",
+      "detail": "redis vs rabbitmq",
+      "text": "Compare RabbitMQ as Celery broker vs Redis for beginners.\n\n- Rabbit: delivery guarantees, routing, ops UI\n- Redis: simpler, fast, less AMQP features\n- When Celery docs default redis for dev\n- Migration considerations headline\n\nHelp me pick for small FastAPI project."
+    },
+    {
+      "id": "rabbitmq-10",
+      "label": "Management UI operations",
+      "description": "ops",
+      "detail": "queues connections",
+      "text": "Tour RabbitMQ management UI for learning.\n\n- Queues tab: rates, consumers, publish message manually\n- Connections and channels meaning\n- Bindings inspection\n- Export definitions mention for IaC\n\nStep-by-step what to click when debugging stuck messages."
+    },
+    {
+      "id": "rabbitmq-11",
+      "label": "Prefetch QoS consumer",
+      "description": "performance",
+      "detail": "basic.qos prefetch",
+      "text": "Tune consumer prefetch (QoS) for throughput vs fairness.\n\n- channel.basic_qos(prefetch_count=1) example\n- High prefetch risk: one worker hoards messages\n- Low prefetch: better load balance, more round trips\n- Recommend starting value for task workers\n\nCode + symptom table."
+    },
+    {
+      "id": "rabbitmq-12",
+      "label": "Persistent messages and durable queues",
+      "description": "reliability",
+      "detail": "delivery_mode 2",
+      "text": "Ensure messages survive broker restart.\n\n- Declare queue durable=true\n- Publish delivery_mode=2 persistent\n- Explain lazy queues headline for long backlog\n- Disk vs memory tradeoff brief\n\nPublisher and consumer declarations shown."
+    },
+    {
+      "id": "rabbitmq-13",
+      "label": "RPC request reply pattern",
+      "description": "patterns",
+      "detail": "reply_to correlation_id",
+      "text": "Implement RPC over RabbitMQ with reply queue.\n\n- Client sets reply_to exclusive callback queue and correlation_id\n- Server responds to reply_to with same correlation_id\n- Client matches response\n- Timeout handling mention\n\nClassic tutorial pattern in chosen language."
+    },
+    {
+      "id": "rabbitmq-14",
+      "label": "RabbitMQ vs Kafka decision guide",
+      "description": "architecture",
+      "detail": "queue vs log",
+      "text": "When should I choose RabbitMQ over Kafka?\n\n- Task dispatch, RPC, complex routing → Rabbit\n- Event log, replay, high volume stream → Kafka\n- Operational footprint comparison\n- Hybrid pattern mention briefly\n\nDecision bullets for a startup MVP context."
+    },
+    {
+      "id": "rabbitmq-15",
+      "label": "Python pika consumer",
+      "description": "python",
+      "detail": "blocking consumer",
+      "text": "Write Python pika consumer with manual ack.\n\n- Connect, channel, queue_declare durable\n- basic_consume callback processing body\n- basic_ack after success\n- basic_qos prefetch\n\nInclude requirements.txt and sample producer one-liner."
+    },
+    {
+      "id": "rabbitmq-16",
+      "label": "Error nack and requeue",
+      "description": "reliability",
+      "detail": "basic_nack requeue",
+      "text": "Handle processing failures with nack strategies.\n\n- basic_nack multiple=false requeue=true for transient errors\n- requeue=false to DLX after max retries pattern\n- Poison message infinite loop danger\n- Logging correlation id\n\nShow callback with try/except branches."
+    },
+    {
+      "id": "rabbitmq-17",
+      "label": "Quorum queues mention",
+      "description": "features",
+      "detail": "quorum queue type",
+      "text": "Introduce quorum queues vs classic mirrored queues.\n\n- x-queue-type quorum for data safety\n- When RabbitMQ docs recommend quorum now\n- Performance tradeoffs headline\n- Classic queue still fine for dev\n\nDeclaration argument example only."
+    },
+    {
+      "id": "rabbitmq-18",
+      "label": "Shovel and federation teaser",
+      "description": "ops",
+      "detail": "cross-cluster",
+      "text": "Explain shovel and federation for multi-datacenter beginners.\n\n- Federation: exchange/queue upstream downstream\n- Shovel: move messages actively\n- Use cases: DR, cloud bridge\n- Complexity warning — not day-one\n\nConceptual architecture only."
+    },
+    {
+      "id": "rabbitmq-19",
+      "label": "Health check for load balancer",
+      "description": "ops",
+      "detail": "management API ping",
+      "text": "Design health check endpoint using RabbitMQ management HTTP API or port check.\n\n- GET /api/healthchecks/node or aliveness test queue\n- Kubernetes liveness vs readiness distinction\n- Do not use guest in prod\n\nReturn what healthy means for app depending on broker."
+    },
+    {
+      "id": "rabbitmq-20",
+      "label": "Production deployment checklist",
+      "description": "production",
+      "detail": "cluster HA",
+      "text": "RabbitMQ production checklist for beginners.\n\n- Change default credentials, TLS, vhosts per env\n- Durable queues, publisher confirms, consumer acks\n- Memory and disk alarms monitoring\n- Definition backup and upgrade strategy\n\nLearning checklist — not full k8s manifest."
+    }
+  ]
+}

@@ -4,15 +4,15 @@
 
 Библиотека шаблонов для **AI-чата Cursor**: QuickPick → вставка в чат.
 
-**1080 шаблонов** — 42 категории (**Python × 50**, **JavaScript / TypeScript / React / Next.js / Tailwind / Node.js / NestJS × 50**, остальные × 20):
+**1300 шаблонов** — 53 категории (**Python × 50**, **JavaScript / TypeScript / React / Next.js / Tailwind / Node.js / NestJS × 50**, остальные × 20):
 
 | Уровень | Категории |
 |---------|-----------|
-| Базовые | Сайт, Python, JavaScript, TypeScript, React, SQL, Git, Django, Flask, SQLAlchemy |
-| Высокий спрос | Next.js, FastAPI, Docker, Testing, Tailwind CSS |
-| Сильный спрос | Node.js, NestJS, Vue, PHP, Laravel, C#/.NET, Java/Spring, Linux/Bash, CI/CD, REST/OpenAPI, MongoDB, Mobile |
-| Нишевые / растущие | C, C++, Go, Rust, Kubernetes, Terraform, Observability, AWS, WordPress, Data/Pandas, Security, GraphQL |
-| Сквозные | Промпт-инжиниринг, Языки программирования, Машинное обучение |
+| Базовые | Сайт, Python, JavaScript, TypeScript, React, Angular, SQL, PostgreSQL, Git, Django, Flask, SQLAlchemy |
+| Высокий спрос | Next.js, FastAPI, Celery, Docker, Testing, Tailwind CSS |
+| Сильный спрос | Node.js, NestJS, Vue, PHP, Laravel, C#/.NET, Java/Spring, Linux/Bash, CI/CD, REST/OpenAPI, MongoDB, Kafka, RabbitMQ, Mobile, Kotlin, Android (Java), Android (Kotlin), Swift |
+| Нишевые / растущие | C, C++, Go, Zig, Rust, Kubernetes, Terraform, Observability, AWS, WordPress, Data/Pandas, Security, GraphQL |
+| Сквозные | Regex, Промпт-инжиниринг, Языки программирования, Машинное обучение |
 
 > Часть monorepo [plugins](https://github.com/rufatpro/plugins).
 
@@ -20,7 +20,7 @@
 
 | Клавиша | Действие |
 |---------|----------|
-| **Ctrl+Alt+T** | **Шаг 1:** категория (42 типа) → **шаг 2:** промпт → вставка в чат |
+| **Ctrl+Alt+T** | **Шаг 1:** категория (53 типа) → **шаг 2:** промпт → вставка в чат |
 | **Cmd+Alt+T** (macOS) | То же |
 
 Одновременно **Ctrl**, **Alt** и **T** (**T** = **T**emplate, шаблон).
@@ -37,7 +37,7 @@
 | Команда | Действие |
 |---------|----------|
 | **Pick Prompt (Category, then Template)** | Как горячая клавиша |
-| **Insert Prompt into Chat (All Categories)** | Один список из 1080 промптов |
+| **Insert Prompt into Chat (All Categories)** | Один список из 1300 промптов |
 | **Insert Website / Python / JavaScript** | Быстрый вход в одну категорию |
 
 ### Через палитру команд
@@ -50,7 +50,7 @@
 ```bat
 cd plugins\vscode\cursor-chat-prompt-library
 build.bat
-cursor --install-extension build\cursor-chat-prompt-library-0.8.5.vsix
+cursor --install-extension build\cursor-chat-prompt-library-0.8.9.vsix
 ```
 
 Перезагрузите окно. Основной способ — **Ctrl+Alt+T**; альтернатива — **Ctrl+Alt+Shift+P** (см. раздел «Через палитру команд» для **F1**).
@@ -62,6 +62,7 @@ cursor --install-extension build\cursor-chat-prompt-library-0.8.5.vsix
 - Batch 2 (+10 в каждый файл): `node scripts/append-batch-2.mjs`
 - Batch 3 (+30 для JS-стека): `node scripts/append-batch-3-js-stack.mjs`
 - Batch 3 NestJS (+30): `node scripts/append-batch-3-nestjs.mjs`
+- Batch 8 (8 категорий): `node scripts/generate-batch-8-categories.mjs`
 - Порядок в списке: `CATEGORY_FILE_ORDER` в `src/promptStore.js`
 
 ## Лицензия

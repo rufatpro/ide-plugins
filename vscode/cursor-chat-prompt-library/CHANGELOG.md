@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.8.9
+
+- New category **Zig** (20 prompts): basics, errors, allocators, comptime, build.zig, C interop, stdlib.
+- Total bundled templates: **1300** (53 categories).
+
+## 0.8.8
+
+- New category **Android (Kotlin)** (20 prompts): Compose, Navigation, ViewModel, Room, Hilt, Retrofit, WorkManager, testing.
+- Total bundled templates: **1280** (52 categories).
+
+## 0.8.7
+
+- New category **Android (Java)** (20 prompts): Activity, UI, Intents, RecyclerView, Room, Retrofit, ViewModel, Navigation, permissions, Espresso, MVP.
+- Total bundled templates: **1260** (51 categories).
+
+## 0.8.6
+
+- New categories (20 prompts each): **Angular**, **Kotlin**, **Kafka**, **RabbitMQ**, **Swift**, **Regex**, **Celery**, **PostgreSQL**.
+- Total bundled templates: **1240** (50 categories).
+
 ## 0.8.5
 
 - New category **SQLAlchemy** (20 prompts): Engine, ORM 2.0, relationships, Alembic, async, FastAPI integration, testing.

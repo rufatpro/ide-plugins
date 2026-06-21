@@ -1,0 +1,146 @@
+{
+  "category": "rabbitmq",
+  "categoryLabel": "RabbitMQ",
+  "prompts": [
+    {
+      "id": "rabbitmq-01",
+      "label": "Exchange, queue, binding",
+      "description": "concepts",
+      "detail": "AMQP",
+      "text": "Объясни RabbitMQ: exchange, queue, binding, routing key.\n\n- Producer → exchange → queue → consumer\n- Default exchange direct to queue name\n- Virtual host\n\nСхема для новичка."
+    },
+    {
+      "id": "rabbitmq-02",
+      "label": "Docker Compose RabbitMQ",
+      "description": "setup",
+      "detail": "docker-compose",
+      "text": "Подними RabbitMQ с management plugin.\n\n- Образ с портами 5672 и 15672\n- Default user/pass только dev\n- Открыть management UI\n\ncompose snippet и health check."
+    },
+    {
+      "id": "rabbitmq-03",
+      "label": "Publish/Subscribe fanout",
+      "description": "patterns",
+      "detail": "fanout",
+      "text": "Fanout exchange broadcast.\n\n- fanout exchange, две queues bind\n- Одно сообщение — оба consumers\n- Use case: notifications\n\nPython pika или Node amqplib пример."
+    },
+    {
+      "id": "rabbitmq-04",
+      "label": "Work queues",
+      "description": "patterns",
+      "detail": "round-robin",
+      "text": "Work queue распределение задач.\n\n- durable queue, prefetch=1 fair dispatch\n- Несколько workers\n- ack после обработки\n\nЧто если worker умер mid-task."
+    },
+    {
+      "id": "rabbitmq-05",
+      "label": "Routing direct и topic",
+      "description": "patterns",
+      "detail": "topic exchange",
+      "text": "Direct vs topic exchange.\n\n- direct: exact routing key\n- topic: wildcards * и #\n- Пример logs error.* и *.critical\n\nBindings таблица."
+    },
+    {
+      "id": "rabbitmq-06",
+      "label": "Dead letter exchange",
+      "description": "reliability",
+      "detail": "DLX",
+      "text": "Dead letter exchange для failed messages.\n\n- x-dead-letter-exchange argument\n- TTL или reject/nack → DLQ\n- Мониторинг DLQ\n\nQueue declare args пример."
+    },
+    {
+      "id": "rabbitmq-07",
+      "label": "TTL сообщений",
+      "description": "reliability",
+      "detail": "message TTL",
+      "text": "Message TTL и expired delivery.\n\n- Per-message expiration\n- Queue x-message-ttl\n- Куда попадает expired (DLX)\n\nUse case: delayed retry."
+    },
+    {
+      "id": "rabbitmq-08",
+      "label": "NestJS AMQP transport",
+      "description": "nestjs",
+      "detail": "RabbitMQ",
+      "text": "NestJS microservice RabbitMQ transport.\n\n- Transport.RMQ options urls queue\n- @MessagePattern RPC style\n- @EventPattern fire-and-forget\n\nМини handler и client emit."
+    },
+    {
+      "id": "rabbitmq-09",
+      "label": "Celery broker сравнение",
+      "description": "integration",
+      "detail": "Celery",
+      "text": "RabbitMQ как broker для Celery.\n\n- amqp:// URL\n- durability и ack\n- vs Redis broker когда что\n\nCelery config broker_url snippet."
+    },
+    {
+      "id": "rabbitmq-10",
+      "label": "Management UI",
+      "description": "ops",
+      "detail": "15672",
+      "text": "Tour management UI для новичка.\n\n- Queues, connections, rates\n- Publish message manually test\n- Consumer ack mode\n\nЧто смотреть при backlog."
+    },
+    {
+      "id": "rabbitmq-11",
+      "label": "Prefetch QoS",
+      "description": "performance",
+      "detail": "basic.qos",
+      "text": "Prefetch count fair dispatch.\n\n- channel.basic_qos(prefetch_count=10)\n- Balance latency vs throughput\n- Unacked messages limit\n\nAnti-pattern prefetch unlimited."
+    },
+    {
+      "id": "rabbitmq-12",
+      "label": "Persistent messages",
+      "description": "reliability",
+      "detail": "delivery_mode",
+      "text": "Durable queues и persistent messages.\n\n- delivery_mode=2\n- durable queue declare\n- Не спасает без publisher confirms\n\nPublisher confirm teaser."
+    },
+    {
+      "id": "rabbitmq-13",
+      "label": "RPC pattern",
+      "description": "patterns",
+      "detail": "reply-to",
+      "text": "RPC over RabbitMQ с reply-to.\n\n- correlation_id и callback queue\n- Client timeout\n- vs HTTP когда AMQP RPC\n\nSequence diagram словами."
+    },
+    {
+      "id": "rabbitmq-14",
+      "label": "RabbitMQ vs Kafka",
+      "description": "architecture",
+      "detail": "decision",
+      "text": "Decision matrix RabbitMQ vs Kafka.\n\n- Routing flexibility Rabbit\n- Log replay Kafka\n- Message size limits\n\n5 сценариев что выбрать."
+    },
+    {
+      "id": "rabbitmq-15",
+      "label": "Python pika consumer",
+      "description": "consumer",
+      "detail": "pika",
+      "text": "Consumer на pika.\n\n- connect, channel, basic_consume\n- manual ack после work\n- graceful shutdown\n\nПолный минимальный script."
+    },
+    {
+      "id": "rabbitmq-16",
+      "label": "Nack requeue",
+      "description": "reliability",
+      "detail": "basic.nack",
+      "text": "basic_nack requeue false vs true.\n\n- Requeue poison message loop\n- requeue=false → DLX\n- Retry counter in headers pattern\n\nКогда nack vs reject."
+    },
+    {
+      "id": "rabbitmq-17",
+      "label": "Quorum queues mention",
+      "description": "advanced",
+      "detail": "quorum",
+      "text": "Quorum queues vs classic mirrored.\n\n- Raft-based replication\n- When to migrate\n- Feature limitations brief\n\nLink to docs concept only."
+    },
+    {
+      "id": "rabbitmq-18",
+      "label": "Shovel federation teaser",
+      "description": "advanced",
+      "detail": "federation",
+      "text": "Federation/shovel между clusters кратко.\n\n- Geo-replication use case\n- Shovel moves messages\n- Complexity warning\n\nWhen single cluster enough."
+    },
+    {
+      "id": "rabbitmq-19",
+      "label": "Health check",
+      "description": "ops",
+      "detail": "health",
+      "text": "Health check RabbitMQ для k8s.\n\n- rabbitmq-diagnostics ping\n- HTTP health endpoint plugin\n- Liveness vs readiness\n\nProbe yaml sketch."
+    },
+    {
+      "id": "rabbitmq-20",
+      "label": "Production checklist",
+      "description": "ops",
+      "detail": "checklist",
+      "text": "Production checklist RabbitMQ.\n\n- Cluster odd nodes, memory alarm\n- TLS, separate vhost per app\n- Monitoring queue depth\n- Definition export backup\n\n12 пунктов."
+    }
+  ]
+}

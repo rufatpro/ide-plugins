@@ -1,0 +1,146 @@
+{
+  "category": "postgresql",
+  "categoryLabel": "PostgreSQL",
+  "prompts": [
+    {
+      "id": "pg-01",
+      "label": "psql connect basics",
+      "description": "cli",
+      "detail": "psql -h -U -d",
+      "text": "Teach psql connection for PostgreSQL beginners.\n\n- psql -h localhost -U postgres -d mydb\n- \\l list databases, \\dt list tables, \\d table describe\n- \\q quit\n- PGPASSWORD env vs .pgpass mention\n\nConnect to empty db and run SELECT version();"
+    },
+    {
+      "id": "pg-02",
+      "label": "CREATE TABLE with constraints",
+      "description": "ddl",
+      "detail": "PRIMARY KEY NOT NULL",
+      "text": "Create users table with constraints.\n\n- id serial or generated always as identity\n- email UNIQUE NOT NULL, created_at timestamptz default now()\n- CHECK on age or status enum\n- Explain constraint names for error messages\n\nFull SQL script create + insert valid/invalid example."
+    },
+    {
+      "id": "pg-03",
+      "label": "SELECT and JOIN recap",
+      "description": "sql",
+      "detail": "INNER LEFT",
+      "text": "Recap SELECT with JOINs on orders example schema.\n\n- customers and orders tables\n- INNER JOIN customers with orders\n- LEFT JOIN find customers without orders\n- Filter WHERE and ORDER BY\n- Limit offset pagination\n\nProvide schema snippet and three queries."
+    },
+    {
+      "id": "pg-04",
+      "label": "EXPLAIN ANALYZE query plan",
+      "description": "performance",
+      "detail": "Seq Scan vs Index",
+      "text": "Use EXPLAIN ANALYZE to read a query plan.\n\n- Run EXPLAIN ANALYZE SELECT ...\n- Identify Seq Scan, Index Scan, cost rows\n- When statistics outdated ANALYZE table\n- Do not over-optimize tiny tables\n\nBefore/after index example referenced."
+    },
+    {
+      "id": "pg-05",
+      "label": "B-tree indexes when to add",
+      "description": "indexes",
+      "detail": "CREATE INDEX",
+      "text": "Explain B-tree indexes for common filters.\n\n- CREATE INDEX ON orders(user_id)\n- Columns in WHERE JOIN ORDER BY high selectivity\n- Write overhead tradeoff\n- Unique index enforces constraint\n\nShow slow query then index improvement with EXPLAIN."
+    },
+    {
+      "id": "pg-06",
+      "label": "Partial index",
+      "description": "indexes",
+      "detail": "WHERE active",
+      "text": "Create partial index for subset of rows.\n\n- CREATE INDEX ON users(email) WHERE deleted_at IS NULL\n- Smaller index faster for hot subset\n- Query must match predicate to use index\n- Use case: active records only\n\nSQL example and matching query."
+    },
+    {
+      "id": "pg-07",
+      "label": "JSONB query operators",
+      "description": "jsonb",
+      "detail": "-> ->> @>",
+      "text": "Query JSONB column metadata in PostgreSQL.\n\n- Insert row with jsonb {\"tags\":[\"a\",\"b\"], \"score\": 10}\n- -> ->> operators, @> containment\n- GIN index on jsonb_path_ops mention for scale\n\nThree SELECT examples filtering JSON."
+    },
+    {
+      "id": "pg-08",
+      "label": "Arrays and unnest",
+      "description": "arrays",
+      "detail": "ANY unnest",
+      "text": "Work with PostgreSQL array columns.\n\n- tags TEXT[] column insert '{sql,postgres}'\n- WHERE 'sql' = ANY(tags)\n- unnest(tags) join to normalize for reporting\n- When separate junction table better\n\nExamples inserting and querying."
+    },
+    {
+      "id": "pg-09",
+      "label": "Window functions ROW_NUMBER",
+      "description": "analytics",
+      "detail": "OVER PARTITION BY",
+      "text": "Rank rows per group with window functions.\n\n- ROW_NUMBER() OVER (PARTITION BY dept ORDER BY salary DESC)\n- Top employee per department query pattern\n- Contrast with GROUP BY aggregate\n- SUM() OVER running total teaser\n\nSample employees table SQL."
+    },
+    {
+      "id": "pg-10",
+      "label": "Recursive CTE teaser",
+      "description": "sql",
+      "detail": "WITH RECURSIVE",
+      "text": "Introduce recursive CTE for hierarchy.\n\n- employees manager_id tree\n- WITH RECURSIVE starting roots union join children\n- Select depth and path array optional\n- Limit recursion depth safety\n\nQuery listing org chart levels conceptually."
+    },
+    {
+      "id": "pg-11",
+      "label": "Transactions and isolation",
+      "description": "transactions",
+      "detail": "BEGIN COMMIT",
+      "text": "Explain transactions and isolation levels.\n\n- BEGIN; UPDATE; COMMIT; ROLLBACK;\n- Read committed default vs repeatable read phantom\n- Short lock contention example\n- Application pattern: one transaction per request\n\nSQL demo transferring balance between accounts."
+    },
+    {
+      "id": "pg-12",
+      "label": "COPY import and export",
+      "description": "bulk",
+      "detail": "COPY CSV",
+      "text": "Bulk load CSV with COPY.\n\n- COPY users FROM '/path/users.csv' CSV HEADER\n- \\copy meta-command in psql for client path\n- Export COPY TO STDOUT for backup slice\n- Delimiter NULL encoding options\n\nSample csv two rows and table definition."
+    },
+    {
+      "id": "pg-13",
+      "label": "pg_dump and restore",
+      "description": "ops",
+      "detail": "pg_dump pg_restore",
+      "text": "Backup and restore database with pg_dump.\n\n- pg_dump -Fc mydb > backup.dump custom format\n- pg_restore -d newdb backup.dump\n- Plain sql pg_dump for small dbs\n- Schedule backups and test restore habit\n\nCommands only — no cloud specifics."
+    },
+    {
+      "id": "pg-14",
+      "label": "Connection pooling PgBouncer",
+      "description": "ops",
+      "detail": "pool transaction mode",
+      "text": "Introduce PgBouncer for connection pooling.\n\n- Why too many app connections hurt Postgres\n- Pool modes session transaction statement headline\n- App connects to pgbouncer port 6432\n- Prepared statements caveat in transaction pooling\n\nWhen managed RDS proxy similar role."
+    },
+    {
+      "id": "pg-15",
+      "label": "Full text search tsvector",
+      "description": "search",
+      "detail": "to_tsvector @@",
+      "text": "Basic full text search with tsvector.\n\n- ALTER TABLE articles ADD COLUMN tsv tsvector\n- Update tsv from to_tsvector('english', title || body)\n- GIN index on tsv\n- WHERE tsv @@ plainto_tsquery('postgres tutorial')\n\nMinimal searchable articles example."
+    },
+    {
+      "id": "pg-16",
+      "label": "UUID with gen_random_uuid",
+      "description": "types",
+      "detail": "uuid-ossp pgcrypto",
+      "text": "Use UUID primary keys in PostgreSQL.\n\n- CREATE EXTENSION pgcrypto; gen_random_uuid()\n- id UUID PRIMARY KEY DEFAULT gen_random_uuid()\n- Compare serial vs uuid tradeoffs\n- Index bloat mention acceptable at moderate scale\n\nCreate table and insert without specifying id."
+    },
+    {
+      "id": "pg-17",
+      "label": "Migrations Flyway or Alembic",
+      "description": "migrations",
+      "detail": "versioned schema",
+      "text": "Outline schema migrations with Flyway or Alembic on Postgres.\n\n- Versioned SQL files V1__init.sql\n- Alembic revision autogenerate from SQLAlchemy mention\n- Never edit applied migration\n- Rollback strategy\n\nBeginner workflow from empty db to v2 column add."
+    },
+    {
+      "id": "pg-18",
+      "label": "Row level security intro",
+      "description": "security",
+      "detail": "ENABLE ROW LEVEL SECURITY",
+      "text": "Introduce RLS for multi-tenant apps.\n\n- ALTER TABLE orders ENABLE ROW LEVEL SECURITY\n- CREATE POLICY tenant_isolation USING (tenant_id = current_setting('app.tenant')::int)\n- Set setting per connection in app middleware\n- Bypass for superuser caution\n\nConceptual SQL — explain leak if policy missing."
+    },
+    {
+      "id": "pg-19",
+      "label": "VACUUM and ANALYZE maintenance",
+      "description": "maintenance",
+      "detail": "autovacuum",
+      "text": "Explain VACUUM ANALYZE and autovacuum for beginners.\n\n- Dead tuples from UPDATE DELETE\n- Autovacuum monitors bloat headline\n- Manual VACUUM ANALYZE after big delete\n- pg_stat_user_tables columns to watch\n\nWhen not to panic about autovacuum noise."
+    },
+    {
+      "id": "pg-20",
+      "label": "PostgreSQL vs SQLite when to pick",
+      "description": "architecture",
+      "detail": "embedded vs server",
+      "text": "When choose Postgres over SQLite?\n\n- Concurrent writers, network access, advanced types → Postgres\n- Local dev single file embedded → SQLite\n- Heroku/Fly postgres vs file sqlite\n- Migration path sqlite dev postgres prod pattern\n\nDecision bullets for side project vs SaaS."
+    }
+  ]
+}

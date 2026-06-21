@@ -1,0 +1,146 @@
+{
+  "category": "android-java",
+  "categoryLabel": "Android (Java)",
+  "prompts": [
+    {
+      "id": "aj-01",
+      "label": "First Android Studio project (Java)",
+      "description": "setup",
+      "detail": "Empty Activity",
+      "text": "I'm new to Android with Java. Guide me to create the first app in Android Studio.\n\n- New project: Empty Views Activity, Java language, minimum SDK reasonable for beginners\n- Explain app/, res/layout, AndroidManifest.xml, MainActivity.java\n- Run on emulator or device\n- Change TextView to Hello Android\n\nUse current Android Studio Hedgehog+ wording. List key files only."
+    },
+    {
+      "id": "aj-02",
+      "label": "Activity lifecycle onCreate onDestroy",
+      "description": "lifecycle",
+      "detail": "log callbacks",
+      "text": "Teach Activity lifecycle for a beginner Java app.\n\n- Override onCreate, onStart, onResume, onPause, onStop, onDestroy with Log.d tags\n- Explain what runs when app opens, rotates, goes background\n- Mention configChanges only as optional reading\n\nSingle MainActivity.java with lifecycle logging exercise."
+    },
+    {
+      "id": "aj-03",
+      "label": "LinearLayout and ConstraintLayout XML",
+      "description": "UI",
+      "detail": "activity_main.xml",
+      "text": "Build a login screen layout in XML using LinearLayout or ConstraintLayout.\n\n- EditText username/password, Button login, TextView error placeholder\n- Use match_parent/wrap_content and margins dp\n- Wire views in MainActivity with findViewById\n\nProvide activity_main.xml snippet and minimal Java click handler."
+    },
+    {
+      "id": "aj-04",
+      "label": "ViewBinding instead of findViewById",
+      "description": "UI",
+      "detail": "build.gradle enable",
+      "text": "Migrate a simple screen from findViewById to ViewBinding.\n\n- Enable viewBinding in build.gradle module\n- Inflate ActivityMainBinding in onCreate\n- Access views via binding.textView syntax\n- Explain null safety and when binding is preferred\n\nBefore/after comparison in 4 bullets."
+    },
+    {
+      "id": "aj-05",
+      "label": "Explicit Intent open second Activity",
+      "description": "navigation",
+      "detail": "putExtra",
+      "text": "Create MainActivity and DetailActivity with explicit Intent.\n\n- Button passes item id via putExtra\n- DetailActivity reads getIntent extras in onCreate\n- Register activity in AndroidManifest\n- Finish DetailActivity with back stack behavior explained\n\nFull Java for both activities."
+    },
+    {
+      "id": "aj-06",
+      "label": "Implicit Intent share text",
+      "description": "intents",
+      "detail": "ACTION_SEND",
+      "text": "Show implicit Intent to share plain text from my app.\n\n- Intent.createChooser with ACTION_SEND and text/plain\n- Explain why chooser is user-friendly\n- Contrast explicit vs implicit in 3 bullets\n- Handle ActivityNotFoundException gracefully\n\nMinimal share button handler in Java."
+    },
+    {
+      "id": "aj-07",
+      "label": "RecyclerView list adapter",
+      "description": "lists",
+      "detail": "ViewHolder pattern",
+      "text": "Build a RecyclerView list of items (title + subtitle) in Java.\n\n- item_row.xml row layout\n- Adapter extending RecyclerView.Adapter with ViewHolder\n- LinearLayoutManager in Activity\n- Fake in-memory List<Item> data source\n\nExplain ViewHolder recycling at beginner level."
+    },
+    {
+      "id": "aj-08",
+      "label": "Fragment in FrameLayout",
+      "description": "fragments",
+      "detail": "FragmentManager",
+      "text": "Introduce Fragments with one ListFragment and one DetailFragment placeholder.\n\n- activity hosts FrameLayout container\n- replace fragment with FragmentManager transaction\n- Pass arguments via Bundle setArguments\n- Explain why fragments matter for tablets/navigation\n\nJava only; no Navigation Component yet."
+    },
+    {
+      "id": "aj-09",
+      "label": "SharedPreferences save settings",
+      "description": "storage",
+      "detail": "MODE_PRIVATE",
+      "text": "Persist a username toggle and dark mode flag with SharedPreferences.\n\n- getSharedPreferences name and MODE_PRIVATE\n- edit().putBoolean().apply()\n- Read on startup to restore UI\n- Warn what SharedPreferences is not for (large data)\n\nSmall settings screen example."
+    },
+    {
+      "id": "aj-10",
+      "label": "Room database Java entity DAO",
+      "description": "database",
+      "detail": "AppDatabase",
+      "text": "Set up Room in a Java Android app for a Note entity.\n\n- @Entity, @Dao with insert and getAll LiveData or List\n- @Database abstract class\n- Allow main thread queries false; use background thread or executor note\n- Gradle dependencies for room-runtime, compiler annotationProcessor\n\nMinimal CRUD flow described step by step."
+    },
+    {
+      "id": "aj-11",
+      "label": "Retrofit GET JSON list",
+      "description": "networking",
+      "detail": "OkHttp Gson",
+      "text": "Fetch a JSON list from a public API with Retrofit in Java.\n\n- Interface ApiService with @GET\n- Gson converter factory, Retrofit.Builder baseUrl\n- Call enqueue Callback on background thread\n- Update RecyclerView on main thread via runOnUiThread\n\nUse https://jsonplaceholder.typicode.com/posts or similar."
+    },
+    {
+      "id": "aj-12",
+      "label": "ViewModel and LiveData pattern",
+      "description": "architecture",
+      "detail": "AndroidX",
+      "text": "Introduce ViewModel + LiveData for a counter or todo list in Java.\n\n- ViewModel holds MutableLiveData\n- Activity observes with getViewModel() lifecycle owner\n- Explain rotation survival benefit vs storing in Activity field\n- No Kotlin coroutines — Java only\n\nUse androidx.lifecycle artifacts."
+    },
+    {
+      "id": "aj-13",
+      "label": "Navigation Component graph",
+      "description": "navigation",
+      "detail": "nav_graph.xml",
+      "text": "Wire Jetpack Navigation with nav_graph.xml and NavHostFragment.\n\n- Two destinations Home and Settings fragments\n- BottomNavigationView or buttons triggering NavController.navigate\n- Safe Args mention optional\n- Compare to manual Fragment transactions briefly\n\nJava fragments and MainActivity hosting NavHost."
+    },
+    {
+      "id": "aj-14",
+      "label": "Material Toolbar and menu",
+      "description": "UI",
+      "detail": "onOptionsItemSelected",
+      "text": "Add MaterialToolbar as app bar with options menu.\n\n- menu/main_menu.xml with search and settings items\n- onCreateOptionsMenu and onOptionsItemSelected in Java\n- setSupportActionBar(toolbar)\n- Theme MaterialComponents.DayNight\n\nExplain overflow menu on small screens."
+    },
+    {
+      "id": "aj-15",
+      "label": "Runtime permissions camera or location",
+      "description": "permissions",
+      "detail": "ActivityResultContracts",
+      "text": "Request dangerous permission at runtime using modern Activity Result API.\n\n- Check ContextCompat.checkSelfPermission\n- registerForActivityResult RequestPermission launcher\n- Show rationale dialog pattern if shouldShowRequestPermissionRationale\n- Pick CAMERA or ACCESS_FINE_LOCATION as example\n\nExplain manifest declaration still required."
+    },
+    {
+      "id": "aj-16",
+      "label": "Foreground Service basics",
+      "description": "services",
+      "detail": "notification required",
+      "text": "Sketch a Foreground Service playing a long task with persistent notification.\n\n- StartForeground with notification channel (Android 8+)\n- Service class extending Service, return START_STICKY briefly\n- Stop service action on notification\n- Warn about background execution limits on modern Android\n\nConceptual Java; note WorkManager alternative for deferrable jobs."
+    },
+    {
+      "id": "aj-17",
+      "label": "Notification channel and builder",
+      "description": "notifications",
+      "detail": "NotificationCompat",
+      "text": "Create a notification channel and show a simple notification from a button click.\n\n- NotificationManager createNotificationChannel\n- NotificationCompat.Builder with icon, title, content intent PendingIntent\n- POST_NOTIFICATIONS permission on Android 13+\n- Tap opens MainActivity\n\nJava code in Activity."
+    },
+    {
+      "id": "aj-18",
+      "label": "Gradle build types debug release",
+      "description": "build",
+      "detail": "build.gradle",
+      "text": "Explain buildTypes debug vs release in app build.gradle for Java Android project.\n\n- minifyEnabled false for beginners; mention ProGuard when true\n- signingConfigs concept without real keystore secrets\n- Build Variants window in Android Studio\n- applicationId vs namespace note briefly\n\nChecklist before publishing to Play Console."
+    },
+    {
+      "id": "aj-19",
+      "label": "Espresso UI test one screen",
+      "description": "testing",
+      "detail": "androidTest",
+      "text": "Write one Espresso test clicking a button and asserting TextView text changes.\n\n- androidTest dependency androidx.test.espresso\n- ActivityScenarioRule or ActivityScenario launch\n- onView(withId).perform(click); check(matches(withText()))\n- Run from Android Studio test runner\n\nExplain unit test vs instrumented test folders."
+    },
+    {
+      "id": "aj-20",
+      "label": "MVP pattern sketch in Java",
+      "description": "architecture",
+      "detail": "contract interface",
+      "text": "Refactor a login screen toward MVP for learning.\n\n- LoginContract with View and Presenter interfaces\n- Presenter validates input, View shows errors\n- Activity implements View interface\n- Contrast MVP vs MVVM with LiveData in 4 bullets\n\nKeep scope tiny; no Dagger yet — manual construction."
+    }
+  ]
+}
