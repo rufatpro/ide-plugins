@@ -11,7 +11,7 @@
 
 | Плагин | Платформа | Версия | Описание | Документация |
 |--------|-----------|--------|----------|--------------|
-| [AI Chat File Links](jetbrains/ai-chat-file-links/) | JetBrains | 0.3.2 | Исправляет проблему: ссылки на файлы из **AI Chat** не открывались в редакторе (PyCharm, IntelliJ, WebStorm, …) | [EN](jetbrains/ai-chat-file-links/readme.md) · [RU](jetbrains/ai-chat-file-links/readme_ru.md) |
+| [AI Chat File Links](jetbrains/ai-chat-file-links/) | JetBrains | 0.3.3 | Исправляет проблему: ссылки на файлы из **AI Chat** не открывались в редакторе (PyCharm, IntelliJ, WebStorm, …) | [EN](jetbrains/ai-chat-file-links/readme.md) · [RU](jetbrains/ai-chat-file-links/readme_ru.md) |
 | [Python Doc Links](jetbrains/py-doc-links/) | JetBrains | 0.2.8 | Ctrl+Click в Python **docstring** / **комментариях** (`filename.py`, `:py:func:`, `:py:class:`, `:py:data:`, `:py:mod:`, короткие формы) | [EN](jetbrains/py-doc-links/readme.md) · [RU](jetbrains/py-doc-links/readme_ru.md) |
 | [Python Doc Links](vscode/py-doc-links/) | VS Code / Cursor | 0.2.10 | Ctrl+Click по ссылкам в Python docstring/комментариях (`filename.py`, `:py:func:`, `:py:class:`, `:py:data:`, `:py:mod:`, короткие формы) | [EN](vscode/py-doc-links/readme.md) · [RU](vscode/py-doc-links/readme_ru.md) |
 | [Multiline Find](vscode/multiline-find/) | VS Code / Cursor | 0.1.6 | **Ctrl+F** в стиле PyCharm для многострочного выделения; **F3** ищет по всему файлу | [EN](vscode/multiline-find/readme.md) · [RU](vscode/multiline-find/readme_ru.md) |

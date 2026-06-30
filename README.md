@@ -11,7 +11,7 @@ Each plugin lives in its own directory with a `readme.md`.
 
 | Plugin | Platform | Version | Summary | Docs |
 |--------|----------|---------|---------|------|
-| [AI Chat File Links](jetbrains/ai-chat-file-links/) | JetBrains | 0.3.2 | Fixes file links from **AI Chat** not opening in the editor (PyCharm, IntelliJ, WebStorm, …) | [EN](jetbrains/ai-chat-file-links/readme.md) · [RU](jetbrains/ai-chat-file-links/readme_ru.md) |
+| [AI Chat File Links](jetbrains/ai-chat-file-links/) | JetBrains | 0.3.3 | Fixes file links from **AI Chat** not opening in the editor (PyCharm, IntelliJ, WebStorm, …) | [EN](jetbrains/ai-chat-file-links/readme.md) · [RU](jetbrains/ai-chat-file-links/readme_ru.md) |
 | [Python Doc Links](jetbrains/py-doc-links/) | JetBrains | 0.2.8 | Ctrl+Click in Python **docstrings** / **comments** (`filename.py`, `:py:func:`, `:py:class:`, `:py:data:`, `:py:mod:`, short forms) | [EN](jetbrains/py-doc-links/readme.md) · [RU](jetbrains/py-doc-links/readme_ru.md) |
 | [Python Doc Links](vscode/py-doc-links/) | VS Code / Cursor | 0.2.10 | Ctrl+Click for Python docstring/comment references (`filename.py`, `:py:func:`, `:py:class:`, `:py:data:`, `:py:mod:`, short forms) | [EN](vscode/py-doc-links/readme.md) · [RU](vscode/py-doc-links/readme_ru.md) |
 | [Multiline Find](vscode/multiline-find/) | VS Code / Cursor | 0.1.6 | PyCharm-like **Ctrl+F** for multiline selections; **F3** searches the whole file | [EN](vscode/multiline-find/readme.md) · [RU](vscode/multiline-find/readme_ru.md) |

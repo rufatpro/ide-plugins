@@ -75,7 +75,7 @@ object FailedPathCapture {
 
     private fun extractBacktickPath(text: String): String? {
         val match = Regex(
-            """[`'"]([^`'"]+\.(?:py|md|html|kt|java|js|ts|tsx|json|yaml|yml|txt))[`'"]""",
+            """[`'"]([^`'"]+\.(?:py|md|html|kt|java|js|ts|tsx|json|yaml|yml|txt|c|h|cpp|hpp))[`'"]""",
             RegexOption.IGNORE_CASE,
         ).find(text) ?: return null
         return PathResolver.normalizePath(match.groupValues[1])

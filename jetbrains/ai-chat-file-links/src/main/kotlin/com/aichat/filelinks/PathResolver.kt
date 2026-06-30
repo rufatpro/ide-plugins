@@ -40,12 +40,9 @@ object PathResolver {
     }
 
     fun openInProject(project: Project, pathWithOptionalLine: String): Boolean {
-        val (relativePath, line) = parseLineColumn(pathWithOptionalLine)
-        val base = project.basePath ?: return false
-        val segments = normalizePath(relativePath).split('/').filter { it.isNotEmpty() }
-        if (segments.isEmpty()) return false
-
-        val full: Path = Paths.get(base, *segments.toTypedArray())
+        val (rawPath, line) = parseLineColumn(pathWithOptionalLine)
+        val normalizedPath = normalizePath(rawPath)
+        val full = resolvePath(project, normalizedPath) ?: return false
         if (!full.exists()) return false
 
         val vf = LocalFileSystem.getInstance().refreshAndFindFileByNioFile(full) ?: return false
@@ -83,7 +80,11 @@ object PathResolver {
             value.endsWith(".py", ignoreCase = true) ||
             value.endsWith(".html", ignoreCase = true) ||
             value.endsWith(".kt", ignoreCase = true) ||
-            value.endsWith(".java", ignoreCase = true)
+            value.endsWith(".java", ignoreCase = true) ||
+            value.endsWith(".c", ignoreCase = true) ||
+            value.endsWith(".h", ignoreCase = true) ||
+            value.endsWith(".cpp", ignoreCase = true) ||
+            value.endsWith(".hpp", ignoreCase = true)
         ) {
             return true
         }
@@ -98,8 +99,28 @@ object PathResolver {
     fun normalizePath(path: String): String =
         decode(path)
             .replace('\\', '/')
-            .removePrefix("/")
             .trim()
+
+    private fun resolvePath(project: Project, path: String): Path? {
+        val nioPath = runCatching { Paths.get(path) }.getOrNull()
+        if (nioPath != null && nioPath.isAbsolute) {
+            if (nioPath.exists()) {
+                return nioPath
+            }
+            resolveProjectRelative(project, path.removePrefix("/"))?.let { return it }
+            return nioPath
+        }
+
+        return resolveProjectRelative(project, path)
+    }
+
+    private fun resolveProjectRelative(project: Project, path: String): Path? {
+        val base = project.basePath ?: return null
+        val segments = path.split('/').filter { it.isNotEmpty() }
+        if (segments.isEmpty()) return null
+
+        return Paths.get(base, *segments.toTypedArray())
+    }
 
     private fun parseLineColumn(pathWithLine: String): Pair<String, Int?> {
         val normalized = pathWithLine.replace('\\', '/')
