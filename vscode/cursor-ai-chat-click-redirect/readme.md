@@ -2,9 +2,11 @@
 
 [Русский](https://github.com/rufatpro/plugins/blob/main/vscode/cursor-ai-chat-click-redirect/readme_ru.md) · [Repository](https://github.com/rufatpro/plugins) · [Changelog](https://github.com/rufatpro/plugins/blob/main/vscode/cursor-ai-chat-click-redirect/CHANGELOG.md)
 
-**Version 0.6.6** — VS Code / Cursor extension: optional logging of AI chat file-link opens, and optional redirect of selected file types to an external IDE (PyCharm, IntelliJ, WebStorm, etc.).
+**Version 0.6.6** — VS Code-compatible extension: optional logging of AI chat file-link opens, and optional redirect of selected file types to an external IDE (PyCharm, IntelliJ, WebStorm, etc.).
 
 > Built with AI assistance (Cursor). Part of the [plugins](https://github.com/rufatpro/plugins) monorepo.
+
+> **Compatibility:** Not limited to VS Code or Cursor — runs in any **VS Code-compatible editor**, including **Google Antigravity IDE**, VSCodium, Windsurf, and other forks that support standard VS Code extensions (Open VSX or VSIX).
 
 ## Disclaimer
 
@@ -56,7 +58,7 @@ cd plugins\vscode\cursor-ai-chat-click-redirect
 build.bat
 ```
 
-In Cursor / VS Code: **F1** → `Extensions: Install from VSIX` → `build\cursor-ai-chat-click-redirect-0.6.6.vsix`.
+In any VS Code-compatible editor (VS Code, Cursor, Antigravity, …): **F1** → `Extensions: Install from VSIX` → `build\cursor-ai-chat-click-redirect-0.6.6.vsix`.
 
 Reload the window (**Developer: Reload Window**).
 

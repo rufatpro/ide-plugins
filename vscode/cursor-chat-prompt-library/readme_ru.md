@@ -16,6 +16,8 @@
 
 > Часть monorepo [plugins](https://github.com/rufatpro/plugins).
 
+> **Совместимость:** расширение работает не только в VS Code и Cursor — оно совместимо с **любой средой на базе VS Code**, в том числе **Google Antigravity IDE**, VSCodium, Windsurf и другими форками с поддержкой стандартных расширений (Open VSX или установка из VSIX).
+
 ## Горячая клавиша (основной способ)
 
 | Клавиша | Действие |

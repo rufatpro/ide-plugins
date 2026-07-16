@@ -2,7 +2,7 @@
   "name": "cursor-ai-chat-click-redirect",
   "displayName": "Cursor AI Chat Click Redirect",
   "description": "Log AI chat link clicks; optionally open files by extension in an external IDE. PROVIDED AS IS, WITHOUT WARRANTY. Authors and contributors are not liable for damages, data loss, misdirected opens, or issues from use with Cursor, external IDEs, or on-disk logs. Use at your own risk.",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "publisher": "rufat",
   "license": "MIT",
   "readme": "readme.md",

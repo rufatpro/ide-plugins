@@ -2,7 +2,7 @@
   "name": "cursor-chat-prompt-library",
   "displayName": "Cursor Chat Prompt Library",
   "description": "1300 prompt templates for Cursor AI chat. Primary: Ctrl+Alt+T (Cmd+Alt+T on macOS); also Ctrl+Alt+Shift+P. 53 categories. QuickPick → insert into chat.",
-  "version": "0.8.9",
+  "version": "0.8.10",
   "publisher": "rufat",
   "license": "MIT",
   "readme": "readme.md",

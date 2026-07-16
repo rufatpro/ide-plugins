@@ -2,7 +2,7 @@
 
 [English](readme_en.md) · [Releases](https://github.com/rufatpro/plugins/releases) · [Репозиторий](https://github.com/rufatpro/plugins)
 
-Библиотека **1300 русскоязычных** шаблонов Промптов (Prompts) для AI-Chat в **Cursor**: Быстрый выбор → вставка в ИИ Чат Курсора.
+Библиотека **1300 русскоязычных** шаблонов Промптов (Prompts) для AI-чата в **Cursor** и других VS Code-совместимых средах: Быстрый выбор → вставка в ИИ Чат.
 
 **53 категории** (**Python × 50**, **JavaScript / TypeScript / React / Next.js / Tailwind / Node.js / NestJS × 50**, остальные × 20) **= 1300 шаблонов:**
 
@@ -15,6 +15,8 @@
 | Сквозные | Regex, Промпт-инжиниринг, Языки программирования, Машинное обучение |
 
 > Часть monorepo [plugins](https://github.com/rufatpro/plugins).
+
+> **Совместимость:** расширение работает не только в VS Code и Cursor — оно совместимо с **любой средой на базе VS Code**, в том числе **Google Antigravity IDE**, VSCodium, Windsurf и другими форками с поддержкой стандартных расширений (Open VSX или установка из VSIX).
 
 ## Горячая клавиша (основной способ)
 

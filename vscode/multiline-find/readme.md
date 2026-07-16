@@ -1,10 +1,12 @@
-# Multiline Find (VS Code / Cursor)
+# Multiline Find
 
 [Русский](readme_ru.md) · [Releases](https://github.com/rufatpro/plugins/releases) · [Repository](https://github.com/rufatpro/plugins)
 
 PyCharm-style **Ctrl+F** for multiline text: select a block, press Ctrl+F, then **F3** to find the next match in the **whole file**.
 
 > Developed with AI assistance (Cursor / LLM). Part of the [plugins](https://github.com/rufatpro/plugins) monorepo.
+
+> **Compatibility:** Not limited to VS Code or Cursor — runs in any **VS Code-compatible editor**, including **Google Antigravity IDE**, VSCodium, Windsurf, and other forks that support standard VS Code extensions (Open VSX or VSIX).
 
 ## Problem
 
@@ -62,7 +64,7 @@ Install:
 cursor --install-extension build/multiline-find-0.1.6.vsix
 ```
 
-Or in Cursor/VS Code: Extensions → `...` → **Install from VSIX...**
+Or in any VS Code-compatible editor (VS Code, Cursor, Antigravity, …): Extensions → `...` → **Install from VSIX...**
 
 ## Manual multiline search
 

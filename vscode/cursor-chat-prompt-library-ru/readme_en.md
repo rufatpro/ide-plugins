@@ -16,6 +16,8 @@
 
 > Part of the [plugins](https://github.com/rufatpro/plugins) monorepo.
 
+> **Compatibility:** Not limited to VS Code or Cursor — runs in any **VS Code-compatible editor**, including **Google Antigravity IDE**, VSCodium, Windsurf, and other forks that support standard VS Code extensions (Open VSX or VSIX).
+
 ## Hotkey (primary)
 
 | Key | Action |

@@ -1,12 +1,14 @@
-# Python Doc Links (VS Code / Cursor)
+# Python Doc Links
 
 [English](https://github.com/rufatpro/plugins/blob/main/vscode/py-doc-links/readme.md) · [Releases](https://github.com/rufatpro/plugins/releases) · [Репозиторий](https://github.com/rufatpro/plugins)
 
-**Расширение VS Code / Cursor**, которое добавляет переход к определению из ссылок в Python docstring/комментариях.
+**Расширение для сред, совместимых с VS Code** — переход к определению из ссылок в Python docstring/комментариях.
 
 Делает навигацию по `submodule.py`, <code>:py:func:`submodule.process_submodule_data`</code>, <code>:func:`run_main_flow`</code> через Ctrl+Click (или F12).
 
 > Разработано с помощью AI (Cursor / LLM). Часть монорепозитория [plugins](https://github.com/rufatpro/plugins).
+
+> **Совместимость:** расширение работает не только в VS Code и Cursor — оно совместимо с **любой средой на базе VS Code**, в том числе **Google Antigravity IDE**, VSCodium, Windsurf и другими форками с поддержкой стандартных расширений (Open VSX или установка из VSIX).
 
 ## Поддерживаемые паттерны
 
@@ -55,7 +57,7 @@ build.bat
 
 Далее установите сгенерированный `.vsix`.
 
-**Command Palette (основной способ, VS Code и Cursor):**
+**Палитра команд (основной способ, любая VS Code-совместимая среда):**
 
 1. Откройте Command Palette: **F1**, **Ctrl+Shift+P** (Windows/Linux), **Cmd+Shift+P** (macOS) или **View → Command Palette**
 2. Введите: `Install from VSIX`

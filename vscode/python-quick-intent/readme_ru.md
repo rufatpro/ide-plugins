@@ -1,10 +1,12 @@
-# Python Quick Intent (VS Code / Cursor)
+# Python Quick Intent
 
 [English](readme.md) · [Releases](https://github.com/rufatpro/plugins/releases) · [Репозиторий](https://github.com/rufatpro/plugins)
 
-**Намерения в стиле PyCharm** для Python в Cursor и VS Code: импорт, исправление через AI и Quick Edit — без перехвата **Alt+Enter** расширениями вроде Roo Code.
+**Намерения в стиле PyCharm** для Python в Cursor, VS Code и других средах, совместимых с VS Code: импорт, исправление через AI и Quick Edit — без перехвата **Alt+Enter** расширениями вроде Roo Code.
 
 > Разработано с помощью AI (Cursor / LLM). Часть монорепозитория [plugins](https://github.com/rufatpro/plugins).
+
+> **Совместимость:** расширение работает не только в VS Code и Cursor — оно совместимо с **любой средой на базе VS Code**, в том числе **Google Antigravity IDE**, VSCodium, Windsurf и другими форками с поддержкой стандартных расширений (Open VSX или установка из VSIX).
 
 ## Проблема
 
@@ -45,7 +47,7 @@ build.bat
 cursor --install-extension build/python-quick-intent-0.4.4.vsix
 ```
 
-Или: Extensions → `...` → **Install from VSIX...**
+Или в любой VS Code-совместимой среде (VS Code, Cursor, Antigravity, …): Extensions → `...` → **Install from VSIX...**
 
 Файл после сборки:
 

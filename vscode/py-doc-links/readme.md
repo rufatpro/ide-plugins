@@ -1,12 +1,14 @@
-# Python Doc Links (VS Code / Cursor)
+# Python Doc Links
 
 [Русский](https://github.com/rufatpro/plugins/blob/main/vscode/py-doc-links/readme_ru.md) · [Releases](https://github.com/rufatpro/plugins/releases) · [Repository](https://github.com/rufatpro/plugins)
 
-**VS Code / Cursor extension** that enables go-to-definition from Python docstring/comment references.
+**VS Code-compatible extension** that enables go-to-definition from Python docstring/comment references.
 
 It makes references like `submodule.py`, <code>:py:func:`submodule.process_submodule_data`</code>, and <code>:func:`run_main_flow`</code> navigable with Ctrl+Click (or F12).
 
 > Developed with AI assistance (Cursor / LLM). Part of the [plugins](https://github.com/rufatpro/plugins) monorepo.
+
+> **Compatibility:** Not limited to VS Code or Cursor — runs in any **VS Code-compatible editor**, including **Google Antigravity IDE**, VSCodium, Windsurf, and other forks that support standard VS Code extensions (Open VSX or VSIX).
 
 ## Supported patterns
 
@@ -55,7 +57,7 @@ build.bat
 
 Then install the generated `.vsix`.
 
-**Command Palette (primary method, VS Code and Cursor):**
+**Command Palette (any VS Code-compatible editor):**
 
 1. Open Command Palette: **F1**, **Ctrl+Shift+P** (Windows/Linux), **Cmd+Shift+P** (macOS), or **View → Command Palette**
 2. Type: `Install from VSIX`

@@ -2,7 +2,7 @@
   "name": "python-quick-intent",
   "displayName": "Python Quick Intent",
   "description": "PyCharm-style intentions for Python in Cursor/VS Code: import, AI fix (Alt+Enter), and Quick Edit.",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "publisher": "rufat",
   "license": "MIT",
   "readme": "readme.md",

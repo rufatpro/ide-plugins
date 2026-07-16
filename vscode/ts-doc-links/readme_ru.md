@@ -1,14 +1,16 @@
-# TypeScript Doc Links (VS Code / Cursor)
+# TypeScript Doc Links
 
 Идентификатор пакета: `ts-doc-links`.
 
 [English](https://github.com/rufatpro/plugins/blob/main/vscode/ts-doc-links/readme.md) · [Releases](https://github.com/rufatpro/plugins/releases) · [Репозиторий](https://github.com/rufatpro/plugins)
 
-**Расширение VS Code / Cursor** для перехода к определению из **комментариев** и **JSDoc** в TypeScript/JavaScript — для форматов, которые **не** обрабатывает TypeScript (Native Preview).
+**Расширение для сред, совместимых с VS Code** — переход к определению из **комментариев** и **JSDoc** в TypeScript/JavaScript для форматов, которые **не** обрабатывает TypeScript (Native Preview).
 
 Делает кликабельными `@see ./emailValidator.ts`, `File: utils.ts`, `// See utils.ts:3` через Ctrl+Click (или F12).
 
-> Разработано с помощью AI (Cursor / LLM). Часть монорепозитория [plugins](https://github.com/rufatpro/plugins).  
+> Разработано с помощью AI (Cursor / LLM). Часть монорепозитория [plugins](https://github.com/rufatpro/plugins).
+
+> **Совместимость:** расширение работает не только в VS Code и Cursor — оно совместимо с **любой средой на базе VS Code**, в том числе **Google Antigravity IDE**, VSCodium, Windsurf и другими форками с поддержкой стандартных расширений (Open VSX или установка из VSIX).  
 
 ## Поддерживаемые паттерны
 
@@ -50,7 +52,7 @@ cd vscode/ts-doc-links
 build.bat
 ```
 
-Установка:
+Установка (любая VS Code-совместимая среда):
 
 1. **F1** / **Ctrl+Shift+P** → `Install from VSIX`
 2. **Extensions: Install from VSIX...**

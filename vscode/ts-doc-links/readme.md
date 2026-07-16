@@ -1,14 +1,16 @@
-# TypeScript Doc Links (VS Code / Cursor)
+# TypeScript Doc Links
 
 Package id: `ts-doc-links`.
 
 [Русский](https://github.com/rufatpro/plugins/blob/main/vscode/ts-doc-links/readme_ru.md) · [Releases](https://github.com/rufatpro/plugins/releases) · [Repository](https://github.com/rufatpro/plugins)
 
-**VS Code / Cursor extension** that enables go-to-definition from TypeScript/JavaScript **comments** and **JSDoc** — for patterns that **TypeScript (Native Preview)** does not handle.
+**VS Code-compatible extension** that enables go-to-definition from TypeScript/JavaScript **comments** and **JSDoc** — for patterns that **TypeScript (Native Preview)** does not handle.
 
 It makes references like `@see ./emailValidator.ts`, `File: utils.ts`, and `// See utils.ts:3` navigable with Ctrl+Click (or F12).
 
-> Developed with AI assistance (Cursor / LLM). Part of the [plugins](https://github.com/rufatpro/plugins) monorepo.  
+> Developed with AI assistance (Cursor / LLM). Part of the [plugins](https://github.com/rufatpro/plugins) monorepo.
+
+> **Compatibility:** Not limited to VS Code or Cursor — runs in any **VS Code-compatible editor**, including **Google Antigravity IDE**, VSCodium, Windsurf, and other forks that support standard VS Code extensions (Open VSX or VSIX).  
 
 ## Supported patterns
 
@@ -53,7 +55,7 @@ build.bat
 
 Then install the generated `.vsix`.
 
-**Command Palette (VS Code and Cursor):**
+**Command Palette (any VS Code-compatible editor):**
 
 1. **F1** / **Ctrl+Shift+P** → `Install from VSIX`
 2. Select **Extensions: Install from VSIX...**

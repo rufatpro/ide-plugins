@@ -2,7 +2,7 @@
   "name": "ts-doc-links",
   "displayName": "TypeScript Doc Links",
   "description": "Ctrl+Click navigation for TypeScript/JavaScript doc and comment references (@see, {@link ./file.ts}, File:, // See, path aliases) in VS Code and Cursor.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "publisher": "rufat",
   "license": "MIT",
   "readme": "readme.md",
