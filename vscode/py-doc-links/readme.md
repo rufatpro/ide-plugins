@@ -86,6 +86,6 @@ Related upstream context:
 
 ## Author
 
-[Rufat](https://rufat.top/)
+[Rufat](https://rufat.top/en/)
 
 **Cursor IDE:** [Sign up with referral link](https://cursor.com/referral?code=GCE2SLLVIM87) — supports the author when you subscribe.

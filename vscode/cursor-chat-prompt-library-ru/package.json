@@ -2,7 +2,7 @@
   "name": "cursor-chat-prompt-library-ru",
   "displayName": "Cursor Chat Prompt Library RU",
   "description": "1300 русскоязычных шаблонов Prompt для AI-чата в Cursor. 53 категории. QuickPick → вставка в Chat.",
-  "version": "0.6.7",
+  "version": "0.6.8",
   "publisher": "rufat",
   "license": "MIT",
   "readme": "readme.md",

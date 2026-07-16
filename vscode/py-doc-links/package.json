@@ -2,7 +2,7 @@
   "name": "py-doc-links",
   "displayName": "Python Doc Links",
   "description": "Ctrl+Click navigation for Python docstring/comment references (filename.py, :py:func:, :py:class:, :py:data:, :py:mod:, short Sphinx forms) in VS Code and Cursor.",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "publisher": "rufat",
   "license": "MIT",
   "readme": "readme.md",
