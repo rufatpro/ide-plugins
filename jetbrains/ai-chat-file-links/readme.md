@@ -138,4 +138,4 @@ Full log file reference: [readme_ru.md](readme_ru.md) → section «Отладк
 
 ## Author
 
-[Rufat](https://rufat.top/)
+[Rufat](https://rufat.top/en/)

@@ -125,4 +125,4 @@ Removes `build/`, `.gradle/`, `.intellijPlatform/`, `.kotlin/`, and log files.
 
 ## Author
 
-[Rufat](https://rufat.top/)
+[Rufat](https://rufat.top/en/)

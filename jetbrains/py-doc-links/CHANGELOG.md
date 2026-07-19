@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.10
+
+- English README author link points to [rufat.top/en](https://rufat.top/en/).
+
 ## 0.2.8
 
 - Repository moved to [github.com/rufatpro/plugins](https://github.com/rufatpro/plugins); updated `vendor` URL in `plugin.xml`.
