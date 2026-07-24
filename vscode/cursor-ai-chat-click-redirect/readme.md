@@ -2,7 +2,7 @@
 
 [Русский](https://github.com/rufatpro/plugins/blob/main/vscode/cursor-ai-chat-click-redirect/readme_ru.md) · [Repository](https://github.com/rufatpro/plugins) · [Changelog](https://github.com/rufatpro/plugins/blob/main/vscode/cursor-ai-chat-click-redirect/CHANGELOG.md)
 
-**Version 0.6.6** — VS Code-compatible extension: optional logging of AI chat file-link opens, and optional redirect of selected file types to an external IDE (PyCharm, IntelliJ, WebStorm, etc.).
+**Version 0.6.16** — VS Code-compatible extension: optional logging of AI chat file-link opens, and optional redirect of selected file types to an external IDE (PyCharm, IntelliJ, WebStorm, etc.).
 
 > Built with AI assistance (Cursor). Part of the [plugins](https://github.com/rufatpro/plugins) monorepo.
 
@@ -35,14 +35,14 @@ The extension does **not** replace Cursor or **sync** edits between editors.
 
 ## When redirect runs
 
-Redirect is tied to a **new editor tab** in Cursor (`onDidChangeTabs` → `opened`), not to simply making a file active.
+Redirect runs when a matching **new editor tab** opens (`onDidChangeTabs` → `opened`). If chat keeps focus, a short fallback still opens the external IDE by the tab URI. Loading a document into memory without a new tab (agent edits, already-open files) does **not** redirect.
 
 | Situation | Redirect to external IDE? |
 |-----------|----------------------------|
-| Chat link opens a file that has **no tab yet** in Cursor | **Yes** — new tab appears, then PyCharm (etc.) opens the file |
-| Chat link points to a file that is **already open** in a tab (Cursor only focuses that tab) | **No** — no new tab, extension does not treat it as a chat open |
+| Chat link opens a file that has **no tab yet** in Cursor | **Yes** — even if focus stays in chat |
+| Chat link points to a file that is **already open** in a tab (Cursor only focuses that tab) | **No** — the document is not opened again |
 | You click an **existing tab** in the tab bar (same or another file) | **No** — only the active tab changes |
-| You open a file from Explorer / Command Palette (new tab) | **Yes** — technically a new tab; same mechanism as a chat link |
+| You open a file from Explorer / Command Palette (new document) | **Yes** — same mechanism as a chat link |
 
 Implications:
 
@@ -58,7 +58,7 @@ cd plugins\vscode\cursor-ai-chat-click-redirect
 build.bat
 ```
 
-In any VS Code-compatible editor (VS Code, Cursor, Antigravity, …): **F1** → `Extensions: Install from VSIX` → `build\cursor-ai-chat-click-redirect-0.6.6.vsix`.
+In any VS Code-compatible editor (VS Code, Cursor, Antigravity, …): **F1** → `Extensions: Install from VSIX` → `build\cursor-ai-chat-click-redirect-0.6.16.vsix`.
 
 Reload the window (**Developer: Reload Window**).
 
@@ -68,6 +68,7 @@ Reload the window (**Developer: Reload Window**).
 {
   "cursorAiChatClickRedirect.redirectFileExtensions": "py,js,md",
   "cursorAiChatClickRedirect.externalIdePath": "C:\\Program Files\\JetBrains\\PyCharm 2025.1.2\\bin\\pycharm64.exe",
+  "cursorAiChatClickRedirect.externalIdeArgs": ["{file}", "--line", "{line}"],
   "cursorAiChatClickRedirect.keepTabInCursorAfterRedirect": false,
   "cursorAiChatClickRedirect.logPath": "c:\\tmp\\ai_chat_click.log"
 }
@@ -79,7 +80,7 @@ Reload the window (**Developer: Reload Window**).
 | `keepTabInCursorAfterRedirect` | `false` | Keep the file tab in Cursor after opening in the external IDE. |
 | `logPath` | `""` | Log file path. Empty = **no logging**. |
 | `externalIdePath` | `""` | Path to IDE executable. Empty = JetBrains autodetect on Windows. |
-| `externalIdeArgs` | `["--line","{line}","{file}"]` | Launch arguments; `{file}`, `{line}` (1-based). |
+| `externalIdeArgs` | `["{file}","--line","{line}"]` | Launch arguments; `{file}`, `{line}` (1-based). JetBrains launchers require the file before `--line`. |
 
 Settings appear in order with `redirectFileExtensions` first in the UI.
 

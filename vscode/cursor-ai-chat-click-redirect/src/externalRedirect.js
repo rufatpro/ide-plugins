@@ -1,5 +1,6 @@
 const vscode = require("vscode");
 const path = require("path");
+const { appendLog } = require("./logWriter");
 const {
   logClosedInCursor,
   logOpenedInExternalApp,
@@ -15,6 +16,7 @@ const {
   consumePendingTabOpen,
   clearPendingTabOpens,
   pruneExpiredPending,
+  normalizeKey,
 } = require("./pendingTabOpen");
 
 /** @type {((command: string, ...args: unknown[]) => Thenable<unknown>) | null} */
@@ -27,7 +29,18 @@ let lastHandledFsPath = "";
 /** @type {number} */
 let lastHandledTime = 0;
 
+/** @type {number} */
+let activatedAtMs = 0;
+
 const DEDUP_MS = 1500;
+/** Skip redirects while Cursor restores tabs after startup. */
+const STARTUP_GRACE_MS = 800;
+/**
+ * If chat keeps focus, activeTextEditor may not change. After a new tab opens,
+ * retry redirect by tab URI once — do NOT hook onDidOpenTextDocument (that
+ * fires on agent/editor loads and wrongly sends files to PyCharm).
+ */
+const TAB_OPEN_FOCUS_FALLBACK_MS = 150;
 
 /** @param {(command: string, ...args: unknown[]) => Thenable<unknown>} fn */
 function setOriginalExecuteCommand(fn) {
@@ -36,19 +49,26 @@ function setOriginalExecuteCommand(fn) {
 
 /** @param {string} fsPath */
 function markHandled(fsPath) {
-  lastHandledFsPath = fsPath;
+  lastHandledFsPath = normalizeKey(fsPath);
   lastHandledTime = Date.now();
 }
 
 /** @param {string} fsPath @returns {boolean} */
 function isRecentlyHandled(fsPath) {
-  return lastHandledFsPath === fsPath && Date.now() - lastHandledTime < DEDUP_MS;
+  return (
+    lastHandledFsPath === normalizeKey(fsPath) &&
+    Date.now() - lastHandledTime < DEDUP_MS
+  );
 }
 
 function resetDedup() {
   lastHandledFsPath = "";
   lastHandledTime = 0;
   clearPendingTabOpens();
+}
+
+function inStartupGrace() {
+  return activatedAtMs > 0 && Date.now() - activatedAtMs < STARTUP_GRACE_MS;
 }
 
 /**
@@ -62,6 +82,15 @@ function uriFromOpenedTab(tab) {
   }
   if (input instanceof vscode.TabInputTextDiff) {
     return input.modified;
+  }
+  // Cursor/VS Code may expose plain objects instead of class instances.
+  if (input && typeof input === "object") {
+    if (input.uri instanceof vscode.Uri) {
+      return input.uri;
+    }
+    if (input.modified instanceof vscode.Uri) {
+      return input.modified;
+    }
   }
   return null;
 }
@@ -78,6 +107,23 @@ function asRedirectableLocalFileUri(uri) {
     return uri;
   }
   return null;
+}
+
+/**
+ * @param {vscode.Uri} uri
+ * @returns {vscode.Tab | undefined}
+ */
+function findTabByUri(uri) {
+  const target = normalizeKey(uri.fsPath);
+  for (const group of vscode.window.tabGroups.all) {
+    for (const tab of group.tabs) {
+      const tabUri = uriFromOpenedTab(tab);
+      if (tabUri && normalizeKey(tabUri.fsPath) === target) {
+        return tab;
+      }
+    }
+  }
+  return undefined;
 }
 
 /**
@@ -112,21 +158,62 @@ async function closeActiveEditorSafely() {
 }
 
 /**
- * @param {vscode.TextEditor} editor
+ * @param {vscode.Uri} uri
+ * @returns {Promise<void>}
+ */
+async function closeTabForUri(uri) {
+  const tab = findTabByUri(uri);
+  if (tab && typeof vscode.window.tabGroups.close === "function") {
+    try {
+      await vscode.window.tabGroups.close(tab);
+      return;
+    } catch {
+      // fall through
+    }
+  }
+
+  const active = vscode.window.activeTextEditor;
+  if (
+    active &&
+    normalizeKey(active.document.uri.fsPath) === normalizeKey(uri.fsPath)
+  ) {
+    await closeActiveEditorSafely();
+  }
+}
+
+/**
+ * Resolve 1-based line from the active editor when it matches the file.
+ * @param {vscode.Uri} uri
+ * @returns {number}
+ */
+function lineForUri(uri) {
+  const editor = vscode.window.activeTextEditor;
+  if (
+    editor &&
+    normalizeKey(editor.document.uri.fsPath) === normalizeKey(uri.fsPath)
+  ) {
+    return editor.selection.active.line + 1;
+  }
+  return 1;
+}
+
+/**
+ * @param {vscode.Uri} uri
  * @param {string} source
+ * @param {{ line?: number }} [options]
  * @returns {Promise<boolean>}
  */
-async function redirectEditorToExternalIde(editor, source) {
-  if (!redirectState.isRedirectEnabled() || redirectInProgress) {
+async function redirectUriToExternalIde(uri, source, options = {}) {
+  if (!redirectState.isRedirectEnabled() || redirectInProgress || inStartupGrace()) {
     return false;
   }
 
-  const uri = asRedirectableLocalFileUri(editor.document.uri);
-  if (!uri) {
+  const redirectable = asRedirectableLocalFileUri(uri);
+  if (!redirectable) {
     return false;
   }
 
-  const fsPath = uri.fsPath;
+  const fsPath = redirectable.fsPath;
   pruneExpiredPending();
 
   if (!consumePendingTabOpen(fsPath)) {
@@ -141,15 +228,19 @@ async function redirectEditorToExternalIde(editor, source) {
 
   try {
     const keepTab = redirectState.shouldKeepTabInCursorAfterRedirect();
-    const line = editor.selection.active.line + 1;
+    const line =
+      options.line && options.line > 0 ? options.line : lineForUri(redirectable);
 
-    const opened = await openFileInExternalIde(uri, { line, source });
+    const opened = await openFileInExternalIde(redirectable, { line, source });
     markHandled(fsPath);
 
     if (!keepTab) {
       await new Promise((r) => setTimeout(r, 200));
-      await logClosedInCursor(uri, { reason: "afterExternalOpen", source });
-      await closeActiveEditorSafely();
+      await logClosedInCursor(redirectable, {
+        reason: "afterExternalOpen",
+        source,
+      });
+      await closeTabForUri(redirectable);
     }
 
     if (!opened) {
@@ -165,8 +256,16 @@ async function redirectEditorToExternalIde(editor, source) {
 }
 
 /**
- * @param {vscode.ExtensionContext} context
+ * @param {vscode.TextEditor} editor
+ * @param {string} source
+ * @returns {Promise<boolean>}
  */
+async function redirectEditorToExternalIde(editor, source) {
+  return redirectUriToExternalIde(editor.document.uri, source, {
+    line: editor.selection.active.line + 1,
+  });
+}
+
 function flushPendingRedirectForActiveEditor(source) {
   const editor = vscode.window.activeTextEditor;
   if (!editor || redirectInProgress) {
@@ -175,31 +274,77 @@ function flushPendingRedirectForActiveEditor(source) {
   redirectEditorToExternalIde(editor, source).catch(() => {});
 }
 
+/**
+ * After a **new editor tab** opens: mark pending, try active editor, then
+ * fall back to the tab URI if chat kept focus (active editor never changes).
+ * @param {vscode.Uri} uri
+ */
+function scheduleRedirectForNewTab(uri) {
+  const redirectable = asRedirectableLocalFileUri(uri);
+  if (!redirectable || inStartupGrace()) {
+    return;
+  }
+  if (isRecentlyHandled(redirectable.fsPath) || redirectInProgress) {
+    return;
+  }
+
+  markPendingTabOpen(redirectable.fsPath);
+
+  queueMicrotask(() => {
+    flushPendingRedirectForActiveEditor("tabOpened");
+  });
+
+  setTimeout(() => {
+    if (redirectInProgress || isRecentlyHandled(redirectable.fsPath)) {
+      return;
+    }
+    // Pending still set ⇒ active editor never consumed it (focus stayed in chat).
+    redirectUriToExternalIde(redirectable, "tabOpenedChatFocus").catch(() => {});
+  }, TAB_OPEN_FOCUS_FALLBACK_MS);
+}
+
+/**
+ * @param {vscode.ExtensionContext} context
+ */
 function registerEditorRedirect(context) {
+  activatedAtMs = Date.now();
+
   if (vscode.window.tabGroups?.onDidChangeTabs) {
     context.subscriptions.push(
       vscode.window.tabGroups.onDidChangeTabs((e) => {
-        let marked = false;
+        if (inStartupGrace() || !redirectState.isRedirectEnabled()) {
+          return;
+        }
+
+        /** @type {vscode.Uri[]} */
+        const openedUris = [];
         for (const tab of e.opened) {
           const tabUri = uriFromOpenedTab(tab);
           const redirectable = tabUri
             ? asRedirectableLocalFileUri(tabUri)
             : null;
           if (redirectable) {
-            markPendingTabOpen(redirectable.fsPath);
-            marked = true;
+            openedUris.push(redirectable);
+            scheduleRedirectForNewTab(redirectable);
           }
         }
-        if (marked) {
-          queueMicrotask(() => flushPendingRedirectForActiveEditor("tabOpened"));
+
+        if (openedUris.length) {
+          appendLog("redirect.tabsOpened", {
+            paths: openedUris.map((u) => u.fsPath),
+            activeFsPath: vscode.window.activeTextEditor?.document.uri.fsPath,
+          }).catch(() => {});
         }
       })
     );
   }
 
+  // Intentionally NO onDidOpenTextDocument redirect: that fires when the agent
+  // or editor loads a .md/.py into memory and wrongly opens PyCharm.
+
   context.subscriptions.push(
     vscode.window.onDidChangeActiveTextEditor((editor) => {
-      if (!editor || redirectInProgress) {
+      if (!editor || redirectInProgress || inStartupGrace()) {
         return;
       }
       flushPendingRedirectForActiveEditor("tabOpenedThenActive");
@@ -213,5 +358,6 @@ module.exports = {
   asRedirectableLocalFileUri,
   openFileInExternalIde,
   redirectEditorToExternalIde,
+  redirectUriToExternalIde,
   registerEditorRedirect,
 };

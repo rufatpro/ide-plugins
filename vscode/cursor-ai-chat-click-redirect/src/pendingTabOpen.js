@@ -7,10 +7,18 @@ const PENDING_TTL_MS = 10_000;
 
 /**
  * @param {string} fsPath
+ * @returns {string}
+ */
+function normalizeKey(fsPath) {
+  const normalized = path.normalize(fsPath);
+  return process.platform === "win32" ? normalized.toLowerCase() : normalized;
+}
+
+/**
+ * @param {string} fsPath
  */
 function markPendingTabOpen(fsPath) {
-  const key = path.normalize(fsPath);
-  pendingByFsPath.set(key, Date.now() + PENDING_TTL_MS);
+  pendingByFsPath.set(normalizeKey(fsPath), Date.now() + PENDING_TTL_MS);
 }
 
 /**
@@ -18,13 +26,30 @@ function markPendingTabOpen(fsPath) {
  * @returns {boolean}
  */
 function consumePendingTabOpen(fsPath) {
-  const key = path.normalize(fsPath);
+  const key = normalizeKey(fsPath);
   const expiresAt = pendingByFsPath.get(key);
   if (expiresAt === undefined) {
     return false;
   }
   pendingByFsPath.delete(key);
   return expiresAt >= Date.now();
+}
+
+/**
+ * @param {string} fsPath
+ * @returns {boolean}
+ */
+function hasPendingTabOpen(fsPath) {
+  const key = normalizeKey(fsPath);
+  const expiresAt = pendingByFsPath.get(key);
+  if (expiresAt === undefined) {
+    return false;
+  }
+  if (expiresAt < Date.now()) {
+    pendingByFsPath.delete(key);
+    return false;
+  }
+  return true;
 }
 
 function clearPendingTabOpens() {
@@ -43,6 +68,8 @@ function pruneExpiredPending() {
 module.exports = {
   markPendingTabOpen,
   consumePendingTabOpen,
+  hasPendingTabOpen,
   clearPendingTabOpens,
   pruneExpiredPending,
+  normalizeKey,
 };

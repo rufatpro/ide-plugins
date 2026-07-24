@@ -33,7 +33,14 @@ function activate(context) {
   setOriginalExecuteCommand(vscode.commands.executeCommand.bind(vscode.commands));
 
   installHooks(context);
-  registerExternalUriOpener(context);
+  // Must not throw: proposed externalUriOpener is blocked in current Cursor builds.
+  try {
+    registerExternalUriOpener(context);
+  } catch (err) {
+    appendLog("redirect.externalUriOpenerSkipped", {
+      reason: err instanceof Error ? err.message : String(err),
+    }).catch(() => {});
+  }
 
   const bar = vscode.window.createStatusBarItem(
     vscode.StatusBarAlignment.Right,

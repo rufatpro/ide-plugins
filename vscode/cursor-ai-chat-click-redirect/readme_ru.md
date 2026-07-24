@@ -2,7 +2,7 @@
 
 [English](https://github.com/rufatpro/plugins/blob/main/vscode/cursor-ai-chat-click-redirect/readme.md) · [Репозиторий](https://github.com/rufatpro/plugins) · [Changelog](https://github.com/rufatpro/plugins/blob/main/vscode/cursor-ai-chat-click-redirect/CHANGELOG.md)
 
-**Версия 0.6.6** — расширение для сред, совместимых с VS Code: опциональный лог открытий файлов по ссылкам из AI-чата и опциональный редирект выбранных типов файлов во внешнюю IDE (PyCharm, IntelliJ, WebStorm и др.).
+**Версия 0.6.16** — расширение для сред, совместимых с VS Code: опциональный лог открытий файлов по ссылкам из AI-чата и опциональный редирект выбранных типов файлов во внешнюю IDE (PyCharm, IntelliJ, WebStorm и др.).
 
 > Разработано с помощью AI (Cursor). Часть monorepo [plugins](https://github.com/rufatpro/plugins).
 
@@ -35,14 +35,14 @@
 
 ## Когда срабатывает редирект
 
-Редирект привязан к появлению **новой вкладки** редактора в Cursor (`onDidChangeTabs` → `opened`), а не к простому переключению активного файла.
+Редирект срабатывает при появлении **новой вкладки** редактора (`onDidChangeTabs` → `opened`). Если фокус остаётся в чате, короткий fallback всё равно открывает файл во внешней IDE по URI вкладки. Простая загрузка документа в память без новой вкладки (правки агента, уже открытый файл) **не** редиректит.
 
 | Ситуация | Редирект во внешнюю IDE? |
 |----------|---------------------------|
-| По ссылке из чата открывается файл, у которого **ещё нет вкладки** в Cursor | **Да** — появляется новая вкладка, затем открывается PyCharm (и т.д.) |
-| Ссылка из чата ведёт на файл, который **уже открыт** во вкладке (Cursor только переключает фокус) | **Нет** — новой вкладки нет, расширение не считает это «открытием из чата» |
+| По ссылке из чата открывается файл, у которого **ещё нет вкладки** в Cursor | **Да** — даже если фокус остаётся в чате |
+| Ссылка из чата ведёт на файл, который **уже открыт** во вкладке (Cursor только переключает фокус) | **Нет** — документ заново не открывается |
 | Клик по **уже существующей** вкладке на панели сверху | **Нет** — меняется только активная вкладка |
-| Файл открыт из Explorer / палитры команд (новая вкладка) | **Да** — это тоже новая вкладка, тот же механизм, что у ссылки из чата |
+| Файл открыт из Explorer / палитры команд (новый документ) | **Да** — тот же механизм, что у ссылки из чата |
 
 На практике:
 
@@ -58,7 +58,7 @@ cd plugins\vscode\cursor-ai-chat-click-redirect
 build.bat
 ```
 
-В любой VS Code-совместимой среде (VS Code, Cursor, Antigravity, …): **F1** → `Extensions: Install from VSIX` → `build\cursor-ai-chat-click-redirect-0.6.6.vsix`.
+В любой VS Code-совместимой среде (VS Code, Cursor, Antigravity, …): **F1** → `Extensions: Install from VSIX` → `build\cursor-ai-chat-click-redirect-0.6.16.vsix`.
 
 Перезагрузите окно (**Developer: Reload Window**).
 
@@ -68,6 +68,7 @@ build.bat
 {
   "cursorAiChatClickRedirect.redirectFileExtensions": "py,js,md",
   "cursorAiChatClickRedirect.externalIdePath": "C:\\Program Files\\JetBrains\\PyCharm 2025.1.2\\bin\\pycharm64.exe",
+  "cursorAiChatClickRedirect.externalIdeArgs": ["{file}", "--line", "{line}"],
   "cursorAiChatClickRedirect.keepTabInCursorAfterRedirect": false,
   "cursorAiChatClickRedirect.logPath": "c:\\tmp\\ai_chat_click.log"
 }
@@ -79,7 +80,7 @@ build.bat
 | `keepTabInCursorAfterRedirect` | `false` | Оставить вкладку в Cursor после открытия во внешней IDE. |
 | `logPath` | `""` | Путь к лог-файлу. Пусто — **логирование выкл.** |
 | `externalIdePath` | `""` | Путь к IDE. Пусто — автопоиск JetBrains в Windows. |
-| `externalIdeArgs` | `["--line","{line}","{file}"]` | Аргументы запуска; `{file}`, `{line}` (с 1). |
+| `externalIdeArgs` | `["{file}","--line","{line}"]` | Аргументы запуска; `{file}`, `{line}` (с 1). JetBrains-лаунчеры требуют файл перед `--line`. |
 
 В интерфейсе настроек `redirectFileExtensions` отображается первой.
 

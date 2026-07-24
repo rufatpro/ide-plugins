@@ -1,5 +1,51 @@
 # Changelog
 
+## 0.6.16
+
+- Release bump: sync catalog `README` / `README_RU`; rebuild VSIX.
+
+## 0.6.15
+
+- Release bump: sync catalog `README` / `README_RU`; rebuild VSIX.
+
+## 0.6.14
+
+- Release bump: sync catalog `README` / `README_RU`; rebuild VSIX (includes 0.6.13 fix: no redirect on `onDidOpenTextDocument`).
+
+## 0.6.13
+
+- **Fix unwanted PyCharm opens** when the agent/editor loads `.md`/`.py` files (e.g. while bumping versions). Removed redirect on `onDidOpenTextDocument` — that path was too broad (`source: documentOpened` in the log).
+- Redirect again only for a **new editor tab** (`onDidChangeTabs` → `opened`), with a short URI fallback if chat keeps focus.
+
+## 0.6.12
+
+- Release bump: sync catalog `README` / `README_RU` version; rebuild VSIX.
+
+## 0.6.11
+
+- **Fix: file only opened in Cursor, PyCharm never showed it.** Default `externalIdeArgs` was `["--line","{line}","{file}"]`; current JetBrains launchers (confirmed on PyCharm 2025.1.2) reject that order with `unrecognized option: --line` and exit immediately. New default: `["{file}","--line","{line}"]` (file path first).
+- `spawnDetached` reported `ok: true` as soon as the OS process started, even if it immediately crashed on a bad CLI arg — the failure was invisible. Added optional stderr/exit-code capture for the IDE launch path; a non-zero exit is now logged as `redirect.ideProcessExitedWithError` (`logPath` required).
+
+## 0.6.10
+
+- **Fix activation crash on Cursor 3.x:** `registerExternalUriOpener` is a proposed API and throws `CANNOT use API proposal: externalUriOpener`, aborting `activate()` before the status bar and commands. Opener is now optional (try/catch); removed `onOpenExternalUri` activation events.
+
+## 0.6.9
+
+- Fix redirect after recent Cursor updates: file links from chat often open a tab while **focus stays in chat**, so waiting for `activeTextEditor` missed the event.
+- Redirect from the opened tab/document URI directly (no need for the editor to become active).
+- Fallback on `onDidOpenTextDocument` when tab `opened` events are skipped or delayed.
+- Startup grace period (~2.5s) to avoid redirecting every restored tab on launch.
+- Windows path keys normalized case-insensitively; closing a non-active tab after redirect when `keepTabInCursorAfterRedirect` is false.
+
+## 0.6.8
+
+- Internal packaging bump.
+
+## 0.6.7
+
+- Documentation: compatibility note for VS Code-compatible editors.
+
 ## 0.6.6
 
 - Fixed Marketplace readme links: corrected `vsce.baseContentUrl` (`vscode/…` instead of `plugins/vscode/…`); LICENSE, changelog, and EN/RU readme use absolute GitHub URLs.

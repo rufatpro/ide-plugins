@@ -2,14 +2,21 @@ const fs = require("fs");
 const path = require("path");
 const { spawn } = require("child_process");
 const config = require("./config");
+const { appendLog } = require("./logWriter");
 
 /**
+ * Spawn resolves as soon as the OS process starts, so a working-looking
+ * "ok: true" can still hide a CLI arg mismatch that makes the target app
+ * exit immediately (e.g. JetBrains launchers rejecting unknown flags).
+ * When `diagnostics` is set, stderr/exit code are captured and, on a
+ * non-zero exit shortly after launch, logged separately for troubleshooting.
  * @param {string} command
  * @param {string[]} args
  * @param {string} method
+ * @param {boolean} [diagnostics]
  * @returns {Promise<{ ok: boolean; method: string; error?: string }>}
  */
-function spawnDetached(command, args, method) {
+function spawnDetached(command, args, method, diagnostics = false) {
   return new Promise((resolve) => {
     let settled = false;
     const finish = (/** @type {{ ok: boolean; method: string; error?: string }} */ result) => {
@@ -22,10 +29,32 @@ function spawnDetached(command, args, method) {
 
     const child = spawn(command, args, {
       detached: true,
-      stdio: "ignore",
+      stdio: diagnostics ? ["ignore", "ignore", "pipe"] : "ignore",
       windowsHide: true,
       shell: false,
     });
+
+    let stderr = "";
+    if (diagnostics && child.stderr) {
+      child.stderr.on("data", (chunk) => {
+        stderr += chunk.toString();
+      });
+    }
+
+    if (diagnostics) {
+      child.on("exit", (code, signal) => {
+        if (code !== 0 && code !== null) {
+          appendLog("redirect.ideProcessExitedWithError", {
+            method,
+            command,
+            args,
+            exitCode: code,
+            signal,
+            stderr: stderr.slice(0, 2000),
+          }).catch(() => {});
+        }
+      });
+    }
 
     child.on("error", (err) => {
       finish({ ok: false, method, error: err.message });
@@ -153,20 +182,22 @@ function applyOpenTemplate(template, file, line) {
  * @returns {Promise<{ ok: boolean; method: string; error?: string }>}
  */
 async function openWithConfiguredIde(idePath, fsPath, line) {
+  // JetBrains launchers (PyCharm 2024.x/2025.x) reject "--line N file" —
+  // "unrecognized option: --line". The file path must come first.
   const rawTemplates = config.get("externalIdeArgs", [
+    "{file}",
     "--line",
     "{line}",
-    "{file}",
   ]);
   const argTemplates = Array.isArray(rawTemplates)
     ? rawTemplates
-    : ["--line", "{line}", "{file}"];
+    : ["{file}", "--line", "{line}"];
 
   const args = argTemplates.map((part) =>
     applyOpenTemplate(String(part), fsPath, line)
   );
 
-  return spawnDetached(idePath, args, `ide:${path.basename(idePath)}`);
+  return spawnDetached(idePath, args, `ide:${path.basename(idePath)}`, true);
 }
 
 /**

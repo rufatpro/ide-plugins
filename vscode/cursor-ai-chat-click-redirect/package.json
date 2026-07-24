@@ -2,7 +2,7 @@
   "name": "cursor-ai-chat-click-redirect",
   "displayName": "Cursor AI Chat Click Redirect",
   "description": "Log AI chat link clicks; optionally open files by extension in an external IDE. PROVIDED AS IS, WITHOUT WARRANTY. Authors and contributors are not liable for damages, data loss, misdirected opens, or issues from use with Cursor, external IDEs, or on-disk logs. Use at your own risk.",
-  "version": "0.6.8",
+  "version": "0.6.16",
   "publisher": "rufat",
   "license": "MIT",
   "readme": "readme.md",
@@ -32,9 +32,7 @@
     "external"
   ],
   "activationEvents": [
-    "onStartupFinished",
-    "onOpenExternalUri:http",
-    "onOpenExternalUri:https"
+    "onStartupFinished"
   ],
   "main": "./src/extension.js",
   "contributes": {
@@ -90,9 +88,9 @@
         "cursorAiChatClickRedirect.externalIdeArgs": {
           "type": "array",
           "items": { "type": "string" },
-          "default": ["--line", "{line}", "{file}"],
+          "default": ["{file}", "--line", "{line}"],
           "order": 5,
-          "description": "IDE launch arguments: {file}, {line} (1-based)."
+          "description": "IDE launch arguments: {file}, {line} (1-based). JetBrains launchers require the file before --line."
         }
       }
     }
